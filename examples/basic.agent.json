@@ -1,0 +1,40 @@
+{
+    "manifest_version": "0.1.0",
+    "agent_id": "example.basic.agent",
+    "agent_name": "Basic Example Agent",
+    "agent_version": "1.0.0",
+    "owner": {
+        "type": "individual",
+        "identifier": "Example Owner"
+    },
+    "purpose": {
+        "primary_code": "general.assistance",
+        "description": "Provides general assistance within clearly declared constraints, without executing irreversible actions."
+    },
+    "forbidden_actions": [
+        "execute_payments",
+        "access_private_data_without_consent",
+        "provide_legal_or_financial_advice_as_authoritative"
+    ],
+    "autonomy": {
+        "level": 1
+    },
+    "risk_profile": {
+        "level": "low",
+        "notes": "No privileged access or irreversible actions."
+    },
+    "data_handling": {
+        "stores_personal_data": false,
+        "retention": "none"
+    },
+    "contact": {
+        "email": "contact@example.com"
+    },
+    "language": {
+        "primary": "en",
+        "supported": [
+            "en",
+            "es"
+        ]
+    }
+}
