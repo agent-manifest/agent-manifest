@@ -1,41 +1,104 @@
 # Agent Manifest
-Agent Manifest is a minimal, execution-agnostic, declarative specification that
-allows AI agents to publicly declare identity, purpose, constraints, autonomy, risk
-boundaries, and data handling before interaction.
-This specification declares agent boundaries. It does not execute, validate, score,
-enforce, or decide.
-## What it is
-Agent Manifest is a declarative document intended to be attached to an AI agent (or
-published alongside it) so humans and other systems can understand, before any
-execution:
+
+Agent Manifest is a minimal, execution-agnostic, declarative specification.
+
+It allows AI agents to publicly declare identity, purpose, constraints, autonomy, risk boundaries, and data handling **before interaction**.
+
+This repository does not define behavior.  
+It defines **boundaries**.
+
+Agent Manifest does not execute, validate, score, enforce, or decide.
+
+---
+
+## Why this exists
+
+Before agents act, interact, or scale, there must be a way to state:
+
 - who the agent is
-- what it is designed to do
+- what it is meant to do
 - what it will not do
-- what autonomy and risk boundaries are declared
+- where its autonomy ends
 - how it handles data
-## What it is NOT
-- Not a runtime or framework
-- Not a tool protocol (it does not connect to APIs/tools)
-- Not an orchestration layer
-- Not a compliance decision-maker
-- Not a validator, scorer, or enforcement mechanism
-It declares. It does not execute.
-## Why it exists
-As AI agents become autonomous and multi-vendor, systems need a simple,
-auditable way to understand agent boundaries and risk up front. Agent Manifest
-provides a neutral declaration layer that can complement any runtime or protocol.
-## Quick start
-1. Create a manifest JSON document for your agent (see examples).
-2. Validate it against the JSON Schema in `spec/manifest.schema.json`.
-3. Publish it alongside the agent, repository, or endpoint metadata.
-## Specification and Schema
-- Specification: `spec/spec.md`
-- JSON Schema: `spec/manifest.schema.json`
-- Current version: **0.1.0**
-## Examples
-- Basic agent: `examples/basic.agent.json`
-## Governance
-Initial author and maintainer: **Hernán Alfredo Capucci**.
-Contributions are welcome via issues and pull requests.
-## License
-Apache-2.0
+- which risks it refuses to take
+
+Agent Manifest exists to make those declarations explicit.
+
+It is not a control layer.  
+It is not an enforcement mechanism.  
+It is a declaration of intent and limits.
+
+---
+
+## What this is
+
+Agent Manifest is a declarative document that can be published alongside an agent.
+
+It is designed to be readable by humans and interpretable by systems, without requiring execution.
+
+It describes:
+
+- agent identity
+- declared purpose
+- non-goals
+- autonomy boundaries
+- risk posture
+- data handling intent
+
+It exists **before** runtime, interaction, or deployment.
+
+---
+
+## What this is not
+
+Agent Manifest is **not**:
+
+- a technical specification
+- an implementation guide
+- a protocol
+- a business proposal
+- a marketing document
+- a compliance framework
+
+Any implementation inspired by this repository is intentionally out of scope.
+
+---
+
+## How to use this
+
+You may:
+
+- read it
+- reference it
+- disagree with it
+- extend it
+- fork it
+- ignore it
+
+You do **not** need permission.
+
+If this document influences how you design, govern, or reason about agents, that influence is voluntary.
+
+---
+
+## Structure
+
+This repository is intentionally small.
+
+It includes:
+
+- foundational declarations (`WHY_THIS_EXISTS.md`)
+- scope clarification (`WHAT_THIS_IS.md`)
+- an optional spec reference (`/spec`)
+- illustrative examples (`/examples`)
+
+Nothing here is required.  
+Nothing here is enforced.
+
+---
+
+## Final note
+
+This repository does not aim to be finished.
+
+It aims to be **foundational**.
