@@ -1,3 +1,5 @@
+A minimal, shared declaration surface for autonomous and semi-autonomous agents.
+
 # Agent Manifest
 
 Agent Manifest is a minimal, execution-agnostic, declarative specification.
