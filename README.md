@@ -10,13 +10,11 @@ This repository does not define behavior.
 It defines **boundaries**.
 
 Agent Manifest does not execute, validate, score, enforce, or decide.
-
 ## Stability
 
 The constitutional core of Agent Manifest v1.x is defined in `CORE_PRINCIPLES.md`.
 
-Core principles may only change under a major version.
-Minor versions may refine definitions without altering core guarantees.
+Core principles may only change under a major version. Minor versions may refine definitions without altering core guarantees.
 ---
 
 ## Start here
