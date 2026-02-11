@@ -10,11 +10,73 @@ This repository does not define behavior.
 It defines **boundaries**.
 
 Agent Manifest does not execute, validate, score, enforce, or decide.
+
+---
+
+## Why Agent Manifest exists
+
+As AI systems become increasingly autonomous, interactions between agents, humans, APIs, and infrastructures require clarity prior to execution.
+
+Most systems describe capabilities.
+Few describe constraints.
+
+Agent Manifest introduces a structural principle:
+
+> Autonomous systems should declare boundaries before action.
+
+This specification provides a public declaration layer — not a runtime, not a framework, not a governance engine.
+
+It is designed to be:
+- Minimal
+- Composable
+- Execution-agnostic
+- Forward-compatible
+
+---
+
+## What Agent Manifest is
+
+Agent Manifest is a declarative surface that may include:
+
+- Agent identity
+- Operational domain
+- Autonomy level
+- Tool access scope
+- Data handling guarantees
+- Risk boundaries
+- Human oversight conditions
+- Version commitments
+
+It is intentionally minimal and does not mandate internal architecture.
+
+---
+
+## What Agent Manifest is not
+
+Agent Manifest does not:
+
+- Execute agents
+- Enforce compliance
+- Guarantee safety
+- Replace governance frameworks
+- Certify correctness
+- Score risk
+- Monitor behavior
+
+It defines what an agent *declares* — not what it *does*.
+
+Validation, scoring, auditing, and enforcement belong to separate systems.
+
+---
+
 ## Stability
 
 The constitutional core of Agent Manifest v1.x is defined in `CORE_PRINCIPLES.md`.
 
-Core principles may only change under a major version. Minor versions may refine definitions without altering core guarantees.
+Core principles may only change under a **major version**.
+
+Minor versions may refine definitions without altering core guarantees.
+
 ---
 
 ## Start here
@@ -26,99 +88,55 @@ If you are new to Agent Manifest, read in this order:
 3. `/spec` — optional structural reference  
 4. `/examples` — illustrative, non-normative examples  
 
-Nothing here is required.  
-Nothing here is enforced.
+---
+
+## Design philosophy
+
+Agent Manifest is built around three structural ideas:
+
+1. **Declaration before execution**
+2. **Boundaries over capabilities**
+3. **Separation between declaration and validation**
+
+The specification is designed to evolve alongside AI systems without becoming dependent on any specific model, vendor, or orchestration framework.
+
+It is compatible with:
+
+- RAG agents
+- Tool-calling agents
+- Multi-agent systems
+- Data agents
+- Orchestrated workflows
+- Future autonomous architectures
 
 ---
 
-## Why this exists
+## Governance
 
-Before agents act, interact, or scale, there must be a way to state:
+This repository defines the open specification.
 
-- who the agent is  
-- what it is meant to do  
-- what it will not do  
-- where its autonomy ends  
-- how it handles data  
-- which risks it refuses to take  
+Interpretations, validators, scoring engines, and audit systems may be built independently and are not part of this core specification.
 
-Agent Manifest exists to make those declarations explicit.
-
-It is not a control layer.  
-It is not an enforcement mechanism.  
-It is a declaration of intent and limits.
+Proposals for modification must preserve the core principles defined in `CORE_PRINCIPLES.md`.
 
 ---
 
-## What this is
+## Versioning
 
-Agent Manifest is a declarative document that can be published alongside an agent.
+Agent Manifest follows semantic versioning:
 
-It is designed to be readable by humans and interpretable by systems, without requiring execution.
-
-It describes:
-
-- agent identity  
-- declared purpose  
-- non-goals  
-- autonomy boundaries  
-- risk posture  
-- data handling intent  
-
-It exists **before** runtime, interaction, or deployment.
+- MAJOR: structural or constitutional changes
+- MINOR: clarifications and compatible refinements
+- PATCH: editorial or formatting updates
 
 ---
 
-## What this is not
+## Long-term intent
 
-Agent Manifest is not:
+Agent Manifest proposes a structural layer for autonomous systems:
 
-- a technical specification  
-- an implementation guide  
-- a protocol  
-- a business proposal  
-- a marketing document  
-- a compliance framework  
+Agents should be able to declare who they are, what they can do, and where their boundaries lie — before interaction begins.
 
-Any implementation inspired by this repository is intentionally out of scope.
+This specification remains neutral, minimal, and open.
 
----
-
-## How to use this
-
-You may:
-
-- read it  
-- reference it  
-- disagree with it  
-- extend it  
-- fork it  
-- ignore it  
-
-You do not need permission.
-
-If this document influences how you design, govern, or reason about agents, that influence is voluntary.
-
----
-
-## Structure
-
-This repository is intentionally small.
-
-It includes:
-
-- foundational declarations (`WHY_THIS_EXISTS.md`)  
-- scope clarification (`WHAT_THIS_IS.md`)  
-- an optional spec reference (`/spec`)  
-- illustrative examples (`/examples`)  
-
-Nothing here is required.  
-Nothing here is enforced.
-
----
-
-## Final note
-
-This repository does not aim to be finished.
-
-It aims to be **foundational**.
+Its value emerges through adoption.
