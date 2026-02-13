@@ -140,3 +140,14 @@ Agents should be able to declare who they are, what they can do, and where their
 This specification remains neutral, minimal, and open.
 
 Its value emerges through adoption.
+
+---
+
+## Foundational Doctrine
+
+Agent Manifest is grounded in the principle of **Pre-Execution Authority**.
+
+Before autonomy, execution, or capability, an agent must declare the authority framework under which it operates.
+
+See:
+[Pre-Execution Authority →](./foundations/pre-execution-authority/)
