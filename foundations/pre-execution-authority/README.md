@@ -181,4 +181,8 @@ It is a condition for sustainable autonomy.
 
 ---
 
-End of Document
+Author  
+Hernán Capucci Fernández  
+Independent Research
+
+
