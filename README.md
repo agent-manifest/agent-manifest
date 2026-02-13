@@ -150,4 +150,4 @@ Agent Manifest is grounded in the principle of **Pre-Execution Authority**.
 Before autonomy, execution, or capability, an agent must declare the authority framework under which it operates.
 
 See:
-[Pre-Execution Authority →](./foundations/pre-execution-authority/)
+[Pre-Execution Authority →]See: [Pre-Execution Authority →](foundations/pre-execution-authority/README.md)
