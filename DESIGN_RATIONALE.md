@@ -199,3 +199,94 @@ a declared authority and boundaries model that exists *before* autonomy is exerc
 It is intentionally small, execution-agnostic, and oriented around constraints and accountability.
 
 Its value emerges through adoption.
+
+---
+
+## Architectural Boundaries
+
+Agent Manifest is intentionally constrained.  
+Its strength derives not only from what it defines, but from what it deliberately excludes.
+
+The following architectural boundaries are foundational to its design:
+
+---
+
+### 1. Not a Runtime Enforcement Engine
+
+Agent Manifest does not execute, restrict, sandbox, or technically enforce behavior.
+
+It is a declarative layer — not a control mechanism.  
+Enforcement belongs to execution environments, orchestration layers, or external governance systems.
+
+---
+
+### 2. Not a Compliance Framework
+
+The specification does not implement regulatory compliance (GDPR, HIPAA, financial law, etc.).
+
+It may support such frameworks structurally, but it does not interpret or validate legal obligations.
+
+Compliance is contextual and jurisdiction-dependent.  
+Agent Manifest remains neutral and infrastructure-level.
+
+---
+
+### 3. Not a Moral or Ethical Arbiter
+
+The specification does not determine whether an agent’s purpose is good, ethical, or socially acceptable.
+
+It requires declaration — not moral validation.
+
+Evaluation belongs to users, platforms, regulators, or ecosystems adopting the manifest.
+
+---
+
+### 4. Not an Orchestration Protocol
+
+Agent Manifest does not define inter-agent communication standards, message schemas, or swarm coordination mechanics.
+
+It defines declaration before execution — not interaction semantics.
+
+Coordination layers may build on top of it, but they are external by design.
+
+---
+
+### 5. Not a Tool Execution Specification
+
+The manifest may declare allowed or restricted tools, but it does not define how tools are executed.
+
+Tool semantics, APIs, side-effects, and runtime safety mechanisms are outside scope.
+
+The manifest describes authority surface — not operational mechanics.
+
+---
+
+### 6. Not an Enterprise Product
+
+Agent Manifest is not designed as a commercial SaaS, governance platform, or auditing suite.
+
+It is a minimal, open, execution-agnostic declaration surface.
+
+Commercial implementations may emerge, but the specification itself remains neutral and open.
+
+---
+
+### 7. Declaration Precedes Capability
+
+The core doctrine remains:
+
+Before autonomy.  
+Before execution.  
+Before capability.
+
+An agent must declare the authority framework under which it operates.
+
+This principle is architectural — not optional.
+
+---
+
+Agent Manifest remains minimal by design.
+
+Its power lies in clarity.
+Its clarity lies in constraint.
+Its constraint lies in architectural discipline.
