@@ -90,6 +90,16 @@ If you are new to Agent Manifest, read in this order:
 
 ---
 
+## Design Rationale
+
+The structural reasoning behind the specification is documented in:
+
+→ [DESIGN_RATIONALE.md](./DESIGN_RATIONALE.md)
+
+This document explains the architectural decisions, boundary-first philosophy, autonomy model, and execution-agnostic design principles that shape Agent Manifest.
+
+---
+
 ## Design philosophy
 
 Agent Manifest is built around three structural ideas:
