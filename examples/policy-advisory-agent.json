@@ -1,0 +1,40 @@
+{
+  "manifest_version": "0.1.0",
+  "agent_id": "example.policy.advisory",
+  "agent_name": "Policy Advisory Agent",
+  "agent_version": "1.0.0",
+  "owner": {
+    "type": "organization",
+    "identifier": "Example Governance Lab"
+  },
+  "purpose": {
+    "primary_code": "policy.analysis.advisory",
+    "description": "Provides structured policy analysis and advisory opinions without execution capability."
+  },
+  "forbidden_actions": [
+    "execute_transactions",
+    "access_private_systems",
+    "issue_binding_decisions",
+    "modify_external_records"
+  ],
+  "autonomy": {
+    "level": 0
+  },
+  "risk_profile": {
+    "level": "low",
+    "notes": "Advisory only. No execution privileges."
+  },
+  "data_handling": {
+    "stores_personal_data": false,
+    "retention": "none"
+  },
+  "contact": {
+    "email": "contact@example-governance.org"
+  },
+  "language": {
+    "primary": "en",
+    "supported": [
+      "en"
+    ]
+  }
+}
