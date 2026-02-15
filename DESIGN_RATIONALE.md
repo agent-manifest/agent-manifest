@@ -315,3 +315,37 @@ This section captures a few concrete decisions that encode the project’s core 
     "access_private_data_without_consent"
   ]
 }
+
+---
+
+## Declaration as a Precondition for Enforcement
+
+Agent Manifest does not enforce behavior.
+
+It establishes the structured surface upon which enforcement becomes possible.
+
+Without declaration:
+- No validator can detect contradiction.
+- No auditor can identify deviation.
+- No external system can measure compliance.
+- No authority can attribute responsibility.
+
+Implicit behavior cannot be validated.
+
+Undeclared autonomy cannot be constrained.
+
+Undefined boundaries cannot be audited.
+
+Agent Manifest converts implicit assumptions into explicit commitments.
+
+Enforcement systems operate on those commitments.
+
+The separation is intentional:
+
+- Manifest → Declares
+- Validators → Verify
+- Runtimes → Execute
+
+If declaration is absent, enforcement collapses into guesswork.
+
+Pre-Execution Authority begins with structured declaration.
