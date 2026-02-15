@@ -135,6 +135,44 @@ See: [ROADMAP.md](./ROADMAP.md) for development philosophy.
 
 ---
 
+## Architectural Layering
+
+Agent Manifest operates strictly at the **Declaration Layer**.
+
+It does not execute agents.
+It does not enforce policy.
+It does not perform runtime validation.
+
+Instead, it standardizes how agents declare:
+
+- Identity
+- Purpose
+- Boundaries
+- Autonomy level
+- Risk posture
+- Data handling commitments
+
+The ecosystem separates into three distinct layers:
+
+### 1. Declaration Layer  
+**Agent Manifest (this repository)**  
+Defines how boundaries and commitments are declared.
+
+### 2. Enforcement Layer  
+Validators, policy engines, audit systems, and compliance tooling.  
+These systems verify whether declarations are internally consistent and externally respected.
+
+### 3. Execution Layer  
+Agents and runtimes that perform actions.
+
+Agent Manifest does not compete with enforcement systems.  
+It enables them.
+
+Without structured declaration, validation is impossible.  
+Without validation, accountability collapses.
+
+---
+
 ## Governance
 
 This repository defines the open specification.
