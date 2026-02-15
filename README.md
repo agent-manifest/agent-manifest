@@ -199,6 +199,14 @@ For common misunderstandings, see: [MISCONCEPTIONS.md](./MISCONCEPTIONS.md).
 
 ---
 
+## Examples
+
+Illustrative, non-normative manifests can be found in the [`examples/`](examples/) directory.
+
+These demonstrate how boundaries, autonomy levels, and risk profiles are declared across different domains.
+
+---
+
 ## Versioning
 
 Agent Manifest follows semantic versioning:
