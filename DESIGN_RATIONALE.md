@@ -308,6 +308,7 @@ This section captures a few concrete decisions that encode the project’s core 
 **Trade-off:** Slightly more restrictive manifests, but prevents meaningless declarations.
 
 **Illustration:**
+
 ```json
 {
   "forbidden_actions": [
@@ -315,7 +316,7 @@ This section captures a few concrete decisions that encode the project’s core 
     "access_private_data_without_consent"
   ]
 }
-
+```
 ---
 
 ## Declaration as a Precondition for Enforcement
