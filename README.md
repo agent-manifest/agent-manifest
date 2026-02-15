@@ -121,6 +121,20 @@ It is compatible with:
 
 ---
 
+### Core design principle
+
+> **Agent Manifest does not grow by accumulation.**  
+> **It grows by refinement.**
+
+This project optimizes for:
+- Minimal surface area
+- Maximum clarity
+- Structural integrity before ecosystem scale
+
+See: [ROADMAP.md](./ROADMAP.md) for development philosophy.
+
+---
+
 ## Governance
 
 This repository defines the open specification.
