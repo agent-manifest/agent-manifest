@@ -25,3 +25,8 @@ They exist to demonstrate correct structure and typical boundary declarations.
 - Replace placeholder identifiers and emails with real values in production.
 - Add domain-specific forbidden actions to prevent ambiguity.
 - Validators and runtimes may enforce these declarations differently.
+
+---
+
+Agent Manifest operates at the Declaration Layer.
+Enforcement and execution remain external to these examples.
