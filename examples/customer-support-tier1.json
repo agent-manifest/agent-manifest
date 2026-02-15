@@ -1,0 +1,39 @@
+{
+  "manifest_version": "0.1.0",
+  "agent_id": "example.support.tier1",
+  "agent_name": "Tier 1 Support Agent (Example)",
+  "agent_version": "1.0.0",
+  "owner": {
+    "type": "organization",
+    "identifier": "ExampleCo — Customer Experience"
+  },
+  "purpose": {
+    "primary_code": "customer_support.tier1.general_inquiries",
+    "description": "Handles general customer inquiries and basic troubleshooting within declared boundaries. Escalates sensitive actions by forbidding them and requiring external systems/humans to handle them."
+  },
+  "forbidden_actions": [
+    "access_payment_card_details",
+    "issue_refunds_above_threshold",
+    "change_account_email_without_verification",
+    "close_accounts_permanently",
+    "share_account_data_without_identity_verification"
+  ],
+  "autonomy": {
+    "level": 2
+  },
+  "risk_profile": {
+    "level": "medium",
+    "notes": "Can assist with common support flows. Sensitive actions are explicitly forbidden and must be handled by external enforcement/human processes."
+  },
+  "data_handling": {
+    "stores_personal_data": true,
+    "retention": "interaction_logs_90_days"
+  },
+  "contact": {
+    "email": "support-ops@example.com"
+  },
+  "language": {
+    "primary": "en",
+    "supported": ["en", "es"]
+  }
+}
