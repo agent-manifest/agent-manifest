@@ -290,3 +290,28 @@ Agent Manifest remains minimal by design.
 Its power lies in clarity.
 Its clarity lies in constraint.
 Its constraint lies in architectural discipline.
+
+---
+
+## Illustrative Design Decisions
+
+This section captures a few concrete decisions that encode the project’s core design philosophy: **boundaries over capabilities**, **clarity over completeness**, and **stability over velocity**.
+
+### Decision: require at least one `forbidden_actions` entry (`minItems: 1`)
+
+**Problem:** A manifest that declares no constraints is structurally hollow.
+
+**Decision:** The schema requires `forbidden_actions` to contain at least one entry.
+
+**Why:** A boundary layer must force explicit limits, not allow “permissionless autonomy by omission”.
+
+**Trade-off:** Slightly more restrictive manifests, but prevents meaningless declarations.
+
+**Illustration:**
+```json
+{
+  "forbidden_actions": [
+    "execute_payments",
+    "access_private_data_without_consent"
+  ]
+}
