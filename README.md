@@ -121,7 +121,7 @@ It is compatible with:
 
 ---
 
-### Core design principle
+## Core design principle
 
 > **Agent Manifest does not grow by accumulation.**  
 > **It grows by refinement.**
