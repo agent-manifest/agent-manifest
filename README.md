@@ -1,4 +1,4 @@
-A minimal, shared declaration surface for autonomous and semi-autonomous agents.
+A minimal, execution-agnostic specification for AI agent governance and declarative boundaries.
 
 # Agent Manifest
 
