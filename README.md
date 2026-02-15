@@ -183,6 +183,16 @@ Proposals for modification must preserve the core principles defined in `CORE_PR
 
 ---
 
+### Enforcement Positioning
+
+Agent Manifest does not enforce behavior.  
+It standardizes how boundaries are declared.  
+It enables verification by external systems.
+
+For common misunderstandings, see: [MISCONCEPTIONS.md](./MISCONCEPTIONS.md).
+
+---
+
 ## Versioning
 
 Agent Manifest follows semantic versioning:
