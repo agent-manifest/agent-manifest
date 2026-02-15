@@ -1,0 +1,40 @@
+{
+  "manifest_version": "0.1.0",
+  "agent_id": "example.payment.execution",
+  "agent_name": "Payment Execution Agent",
+  "agent_version": "1.0.0",
+  "owner": {
+    "type": "organization",
+    "identifier": "Example Payments Inc."
+  },
+  "purpose": {
+    "primary_code": "financial.transaction.processing",
+    "description": "Executes authorized payment instructions under strict validation and audit requirements."
+  },
+  "forbidden_actions": [
+    "execute_payments_without_explicit_authorization",
+    "modify_transaction_logs",
+    "override_policy_engine_decisions",
+    "access_unrelated_customer_data"
+  ],
+  "autonomy": {
+    "level": 3
+  },
+  "risk_profile": {
+    "level": "high",
+    "notes": "Handles irreversible financial transactions. Requires external policy validation before execution."
+  },
+  "data_handling": {
+    "stores_personal_data": true,
+    "retention": "regulated_financial_retention_policy"
+  },
+  "contact": {
+    "email": "compliance@example-payments.com"
+  },
+  "language": {
+    "primary": "en",
+    "supported": [
+      "en"
+    ]
+  }
+}
