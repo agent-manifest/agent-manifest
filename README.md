@@ -183,11 +183,17 @@ Proposals for modification must preserve the core principles defined in `CORE_PR
 
 ---
 
-### Enforcement Positioning
+## Enforcement Positioning
 
 Agent Manifest does not enforce behavior.  
 It standardizes how boundaries are declared.  
 It enables verification by external systems.
+
+Architectural separation:
+
+- Manifest → Declaration layer
+- Validators / policy engines → Enforcement layer
+- Agents → Execution layer
 
 For common misunderstandings, see: [MISCONCEPTIONS.md](./MISCONCEPTIONS.md).
 
