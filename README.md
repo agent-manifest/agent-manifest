@@ -100,7 +100,7 @@ This document explains the architectural decisions, boundary-first philosophy, a
 
 ---
 
-## Design philosophy
+## Design Philosophy
 
 Agent Manifest is built around three structural ideas:
 
@@ -121,7 +121,7 @@ It is compatible with:
 
 ---
 
-## Core design principle
+## Core Design Principle
 
 > **Agent Manifest does not grow by accumulation.**  
 > **It grows by refinement.**
@@ -155,7 +155,7 @@ Agent Manifest follows semantic versioning:
 
 ---
 
-## Long-term intent
+## Long-term Intent
 
 Agent Manifest proposes a structural layer for autonomous systems:
 
