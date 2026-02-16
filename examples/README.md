@@ -1,32 +1,36 @@
-# Agent Manifest Examples (Non-Normative)
+# Examples (non-normative)
 
-This directory contains **illustrative examples** of Agent Manifests across different
-autonomy levels, risk profiles, and domains.
+This directory contains illustrative Agent Manifest examples.
 
-These examples are **not normative** and do not change the specification.
-They exist to demonstrate correct structure and typical boundary declarations.
+These examples are **non-normative** and provided for clarity only.
+They demonstrate how to declare boundaries and accountability fields **before interaction**.
 
----
-
-## Examples
-
-| File | Autonomy | Risk | Domain | Notes |
-|------|----------|------|--------|------|
-| `basic.agent.json` | 1 | low | general | Minimal assistant with clear forbidden actions |
-| `customer-support-tier1.json` | 2 | medium | customer support | Escalation constraints, limited operations |
-| `research-assistant.json` | 1 | low/medium | research | Analysis-only posture, no execution |
-| `payment-execution-agent.json` | 3 | high | payments | High-risk, scoped autonomy, strict boundaries |
-| `policy-advisory-agent.json` | 0 | low | policy | Advisory-only, no execution capability |
+Validation rules are defined by the schema:
+- `spec/manifest.schema.json`
 
 ---
 
-## Usage Notes
+## Notes
 
-- Replace placeholder identifiers and emails with real values in production.
-- Add domain-specific forbidden actions to prevent ambiguity.
-- Validators and runtimes may enforce these declarations differently.
+- Examples are designed to be readable first, strict second.
+- All examples target `manifest_version: "0.1.0"`.
+- Required structural elements include:
+  - identity (`agent_id`, `agent_name`, `agent_version`)
+  - accountability (`owner`, `contact`)
+  - purpose (`purpose.primary_code`, `purpose.description`)
+  - hard constraints (`forbidden_actions`)
+  - autonomy (`autonomy.level`)
+  - risk profile (`risk_profile.level`)
+  - stopping authority (`stopping_authority`)
+  - audit posture (`audit_surface`)
+  - data handling (`data_handling`)
 
 ---
 
-Agent Manifest operates at the Declaration Layer.
-Enforcement and execution remain external to these examples.
+## Files
+
+- `basic.agent.json` — minimal compliant example (low-risk, low autonomy)
+- `customer-support-tier1.json` — constrained support agent example
+- `research-assistant.json` — research-oriented example with stronger audit posture
+- `policy-advisory-agent.json` — policy advisory example (higher oversight expectations)
+- `payment-execution-agent.json` — high-risk example (strict boundaries + stoppability + audit)
