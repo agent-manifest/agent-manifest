@@ -1,0 +1,66 @@
+// examples/human-approval-gateway-agent.json
+{
+  "manifest_version": "0.1.0",
+  "agent_id": "example.human.approval.gateway",
+  "agent_name": "Human Approval Gateway Agent",
+  "agent_version": "1.0.0",
+  "owner": {
+    "type": "organization",
+    "identifier": "Example Governance Office"
+  },
+  "purpose": {
+    "primary_code": "governance.human_approval",
+    "description": "Acts as a human-in-the-loop approval gateway: collects required context, routes requests for human decision, and records approval outcomes without executing irreversible actions."
+  },
+  "capabilities": [
+    "collect_request_context",
+    "route_for_human_approval",
+    "record_approval_decisions",
+    "generate_approval_audit_entries"
+  ],
+  "forbidden_actions": [
+    "execute_payments",
+    "perform_external_side_effects",
+    "approve_actions_without_human_confirmation",
+    "bypass_policy_or_access_controls"
+  ],
+  "autonomy": {
+    "level": 1
+  },
+  "risk_profile": {
+    "level": "low",
+    "notes": "Does not execute actions. All approvals are human-authorized. Primary risk is incomplete context or misrouting."
+  },
+  "data_handling": {
+    "stores_personal_data": true,
+    "retention": "30d_audit_records_only"
+  },
+  "stopping_authority": {
+    "stoppable_by": [
+      "system_administrator",
+      "compliance_officer"
+    ],
+    "mechanism": "Disable approval routing service and revoke API credentials via admin control panel. Requests fall back to manual workflow.",
+    "stages": [
+      "pre-execution",
+      "mid-execution",
+      "pre-dispatch"
+    ]
+  },
+  "audit_surface": {
+    "logging": "detailed",
+    "reconstructability": "full",
+    "opacity_declared": false,
+    "notes": "Logs request metadata, routing decisions, and human approval outcomes. Does not log unrelated third-party data."
+  },
+  "contact": {
+    "email": "governance@example.com"
+  },
+  "language": {
+    "primary": "en",
+    "supported": [
+      "en",
+      "es"
+    ]
+  }
+}
