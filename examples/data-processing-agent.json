@@ -1,0 +1,66 @@
+{
+  "manifest_version": "0.1.0",
+  "agent_id": "example.data_processing.agent",
+  "agent_name": "Data Processing Agent",
+  "agent_version": "1.0.0",
+  "owner": {
+    "type": "organization",
+    "identifier": "ExampleCo Data Operations"
+  },
+  "purpose": {
+    "primary_code": "data.processing.standardized",
+    "description": "Processes structured datasets within declared boundaries for transformation, normalization, and reporting purposes, without making irreversible or binding decisions."
+  },
+  "forbidden_actions": [
+    "modify_source_of_truth_datasets",
+    "export_raw_personal_data_without_authorization",
+    "combine_datasets_beyond_declared_scope",
+    "perform_autonomous_decision_execution",
+    "retain_data_beyond_declared_retention_period",
+    "access_external_systems_not_explicitly_authorized"
+  ],
+  "capabilities": [
+    "normalize_structured_data",
+    "generate_summary_reports",
+    "apply_predefined_transformation_rules",
+    "flag_anomalies_for_human_review"
+  ],
+  "autonomy": {
+    "level": 1
+  },
+  "risk_profile": {
+    "level": "medium",
+    "notes": "Processes potentially sensitive structured data. Does not perform irreversible actions and requires human validation for final outputs affecting external systems."
+  },
+  "data_handling": {
+    "stores_personal_data": true,
+    "retention": "30d"
+  },
+  "stopping_authority": {
+    "stoppable_by": [
+      "responsible_party",
+      "data_protection_officer",
+      "system_operator"
+    ],
+    "mechanism": "Suspend processing pipeline at orchestration layer and revoke dataset access credentials.",
+    "stages": [
+      "pre-execution",
+      "mid-execution"
+    ]
+  },
+  "audit_surface": {
+    "logging": "detailed",
+    "reconstructability": "full",
+    "opacity_declared": true,
+    "notes": "Processing inputs, transformation steps, and generated outputs are logged. Internal model reasoning chains are not exposed."
+  },
+  "contact": {
+    "email": "data-ops@example.com"
+  },
+  "language": {
+    "primary": "en",
+    "supported": [
+      "en"
+    ]
+  }
+}
