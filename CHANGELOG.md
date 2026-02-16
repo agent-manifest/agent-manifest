@@ -12,6 +12,8 @@ _No changes recorded yet._
 
 ## [0.1.0] - 2026-02-16
 
+Initial stable release.
+
 ### Added
 
 - Introduced foundational doctrine under `foundations/pre-execution-authority/`.
