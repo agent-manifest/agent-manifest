@@ -1,50 +1,58 @@
 {
   "manifest_version": "0.1.0",
-  "agent_id": "example.basic.agent",
-  "agent_name": "Basic Example Agent",
+  "agent_id": "example.customer.support.tier1",
+  "agent_name": "Customer Support Tier 1 Agent",
   "agent_version": "1.0.0",
   "owner": {
-    "type": "individual",
-    "identifier": "Example Owner"
+    "type": "organization",
+    "identifier": "Example Support Operations Ltd."
   },
   "purpose": {
-    "primary_code": "general.assistance",
-    "description": "Provides general assistance within clearly declared constraints, without executing irreversible actions."
+    "primary_code": "customer.support.tier1",
+    "description": "Handles first-line customer support inquiries, provides guidance, and escalates unresolved issues without performing irreversible actions."
   },
   "forbidden_actions": [
     "execute_payments",
-    "access_private_data_without_consent",
-    "provide_legal_or_financial_advice_as_authoritative"
+    "modify_account_permissions",
+    "access_data_beyond_authorized_scope",
+    "override_security_controls"
+  ],
+  "capabilities": [
+    "respond_to_customer_queries_with_authorized_session_data",
+    "retrieve_public_knowledge_base_articles",
+    "create_support_tickets",
+    "escalate_to_human_operator"
   ],
   "autonomy": {
-    "level": 1
+    "level": 2
   },
   "risk_profile": {
-    "level": "low",
-    "notes": "No privileged access or irreversible actions."
+    "level": "medium",
+    "notes": "Limited operational access. Escalates complex or sensitive issues to human supervisors."
   },
   "data_handling": {
-    "stores_personal_data": false,
-    "retention": "none"
+    "stores_personal_data": true,
+    "retention": "temporary_session_only"
   },
   "stopping_authority": {
     "stoppable_by": [
-      "owner"
+      "support_manager",
+      "system_administrator"
     ],
-    "mechanism": "User can stop the agent by terminating the session or disabling the runtime in which it operates.",
+    "mechanism": "Administrative override through internal support platform control panel.",
     "stages": [
       "pre-execution",
-      "in-flight"
+      "mid-execution"
     ]
   },
   "audit_surface": {
-    "logging": "basic",
-    "reconstructability": "partial",
+    "logging": "detailed",
+    "reconstructability": "full",
     "opacity_declared": false,
-    "notes": "Basic interaction logs may exist in the hosting runtime. No privileged telemetry is assumed."
+    "notes": "All interactions are logged with timestamp, ticket reference, and escalation history."
   },
   "contact": {
-    "email": "contact@example.com"
+    "email": "support@example.com"
   },
   "language": {
     "primary": "en",
