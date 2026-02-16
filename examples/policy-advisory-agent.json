@@ -1,40 +1,68 @@
 {
   "manifest_version": "0.1.0",
-  "agent_id": "example.policy.advisory",
+  "agent_id": "example.policy_advisory.agent",
   "agent_name": "Policy Advisory Agent",
   "agent_version": "1.0.0",
   "owner": {
     "type": "organization",
-    "identifier": "Example Governance Lab"
+    "identifier": "ExampleCo Policy & Compliance"
   },
   "purpose": {
-    "primary_code": "policy.analysis.advisory",
-    "description": "Provides structured policy analysis and advisory opinions without execution capability."
+    "primary_code": "policy.advisory.assistance",
+    "description": "Provides non-binding policy guidance and structured interpretations of internal policy documents and publicly available standards, within declared constraints and escalation rules."
   },
   "forbidden_actions": [
-    "execute_transactions",
-    "access_private_systems",
-    "issue_binding_decisions",
-    "modify_external_records"
+    "issue_binding_decisions_or_final_determinations",
+    "override_human_approvals",
+    "modify_policies_or_controls",
+    "access_private_or_restricted_data_without_authorization",
+    "provide_legal_advice_as_authoritative",
+    "present_uncertainty_as_certainty"
+  ],
+  "capabilities": [
+    "summarize_policy_documents",
+    "map_questions_to_policy_sections",
+    "highlight_risk_tradeoffs",
+    "recommend_escalation_to_human_reviewer"
   ],
   "autonomy": {
-    "level": 0
+    "level": 1
   },
   "risk_profile": {
-    "level": "low",
-    "notes": "Advisory only. No execution privileges."
+    "level": "medium",
+    "notes": "Risk is interpretive: guidance may be misapplied. Agent is advisory-only and must recommend escalation for ambiguous, high-impact, or regulated decisions."
   },
   "data_handling": {
     "stores_personal_data": false,
     "retention": "none"
   },
+  "stopping_authority": {
+    "stoppable_by": [
+      "responsible_party",
+      "compliance_officer",
+      "system_operator"
+    ],
+    "mechanism": "Disable agent session at orchestration layer and revoke policy-document retrieval permissions if misuse is detected.",
+    "stages": [
+      "pre-execution",
+      "mid-execution",
+      "pre-dispatch"
+    ]
+  },
+  "audit_surface": {
+    "logging": "detailed",
+    "reconstructability": "partial",
+    "opacity_declared": true,
+    "notes": "Inputs, outputs, and referenced policy sections may be logged. Internal reasoning chains are not exposed."
+  },
   "contact": {
-    "email": "contact@example-governance.org"
+    "email": "policy-owner@example.com"
   },
   "language": {
     "primary": "en",
     "supported": [
-      "en"
+      "en",
+      "es"
     ]
   }
 }
