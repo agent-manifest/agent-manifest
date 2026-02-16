@@ -83,7 +83,7 @@ Examples of external extension domains:
 - Validator interpretation layers
 - Interoperability conventions between agents
 
-Extensions must not modify constitutional guarantees defined in `CORE_PRINCIPLES.md`.
+Extensions must not modify constitutional guarantees defined in [CORE_PRINCIPLES.md](./CORE_PRINCIPLES.md).
 
 ---
 
@@ -120,4 +120,4 @@ Without verification, accountability erodes.
 The specification is grounded in **Pre-Execution Authority**:  
 a boundary-first doctrine where authority and constraints are declared prior to autonomy and execution.
 
-See: `foundations/pre-execution-authority/README.md`
+See: [Pre-Execution Authority](./foundations/pre-execution-authority/README.md)
