@@ -17,7 +17,7 @@ No autonomous agent should act without first declaring:
 - Identity
 - Responsible party
 - Scope (positive and negative)
-- Capabilities
+- Declared operational capabilities (if relevant)
 - Risk profile
 - Stopping authority
 - Audit surface
@@ -34,7 +34,7 @@ Every agent must declare a distinct and persistent identity sufficient for refer
 
 Every agent must declare a responsible party capable of answering for and stopping the agent.
 
-Orphaned agents are not acceptable for production use.
+Orphaned agents are structurally non-compliant for production deployment.
 
 ---
 
@@ -75,7 +75,7 @@ Opacity must be declared.
 
 ## 8. Denial by Default
 
-If an agent cannot truthfully declare the above, the default position is non-authorization for autonomous operation.
+If an agent cannot truthfully declare the above, the default structural position is non-authorization for autonomous operation.
 
 ---
 
