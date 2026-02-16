@@ -4,7 +4,7 @@
 
 This document defines the normative terminology for the Agent Manifest v1.x series.
 
-All core documents (README, CORE_PRINCIPLES.md, spec, examples) must use these terms consistently.
+All core documents (README, CORE_PRINCIPLES.md, ARCHITECTURE.md, spec, examples) must use these terms consistently.
 
 No alternative synonyms should be introduced within the v1.x series.
 
@@ -26,7 +26,7 @@ A human or legal entity with the authority and capacity to:
 - Supervise the agent
 - Stop the agent
 
-Agents without a declared responsible party are structurally non-compliant for production deployment.
+Agents without a declared Responsible Party are structurally non-compliant for production deployment.
 
 ---
 
@@ -61,7 +61,7 @@ Capabilities are optional in v1.x.
 
 A declared structural level indicating the degree of independent decision-making without human intervention.
 
-Autonomy level describes independence, not safety.
+Autonomy Level describes independence, not safety.
 
 ---
 
@@ -89,7 +89,7 @@ It must specify:
 - How the agent can be stopped
 - At what stage stopping may occur
 
-Agents without stopping authority are structurally uncontrollable.
+Agents without Stopping Authority are structurally uncontrollable.
 
 ---
 
@@ -108,6 +108,38 @@ Opacity must be declared if present.
 ## 9. Denial by Default
 
 If an agent cannot truthfully declare the required structural elements defined above, the default structural position is non-authorization for autonomous operation.
+
+---
+
+## 10. Declaration Layer
+
+The structural layer in which an agent formally declares identity, scope, autonomy, risk, and accountability prior to execution.
+
+Agent Manifest operates exclusively at the Declaration Layer.
+
+---
+
+## 11. Enforcement Layer
+
+External systems that interpret, validate, audit, or verify declared structures.
+
+Enforcement Layer systems are not part of the core specification.
+
+---
+
+## 12. Execution Layer
+
+The operational systems or runtimes that perform actions.
+
+Execution is structurally independent from declaration.
+
+---
+
+## 13. Prior Declaration
+
+The constitutional principle that an agent must declare its identity, scope, autonomy, risk posture, and stopping authority before acting.
+
+Prior Declaration is a foundational requirement under Agent Manifest v1.x.
 
 ---
 
