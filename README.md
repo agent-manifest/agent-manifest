@@ -182,7 +182,7 @@ This repository defines the open specification.
 
 Interpretations, validators, scoring engines, and audit systems may be built independently and are not part of this core specification.
 
-Proposals for modification must preserve the core principles defined in `CORE_PRINCIPLES.md`.
+Proposals for modification must preserve the core principles defined in [CORE_PRINCIPLES.md](./CORE_PRINCIPLES.md).
 
 ---
 
