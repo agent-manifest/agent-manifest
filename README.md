@@ -1,6 +1,8 @@
-A minimal, execution-agnostic specification for AI agent governance and declarative boundaries.
-
 # Agent Manifest
+
+A minimal, execution-agnostic specification for **AI agent governance** and **declarative boundaries**.
+
+It standardizes how agents declare identity, constraints, autonomy, risk posture, and data handling **before interaction**.
 
 Agent Manifest is a minimal, execution-agnostic, declarative specification.
 
@@ -169,7 +171,8 @@ Agent Manifest does not compete with enforcement systems.
 It enables them.
 
 Without structured declaration, validation is impossible.  
-Without validation, accountability collapses.
+Without validation, accountability collapses.  
+Without accountability, autonomy becomes opaque.
 
 ---
 
@@ -185,15 +188,15 @@ Proposals for modification must preserve the core principles defined in `CORE_PR
 
 ## Enforcement Positioning
 
-Agent Manifest does not enforce behavior.  
-It standardizes how boundaries are declared.  
-It enables verification by external systems.
+Agent Manifest defines declarations only.
 
-Architectural separation:
+Enforcement systems may validate:
+- Internal consistency
+- Boundary coherence
+- Policy compliance
+- Risk alignment
 
-- Manifest → Declaration layer
-- Validators / policy engines → Enforcement layer
-- Agents → Execution layer
+The specification itself performs no validation.
 
 For common misunderstandings, see: [MISCONCEPTIONS.md](./MISCONCEPTIONS.md).
 
