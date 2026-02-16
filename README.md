@@ -85,10 +85,11 @@ Minor versions may refine definitions without altering core guarantees.
 
 If you are new to Agent Manifest, read in this order:
 
-1. `WHY_THIS_EXISTS.md` — foundational intent and motivation  
-2. `WHAT_THIS_IS.md` — scope and boundary clarification  
-3. `/spec` — optional structural reference  
-4. `/examples` — illustrative, non-normative examples  
+1. [WHY_THIS_EXISTS.md](./WHY_THIS_EXISTS.md)
+2. [WHAT_THIS_IS.md](./WHAT_THIS_IS.md)
+3. [CORE_PRINCIPLES.md](./CORE_PRINCIPLES.md)
+4. [spec/](./spec/)
+5. [examples/](./examples/)
 
 ---
 
