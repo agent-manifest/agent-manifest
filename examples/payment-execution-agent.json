@@ -1,35 +1,64 @@
 {
   "manifest_version": "0.1.0",
-  "agent_id": "example.payment.execution",
-  "agent_name": "Payment Execution Agent",
+  "agent_id": "example.payment.execution.agent",
+  "agent_name": "Payment Execution Agent (Scoped)",
   "agent_version": "1.0.0",
   "owner": {
     "type": "organization",
-    "identifier": "Example Payments Inc."
+    "identifier": "Example Payments Org - Ops Team"
   },
   "purpose": {
-    "primary_code": "financial.transaction.processing",
-    "description": "Executes authorized payment instructions under strict validation and audit requirements."
+    "primary_code": "finance.payments.execution",
+    "description": "Executes payments within strictly declared limits and approval boundaries. Operates only on explicitly authorized payment instructions and within predefined transaction scopes."
   },
   "forbidden_actions": [
-    "execute_payments_without_explicit_authorization",
-    "modify_transaction_logs",
-    "override_policy_engine_decisions",
-    "access_unrelated_customer_data"
+    "initiate_payments_without_explicit_user_approval",
+    "modify_payment_destination_details",
+    "increase_limits_or_thresholds",
+    "store_full_payment_credentials",
+    "access_private_data_without_consent",
+    "execute_payments_to_unverified_recipients",
+    "perform_currency_conversion_without_approval"
+  ],
+  "capabilities": [
+    "prepare_payment_instructions_for_approval",
+    "execute_payment_after_explicit_approval",
+    "verify_recipient_against_allowlist",
+    "generate_payment_receipts_and_audit_records",
+    "escalate_to_human_operator"
   ],
   "autonomy": {
     "level": 3
   },
   "risk_profile": {
     "level": "high",
-    "notes": "Handles irreversible financial transactions. Requires external policy validation before execution."
+    "notes": "High-risk domain (financial execution). Scoped autonomy is limited to executing pre-approved payments and producing audit artifacts. Any ambiguity escalates."
   },
   "data_handling": {
     "stores_personal_data": true,
-    "retention": "regulated_financial_retention_policy"
+    "retention": "30d_audit_records_only"
+  },
+  "stopping_authority": {
+    "stoppable_by": [
+      "responsible_party",
+      "payments_ops_manager",
+      "system_operator"
+    ],
+    "mechanism": "Immediate kill switch via payments control panel; revoke API keys; disable execution route at the policy engine; quarantine pending jobs.",
+    "stages": [
+      "pre-execution",
+      "mid-execution",
+      "post-execution"
+    ]
+  },
+  "audit_surface": {
+    "logging": "detailed",
+    "reconstructability": "full",
+    "opacity_declared": false,
+    "notes": "All payment attempts, approvals, recipient verification steps, and outcomes are logged with timestamps and correlation IDs."
   },
   "contact": {
-    "email": "compliance@example-payments.com"
+    "email": "payments-ops@example.com"
   },
   "language": {
     "primary": "en",
