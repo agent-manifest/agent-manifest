@@ -6,7 +6,7 @@ It does not execute agents.
 It does not enforce policy.  
 It does not validate runtime behavior.
 
-It standardizes how boundaries are declared **before interaction**.
+It standardizes how boundaries are declared **prior to execution and interaction**.
 
 ---
 
