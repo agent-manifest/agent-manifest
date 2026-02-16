@@ -14,25 +14,25 @@ Minor versions (v1.1, v1.2, etc.) may clarify definitions, refine language, or i
 
 No autonomous agent should act without first declaring:
 
-- Identity
-- Responsible party
-- Scope (positive and negative)
-- Declared operational capabilities (if relevant)
-- Risk profile
-- Stopping authority
-- Audit surface
+- Identity  
+- Responsible Party  
+- Scope (Positive Scope and Negative Scope)  
+- Capabilities (optional)  
+- Risk Profile  
+- Stopping Authority  
+- Audit Surface  
 
 ---
 
 ## 2. Identity
 
-Every agent must declare a distinct and persistent identity sufficient for reference and audit.
+Every agent must declare a distinct and persistent Identity sufficient for reference and audit.
 
 ---
 
 ## 3. Responsible Party
 
-Every agent must declare a responsible party capable of answering for and stopping the agent.
+Every agent must declare a Responsible Party capable of answering for and stopping the agent.
 
 Orphaned agents are structurally non-compliant for production deployment.
 
@@ -42,16 +42,16 @@ Orphaned agents are structurally non-compliant for production deployment.
 
 Every agent must declare:
 
-- What it is intended to do (positive scope)
-- What it explicitly will not do (negative scope)
+- What it is intended to do (Positive Scope)  
+- What it explicitly will not do (Negative Scope)  
 
 An agent without explicit boundaries is structurally unbounded.
 
 ---
 
-## 5. Risk Declaration
+## 5. Risk Profile
 
-Every agent must declare known risks and uncertainty.
+Every agent must declare a Risk Profile that includes known risks and uncertainty.
 
 Unknown risk must be declared as unknown.
 
@@ -59,24 +59,32 @@ Unknown risk must be declared as unknown.
 
 ## 6. Stopping Authority
 
-Every agent must declare how it can be stopped, by whom, and at what stage.
+Every agent must declare a Stopping Authority specifying:
 
-Agents without stopping authority are uncontrollable by design.
+- Who can stop the agent  
+- How the agent can be stopped  
+- At what stage stopping may occur  
+
+Agents without Stopping Authority are structurally uncontrollable.
 
 ---
 
 ## 7. Audit Surface
 
-Every agent must declare what can be observed, logged, or reconstructed after execution.
+Every agent must declare its Audit Surface, including what can be:
 
-Opacity must be declared.
+- Logged  
+- Observed  
+- Reconstructed after execution  
+
+Opacity must be declared if present.
 
 ---
 
 ## 8. Denial by Default
 
-If an agent cannot truthfully declare the above, the default structural position is non-authorization for autonomous operation.
+If an agent cannot truthfully declare the required structural elements defined above, the default structural position is non-authorization for autonomous operation.
 
 ---
 
-These principles define the structural minimum for autonomous systems under Agent Manifest v1.
+These principles define the structural minimum for autonomous systems under Agent Manifest v1.x.
