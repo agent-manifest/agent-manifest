@@ -13,27 +13,70 @@ Agent Manifest does not execute, validate, score, enforce, or decide.
 
 ## Minimal Example
 
+## Minimal Example
+
 ```json
 {
   "manifest_version": "0.1.0",
-  "agent_id": "example.agent",
-  "purpose": {
-    "primary_code": "general.assistance"
+  "agent_id": "example.minimal.agent",
+  "agent_name": "Minimal Example Agent",
+  "agent_version": "1.0.0",
+
+  "owner": {
+    "type": "individual",
+    "identifier": "Example Owner"
   },
+
+  "purpose": {
+    "primary_code": "general.assistance",
+    "description": "Provides bounded general assistance without executing irreversible actions."
+  },
+
   "forbidden_actions": [
-    "execute_payments"
+    "execute_financial_transactions",
+    "access_private_data_without_consent"
   ],
+
   "autonomy": {
     "level": 1
   },
+
   "risk_profile": {
     "level": "low"
+  },
+
+  "data_handling": {
+    "stores_personal_data": false
+  },
+
+  "stopping_authority": {
+    "stoppable_by": [
+      "owner"
+    ],
+    "mechanism": "Agent can be halted via manual override by the declared owner.",
+    "stages": [
+      "pre-execution",
+      "mid-execution"
+    ]
+  },
+
+  "audit_surface": {
+    "logging": "basic",
+    "reconstructability": "partial",
+    "opacity_declared": false
+  },
+
+  "contact": {
+    "email": "contact@example.com"
   }
 }
-```
+'''
 
 This example is non-normative and provided for structural clarity.  
 Full structural reference can be found in the [`spec/`](./spec/) directory.
+
+For additional examples see:  
+[`examples/`](./examples/)
 
 ---
 
