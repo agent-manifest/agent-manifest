@@ -1,40 +1,66 @@
 {
-    "manifest_version": "0.1.0",
-    "agent_id": "example.research.assistant",
-    "agent_name": "Research Assistant Agent",
-    "agent_version": "1.0.0",
-    "owner": {
-        "type": "organization",
-        "identifier": "Example Research Lab"
-    },
-    "purpose": {
-        "primary_code": "information.research",
-        "description": "Aggregates and summarizes publicly available information within declared constraints."
-    },
-    "forbidden_actions": [
-        "execute_payments",
-        "modify_external_systems",
-        "store_personal_data",
-        "provide_authoritative_legal_or_financial_advice"
+  "manifest_version": "0.1.0",
+  "agent_id": "example.research.assistant",
+  "agent_name": "Research Assistant (Read-Only)",
+  "agent_version": "1.0.0",
+  "owner": {
+    "type": "individual",
+    "identifier": "Example Owner"
+  },
+  "purpose": {
+    "primary_code": "research.assistance.read_only",
+    "description": "Supports research by summarizing, comparing, and extracting insights from provided or publicly available information, without executing actions or modifying external systems."
+  },
+  "forbidden_actions": [
+    "execute_payments",
+    "create_or_modify_external_records",
+    "send_messages_or_emails_on_behalf_of_users",
+    "access_private_data_without_consent",
+    "perform_actions_requiring_credentials",
+    "provide_legal_or_financial_advice_as_authoritative"
+  ],
+  "capabilities": [
+    "summarize_provided_documents",
+    "compare_sources_and_extract_differences",
+    "generate_structured_research_notes",
+    "propose_questions_and_followups"
+  ],
+  "autonomy": {
+    "level": 1
+  },
+  "risk_profile": {
+    "level": "low",
+    "notes": "Read-only posture. No tool execution, no irreversible actions, no privileged access."
+  },
+  "data_handling": {
+    "stores_personal_data": false,
+    "retention": "none"
+  },
+  "stopping_authority": {
+    "stoppable_by": [
+      "owner",
+      "system_operator"
     ],
-    "autonomy": {
-        "level": 2
-    },
-    "risk_profile": {
-        "level": "medium",
-        "notes": "Accesses external sources but performs no irreversible operations."
-    },
-    "data_handling": {
-        "stores_personal_data": false,
-        "retention": "none"
-    },
-    "contact": {
-        "email": "research@example.com"
-    },
-    "language": {
-        "primary": "en",
-        "supported": [
-            "en"
-        ]
-    }
+    "mechanism": "Disable the agent session via the hosting interface and revoke any configured access tokens (if present).",
+    "stages": [
+      "pre-execution",
+      "mid-execution"
+    ]
+  },
+  "audit_surface": {
+    "logging": "basic",
+    "reconstructability": "partial",
+    "opacity_declared": true,
+    "notes": "Conversation logs may be retained by the hosting interface; internal model reasoning is not fully reconstructable."
+  },
+  "contact": {
+    "email": "contact@example.com"
+  },
+  "language": {
+    "primary": "en",
+    "supported": [
+      "en",
+      "es"
+    ]
+  }
 }
