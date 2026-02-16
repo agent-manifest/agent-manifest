@@ -70,6 +70,7 @@ Agent Manifest does not execute, validate, score, enforce, or decide.
     "email": "contact@example.com"
   }
 }
+```
 
 This example is non-normative and provided for structural clarity.  
 Full structural reference can be found in the [`spec/`](./spec/) directory.
