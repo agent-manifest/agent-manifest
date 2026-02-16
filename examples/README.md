@@ -6,7 +6,7 @@ These examples are **non-normative** and provided for clarity only.
 They demonstrate how to declare boundaries and accountability fields **before interaction**.
 
 Validation rules are defined by the schema:
-- `spec/manifest.schema.json`
+- [`spec/manifest.schema.json`](./spec/manifest.schema.json)
 
 ---
 
