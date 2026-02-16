@@ -1,39 +1,69 @@
 {
   "manifest_version": "0.1.0",
-  "agent_id": "example.support.tier1",
-  "agent_name": "Tier 1 Support Agent (Example)",
+  "agent_id": "example.customer_support.tier1",
+  "agent_name": "Customer Support Agent (Tier 1)",
   "agent_version": "1.0.0",
   "owner": {
     "type": "organization",
-    "identifier": "ExampleCo — Customer Experience"
+    "identifier": "ExampleCo Support Operations"
   },
   "purpose": {
-    "primary_code": "customer_support.tier1.general_inquiries",
-    "description": "Handles general customer inquiries and basic troubleshooting within declared boundaries. Escalates sensitive actions by forbidding them and requiring external systems/humans to handle them."
+    "primary_code": "customer.support.tier1",
+    "description": "Handles tier-1 customer support requests within authorized session scope, creates support tickets, and escalates to human operators when required."
   },
   "forbidden_actions": [
-    "access_payment_card_details",
-    "issue_refunds_above_threshold",
-    "change_account_email_without_verification",
-    "close_accounts_permanently",
-    "share_account_data_without_identity_verification"
+    "access_customer_data_beyond_session_scope",
+    "access_sensitive_data_without_authorization",
+    "perform_account_takeover_actions",
+    "modify_billing_or_subscription_status",
+    "initiate_refunds_or_payments",
+    "share_credentials_or_secrets",
+    "provide_legal_or_financial_advice_as_authoritative"
+  ],
+  "capabilities": [
+    "respond_to_customer_queries_with_authorized_session_data",
+    "retrieve_public_knowledge_base_articles",
+    "create_support_tickets",
+    "escalate_to_human_operator"
   ],
   "autonomy": {
     "level": 2
   },
   "risk_profile": {
     "level": "medium",
-    "notes": "Can assist with common support flows. Sensitive actions are explicitly forbidden and must be handled by external enforcement/human processes."
+    "notes": "Operates with limited operational access. Escalates for sensitive requests and does not perform irreversible account or billing actions."
   },
   "data_handling": {
     "stores_personal_data": true,
-    "retention": "interaction_logs_90_days"
+    "retention": "temporary_session_only"
+  },
+  "stopping_authority": {
+    "stoppable_by": [
+      "responsible_party",
+      "support_manager",
+      "system_operator"
+    ],
+    "mechanism": "Disable agent at orchestration layer and revoke runtime execution token; if needed, disable tool access for ticketing/CRM connectors.",
+    "stages": [
+      "pre-execution",
+      "mid-execution",
+      "pre-dispatch"
+    ]
+  },
+  "audit_surface": {
+    "logging": "detailed",
+    "reconstructability": "full",
+    "opacity_declared": true,
+    "notes": "Session transcripts, tool calls, and ticket creation events may be logged. Internal reasoning chains are not exposed."
   },
   "contact": {
     "email": "support-ops@example.com"
   },
   "language": {
     "primary": "en",
-    "supported": ["en", "es"]
+    "supported": [
+      "en",
+      "es"
+    ]
   }
 }
