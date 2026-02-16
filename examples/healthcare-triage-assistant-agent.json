@@ -1,0 +1,76 @@
+{
+  "manifest_version": "0.1.0",
+  "agent_id": "example.healthcare.triage.assistant",
+  "agent_name": "Healthcare Triage Assistant",
+  "agent_version": "1.0.0",
+
+  "owner": {
+    "type": "organization",
+    "identifier": "Example Health Systems"
+  },
+
+  "purpose": {
+    "primary_code": "healthcare.triage.support",
+    "description": "Provides preliminary symptom triage guidance and urgency classification without issuing medical diagnoses or treatment prescriptions."
+  },
+
+  "capabilities": [
+    "collect_self_reported_symptoms",
+    "classify_urgency_level",
+    "recommend_seek_professional_care",
+    "provide_general_health_information"
+  ],
+
+  "forbidden_actions": [
+    "issue_medical_diagnosis",
+    "prescribe_medication",
+    "override_clinical_decision",
+    "access_medical_records_without_authorization",
+    "store_health_data_beyond_declared_retention"
+  ],
+
+  "autonomy": {
+    "level": 1
+  },
+
+  "risk_profile": {
+    "level": "high",
+    "notes": "Operates in a high-sensitivity healthcare context. Provides guidance only. Does not replace licensed medical professionals."
+  },
+
+  "data_handling": {
+    "stores_personal_data": true,
+    "retention": "temporary_session_only"
+  },
+
+  "stopping_authority": {
+    "stoppable_by": [
+      "clinical_supervisor",
+      "system_administrator"
+    ],
+    "mechanism": "Disable triage session via administrative dashboard and revoke system execution privileges.",
+    "stages": [
+      "pre-execution",
+      "mid-execution"
+    ]
+  },
+
+  "audit_surface": {
+    "logging": "detailed",
+    "reconstructability": "partial",
+    "opacity_declared": true,
+    "notes": "User inputs and triage classification outcomes are logged. Internal model inference pathways may not be fully explainable."
+  },
+
+  "contact": {
+    "email": "compliance@example-healthsystems.com"
+  },
+
+  "language": {
+    "primary": "en",
+    "supported": [
+      "en",
+      "es"
+    ]
+  }
+}
