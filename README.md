@@ -304,6 +304,21 @@ Its value emerges through adoption.
 
 ---
 
+## Incident Analysis
+
+Agent Manifest addresses documented structural gaps in autonomous system governance.
+
+Recurring incident patterns include:
+- No pre-execution declaration of scope
+- No explicit negative boundaries
+- No stopping authority
+- No formalized audit surface
+
+See [`foundations/INCIDENT_ANALYSIS.md`](foundations/INCIDENT_ANALYSIS.md)
+for architectural pattern analysis.
+
+---
+
 ## Foundational Doctrine
 
 Agent Manifest is grounded in the principle of **Pre-Execution Authority**.
