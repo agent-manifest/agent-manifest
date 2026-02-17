@@ -288,6 +288,8 @@ Agent Manifest follows semantic versioning:
 - **MINOR**: clarifications and compatible refinements  
 - **PATCH**: editorial or formatting updates  
 
+> Note: Documentation and examples may evolve while `manifest_version` remains `0.1.0` until a formal spec bump is declared.
+
 ---
 
 ## Long-term Intent
