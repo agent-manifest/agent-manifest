@@ -13,8 +13,6 @@ Agent Manifest does not execute, validate, score, enforce, or decide.
 
 ## Minimal Example
 
-## Minimal Example
-
 ```json
 {
   "manifest_version": "0.1.0",
