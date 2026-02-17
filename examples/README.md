@@ -32,7 +32,7 @@ Validation rules are defined by the schema:
 
 | File | Autonomy | Risk | Domain |
 |------|----------|------|--------|
-| `basic.agent.json` | 1 | low | general |
+| `basic-agent.json` | 1 | low | general |
 | `research-assistant.json` | 1 | low | research |
 | `human-approval-gateway-agent.json` | 1 | low | governance |
 | `customer-support-tier1.json` | 2 | medium | support |
@@ -55,7 +55,7 @@ Validation rules are defined by the schema:
 
 ## Files
 
-- `basic.agent.json` — minimal compliant example (low-risk, low autonomy)
+- `basic-agent.json` — minimal compliant example (low-risk, low autonomy)
 - `research-assistant.json` — read-only posture, opacity declared
 - `human-approval-gateway-agent.json` — human-in-the-loop orchestration
 - `customer-support-tier1.json` — session-scoped support agent
