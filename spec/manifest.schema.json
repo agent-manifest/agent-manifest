@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://agentmanifest.org/schema/manifest-0.1.0.json",
+  "$id": "https://raw.githubusercontent.com/hernancapucci/agent-manifest/main/spec/manifest.schema.json",
   "title": "Agent Manifest v0.1.0",
   "description": "A minimal, execution-agnostic declarative specification for AI agents to declare identity, purpose, constraints, autonomy, risk boundaries, data handling, stopping authority, and audit surface before interaction.",
   "type": "object",
