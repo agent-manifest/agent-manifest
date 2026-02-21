@@ -137,11 +137,16 @@ Validation, scoring, auditing, and enforcement belong to separate systems.
 
 ## Stability
 
-The constitutional core of Agent Manifest v1.x is defined in [`CORE_PRINCIPLES.md`](./CORE_PRINCIPLES.md).
+The normative specification contract is defined in:
 
-Core principles may only change under a **major version**.
+- [`spec/spec.md`](./spec/spec.md)
+- [`spec/manifest.schema.json`](./spec/manifest.schema.json)
 
-Minor versions may refine definitions without altering core guarantees.
+The constitutional core is defined in:
+
+- [`CORE_PRINCIPLES.md`](./CORE_PRINCIPLES.md)
+
+See: [`STABILITY.md`](./STABILITY.md) and [`VERSIONING_POLICY.md`](./VERSIONING_POLICY.md)
 
 ---
 
