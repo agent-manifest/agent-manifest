@@ -1,11 +1,13 @@
 # Agent Manifest
 
-A minimal, execution-agnostic specification for **AI agent governance** and **declarative boundaries**.
+A minimal specification that requires autonomous systems to declare operational boundaries before execution.
 
-It standardizes how agents declare identity, constraints, autonomy, risk posture, and data handling **before interaction**.
+It standardizes how AI agents declare identity, constraints, autonomy level, risk posture, and data handling prior to interacting with external systems.
 
-This repository does not define behavior.  
-It defines **boundaries**.
+This repository defines a declaration layer only.
+
+It does not define behavior.
+It defines boundaries.
 
 Agent Manifest does not execute, validate, score, enforce, or decide.
 
