@@ -174,6 +174,16 @@ This document explains the architectural decisions, boundary-first philosophy, a
 
 ---
 
+## Security & Governance Context
+
+Agent Manifest may be referenced during security and governance review of autonomous systems.
+
+For structured review guidance, see:
+
+[SECURITY_REVIEW_CONTEXT.md](./SECURITY_REVIEW_CONTEXT.md)
+
+---
+
 ## Design Philosophy
 
 Agent Manifest is built around three structural ideas:
