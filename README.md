@@ -270,6 +270,28 @@ Proposals for modification must preserve the core principles defined in
 
 ---
 
+## Governance Process
+
+This repository uses structured issue templates to maintain clarity between structural evolution and institutional discussion.
+
+### Specification Change Proposal
+Use this template for proposing changes to:
+- Schema definitions
+- Required fields
+- Structural constraints
+- Versioning decisions
+
+### Governance Discussion
+Use this template for:
+- Conceptual debates
+- Authority model discussions
+- Institutional positioning
+- Philosophical implications
+
+This separation ensures technical rigor and governance integrity.
+
+---
+
 ## Enforcement Positioning
 
 Agent Manifest defines declarations only.
