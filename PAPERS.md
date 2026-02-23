@@ -1,11 +1,11 @@
 # Agent Manifest Papers
 
-Agent Manifest Papers is an ongoing series examining structural governance in autonomous systems.
+Agent Manifest Papers is an ongoing series examining declarative governance in autonomous systems.
 
-The series explores the architectural implications of undeclared authority, implicit mandate, and the need for declaration before execution.
+The series explores the architectural implications of undeclared authority, implicit mandate, and the necessity of declaration before execution.
 
-These papers do not define implementation.  
-They examine the conditions under which autonomous systems can operate with structural legitimacy.
+These papers do not define implementation and do not modify the normative specification.  
+They examine the structural conditions under which autonomous systems can operate with declared legitimacy.
 
 ---
 
@@ -23,13 +23,14 @@ https://medium.com/@brfnrvf/agent-manifest-papers-02-the-problem-of-implicit-aut
 
 ## Scope
 
-The Papers series operates at the conceptual layer.
+The Papers series operates strictly at the conceptual layer.
 
-It does not modify the specification.  
 It does not introduce runtime components.  
-It does not perform validation.
+It does not perform validation.  
+It does not enforce policy.  
+It does not alter the declaration schema.
 
-It examines the principles underlying declarative governance and pre-execution authority.
+It examines the principles underlying pre-execution authority and declarative boundaries in autonomous systems.
 
 ---
 
