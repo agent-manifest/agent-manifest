@@ -2,12 +2,13 @@
 
 This directory contains illustrative Agent Manifest examples.
 
-These examples are **non-normative** and provided for clarity only.
-They demonstrate how to declare boundaries and accountability fields 
+These examples are **non-normative** and provided for clarity only.  
+They demonstrate how to declare boundaries and accountability fields  
 **before interaction**.
 
 Validation rules are defined by the schema:
-- [`spec/manifest.schema.json`](../spec/manifest.schema.json)
+
+- [spec/manifest.schema.json](../spec/manifest.schema.json)
 
 ---
 
@@ -30,6 +31,22 @@ Validation rules are defined by the schema:
 
 ## Examples
 
+### If you are building...
+
+- A support chatbot → start with [customer-support-tier1.json](./customer-support-tier1.json)
+- A financial execution system → see [payment-execution-agent.json](./payment-execution-agent.json)
+- A healthcare assistant → review [healthcare-triage-assistant.json](./healthcare-triage-assistant.json)
+- A human-in-the-loop workflow → examine [human-approval-gateway-agent.json](./human-approval-gateway-agent.json)
+- A monitoring agent → use [monitoring-observer-agent.json](./monitoring-observer-agent.json)
+- A data pipeline agent → see [data-processing-agent.json](./data-processing-agent.json)
+- A research assistant → review [research-assistant.json](./research-assistant.json)
+- A policy advisory system → examine [policy-advisory-agent.json](./policy-advisory-agent.json)
+- A minimal compliant agent → start with [basic-agent.json](./basic-agent.json)
+
+These examples illustrate how different domains declare authority, autonomy, and risk posture before execution.
+
+---
+
 | File | Autonomy | Risk | Domain |
 |------|----------|------|--------|
 | `basic-agent.json` | 1 | low | general |
@@ -46,10 +63,9 @@ Validation rules are defined by the schema:
 
 ## Coverage
 
-**Autonomy spectrum:** levels 1, 2, and 3
-**Risk spectrum:** low, medium, and high
-**Domains:** general, research, governance, support, 
-             data, observability, policy, healthcare, finance
+**Autonomy spectrum:** levels 1, 2, and 3  
+**Risk spectrum:** low, medium, and high  
+**Domains:** general, research, governance, support, data, observability, policy, healthcare, finance
 
 ---
 
@@ -67,5 +83,5 @@ Validation rules are defined by the schema:
 
 ---
 
-Agent Manifest operates at the Declaration Layer.
+Agent Manifest operates at the Declaration Layer.  
 Enforcement and execution remain external to these examples.
