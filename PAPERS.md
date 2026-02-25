@@ -40,4 +40,4 @@ It examines the principles underlying pre-execution authority and declarative bo
 
 ## Ongoing
 
-Paper #03 — In development.
+Paper #04 — In development.
