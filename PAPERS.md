@@ -20,7 +20,7 @@ A structural analysis of undeclared mandate in autonomous AI systems.
 https://medium.com/@brfnrvf/agent-manifest-papers-02-the-problem-of-implicit-authority-bbf33306387d
 
 ### Paper #03 — Authority Is Not Inherent
-A structural clarification of delegated mandate in autonomous AI systems.
+On delegated mandate in autonomous AI systems.
 https://medium.com/@brfnrvf/authority-is-not-inherent-2b3061f402cd
 
 ---
