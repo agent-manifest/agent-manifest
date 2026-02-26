@@ -78,3 +78,27 @@ not a runtime, not a product, not a platform.
 Architecture first.
 Adoption second.
 Monetization last.
+
+---
+
+## Declarative Integrity — Future Direction
+
+Agent Manifest currently defines the Declaration Layer and its structural foundations.
+
+Future work may include formalization and automation of the **Declarative Integrity Framework (DIF)** as a validator layer.
+
+Such a validator would:
+
+- Evaluate manifest coherence and completeness
+- Detect declarative failure zones
+- Provide structured reporting outputs
+- Remain execution-agnostic
+- Operate independently from runtime systems
+
+This potential evolution does not alter the normative specification contract.
+
+Declaration precedes evaluation.  
+Evaluation precedes enforcement.
+
+---
+
