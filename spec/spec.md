@@ -52,6 +52,15 @@ What is not declared is considered prohibited.
 
 Autonomy describes decision freedom, not intelligence.
 
+### Autonomy Levels (normative interpretation)
+
+`autonomy.level` is a declared execution posture (not a capability claim):
+
+- **0** — No execution: advisory / descriptive only
+- **1** — Supervised: actions only under explicit user instruction or approval
+- **2** — Scoped autonomy: bounded workflows within declared constraints
+- **3** — High autonomy: can execute within declared constraints without per-step approval
+
 ---
 
 ### Risk profile
