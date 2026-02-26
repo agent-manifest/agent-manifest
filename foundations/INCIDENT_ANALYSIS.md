@@ -27,9 +27,9 @@ Agent Manifest introduces a structured declaration layer intended to address the
 Each case type below follows a consistent analytical structure:
 
 1. Description of the structural failure pattern
-1. Identification of the missing governance layer
-1. Relevant Agent Manifest fields
-1. Explanation of how declaration would mitigate risk
+2. Identification of the missing governance layer
+3. Relevant Agent Manifest fields
+4. Explanation of how declaration would mitigate risk
 
 This document does not claim that Agent Manifest retroactively solves past incidents. It demonstrates how a declaration layer would structurally reduce ambiguity and uncontrolled execution risk.
 
@@ -229,3 +229,36 @@ For validation of the analytical framework, see:
 - [`../spec/spec.md`](../spec/spec.md)
 - [`../spec/manifest.schema.json`](../spec/manifest.schema.json)
 - [`../examples/`](../examples/)
+
+-----
+
+## 10. Declarative Failure Zones
+
+For structural evaluation purposes, incident patterns can be mapped to recurring declarative failure zones.
+
+These zones are execution-agnostic and apply across vendors, industries, and deployment contexts.
+
+### 1. Scope Absence  
+No clearly declared `purpose` boundary prior to execution.
+
+### 2. Negative Constraint Absence  
+No explicit `forbidden_actions` declaration defining hard prohibitions.
+
+### 3. Autonomy Misalignment  
+Execution posture exceeds declared or assumed `autonomy.level`.
+
+### 4. Interruptibility Absence  
+No declared `stopping_authority` or intervention mechanism.
+
+### 5. Audit Opacity  
+No declared `audit_surface` or reconstructability posture.
+
+---
+
+A system exhibiting multiple declarative failure zones increases structural risk independently of implementation quality.
+
+This taxonomy does not attribute fault.  
+It provides a neutral structural lens for evaluating governance gaps in autonomous systems.
+
+Agent Manifest operates at the Declaration Layer.  
+These zones formalize what is frequently absent before execution begins.
