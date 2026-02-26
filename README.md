@@ -271,6 +271,27 @@ It is compatible with:
 
 ------------------------------------------------------------------------
 
+## Foundations
+
+Agent Manifest is supported by a set of structural and doctrinal documents
+that clarify its governance philosophy and evaluation posture.
+
+These documents are non-normative and do not modify the schema contract.
+
+- **Pre-Execution Authority**  
+  Authority must be declared before autonomy or execution.  
+  [`foundations/pre-execution-authority/`](./foundations/pre-execution-authority/)
+
+- **Incident Analysis — Architectural Gap Patterns**  
+  Recurring structural governance absences mapped to the declaration layer.  
+  [`foundations/INCIDENT_ANALYSIS.md`](./foundations/INCIDENT_ANALYSIS.md)
+
+- **Declarative Integrity Framework (DIF)**  
+  A structural evaluation lens for assessing manifest coherence and completeness.  
+  [`foundations/DECLARATIVE_INTEGRITY_FRAMEWORK.md`](./foundations/DECLARATIVE_INTEGRITY_FRAMEWORK.md)
+
+------------------------------------------------------------------------
+
 ## Core Design Principle
 
 > Agent Manifest does not grow by accumulation.\
