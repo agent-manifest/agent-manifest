@@ -125,10 +125,10 @@ Your agent now declares its boundary surface before execution.
 ```
 
 This example is non-normative and provided for structural clarity.  
-Full structural reference can be found in the [`spec/v1.0/`](./spec/v1.0/) directory.
+Full structural reference: [`spec/v1.0/spec.md`](/spec/v1.0/spec.html)
 
 For additional examples see:  
-[`examples/`](./examples/)
+[`examples/`](/examples/)
 
 -----
 
@@ -211,8 +211,8 @@ If you are new to Agent Manifest, read in this order:
 1. [WHY_THIS_EXISTS.md](./WHY_THIS_EXISTS.md)
 1. [WHAT_THIS_IS.md](./WHAT_THIS_IS.md)
 1. [CORE_PRINCIPLES.md](./CORE_PRINCIPLES.md)
-1. [`spec/v1.0/`](./spec/v1.0/)
-1. [`examples/`](./examples/)
+1. [`spec/v1.0/`](/spec/v1.0/)
+1. [`examples/`](/examples/)
 
 -----
 
@@ -361,7 +361,7 @@ For common misunderstandings, see:
 ## Examples
 
 Illustrative, non-normative manifests can be found in the  
-[`examples/`](./examples/) directory.
+[`examples/`](/examples/) directory.
 
 -----
 
