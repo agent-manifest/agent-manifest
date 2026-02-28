@@ -397,3 +397,12 @@ Before autonomy, execution, or capability, an agent must declare the authority f
 
 See:  
 [Pre-Execution Authority](./foundations/pre-execution-authority/README.md)
+
+---
+
+## Authorship
+
+Agent Manifest was conceived and authored by  
+**Hernán Alfredo Capucci** (2026)
+
+The specification is maintained as an open standard.
