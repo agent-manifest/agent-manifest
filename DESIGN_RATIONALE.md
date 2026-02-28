@@ -109,6 +109,20 @@ Even a self-assessed profile is valuable as:
 Agentic systems interact with user data, system state, and external sources.
 Data practices must be explicit to reduce ambiguity and improve trust.
 
+### `audit_surface`
+Autonomous systems must declare what aspects of their operation can be logged, observed, or reconstructed.
+
+The `audit_surface` field exists to make traceability explicit.
+A system that cannot be inspected or reconstructed after execution reduces accountability and increases systemic risk.
+
+Declaring audit posture enables:
+- external validation
+- integration with logging systems
+- governance alignment
+- detection of opacity gaps
+
+Opacity must be declared if present.
+
 ### `contact`
 There must be a defined path to humans or responsible parties.
 When systems fail, governance begins with reachability.
