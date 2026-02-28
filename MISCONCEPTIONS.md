@@ -1,5 +1,7 @@
 # Common Misconceptions
 
+Applies to Agent Manifest v1.x canonical specification.
+
 This document addresses recurring misunderstandings about Agent Manifest.
 
 It clarifies scope, positioning, and architectural intent.
@@ -16,6 +18,7 @@ It standardizes how commitments are declared.
 
 If an agent violates its own manifest:
 - The contradiction becomes detectable.
+- Provided that an external validator or enforcement layer evaluates the manifest against observed behavior.
 - The deviation becomes auditable.
 - Accountability becomes attributable.
 
