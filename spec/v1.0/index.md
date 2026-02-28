@@ -1,21 +1,3 @@
-Perfecto.
-Te lo corrijo manteniendo tu estructura, pero:
-	•	✔️ Links compatibles con GitHub (Markdown real, no .html)
-	•	✔️ Rutas correctas para estar dentro de spec/v1.0/
-	•	✔️ Sin dependencias implícitas de HTML generado
-	•	✔️ Consistente con estructura repo
-	•	✔️ Listo para GitHub Pages o navegación directa
-
-Asumo que este archivo vive en:
-
-spec/v1.0/index.md
-
-Si está en otro lugar me lo decís y ajustamos rutas.
-
-⸻
-
-Aquí va el archivo corregido completo:
-
 # Agent Manifest v1.0 Specification
 
 **Status:** Stable  
@@ -71,13 +53,3 @@ See: [`VERSIONING_POLICY.md`](../../VERSIONING_POLICY.md) for full versioning ru
     "stores_personal_data": false
   }
 }
-
-Validate
-
-If using local schema file:
-
-ajv validate -s schema.json -d manifest.json
-
-If validating against canonical URL:
-
-ajv validate -s https://agent-manifest-spec.org/spec/v1.0/schema.json -d manifest.json
