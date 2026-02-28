@@ -54,7 +54,7 @@ You can integrate Agent Manifest in under five minutes.
 ### 2. Validate against the schema
 
 ```bash
-ajv validate -s spec/manifest.schema.json -d manifest.json
+ajv validate -s spec/v1.0/schema.json -d manifest.json
 ```
 
 ### 3. Commit it to your repository
@@ -125,7 +125,7 @@ Your agent now declares its boundary surface before execution.
 ```
 
 This example is non-normative and provided for structural clarity.  
-Full structural reference can be found in the [`spec/`](./spec/) directory.
+Full structural reference can be found in the [`spec/v1.0/`](./spec/v1.0/) directory.
 
 For additional examples see:  
 [`examples/`](./examples/)
@@ -193,8 +193,8 @@ Validation, scoring, auditing, and enforcement belong to separate systems.
 
 The normative specification contract is defined in:
 
-- [`spec/spec.md`](./spec/spec.md)
-- [`spec/manifest.schema.json`](./spec/manifest.schema.json)
+- [`spec/v1.0/spec.md`](./spec/v1.0/spec.md)
+- [`spec/v1.0/schema.json`](./spec/v1.0/schema.json)
 
 The constitutional core is defined in:
 
@@ -211,7 +211,7 @@ If you are new to Agent Manifest, read in this order:
 1. [WHY_THIS_EXISTS.md](./WHY_THIS_EXISTS.md)
 1. [WHAT_THIS_IS.md](./WHAT_THIS_IS.md)
 1. [CORE_PRINCIPLES.md](./CORE_PRINCIPLES.md)
-1. [`spec/`](./spec/)
+1. [`spec/v1.0/`](./spec/v1.0/)
 1. [`examples/`](./examples/)
 
 -----
