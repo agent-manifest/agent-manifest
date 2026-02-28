@@ -2,6 +2,10 @@
 
 Agent Manifest Papers is an ongoing series examining declarative governance in autonomous systems.
 
+The normative definition of Agent Manifest is exclusively contained in the canonical specification (v1.x series).
+
+The Papers series is analytical and non-normative.
+
 The series explores the architectural implications of undeclared authority, implicit mandate, and the necessity of declaration before execution.
 
 These papers do not define implementation and do not modify the normative specification.  
@@ -22,6 +26,9 @@ https://medium.com/@brfnrvf/agent-manifest-papers-02-the-problem-of-implicit-aut
 ### Paper #03 — Authority Is Not Inherent
 On delegated mandate in autonomous AI systems.
 https://medium.com/@brfnrvf/authority-is-not-inherent-2b3061f402cd
+
+These papers are hosted externally and are independent publications by the author.
+They are not normative components of the specification.
 
 ---
 
