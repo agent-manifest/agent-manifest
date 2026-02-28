@@ -5,6 +5,9 @@ Thank you for your interest in contributing.
 Agent Manifest is a minimal, execution-agnostic specification.  
 Its goal is clarity, safety, and interoperability — not feature expansion.
 
+The v1.0 release represents the first canonical specification freeze.
+Breaking changes require a version increment (v1.1 or higher).
+
 ## What Contributions Are Welcome
 
 We welcome:
