@@ -2,7 +2,7 @@
 
 ## Status
 
-These principles constitute the **constitutional core** of the Agent Manifest v1.x series.
+These principles constitute the **constitutional core** of the Agent Manifest v1.x series, beginning with v1.0.
 
 They are stable and may only be modified under a **major version change** (e.g., v2.0).
 
