@@ -3,6 +3,9 @@
 Agent Manifest is an open, declarative initiative intended to remain neutral,
 minimal, and execution-agnostic.
 
+This governance statement applies to the v1.x series of the specification.
+Major version changes may redefine stewardship and governance structure.
+
 ## Origin
 
 Agent Manifest was initially authored and published by:
@@ -15,9 +18,12 @@ Initiator and founding author
 
 This repository does not enforce governance, ownership, or authority.
 
-The initial author acts as a steward of the foundational documents,
+The initial author acts as a steward of the canonical v1.x documents,
 with the sole intent of preserving conceptual clarity, scope boundaries,
-and non-executing nature of the manifest.
+and the non-executing nature of the manifest.
+
+Canonical releases (e.g., v1.0) represent frozen specification states.
+Future changes require version increments.
 
 Future stewardship, forks, reinterpretations, or independent evolutions
 are explicitly permitted and encouraged.
