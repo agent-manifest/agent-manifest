@@ -1,5 +1,5 @@
 {
-  "manifest_version": "0.1.0",
+  "manifest_version": "1.0",
   "agent_id": "example.monitoring.observer",
   "agent_name": "Monitoring Observer Agent",
   "agent_version": "1.0.0",
@@ -42,8 +42,7 @@
     "mechanism": "Disable alerting pipeline and revoke monitoring token via admin controls. Observer continues no-ops if detached from streams.",
     "stages": [
       "pre-execution",
-      "mid-execution",
-      "pre-dispatch"
+      "mid-execution"
     ]
   },
   "audit_surface": {
