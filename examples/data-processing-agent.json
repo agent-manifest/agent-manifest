@@ -1,5 +1,5 @@
 {
-  "manifest_version": "0.1.0",
+  "manifest_version": "1.0",
   "agent_id": "example.data_processing.agent",
   "agent_name": "Data Processing Agent",
   "agent_version": "1.0.0",
@@ -38,7 +38,7 @@
   },
   "stopping_authority": {
     "stoppable_by": [
-      "responsible_party",
+      "owner",
       "data_protection_officer",
       "system_operator"
     ],
