@@ -5,7 +5,7 @@
     "agent_id": "example.minimal.agent",
     "agent_name": "Minimal Example Agent",
     "agent_version": "1.0.0",
-    "manifest_version": "0.1.0",
+    "manifest_version": "1.0",
     "source": "README Minimal Example (sample)"
   },
   "result": {
@@ -15,7 +15,7 @@
       "Complete declaration surface for baseline example.",
       "Autonomy (1) and risk (low) are coherent for bounded assistance.",
       "Stopping authority is declared (owner, manual override, stages).",
-      "Audit posture is minimal (basic/partial); acceptable for low risk but limits reconstruction.",
+      "Audit surface is minimal (basic/partial); acceptable for low risk but limits reconstruction.",
       "Data storage claim is clear (stores_personal_data: false); retention/log-redaction could be clarified."
     ]
   },
@@ -47,7 +47,7 @@
       ]
     },
     {
-      "name": "audit_posture_integrity",
+      "name": "audit_surface_integrity",
       "status": "pass",
       "notes": [
         "Clarify what 'basic' logging includes via audit_surface.notes."
