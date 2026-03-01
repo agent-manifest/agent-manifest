@@ -1,5 +1,17 @@
 # Agent Manifest
 
+## Canonical Specification (v1.0 — Standards Track)
+
+- **HTML (rendered canonical document):**  
+  https://agent-manifest-spec.org/spec/v1.0/agent_manifest_v1.0.html
+
+- **Normative JSON Schema:**  
+  https://agent-manifest-spec.org/spec/v1.0/schema.json
+
+- **Markdown rendering (normatively identical):**  
+  [`spec/v1.0/spec.md`](./spec/v1.0/spec.md)
+  
+
 A minimal specification that requires autonomous systems to declare operational boundaries before execution.
 
 It standardizes how AI agents declare identity, constraints, autonomy level, risk profile, and data handling prior to interacting with external systems.
