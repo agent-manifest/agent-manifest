@@ -14,7 +14,7 @@ Pre-Execution Authority establishes a foundational architectural principle:
 This document defines the structural legitimacy required before execution.
 
 It does not regulate how systems execute.  
-It defines under what authority they are permitted to execute.
+It defines the structural legitimacy required before execution.
 
 ---
 
@@ -76,7 +76,7 @@ It exists prior to runtime execution.
 
 It is not an enforcement mechanism.  
 It is not a compliance regime.  
-It is not a runtime protocol.
+It is not a runtime protocol.  
 
 It is a prerequisite structural declaration.
 
@@ -99,12 +99,15 @@ Pre-Execution Authority may be expressed through six conceptual blocks:
 - What actions are explicitly prohibited
 
 ### 4.4 Autonomy Gradient
+
 A declared autonomy level, for example:
 
 - Level 0 — Fully supervised  
 - Level 1 — User-confirmed  
 - Level 2 — Conditional autonomy  
 - Level 3 — Scoped autonomy  
+
+These levels are illustrative and non-normative.
 
 Autonomy becomes a declared variable, not an implicit assumption.
 
@@ -164,13 +167,15 @@ Pre-Execution Authority defines the philosophical and structural doctrine that j
 Agent Manifest is an implementation surface.  
 Pre-Execution Authority is the foundational principle.
 
+This document does not modify the Agent Manifest specification.
+
 ---
 
 ## 8. Foundational Statement
 
 Autonomous systems are increasingly capable of acting, transacting, and deciding within complex environments.
 
-If autonomy expands without declared authority, systemic instability becomes inevitable.
+If autonomy expands without declared authority, systemic instability becomes increasingly likely.
 
 Pre-Execution Authority asserts that:
 
@@ -183,5 +188,4 @@ It is a condition for sustainable autonomy.
 
 Author  
 Hernán Alfredo Capucci  
-Independent Research
-
+Independent Researcher
