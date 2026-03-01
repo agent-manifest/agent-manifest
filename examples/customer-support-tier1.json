@@ -1,5 +1,5 @@
 {
-  "manifest_version": "0.1.0",
+  "manifest_version": "1.0",
   "agent_id": "example.customer_support.tier1",
   "agent_name": "Customer Support Agent (Tier 1)",
   "agent_version": "1.0.0",
@@ -39,15 +39,14 @@
   },
   "stopping_authority": {
     "stoppable_by": [
-      "responsible_party",
+      "owner",
       "support_manager",
       "system_operator"
     ],
     "mechanism": "Disable agent at orchestration layer and revoke runtime execution token; if needed, disable tool access for ticketing/CRM connectors.",
     "stages": [
       "pre-execution",
-      "mid-execution",
-      "pre-dispatch"
+      "mid-execution"
     ]
   },
   "audit_surface": {
