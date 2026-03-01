@@ -18,13 +18,13 @@ Agent Manifest is designed around strict separation between three layers:
 Defines a shared declaration surface for:
 
 - Identity and purpose
-- Operational domain
+- Scope
 - Autonomy level
 - Tool access scope
-- Risk posture and boundary constraints
+- Risk profile and declared boundaries
 - Data handling commitments
 - Human oversight conditions
-- Version commitments
+- Version declaration (`manifest_version`)
 
 This layer is declarative and execution-agnostic by design.
 
