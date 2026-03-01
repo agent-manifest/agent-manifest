@@ -26,7 +26,7 @@ A human or legal entity with the authority and capacity to:
 - Supervise the agent
 - Stop the agent
 
-Agents without a declared Responsible Party are structurally non-compliant for production deployment.
+Agents without a declared Responsible Party are structurally incomplete for production deployment.
 
 ---
 
@@ -75,7 +75,7 @@ Risk Profile may include:
 - Known uncertainties
 - Declared unknowns
 
-Unknown risk must be declared as unknown.
+Unknown risks must be explicitly acknowledged.
 
 ---
 
@@ -107,7 +107,7 @@ Opacity must be declared if present.
 
 ## 9. Denial by Default
 
-If an agent cannot truthfully declare the required structural elements defined above, the default structural position is non-authorization for autonomous operation.
+If an agent cannot truthfully declare the required structural elements defined above, the default structural position is structural invalidity for autonomous operation.
 
 ---
 
