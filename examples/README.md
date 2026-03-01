@@ -8,14 +8,14 @@ They demonstrate how to declare boundaries and accountability fields
 
 Validation rules are defined by the schema:
 
-- [spec/manifest.schema.json](../spec/manifest.schema.json)
+- [spec/v1.0/schema.json](../spec/v1.0/schema.json)
 
 ---
 
 ## Notes
 
 - Examples are designed to be readable first, strict second.
-- All examples target `manifest_version: "0.1.0"`.
+- All examples target `manifest_version: "1.0"`.
 - Required structural elements include:
   - identity (`agent_id`, `agent_name`, `agent_version`)
   - accountability (`owner`, `contact`)
@@ -24,7 +24,7 @@ Validation rules are defined by the schema:
   - autonomy (`autonomy.level`)
   - risk profile (`risk_profile.level`)
   - stopping authority (`stopping_authority`)
-  - audit posture (`audit_surface`)
+  - audit surface (`audit_surface`)
   - data handling (`data_handling`)
 
 ---
@@ -41,7 +41,7 @@ Validation rules are defined by the schema:
 - A data pipeline agent → see [data-processing-agent.json](./data-processing-agent.json)
 - A research assistant → review [research-assistant.json](./research-assistant.json)
 - A policy advisory system → examine [policy-advisory-agent.json](./policy-advisory-agent.json)
-- A minimal compliant agent → start with [basic-agent.json](./basic-agent.json)
+- A minimal structurally complete agent → start with [basic-agent.json](./basic-agent.json)
 
 These examples illustrate how different domains declare authority, autonomy, and risk posture before execution.
 
@@ -71,7 +71,7 @@ These examples illustrate how different domains declare authority, autonomy, and
 
 ## Files
 
-- `basic-agent.json` — minimal compliant example (low-risk, low autonomy)
+- `basic-agent.json` — minimal structurally complete example (low-risk, low autonomy)
 - `research-assistant.json` — read-only posture, opacity declared
 - `human-approval-gateway-agent.json` — human-in-the-loop orchestration
 - `customer-support-tier1.json` — session-scoped support agent
