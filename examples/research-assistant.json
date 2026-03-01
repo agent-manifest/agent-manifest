@@ -1,5 +1,5 @@
 {
-  "manifest_version": "0.1.0",
+  "manifest_version": "1.0",
   "agent_id": "example.research.assistant",
   "agent_name": "Research Assistant (Read-Only)",
   "agent_version": "1.0.0",
