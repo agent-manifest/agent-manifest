@@ -64,7 +64,7 @@ If an operational agent declares:
 "forbidden_actions": ["modify_production_systems"]
 ```
 
-then execution beyond that scope becomes declaratively non-compliant.
+then execution beyond that scope becomes structurally inconsistent with its declared boundaries.
 
 The declaration layer does not replace runtime controls. It makes the intended boundary explicit and auditable.
 
@@ -129,7 +129,7 @@ An AI system retained personal or sensitive data beyond user expectations or ope
 
 ### Architectural Mitigation
 
-Agent Manifest requires explicit declaration of whether personal data is stored and under what retention policy.
+Agent Manifest enables explicit declaration of whether personal data is stored and under what retention policy.
 
 Example:
 
@@ -226,8 +226,8 @@ Specific case details are intentionally abstracted to focus on structural patter
 
 For validation of the analytical framework, see:
 
-- [`../spec/spec.md`](../spec/spec.md)
-- [`../spec/manifest.schema.json`](../spec/manifest.schema.json)
+- [`../spec/v1.0/spec.md`](../spec/v1.0/spec.md)
+- [`../spec/v1.0/schema.json`](../spec/v1.0/schema.json)
 - [`../examples/`](../examples/)
 
 -----
