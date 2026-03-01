@@ -8,18 +8,18 @@ Agent Manifest is designed to remain minimal and structurally stable.
 
 The normative contract is defined by:
 
-- [`spec/spec.md`](./spec/spec.md)
-- [`spec/manifest.schema.json`](./spec/manifest.schema.json)
+- [`spec/v1.0/spec.md`](./spec/v1.0/spec.md)
+- [`spec/v1.0/schema.json`](./spec/v1.0/schema.json)
 
 A manifest that declares:
 
 ```json
 {
-  "manifest_version": "0.1.0"
+  "manifest_version": "1.0"
 }
 ```
 
-MUST validate against the `0.1.0` schema.
+MUST validate against the `v1.0` schema.
 
 The specification version changes only when the schema and normative specification change.
 
@@ -46,7 +46,7 @@ The core principles are defined in:
 
 - [CORE_PRINCIPLES.md](./CORE_PRINCIPLES.md)
 
-Changes to core principles should be treated as major-level changes in spirit, even if the specification remains pre-1.0.
+Changes to core principles should be treated as major-level changes in spirit, even if the specification remains compatible.
 
 Stability in Agent Manifest means:
 
