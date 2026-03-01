@@ -1,17 +1,22 @@
 # Agent Manifest — Specification (v1.0)
 
+> This Markdown document is a rendering of the canonical normative specification.
+> The authoritative version of Agent Manifest v1.0 is the HTML specification
+> published as “Open Specification — Standards Track”.
+> Normative requirements are identical across both renderings.
+
 Agent Manifest is a minimal, execution-agnostic, declarative specification that allows AI agents to publicly declare identity, purpose, scope, autonomy level, risk profile, stopping authority, audit surface, and data handling before interaction.
 
 This specification declares.  
 It does not execute, validate, score, enforce, or decide.
 
----
+-----
 
 ## 1) Required fields
 
 An Agent Manifest MUST declare the following fields:
 
----
+-----
 
 ### Identity
 
@@ -20,7 +25,7 @@ An Agent Manifest MUST declare the following fields:
 - `agent_name` (human-readable)
 - `agent_version` (agent’s own version)
 
----
+-----
 
 ### Ownership and accountability
 
@@ -29,14 +34,14 @@ An Agent Manifest MUST declare the following fields:
 
 Agents without a declared owner are invalid by design.
 
----
+-----
 
 ### Purpose (Positive Scope)
 
 - `purpose.primary_code` (bounded code)
 - `purpose.description` (specific, bounded explanation)
 
----
+-----
 
 ### Hard constraints (Negative Scope)
 
@@ -44,7 +49,7 @@ Agents without a declared owner are invalid by design.
 
 What is not declared is considered prohibited.
 
----
+-----
 
 ### Autonomy
 
@@ -56,12 +61,12 @@ Autonomy describes decision freedom, not intelligence.
 
 `autonomy.level` is a declared execution posture (not a capability claim):
 
-- **0** — No execution: advisory / descriptive only  
-- **1** — Supervised: actions only under explicit user instruction or approval  
-- **2** — Scoped autonomy: bounded workflows within declared constraints  
-- **3** — High autonomy: can execute within declared constraints without per-step approval  
+- **0** — No execution: advisory / descriptive only
+- **1** — Supervised: actions only under explicit user instruction or approval
+- **2** — Scoped autonomy: bounded workflows within declared constraints
+- **3** — High autonomy: can execute within declared constraints without per-step approval
 
----
+-----
 
 ### Risk Profile
 
@@ -70,7 +75,7 @@ Autonomy describes decision freedom, not intelligence.
 
 Risk is self-declared. This specification does not evaluate or verify risk claims.
 
----
+-----
 
 ### Stopping Authority
 
@@ -81,7 +86,7 @@ Risk is self-declared. This specification does not evaluate or verify risk claim
 Every autonomous system must be stoppable.  
 Agents without declared stopping authority are structurally non-compliant.
 
----
+-----
 
 ### Audit Surface
 
@@ -93,16 +98,24 @@ Agents without declared stopping authority are structurally non-compliant.
 Accountability requires reconstructability.  
 Opacity, when present, must be explicitly declared.
 
----
+-----
 
 ### Data Handling
 
 - `data_handling.stores_personal_data` (boolean)
-- Optional: `data_handling.retention`
+- Conditional: `data_handling.retention`
 
 If `stores_personal_data` is `true`, `retention` MUST be declared.
 
----
+Valid retention values are:
+
+- `"none"` — No data retention beyond execution context.
+- `"temporary_session_only"` — Data retained only for the duration of the current session.
+- An ISO 8601 duration (e.g., `"P30D"`, `"P1Y"`, `"PT12H"`) — Specific retention period.
+
+Freeform labels such as `"30d"` or `"7_years"` are not permitted.
+
+-----
 
 ### Contact
 
@@ -110,7 +123,7 @@ If `stores_personal_data` is `true`, `retention` MUST be declared.
 
 A contact channel is required for accountability and escalation.
 
----
+-----
 
 ## 2) Optional Fields
 
@@ -121,7 +134,7 @@ A contact channel is required for accountability and escalation.
 Capabilities describe declared operational abilities.  
 Capabilities MUST NOT contradict declared scope or forbidden actions.
 
----
+-----
 
 ### Language
 
@@ -131,7 +144,7 @@ Capabilities MUST NOT contradict declared scope or forbidden actions.
 This is a human-facing declaration.  
 Inter-agent communication is assumed to use structured data.
 
----
+-----
 
 ## 3) Extensibility
 
@@ -139,9 +152,16 @@ This specification is intentionally extensible.
 
 Implementers MAY include additional fields without breaking compatibility.
 
-To preserve interoperability, custom or domain-specific fields SHOULD be placed under an `extensions` object.
+Two extensibility mechanisms are valid in v1.0:
 
----
+1. Root-level properties prefixed with `x-`
+1. A dedicated `extensions` object
+
+For interoperability, domain-specific or experimental fields SHOULD be grouped under the `extensions` object.
+
+The `x-` prefix convention remains valid in v1.0 and may be formally deprecated in a future minor version.
+
+-----
 
 ## 4) Schema
 
@@ -151,7 +171,7 @@ https://agent-manifest-spec.org/spec/v1.0/schema.json
 
 The schema `const` value for `manifest_version` is the authoritative version indicator.
 
----
+-----
 
 ## 5) Versioning
 
