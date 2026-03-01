@@ -1,5 +1,5 @@
 {
-  "manifest_version": "0.1.0",
+  "manifest_version": "1.0",
   "agent_id": "example.policy_advisory.agent",
   "agent_name": "Policy Advisory Agent",
   "agent_version": "1.0.0",
@@ -38,15 +38,14 @@
   },
   "stopping_authority": {
     "stoppable_by": [
-      "responsible_party",
+      "owner",
       "compliance_officer",
       "system_operator"
     ],
     "mechanism": "Disable agent session at orchestration layer and revoke policy-document retrieval permissions if misuse is detected.",
     "stages": [
       "pre-execution",
-      "mid-execution",
-      "pre-dispatch"
+      "mid-execution"
     ]
   },
   "audit_surface": {
