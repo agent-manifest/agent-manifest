@@ -1,0 +1,1807 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agent Manifest — Core Declarative Specification v1.0</title>
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+```
+:root {
+  --serif: "Georgia", "Times New Roman", serif;
+  --mono: "SFMono-Regular", "Consolas", "Liberation Mono", "Menlo", monospace;
+  --text: #1a1a1a;
+  --muted: #555;
+  --accent: #1a3a5c;
+  --rule: #ccc;
+  --code-bg: #f4f4f4;
+  --max-w: 72ch;
+}
+
+html { font-size: 16px; }
+
+body {
+  font-family: var(--serif);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text);
+  background: #fff;
+  padding: 4rem 2rem;
+}
+
+.page {
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+/* ── Cover ── */
+.cover {
+  text-align: center;
+  padding: 6rem 0 5rem;
+  border-bottom: 2px solid var(--text);
+  margin-bottom: 4rem;
+}
+
+.cover .label {
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+}
+
+.cover h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+
+.cover .subtitle {
+  font-size: 1.15rem;
+  color: var(--muted);
+  font-style: italic;
+  margin-bottom: 2rem;
+}
+
+.cover .version-badge {
+  display: inline-block;
+  border: 1px solid var(--text);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.75rem;
+  margin-bottom: 3rem;
+}
+
+.cover .meta {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+/* ── Abstract ── */
+.abstract {
+  border-left: 3px solid var(--accent);
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 3rem;
+  background: #f9f9f9;
+}
+
+.abstract h2 {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--muted);
+  margin-bottom: 0.75rem;
+}
+
+.abstract p { font-size: 0.95rem; }
+
+/* ── TOC ── */
+.toc {
+  margin-bottom: 4rem;
+}
+
+.toc h2 {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--muted);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.toc ol {
+  list-style: none;
+  padding: 0;
+}
+
+.toc > ol > li {
+  margin-bottom: 0.35rem;
+}
+
+.toc a {
+  text-decoration: none;
+  color: var(--accent);
+  font-size: 0.9rem;
+}
+
+.toc a:hover { text-decoration: underline; }
+
+.toc .toc-sub {
+  padding-left: 1.5rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 0.2rem;
+}
+
+/* ── Sections ── */
+section {
+  margin-bottom: 3.5rem;
+}
+
+h2.sec-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--accent);
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 0.4rem;
+  margin-bottom: 1.25rem;
+  margin-top: 2.5rem;
+}
+
+h3.subsec-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-top: 1.75rem;
+  margin-bottom: 0.6rem;
+}
+
+h4.subsubsec-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-style: italic;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: var(--muted);
+}
+
+p { margin-bottom: 0.85rem; }
+
+/* ── Lists ── */
+ul.spec-list, ol.spec-list {
+  margin: 0.5rem 0 1rem 1.5rem;
+}
+
+ul.spec-list li, ol.spec-list li {
+  margin-bottom: 0.4rem;
+  font-size: 0.95rem;
+}
+
+/* ── RFC keywords ── */
+.rfc { font-weight: 700; }
+
+/* ── Code / Schema ── */
+pre {
+  background: var(--code-bg);
+  border: 1px solid var(--rule);
+  padding: 1.25rem 1.5rem;
+  border-radius: 3px;
+  overflow-x: auto;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  line-height: 1.6;
+  margin: 1rem 0 1.5rem;
+}
+
+code {
+  font-family: var(--mono);
+  font-size: 0.875em;
+  background: var(--code-bg);
+  padding: 0.1em 0.35em;
+  border-radius: 2px;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+  font-size: inherit;
+}
+
+/* ── ASCII diagram ── */
+.ascii-diagram {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  background: var(--code-bg);
+  border: 1px solid var(--rule);
+  padding: 1.25rem 1.5rem;
+  margin: 1rem 0 1.5rem;
+  white-space: pre;
+  overflow-x: auto;
+}
+
+/* ── Tables ── */
+.spec-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  margin: 1rem 0 1.5rem;
+}
+
+.spec-table th {
+  background: var(--accent);
+  color: #fff;
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  font-weight: 600;
+}
+
+.spec-table td {
+  padding: 0.45rem 0.75rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.spec-table tr:nth-child(even) td { background: #f9f9f9; }
+
+/* ── Annex headers ── */
+.annex-banner {
+  text-align: center;
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-top: 2px solid var(--text);
+  border-bottom: 2px solid var(--text);
+  padding: 0.5rem 0;
+  margin: 4rem 0 2rem;
+}
+
+/* ── Normative note ── */
+.normative-note {
+  font-size: 0.8rem;
+  font-style: italic;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+/* ── Footer ── */
+footer {
+  margin-top: 5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* ── Print ── */
+@media print {
+  body { padding: 2cm; font-size: 10pt; }
+  .cover { padding: 4rem 0 3rem; }
+  a { color: inherit; }
+  pre { font-size: 7.5pt; }
+}
+```
+
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ══════════════════════════════════════════
+       COVER
+  ══════════════════════════════════════════ -->
+
+  <div class="cover">
+    <p class="label">Open Specification — Standards Track</p>
+    <h1>Agent Manifest</h1>
+    <p class="subtitle">Core Declarative Specification</p>
+    <span class="version-badge">Version 1.0</span>
+    <div class="meta">
+      Hernán Alfredo Capucci<br/>
+      Independent Research<br/>
+      February 2026
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       ABSTRACT
+  ══════════════════════════════════════════ -->
+
+  <div class="abstract">
+    <h2>Abstract</h2>
+    <p>
+      This document defines the Agent Manifest Core Declarative Specification (v1.0),
+      a machine-readable, execution-agnostic standard that establishes the minimum
+      declaration requirements for autonomous systems prior to interaction or execution.
+    </p>
+    <p>
+      The specification defines mandatory structural elements that <span class="rfc">MUST</span>
+      be present in a conformant agent manifest, including identity, responsible party,
+      declared purpose, operational constraints, autonomy level, stopping authority, audit
+      posture, and data handling declarations.
+    </p>
+    <p>
+      This document specifies normative conformance criteria and includes a normative JSON
+      Schema. It does not define runtime execution behavior, enforcement mechanisms,
+      validation scoring systems, or regulatory compliance processes.
+    </p>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       TABLE OF CONTENTS
+  ══════════════════════════════════════════ -->
+
+  <nav class="toc" aria-label="Table of Contents">
+    <h2>Table of Contents</h2>
+    <ol class="spec-list">
+      <li><a href="#abstract-toc">Abstract</a></li>
+      <li><a href="#s1">1. Introduction</a></li>
+      <li><a href="#s2">2. Status of This Memo</a></li>
+      <li><a href="#s3">3. Conventions Used in This Document</a></li>
+      <li>
+        <a href="#s4">4. Terminology</a>
+        <div class="toc-sub">4.1 Autonomous System · 4.2 Agent · 4.3 Agent Manifest · 4.4 Declaration Layer · 4.5 Enforcement Layer · 4.6 Execution Layer · 4.7 Responsible Party · 4.8 Autonomy Level · 4.9 Negative Scope · 4.10 Structural Validity · 4.11 Structural Coherence · 4.12 Conformance · 4.13 Audit Surface · 4.14 Reconstructability · 4.15 Stopping Authority</div>
+      </li>
+      <li>
+        <a href="#s5">5. Architectural Model</a>
+        <div class="toc-sub">5.1 Layered Model · 5.2 Layer Responsibilities · 5.3 Layer Separation Invariant</div>
+      </li>
+      <li><a href="#s6">6. Core Invariants</a></li>
+      <li><a href="#s7">7. Structural Coherence Requirements</a></li>
+      <li><a href="#s8">8. Autonomy Model</a></li>
+      <li><a href="#s9">9. Stopping Authority Requirements</a></li>
+      <li><a href="#s10">10. Audit Surface Model</a></li>
+      <li><a href="#s11">11. Data Handling Model</a></li>
+      <li><a href="#s12">12. Structural Validity and Conformance Model</a></li>
+      <li><a href="#s13">13. Normative JSON Schema</a></li>
+      <li><a href="#s14">14. Security Considerations</a></li>
+      <li><a href="#s15">15. Relationship to Existing Standards</a></li>
+      <li><a href="#s16">16. IANA Considerations</a></li>
+      <li>
+        <a href="#s17">17. References</a>
+        <div class="toc-sub">17.1 Normative References · 17.2 Informative References</div>
+      </li>
+      <li><a href="#annex-a">Annex A — Normative JSON Schema</a></li>
+      <li><a href="#annex-b">Annex B — Conformant Example (Non-Normative)</a></li>
+    </ol>
+  </nav>
+
+  <!-- ══════════════════════════════════════════
+       SECTION 1
+  ══════════════════════════════════════════ -->
+
+  <section id="s1">
+    <h2 class="sec-title">1. Introduction</h2>
+    <p>
+      Autonomous and semi-autonomous systems are increasingly deployed in contexts where they
+      may execute actions, access data, make recommendations, and interact with financial and
+      institutional environments. A structural asymmetry persists: execution capabilities scale
+      faster than declared authority frameworks.
+    </p>
+    <p>
+      Agent Manifest introduces a minimal, execution-agnostic Declaration Layer for autonomous
+      systems. It defines a structured, portable, machine-readable mechanism through which an
+      agent declares identity, purpose, negative boundaries, autonomy posture, risk profile,
+      stopping authority, audit surface, and data-handling commitments prior to execution.
+    </p>
+    <p>
+      The framework does not execute agents, does not enforce policy, and does not guarantee
+      safety. It establishes a governance primitive: <em>legitimacy must precede execution.</em>
+    </p>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       SECTION 2
+  ══════════════════════════════════════════ -->
+
+  <section id="s2">
+    <h2 class="sec-title">2. Status of This Memo</h2>
+    <p>
+      This document is an Open Specification on the Standards Track. It defines mandatory and
+      optional elements required for structural conformance of an Agent Manifest.
+    </p>
+    <p>This specification:</p>
+    <ul class="spec-list">
+      <li>Defines structural declaration requirements.</li>
+      <li>Defines conformance criteria.</li>
+      <li>Includes a normative JSON Schema.</li>
+      <li>Does not define enforcement, validation scoring, or runtime execution behavior.</li>
+      <li>Is execution-layer agnostic.</li>
+    </ul>
+    <p>
+      Implementations claiming conformance <span class="rfc">MUST</span> satisfy all normative
+      requirements defined herein. Future revisions to this specification <span class="rfc">SHALL</span>
+      follow semantic versioning.
+    </p>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       SECTION 3
+  ══════════════════════════════════════════ -->
+
+  <section id="s3">
+    <h2 class="sec-title">3. Conventions Used in This Document</h2>
+    <p>
+      The key words "<span class="rfc">MUST</span>", "<span class="rfc">MUST NOT</span>",
+      "<span class="rfc">REQUIRED</span>", "<span class="rfc">SHALL</span>",
+      "<span class="rfc">SHALL NOT</span>", "<span class="rfc">SHOULD</span>",
+      "<span class="rfc">SHOULD NOT</span>", "<span class="rfc">RECOMMENDED</span>",
+      "<span class="rfc">NOT RECOMMENDED</span>", "<span class="rfc">MAY</span>", and
+      "<span class="rfc">OPTIONAL</span>" in this document are to be interpreted as described
+      in RFC 2119 and RFC 8174.
+    </p>
+    <p>
+      All examples in this document are non-normative unless explicitly identified as normative.
+      The terms "Declaration Layer", "Enforcement Layer", and "Execution Layer" are defined
+      in Section 4.
+    </p>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       SECTION 4
+  ══════════════════════════════════════════ -->
+
+  <section id="s4">
+    <h2 class="sec-title">4. Terminology</h2>
+    <p>For the purposes of this specification, the following terms are defined as normative terms.</p>
+
+```
+<h3 class="subsec-title">4.1 Autonomous System</h3>
+<p>
+  An Autonomous System is a software-based system capable of performing decision-making or
+  action execution with varying degrees of independence from direct human control. Autonomous
+  systems <span class="rfc">MAY</span> include single agents, multi-agent systems, or
+  orchestrated workflows. This specification applies specifically to Agents, defined below.
+</p>
+
+<h3 class="subsec-title">4.2 Agent</h3>
+<p>An Agent is a software entity that:</p>
+<ul class="spec-list">
+  <li>Operates within an autonomous system,</li>
+  <li>Possesses decision-making capability,</li>
+  <li>May perform actions or produce outputs affecting external systems or users,</li>
+  <li>Is identifiable as a discrete declarable unit.</li>
+</ul>
+<p>This specification defines declaration requirements for Agents as a subcategory of autonomous systems.</p>
+
+<h3 class="subsec-title">4.3 Agent Manifest</h3>
+<p>
+  An Agent Manifest is a machine-readable declaration document conforming to this specification
+  that defines the declared identity, authority, scope, constraints, autonomy level, stopping
+  authority, audit posture, and data handling posture of an Agent prior to execution.
+</p>
+
+<h3 class="subsec-title">4.4 Declaration Layer</h3>
+<p>
+  The Declaration Layer is the architectural layer in which an Agent Manifest exists and is
+  evaluated. The Declaration Layer defines structural statements about an Agent. It does not
+  execute behavior.
+</p>
+
+<h3 class="subsec-title">4.5 Enforcement Layer</h3>
+<p>
+  The Enforcement Layer is any system, policy engine, validation process, regulatory framework,
+  or organizational control mechanism that interprets, evaluates, or acts upon a declaration.
+  This specification does not define Enforcement Layer behavior.
+</p>
+
+<h3 class="subsec-title">4.6 Execution Layer</h3>
+<p>
+  The Execution Layer is the runtime environment in which an Agent performs actions, produces
+  outputs, or interacts with systems or users. This specification does not define execution
+  semantics.
+</p>
+
+<h3 class="subsec-title">4.7 Responsible Party</h3>
+<p>The Responsible Party is the declared accountable entity associated with an Agent. The Responsible Party:</p>
+<ul class="spec-list">
+  <li><span class="rfc">MUST</span> be identifiable,</li>
+  <li><span class="rfc">MUST</span> be declared in the Agent Manifest,</li>
+  <li>Is the entity accountable for oversight and governance of the Agent.</li>
+</ul>
+<p>
+  The Responsible Party <span class="rfc">MAY</span> also be identified as a Stopping Authority
+  as defined in Section 4.15. This specification does not define legal validation of Responsible
+  Party capability.
+</p>
+
+<h3 class="subsec-title">4.8 Autonomy Level</h3>
+<p>
+  The Autonomy Level is the declared degree of execution independence assigned to an Agent.
+  Autonomy Level is expressed as an integer value defined in Section 8. Autonomy Level
+  describes execution posture, not intelligence, complexity, or capability.
+</p>
+
+<h3 class="subsec-title">4.9 Negative Scope</h3>
+<p>
+  Negative Scope is the explicitly declared set of actions that an Agent <span class="rfc">MUST NOT</span>
+  perform. Negative Scope is expressed through the <code>forbidden_actions</code> declaration.
+  Negative Scope defines hard prohibitions independent of declared purpose.
+</p>
+
+<h3 class="subsec-title">4.10 Structural Validity</h3>
+<p>
+  Structural Validity refers to conformance of an Agent Manifest to the formal schema defined
+  in this specification. A manifest is structurally valid if:
+</p>
+<ul class="spec-list">
+  <li>All <span class="rfc">REQUIRED</span> fields are present,</li>
+  <li>Field types match schema definitions,</li>
+  <li>Enumerated values conform to allowed sets.</li>
+</ul>
+<p>Structural Validity does not assess internal consistency between fields.</p>
+
+<h3 class="subsec-title">4.11 Structural Coherence</h3>
+<p>
+  Structural Coherence refers to logical consistency between declared elements of an Agent
+  Manifest. Structural Coherence evaluates whether declared autonomy, audit posture, stopping
+  authority, and other elements are internally consistent. Structural Coherence is distinct from
+  Structural Validity. Minimum coherence requirements are defined in Section 7.
+</p>
+
+<h3 class="subsec-title">4.12 Conformance</h3>
+<p>
+  Conformance refers to adherence to all normative requirements defined in this specification.
+  An Agent Manifest is conformant if it satisfies all normative requirements defined herein,
+  including structural validity and mandatory declaration constraints.
+</p>
+
+<h3 class="subsec-title">4.13 Audit Surface</h3>
+<p>
+  The Audit Surface is the declared visibility and logging posture of an Agent's execution
+  behavior. Audit Surface includes logging level and reconstructability declarations.
+</p>
+
+<h3 class="subsec-title">4.14 Reconstructability</h3>
+<p>
+  Reconstructability is the declared capability to reconstruct execution events after they occur.
+  Reconstructability is expressed as a categorical declaration defined in Section 10.
+</p>
+
+<h3 class="subsec-title">4.15 Stopping Authority</h3>
+<p>
+  Stopping Authority is the declared mechanism and accountable entity capable of interrupting or
+  disabling an Agent. Stopping Authority <span class="rfc">MUST</span> include:
+</p>
+<ul class="spec-list">
+  <li>Identified stoppable entity or role,</li>
+  <li>A declared interruption mechanism.</li>
+</ul>
+<p>Stopping Authority requirements are defined in Section 9.</p>
+```
+
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       SECTION 5
+  ══════════════════════════════════════════ -->
+
+  <section id="s5">
+    <h2 class="sec-title">5. Architectural Model</h2>
+
+```
+<h3 class="subsec-title">5.1 Layered Model</h3>
+<p>This specification operates within a three-layer architectural model:</p>
+<div class="ascii-diagram">+--------------------------------------------------+
+```
+
+| Enforcement Layer                                |
+| (Validation engines, policy controls, audit,     |
+|  regulatory systems, procurement requirements)   |
++–––––––––––––––––––––––––+
+| Declaration Layer                                |
+| (Agent Manifest – structured declaration of     |
+|  identity, scope, autonomy, constraints, audit)  |
++–––––––––––––––––––––––––+
+| Execution Layer                                  |
+| (Runtime systems, tools, model inference,        |
+|  external effects, state transitions)            |
++–––––––––––––––––––––––––+</div>
+
+```
+<h3 class="subsec-title">5.2 Layer Responsibilities</h3>
+
+<h4 class="subsubsec-title">5.2.1 Declaration Layer</h4>
+<p>
+  The Declaration Layer defines structured, machine-readable statements describing an Agent
+  prior to execution. The Declaration Layer:
+</p>
+<ul class="spec-list">
+  <li><span class="rfc">MUST</span> be machine-readable,</li>
+  <li><span class="rfc">MUST</span> conform to the normative schema defined in Section 13,</li>
+  <li><span class="rfc">MUST</span> declare required structural elements defined in Section 6.</li>
+</ul>
+<p>The Declaration Layer does not execute actions.</p>
+
+<h4 class="subsubsec-title">5.2.2 Enforcement Layer</h4>
+<p>
+  The Enforcement Layer evaluates, interprets, or applies policies to Agent Manifests.
+  Enforcement mechanisms <span class="rfc">MAY</span> include schema validation, structural
+  coherence checks, organizational policy review, procurement gating, and regulatory review.
+  This specification does not define enforcement logic, scoring systems, or rejection policies.
+</p>
+
+<h4 class="subsubsec-title">5.2.3 Execution Layer</h4>
+<p>
+  The Execution Layer performs runtime behavior. It <span class="rfc">MAY</span> invoke tools,
+  produce outputs, interact with external systems, and cause state transitions. This specification
+  does not constrain runtime implementation except where structural coherence requirements apply
+  to declared autonomy and stopping authority.
+</p>
+
+<h3 class="subsec-title">5.3 Layer Separation Invariant</h3>
+<p>The following invariant applies:</p>
+<ul class="spec-list">
+  <li>Declaration requirements <span class="rfc">MUST</span> be satisfied prior to execution.</li>
+  <li>Execution behavior <span class="rfc">MUST NOT</span> modify the declared Agent Manifest during runtime.</li>
+  <li>Enforcement decisions <span class="rfc">MUST</span> be based on the declared manifest, not inferred runtime behavior.</li>
+</ul>
+```
+
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       SECTION 6
+  ══════════════════════════════════════════ -->
+
+  <section id="s6">
+    <h2 class="sec-title">6. Core Invariants</h2>
+    <p>
+      The following invariants define the minimum structural requirements for the existence of a
+      conformant Agent Manifest. Failure to satisfy any Requirement in this section results in
+      non-conformance. Each Requirement defines a mandatory declaration condition.
+    </p>
+
+```
+<h3 class="subsec-title">6.1 Requirement — Identity Declaration</h3>
+<p>
+  An Agent Manifest <span class="rfc">MUST</span> declare: <code>manifest_version</code>,
+  <code>agent_id</code>, <code>agent_name</code>, <code>agent_version</code>. The
+  <code>manifest_version</code> <span class="rfc">MUST</span> match the version defined by
+  this specification. The <code>agent_id</code> <span class="rfc">MUST</span> uniquely
+  identify the Agent within its declared context.
+</p>
+
+<h3 class="subsec-title">6.2 Requirement — Responsible Party Declaration</h3>
+<p>
+  An Agent Manifest <span class="rfc">MUST</span> declare a Responsible Party. The declaration
+  <span class="rfc">MUST</span> include <code>owner.type</code> and <code>owner.identifier</code>.
+  The Responsible Party <span class="rfc">MUST</span> be identifiable as a discrete accountable entity.
+</p>
+
+<h3 class="subsec-title">6.3 Requirement — Purpose Declaration</h3>
+<p>
+  An Agent Manifest <span class="rfc">MUST</span> declare a bounded purpose including
+  <code>purpose.primary_code</code> and <code>purpose.description</code>. The declared purpose
+  <span class="rfc">MUST</span> define a specific operational domain. Purpose declarations
+  <span class="rfc">MUST NOT</span> be undefined, empty, or aspirational without operational scope.
+</p>
+
+<h3 class="subsec-title">6.4 Requirement — Negative Scope Declaration</h3>
+<p>
+  An Agent Manifest <span class="rfc">MUST</span> declare at least one prohibited action via
+  <code>forbidden_actions</code>. Each entry <span class="rfc">MUST</span> describe a concrete
+  action class the Agent <span class="rfc">MUST NOT</span> perform. Negative Scope
+  <span class="rfc">MUST</span> be explicit. Implicit prohibitions are not sufficient for conformance.
+</p>
+
+<h3 class="subsec-title">6.5 Requirement — Autonomy Level Declaration</h3>
+<p>
+  An Agent Manifest <span class="rfc">MUST</span> declare an Autonomy Level via
+  <code>autonomy.level</code>. The declared value <span class="rfc">MUST</span> be an integer
+  defined by this specification. Autonomy Level semantics are defined in Section 8.
+</p>
+
+<h3 class="subsec-title">6.6 Requirement — Stopping Authority Declaration</h3>
+<p>
+  An Agent Manifest <span class="rfc">MUST</span> declare a Stopping Authority including at
+  least one <code>stoppable_by</code> entity or role and a <code>mechanism</code> describing
+  how interruption occurs. Stopping Authority <span class="rfc">MUST</span> be declared prior
+  to execution.
+</p>
+
+<h3 class="subsec-title">6.7 Requirement — Audit Surface Declaration</h3>
+<p>
+  An Agent Manifest <span class="rfc">MUST</span> declare an Audit Surface including
+  <code>audit_surface.logging</code> and <code>audit_surface.reconstructability</code>. Values
+  <span class="rfc">MUST</span> conform to the allowed enumerations defined in this specification.
+</p>
+
+<h3 class="subsec-title">6.8 Requirement — Data Handling Declaration</h3>
+<p>
+  An Agent Manifest <span class="rfc">MUST</span> declare whether it stores personal data via
+  <code>data_handling.stores_personal_data</code>. If <code>stores_personal_data</code> is
+  <code>true</code>, the manifest <span class="rfc">MUST</span> declare a retention value.
+  Retention values <span class="rfc">MUST</span> be explicit.
+</p>
+
+<h3 class="subsec-title">6.9 Requirement — Contact Declaration</h3>
+<p>
+  An Agent Manifest <span class="rfc">MUST</span> declare a contact email via
+  <code>contact.email</code>. The contact email <span class="rfc">MUST</span> conform to a
+  valid email format as defined in the normative schema.
+</p>
+```
+
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       SECTION 7
+  ══════════════════════════════════════════ -->
+
+  <section id="s7">
+    <h2 class="sec-title">7. Structural Coherence Requirements</h2>
+    <p>
+      Structural Coherence defines minimum logical consistency constraints between declared fields.
+      Violation of a <span class="rfc">MUST</span> requirement in this section results in
+      non-conformance. Violation of a <span class="rfc">SHOULD</span> requirement does not
+      invalidate conformance but indicates elevated review requirement.
+    </p>
+
+```
+<h3 class="subsec-title">7.1 Autonomy and Stopping Authority</h3>
+
+<h4 class="subsubsec-title">7.1.1 Requirement — Actionable Mechanism for Scoped and High Autonomy</h4>
+<p>
+  If <code>autonomy.level</code> is 2 or 3, the declared <code>stopping_authority.mechanism</code>
+  <span class="rfc">MUST</span> describe an actionable interruption mechanism. Generic statements
+  such as "can be stopped" are not sufficient. The mechanism <span class="rfc">MUST</span>
+  describe a concrete interruption method (e.g., service disablement, credential revocation,
+  execution halt).
+</p>
+
+<h4 class="subsubsec-title">7.1.2 Recommendation — Stopping Mechanism for Supervised Autonomy</h4>
+<p>
+  If <code>autonomy.level</code> is 1, a Stopping Authority mechanism
+  <span class="rfc">SHOULD</span> be declared.
+</p>
+
+<h4 class="subsubsec-title">7.1.3 Recommendation — Interruption Stages for High Autonomy</h4>
+<p>
+  If <code>autonomy.level</code> is 3, <code>stopping_authority.stages</code>
+  <span class="rfc">SHOULD</span> be declared.
+</p>
+
+<h3 class="subsec-title">7.2 Autonomy and Audit Surface</h3>
+
+<h4 class="subsubsec-title">7.2.1 Requirement — Prohibited Null Audit for High Autonomy</h4>
+<p>
+  If <code>autonomy.level</code> is 3, the Agent Manifest <span class="rfc">MUST NOT</span>
+  declare both <code>audit_surface.logging = "none"</code> and
+  <code>audit_surface.reconstructability = "none"</code> simultaneously. Declaring no logging
+  and no reconstructability at Level 3 constitutes structural incoherence.
+</p>
+
+<h4 class="subsubsec-title">7.2.2 Recommendation — Minimum Logging for Scoped Autonomy</h4>
+<p>
+  If <code>autonomy.level</code> is 2, <code>audit_surface.logging</code>
+  <span class="rfc">SHOULD NOT</span> be <code>"none"</code>.
+</p>
+
+<h3 class="subsec-title">7.3 Autonomy and Risk Profile</h3>
+
+<h4 class="subsubsec-title">7.3.1 Recommendation — Risk Proportionality</h4>
+<p>
+  If <code>autonomy.level</code> is 3 and <code>risk_profile.level</code> is
+  <code>"low"</code>, the declaration <span class="rfc">SHOULD</span> include explanatory
+  notes in <code>risk_profile.notes</code>. High autonomy with low declared risk warrants
+  contextual justification.
+</p>
+
+<h3 class="subsec-title">7.4 Personal Data and Retention</h3>
+<p>Retention requirements are defined normatively in Section 6.8.</p>
+
+<h4 class="subsubsec-title">7.4.1 Recommendation — Domain-Appropriate Retention</h4>
+<p>
+  If <code>data_handling.stores_personal_data</code> is <code>true</code>, the declared
+  retention period <span class="rfc">SHOULD</span> be appropriate to the operational domain
+  of the Agent.
+</p>
+```
+
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       SECTION 8
+  ══════════════════════════════════════════ -->
+
+  <section id="s8">
+    <h2 class="sec-title">8. Autonomy Model</h2>
+
+```
+<h3 class="subsec-title">8.1 Autonomy Level Model</h3>
+<p>
+  Autonomy Level is a declared structural variable representing the execution independence of
+  an Agent. Autonomy Level is declared explicitly via <code>autonomy.level</code>, is not
+  inferred by this specification, does not measure intelligence or performance, and describes
+  execution authority posture. Classification <span class="rfc">MUST</span> be determined
+  according to the criteria defined in Section 8.2.
+</p>
+
+<h3 class="subsec-title">8.2 Level Definitions</h3>
+
+<h4 class="subsubsec-title">8.2.0 Level 0 — No Execution</h4>
+<p>
+  An Agent <span class="rfc">SHALL</span> be classified as Level 0 if and only if the Agent
+  does not execute actions affecting external systems, and produces advisory, descriptive, or
+  informational output only.
+</p>
+<p>
+  <em>Necessary condition:</em> No side effects external to the Agent process.<br/>
+  <em>Sufficient condition:</em> All outputs require external human or system execution to
+  produce real-world effect.
+</p>
+
+<h4 class="subsubsec-title">8.2.1 Level 1 — Supervised Execution</h4>
+<p>
+  An Agent <span class="rfc">SHALL</span> be classified as Level 1 if and only if the Agent
+  may perform execution actions and each action requires explicit human or external system
+  confirmation prior to effect.
+</p>
+<p>
+  <em>Necessary condition:</em> Execution is conditional on per-action approval.<br/>
+  <em>Sufficient condition:</em> No autonomous execution occurs without discrete approval per operation.
+</p>
+
+<h4 class="subsubsec-title">8.2.2 Level 2 — Scoped Autonomy</h4>
+<p>
+  An Agent <span class="rfc">SHALL</span> be classified as Level 2 if and only if the Agent
+  may execute actions without per-step human approval, execution is limited to predefined
+  workflows or bounded operational scope, and execution authority is constrained by declared
+  purpose and negative scope.
+</p>
+<p>
+  <em>Necessary conditions:</em> Autonomous execution within defined scope. Scope constraints are externally bounded.<br/>
+  <em>Sufficient condition:</em> The Agent cannot extend its operational domain without modification of its declaration.
+</p>
+
+<h4 class="subsubsec-title">8.2.3 Level 3 — High Autonomy</h4>
+<p>
+  An Agent <span class="rfc">SHALL</span> be classified as Level 3 if and only if the Agent
+  may execute actions without per-step approval, may initiate actions within declared scope
+  independently, and execution may produce material external effects without synchronous
+  human confirmation.
+</p>
+<p>
+  <em>Necessary conditions:</em> Independent action initiation. Execution authority not limited to fixed workflow sequences.<br/>
+  <em>Sufficient condition:</em> The Agent can determine timing and sequencing of actions within declared scope.
+</p>
+
+<h3 class="subsec-title">8.3 Classification Reference Table (Normative)</h3>
+<p>This table is normative and <span class="rfc">SHALL</span> be used for classification reference.</p>
+<table class="spec-table">
+  <thead>
+    <tr>
+      <th>Level</th>
+      <th>Executes Actions</th>
+      <th>Per-Action Approval</th>
+      <th>Independent Initiation</th>
+      <th>Scope Bound</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>0</td><td>No</td><td>N/A</td><td>No</td><td>N/A</td></tr>
+    <tr><td>1</td><td>Yes</td><td>Yes</td><td>No</td><td>Yes</td></tr>
+    <tr><td>2</td><td>Yes</td><td>No</td><td>No (workflow-bound)</td><td>Yes</td></tr>
+    <tr><td>3</td><td>Yes</td><td>No</td><td>Yes</td><td>Yes</td></tr>
+  </tbody>
+</table>
+
+<h3 class="subsec-title">8.4 Classification Responsibility</h3>
+<p>
+  Autonomy Level is declared by the Responsible Party. The Responsible Party
+  <span class="rfc">MUST</span> classify the Agent according to the criteria defined in
+  Section 8.2. This specification does not define a mechanism for external verification of
+  declared Autonomy Level. Enforcement Layer systems <span class="rfc">MAY</span> evaluate
+  declared Autonomy Level for coherence.
+</p>
+```
+
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       SECTION 9
+  ══════════════════════════════════════════ -->
+
+  <section id="s9">
+    <h2 class="sec-title">9. Stopping Authority Requirements</h2>
+
+```
+<h3 class="subsec-title">9.1 Stopping Authority Model</h3>
+<p>
+  Stopping Authority defines the declared capacity to interrupt, disable, or suspend an Agent's
+  execution. It exists at the Declaration Layer and describes interruption capability prior to
+  execution. Stopping Authority does not itself perform interruption — it declares how
+  interruption may occur and who is authorized to initiate it.
+</p>
+
+<h3 class="subsec-title">9.2 Stoppable By</h3>
+<p>
+  The <code>stopping_authority.stoppable_by</code> field declares the entity or role authorized
+  to initiate interruption. Each entry:
+</p>
+<ul class="spec-list">
+  <li><span class="rfc">MUST</span> be identifiable as a discrete role, entity, or system,</li>
+  <li><span class="rfc">MUST NOT</span> be undefined or generic (e.g., "someone", "administrator" without context).</li>
+</ul>
+<p>
+  The declaration <span class="rfc">MAY</span> reference organizational roles, system operators,
+  Responsible Party, or dedicated oversight entities. This specification does not require external
+  validation of declared entities.
+</p>
+
+<h3 class="subsec-title">9.3 Mechanism</h3>
+<p>
+  The <code>stopping_authority.mechanism</code> field declares the technical method by which
+  interruption occurs. An actionable mechanism <span class="rfc">MUST</span>:
+</p>
+<ul class="spec-list">
+  <li>Describe a concrete interruption method,</li>
+  <li>Indicate how execution is halted, disabled, or prevented,</li>
+  <li>Be technically realizable within the Agent's operational context.</li>
+</ul>
+<p>
+  The mechanism declaration <span class="rfc">MUST NOT</span> consist solely of generic
+  statements such as "Can be stopped by admin", "Manual override", or "System can be disabled".
+  Examples of actionable mechanisms include: revocation of execution credentials or API tokens;
+  disabling execution service via administrative interface; halting execution process at
+  orchestration layer; policy-based denial at runtime gate. The declaration
+  <span class="rfc">MUST</span> describe the interruption vector, not merely the existence
+  of authority.
+</p>
+
+<h3 class="subsec-title">9.4 Stages</h3>
+<p>
+  The <code>stopping_authority.stages</code> field is <span class="rfc">OPTIONAL</span>. If
+  declared, it describes the execution stages during which interruption may occur. Valid stage
+  values <span class="rfc">MAY</span> include: <code>pre-execution</code>,
+  <code>mid-execution</code>, <code>post-execution</code>. Stage declarations clarify
+  interruption timing but do not alter execution semantics.
+</p>
+
+<h3 class="subsec-title">9.5 Relationship to Autonomy Level</h3>
+<p>
+  Stopping Authority coherence requirements relative to Autonomy Level are defined in Section 7.1.
+  Section 9 defines semantic requirements only and does not restate autonomy-dependent constraints.
+</p>
+```
+
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       SECTION 10
+  ══════════════════════════════════════════ -->
+
+  <section id="s10">
+    <h2 class="sec-title">10. Audit Surface Model</h2>
+
+```
+<h3 class="subsec-title">10.1 Audit Surface Model</h3>
+<p>
+  The Audit Surface defines the declared observability posture of an Agent's execution behavior.
+  The declaration consists of <code>audit_surface.logging</code>,
+  <code>audit_surface.reconstructability</code>, optional
+  <code>audit_surface.opacity_declared</code>, and optional explanatory notes. Audit Surface
+  exists at the Declaration Layer and does not enforce runtime logging behavior.
+</p>
+
+<h3 class="subsec-title">10.2 Logging</h3>
+<p>
+  The <code>audit_surface.logging</code> field declares the level of execution event recording.
+  Permitted values: <code>"none"</code>, <code>"basic"</code>, <code>"detailed"</code>.
+</p>
+
+<h4 class="subsubsec-title">10.2.1 none</h4>
+<p>No execution events are recorded. The Agent does not produce structured logs for external audit purposes.</p>
+
+<h4 class="subsubsec-title">10.2.2 basic</h4>
+<p>
+  The Agent records high-level execution events sufficient to identify invocation occurrence,
+  action type, timestamp, and outcome status. Basic logging does not require parameter-level
+  or state-level trace detail.
+</p>
+
+<h4 class="subsubsec-title">10.2.3 detailed</h4>
+<p>
+  The Agent records execution events with sufficient granularity to enable parameter-level
+  traceability, decision path identification (where available), correlation identifiers, and
+  action sequencing. Detailed logging does not imply full reconstructability unless declared
+  separately.
+</p>
+
+<h3 class="subsec-title">10.3 Reconstructability</h3>
+<p>
+  The <code>audit_surface.reconstructability</code> field declares whether execution events
+  can be reconstructed after occurrence. Permitted values: <code>"none"</code>,
+  <code>"partial"</code>, <code>"full"</code>.
+</p>
+
+<h4 class="subsubsec-title">10.3.1 none</h4>
+<p>Execution events cannot be reconstructed after occurrence.</p>
+
+<h4 class="subsubsec-title">10.3.2 partial</h4>
+<p>Some execution events can be reconstructed, but reconstruction may be incomplete or limited in scope.</p>
+
+<h4 class="subsubsec-title">10.3.3 full</h4>
+<p>
+  Execution events can be reconstructed to the extent necessary to determine what action
+  occurred, when it occurred, under which declared scope, and by which execution pathway.
+  Full reconstructability does not imply deterministic replay capability unless explicitly declared.
+</p>
+
+<h3 class="subsec-title">10.4 Opacity Declaration</h3>
+<p>
+  The <code>audit_surface.opacity_declared</code> field indicates whether the Agent contains
+  execution behavior that cannot be structurally reconstructed independent of logging
+  configuration. Opacity is required to be declared when the Agent contains components whose
+  internal decision processes are not reproducible or externally inspectable, or when
+  reconstruction is structurally impossible due to system architecture, model design, or
+  third-party constraints.
+</p>
+<p>
+  Opacity declaration is distinct from logging level. An Agent <span class="rfc">MAY</span>
+  declare detailed logging and full reconstructability while still declaring opacity if internal
+  reasoning cannot be independently reproduced. An opacity declaration
+  <span class="rfc">MUST NOT</span> be implicit. If structural opacity exists and is not
+  declared, the Agent Manifest is materially misleading. Explanatory notes
+  <span class="rfc">SHOULD</span> clarify the source of opacity.
+</p>
+
+<h3 class="subsec-title">10.5 Relationship to Autonomy Level</h3>
+<p>
+  Audit Surface coherence constraints relative to Autonomy Level are defined in Section 7.2.
+  Section 10 defines semantic requirements only.
+</p>
+```
+
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       SECTION 11  — PATCH 1 APPLIED
+  ══════════════════════════════════════════ -->
+
+  <section id="s11">
+    <h2 class="sec-title">11. Data Handling Model</h2>
+
+```
+<h3 class="subsec-title">11.1 Data Handling Model</h3>
+<p>
+  The Data Handling declaration defines whether an Agent stores personal data and, if so, for
+  how long. It operates at the Declaration Layer and does not determine legal compliance,
+  regulatory adequacy, or jurisdictional sufficiency. This specification defines declaration
+  semantics only.
+</p>
+
+<h3 class="subsec-title">11.2 stores_personal_data</h3>
+<p>
+  The <code>data_handling.stores_personal_data</code> field is a boolean value.
+  <code>true</code> indicates that the Agent stores, persists, or retains personal data beyond
+  transient processing. <code>false</code> indicates that the Agent does not persist personal
+  data beyond transient execution context.
+</p>
+<p>
+  For the purposes of this specification, personal data refers to data that identifies or can
+  reasonably be linked to an individual person. This specification does not define
+  jurisdictional interpretations of personal data. If <code>stores_personal_data</code> is
+  <code>true</code>, a retention value <span class="rfc">MUST</span> be declared.
+</p>
+
+<!-- PATCH 1: Updated retention semantics -->
+<h3 class="subsec-title">11.3 Retention Semantics</h3>
+<p>
+  The <code>data_handling.retention</code> field declares the retention duration or category.
+  Retention values <span class="rfc">MUST</span> be explicit. The following base values are defined:
+</p>
+<ul class="spec-list">
+  <li><code>"none"</code> — No data retention beyond execution context.</li>
+  <li><code>"temporary_session_only"</code> — Data retained only for the duration of the current session.</li>
+  <li>ISO 8601 duration (e.g., <code>"P30D"</code>, <code>"P1Y"</code>, <code>"PT12H"</code>) — Specific retention period.</li>
+</ul>
+<p>
+  Free-form strings <span class="rfc">MUST NOT</span> be used. Retention values
+  <span class="rfc">MUST</span> be machine-readable and unambiguous. Complete ISO 8601
+  duration validation is delegated to the Enforcement Layer; the schema pattern constraint
+  provides structural filtering only.
+</p>
+
+<h3 class="subsec-title">11.4 Retention Format Convention</h3>
+<p>
+  If a specific retention duration is declared, it <span class="rfc">MUST</span> conform to
+  ISO 8601 duration format. Examples of valid values: <code>"P30D"</code> (30 days),
+  <code>"P1Y"</code> (1 year), <code>"P6M"</code> (6 months), <code>"PT12H"</code>
+  (12 hours). Free-form strings such as <code>"30 days"</code>, <code>"short term"</code>,
+  <code>"temporary"</code>, or <code>"one month"</code> <span class="rfc">MUST NOT</span>
+  be used. Retention values <span class="rfc">MUST</span> be machine-readable and unambiguous.
+</p>
+
+<h3 class="subsec-title">11.5 Implicit Retention Prohibition</h3>
+<p>
+  If <code>stores_personal_data</code> is declared as <code>false</code>, the Agent
+  <span class="rfc">MUST NOT</span> declare any retention value other than <code>"none"</code>.
+  If data persistence exists and is not declared, the Agent Manifest is materially misleading.
+  Data retention <span class="rfc">MUST NOT</span> be implicit.
+</p>
+```
+
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       SECTION 12
+  ══════════════════════════════════════════ -->
+
+  <section id="s12">
+    <h2 class="sec-title">12. Structural Validity and Conformance Model</h2>
+
+```
+<h3 class="subsec-title">12.1 Conformance Model</h3>
+<p>
+  Conformance refers to adherence to the normative requirements defined in this specification.
+  An Agent Manifest <span class="rfc">SHALL</span> be evaluated for conformance based on
+  Structural Validity (Section 4.10), compliance with all <span class="rfc">MUST</span>
+  requirements defined in Sections 6 and 7, and compliance with semantic requirements defined
+  in Sections 8–11. This specification defines declaration conformance only — it does not
+  define runtime correctness or regulatory compliance.
+</p>
+
+<h3 class="subsec-title">12.2 Conformance Profiles</h3>
+
+<h4 class="subsubsec-title">12.2.1 Minimal Conformance</h4>
+<p>
+  An Agent Manifest achieves Minimal Conformance if it satisfies all
+  <span class="rfc">MUST</span> requirements defined in this specification and is structurally
+  valid under the normative schema (Section 13). Minimal Conformance constitutes the minimum
+  threshold for claiming conformity. Violation of any <span class="rfc">MUST</span> requirement
+  results in non-conformance.
+</p>
+
+<h4 class="subsubsec-title">12.2.2 Full Conformance</h4>
+<p>
+  An Agent Manifest achieves Full Conformance if it satisfies all
+  <span class="rfc">MUST</span> requirements and all <span class="rfc">SHOULD</span>
+  requirements defined in this specification. Violation of a
+  <span class="rfc">SHOULD</span> requirement does not invalidate Minimal Conformance but
+  prevents qualification as Full Conformance. Full Conformance represents the recommended
+  declaration posture.
+</p>
+
+<h3 class="subsec-title">12.3 Conformance Determination</h3>
+<p>
+  Conformance <span class="rfc">MAY</span> be determined by automated schema validation tools,
+  structural coherence validators, organizational review processes, or procurement evaluation
+  systems. This specification does not mandate a specific determination mechanism. The
+  Responsible Party declares conformance. Enforcement Layer systems
+  <span class="rfc">MAY</span> independently evaluate conformance.
+</p>
+
+<h3 class="subsec-title">12.4 Non-Conformance</h3>
+<p>
+  An Agent Manifest is non-conformant if: required fields defined in Section 6 are absent;
+  any <span class="rfc">MUST</span> requirement in Sections 7–11 is violated; the manifest
+  fails normative schema validation (Section 13); or material misrepresentation exists in
+  declared fields. Non-conformance applies to declaration structure only.
+</p>
+
+<h3 class="subsec-title">12.5 Relationship to Enforcement Layer</h3>
+<p>
+  The Declaration Layer defines structural conformance. The Enforcement Layer
+  <span class="rfc">MAY</span> reject non-conformant manifests, flag
+  <span class="rfc">SHOULD</span> violations, apply policy-based gating, or apply regulatory
+  interpretation. This specification does not prescribe enforcement actions.
+</p>
+```
+
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       SECTION 13  — PATCH 2 APPLIED
+  ══════════════════════════════════════════ -->
+
+  <section id="s13">
+    <h2 class="sec-title">13. Normative JSON Schema</h2>
+    <p>
+      The normative JSON Schema for Agent Manifest v1.0 is defined in Annex A. Annex A forms an
+      integral and normative part of this specification. All implementations claiming conformance
+      <span class="rfc">MUST</span> validate Agent Manifest documents against the JSON Schema
+      defined in Annex A. The JSON Schema defines required fields, field types, enumerated values,
+      format constraints, and structural validation requirements.
+    </p>
+
+```
+<h3 class="subsec-title">13.1 Precedence Rule</h3>
+<p>
+  In the event of conflict between normative prose and the JSON Schema defined in Annex A,
+  normative prose <span class="rfc">SHALL</span> prevail except with respect to field types,
+  enumerated values, and format constraints, for which the JSON Schema is authoritative.
+</p>
+
+<!-- PATCH 2: extensions object added as valid alternative -->
+<h3 class="subsec-title">13.2 Extension Convention</h3>
+<p>
+  This specification permits additional fields at the root level via
+  <code>"additionalProperties": true</code>. Two mechanisms are available and both are valid
+  in v1.0:
+</p>
+<ul class="spec-list">
+  <li>
+    <strong>x- prefix</strong>: Non-normative extension fields at the root level
+    <span class="rfc">SHOULD</span> use the <code>"x-"</code> prefix
+    (e.g., <code>"x-sector-profile": "finance-v1"</code>). Use of the <code>"x-"</code>
+    prefix does not alter conformance status.
+  </li>
+  <li>
+    <strong>extensions object</strong>: Implementations <span class="rfc">MAY</span>
+    alternatively group non-normative extension data under a dedicated
+    <code>"extensions"</code> object at the root level. The <code>extensions</code> object
+    is defined as an optional property in the normative schema (Annex A). Both the
+    <code>"x-"</code> prefix convention and the <code>extensions</code> object are valid and
+    complementary in v1.0.
+  </li>
+</ul>
+<p>
+  Implementations <span class="rfc">MUST NOT</span> redefine or override normative fields
+  defined in this specification via either extension mechanism.
+</p>
+```
+
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       SECTION 14
+  ══════════════════════════════════════════ -->
+
+  <section id="s14">
+    <h2 class="sec-title">14. Security Considerations</h2>
+    <p>This specification defines a declaration framework. It does not define enforcement, runtime controls, or security guarantees.</p>
+
+```
+<h3 class="subsec-title">14.1 Declaration Does Not Imply Enforcement</h3>
+<p>
+  A conformant Agent Manifest <span class="rfc">MAY</span> declare constraints, risk posture,
+  stopping authority, audit surface, or data handling practices. This declaration
+  <span class="rfc">MUST NOT</span> be interpreted as proof of enforcement, evidence of
+  operational compliance, or cryptographic attestation. The specification defines structural
+  legitimacy, not runtime trustworthiness.
+</p>
+
+<h3 class="subsec-title">14.2 False or Misleading Declarations</h3>
+<p>
+  An Agent Manifest <span class="rfc">MAY</span> be syntactically valid and structurally
+  conformant while being materially false or misleading. This specification does not define a
+  mechanism for verifying truthfulness and does not guarantee alignment between declaration and
+  runtime behavior. Consumers <span class="rfc">MUST</span> treat declarations as
+  representations provided by the Responsible Party.
+</p>
+
+<h3 class="subsec-title">14.3 Absence of Cryptographic Binding</h3>
+<p>
+  This version of the specification does not require digital signatures, cryptographic proof of
+  authorship, or integrity verification mechanisms. Such mechanisms
+  <span class="rfc">MAY</span> be defined in future extensions. Until such mechanisms are
+  adopted, manifests <span class="rfc">SHOULD</span> be distributed via secure transport
+  mechanisms (e.g., HTTPS) to mitigate tampering risks.
+</p>
+
+<h3 class="subsec-title">14.4 Extension Field Risks</h3>
+<p>
+  Use of <code>"x-"</code> extension fields introduces interoperability and security
+  considerations. Extensions <span class="rfc">MUST NOT</span> redefine normative fields,
+  <span class="rfc">MUST NOT</span> conflict semantically with mandatory declarations, and
+  <span class="rfc">SHOULD</span> be clearly documented by the declaring party. Consumers
+  <span class="rfc">MUST</span> ignore unknown <code>"x-"</code> fields unless explicitly
+  supported.
+</p>
+
+<h3 class="subsec-title">14.5 Denial by Default Interpretation</h3>
+<p>
+  Where required fields are absent, or coherence requirements are violated, the manifest is
+  non-conformant. Non-conformance <span class="rfc">MUST</span> be interpreted as absence of
+  declared authority. Conformant consumers <span class="rfc">SHOULD</span> treat non-conformant
+  manifests as structurally untrusted.
+</p>
+
+<h3 class="subsec-title">14.6 Risk of Over-Interpretation</h3>
+<p>
+  Consumers <span class="rfc">MUST NOT</span> infer regulatory compliance, ethical alignment,
+  safety certification, or legal authorization solely from the presence of a conformant Agent
+  Manifest. An Agent Manifest provides structured disclosure. It does not provide certification.
+</p>
+```
+
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       SECTION 15
+  ══════════════════════════════════════════ -->
+
+  <section id="s15">
+    <h2 class="sec-title">15. Relationship to Existing Standards</h2>
+    <p>
+      This specification defines a declaration primitive for AI agents. It does not define a
+      governance framework, risk assessment methodology, or management system. The following
+      standards and regulatory frameworks are relevant to its positioning.
+    </p>
+
+```
+<h3 class="subsec-title">15.1 EU AI Act (Regulation (EU) 2024/1689)</h3>
+<p>
+  The EU Artificial Intelligence Act establishes a risk-based classification system for AI
+  systems. Agent Manifest does not implement EU AI Act requirements, does not determine
+  regulatory classification, and does not substitute legal compliance obligations. The
+  <code>risk_profile</code> field is a self-declared structural disclosure. An Agent Manifest
+  <span class="rfc">MAY</span> be used as a supporting artifact within EU AI Act compliance
+  processes but does not satisfy regulatory obligations by itself. The relationship is complementary.
+</p>
+
+<h3 class="subsec-title">15.2 NIST AI Risk Management Framework (AI RMF 1.0, 2023)</h3>
+<p>
+  The NIST AI RMF defines a governance-oriented framework organized around Govern, Map,
+  Measure, and Manage. An Agent Manifest <span class="rfc">MAY</span> be incorporated as an
+  artifact within a NIST AI RMF implementation, particularly within the Govern and Map
+  functions. This specification does not implement or replace the NIST AI RMF. The relationship
+  is compatible and complementary.
+</p>
+
+<h3 class="subsec-title">15.3 ISO/IEC 42001:2023 (AI Management Systems)</h3>
+<p>
+  ISO/IEC 42001 defines requirements for establishing and maintaining an AI Management System.
+  Agent Manifest is not a management system standard and does not define process requirements
+  or organizational controls. An organization operating under ISO/IEC 42001
+  <span class="rfc">MAY</span> require Agent Manifests as documentation artifacts. The
+  relationship is orthogonal but compatible.
+</p>
+
+<h3 class="subsec-title">15.4 IEEE 7000 Series (Ethically Aligned Design)</h3>
+<p>
+  The IEEE 7000 series addresses ethical considerations in system design including
+  transparency, accountability, and human oversight. Agent Manifest does not define ethical
+  principles or value alignment requirements. It provides a structured declaration surface
+  through which such principles <span class="rfc">MAY</span> be disclosed. The relationship
+  is distinct in scope.
+</p>
+
+<h3 class="subsec-title">15.5 RFC 2119 and RFC 8174</h3>
+<p>
+  This specification uses the normative language conventions defined in RFC 2119 and RFC 8174.
+  Normative keywords <span class="rfc">MUST</span> be interpreted as described therein.
+</p>
+
+<h3 class="subsec-title">15.6 JSON Schema Draft 2020-12</h3>
+<p>
+  Annex A references JSON Schema Draft 2020-12. Field types, enumerations, and structural
+  validation constraints are defined according to that standard.
+</p>
+```
+
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       SECTION 16
+  ══════════════════════════════════════════ -->
+
+  <section id="s16">
+    <h2 class="sec-title">16. IANA Considerations</h2>
+    <p>
+      This specification is not published through the IETF Standards Process and does not request
+      any IANA registry allocations. However, it introduces identifiers that require stable treatment.
+    </p>
+
+```
+<h3 class="subsec-title">16.1 JSON Schema Identifier</h3>
+<p>The canonical identifier for the Agent Manifest v1.0 JSON Schema defined in Annex A is:</p>
+<pre><code>https://agent-manifest-spec.org/spec/v1.0/schema.json</code></pre>
+<p>
+  This URI is normative. Implementations validating Agent Manifest documents
+  <span class="rfc">SHOULD</span> reference this URI to identify the applicable schema version.
+  Future revisions <span class="rfc">MUST</span> use distinct and versioned schema identifiers.
+</p>
+
+<h3 class="subsec-title">16.2 Media Type</h3>
+<p>
+  An Agent Manifest document is a JSON document. The recommended media type is
+  <code>application/json</code>. This specification does not define or register a dedicated
+  media type. A specific media type such as <code>application/agent-manifest+json</code>
+  <span class="rfc">MAY</span> be defined and registered in a future revision. Until such
+  registration occurs, implementations <span class="rfc">SHOULD</span> treat Agent Manifest
+  documents as standard JSON documents.
+</p>
+```
+
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       SECTION 17
+  ══════════════════════════════════════════ -->
+
+  <section id="s17">
+    <h2 class="sec-title">17. References</h2>
+
+```
+<h3 class="subsec-title">17.1 Normative References</h3>
+<p>
+  [RFC2119] Bradner, S., "Key words for use in RFCs to Indicate Requirement Levels,"
+  RFC 2119, March 1997.
+</p>
+<p>
+  [RFC8174] Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words,"
+  RFC 8174, May 2017.
+</p>
+<p>
+  [JSON-SCHEMA-2020-12] JSON Schema Core and Validation Specifications, Draft 2020-12, IETF,
+  2020. <code>https://json-schema.org/draft/2020-12/</code>
+</p>
+
+<h3 class="subsec-title">17.2 Informative References</h3>
+<p>
+  [EU-AI-ACT-2024] European Parliament and Council of the European Union. Regulation (EU)
+  2024/1689 laying down harmonised rules on Artificial Intelligence (Artificial Intelligence
+  Act), 2024.
+</p>
+<p>
+  [NIST-AI-RMF-2023] National Institute of Standards and Technology (NIST). Artificial
+  Intelligence Risk Management Framework (AI RMF 1.0), January 2023.
+</p>
+<p>
+  [ISO-IEC-42001-2023] International Organization for Standardization. ISO/IEC 42001:2023
+  — Artificial Intelligence Management System.
+</p>
+<p>
+  [IEEE-7000] Institute of Electrical and Electronics Engineers. IEEE 7000 Series —
+  Standards for Ethically Aligned Design, various publications.
+</p>
+```
+
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       ANNEX A — PATCHES 3, 4, 5 APPLIED
+  ══════════════════════════════════════════ -->
+
+  <div class="annex-banner">Annex A — Normative</div>
+
+  <section id="annex-a">
+    <h2 class="sec-title">Annex A — Normative JSON Schema</h2>
+    <p class="normative-note">This annex is normative.</p>
+
+```
+<!-- PATCHES 3 (additionalProperties: true on nested objects),
+              4 (retention anyOf),
+              5 (capabilities, language, extensions fields) -->
+<pre><code>{
+```
+
+“$schema”: “https://json-schema.org/draft/2020-12/schema”,
+“$id”: “https://agent-manifest-spec.org/spec/v1.0/schema.json”,
+“title”: “Agent Manifest v1.0”,
+“type”: “object”,
+“additionalProperties”: true,
+“required”: [
+“manifest_version”, “agent_id”, “agent_name”, “agent_version”,
+“owner”, “purpose”, “forbidden_actions”, “autonomy”,
+“risk_profile”, “data_handling”, “stopping_authority”,
+“audit_surface”, “contact”
+],
+“properties”: {
+“manifest_version”: {
+“type”: “string”,
+“const”: “1.0”
+},
+“agent_id”: {
+“type”: “string”,
+“minLength”: 3,
+“maxLength”: 128,
+“pattern”: “^[a-zA-Z0-9.*-]+$”
+},
+“agent_name”: {
+“type”: “string”,
+“minLength”: 1,
+“maxLength”: 120
+},
+“agent_version”: {
+“type”: “string”,
+“minLength”: 1,
+“maxLength”: 64
+},
+“owner”: {
+“type”: “object”,
+“required”: [“type”, “identifier”],
+“additionalProperties”: true,
+“properties”: {
+“type”: {
+“type”: “string”,
+“enum”: [“individual”, “organization”, “system”]
+},
+“identifier”: {
+“type”: “string”,
+“minLength”: 1,
+“maxLength”: 200
+}
+}
+},
+“purpose”: {
+“type”: “object”,
+“required”: [“primary_code”, “description”],
+“additionalProperties”: true,
+“properties”: {
+“primary_code”: {
+“type”: “string”,
+“minLength”: 2,
+“maxLength”: 64,
+“pattern”: “^[a-z0-9.*-]+$”
+},
+“description”: {
+“type”: “string”,
+“minLength”: 10,
+“maxLength”: 1000
+}
+}
+},
+“forbidden_actions”: {
+“type”: “array”,
+“minItems”: 1,
+“items”: {
+“type”: “string”,
+“minLength”: 2,
+“maxLength”: 120
+}
+},
+“autonomy”: {
+“type”: “object”,
+“required”: [“level”],
+“additionalProperties”: true,
+“properties”: {
+“level”: {
+“type”: “integer”,
+“minimum”: 0,
+“maximum”: 3
+}
+}
+},
+“risk_profile”: {
+“type”: “object”,
+“required”: [“level”],
+“additionalProperties”: true,
+“properties”: {
+“level”: {
+“type”: “string”,
+“enum”: [“low”, “medium”, “high”]
+},
+“notes”: {
+“type”: “string”,
+“maxLength”: 1000
+}
+}
+},
+“data_handling”: {
+“type”: “object”,
+“required”: [“stores_personal_data”],
+“additionalProperties”: true,
+“properties”: {
+“stores_personal_data”: { “type”: “boolean” },
+“retention”: {
+“description”: “Valid values: ‘none’, ‘temporary_session_only’, or ISO 8601 duration.”,
+“anyOf”: [
+{ “enum”: [“none”, “temporary_session_only”] },
+{
+“type”: “string”,
+“maxLength”: 120,
+“pattern”: “^P(?!$)(\d+Y)?(\d+M)?(\d+D)?(T(\d+H)?(\d+M)?(\d+S)?)?$”
+}
+]
+}
+},
+“allOf”: [
+{
+“if”: {
+“properties”: {
+“stores_personal_data”: { “const”: true }
+}
+},
+“then”: {
+“required”: [“retention”]
+}
+}
+]
+},
+“stopping_authority”: {
+“type”: “object”,
+“required”: [“stoppable_by”, “mechanism”],
+“additionalProperties”: true,
+“properties”: {
+“stoppable_by”: {
+“type”: “array”,
+“minItems”: 1,
+“items”: {
+“type”: “string”,
+“minLength”: 2,
+“maxLength”: 120
+}
+},
+“mechanism”: {
+“type”: “string”,
+“minLength”: 5,
+“maxLength”: 300
+},
+“stages”: {
+“type”: “array”,
+“items”: {
+“type”: “string”,
+“enum”: [“pre-execution”, “mid-execution”, “post-execution”]
+}
+}
+}
+},
+“audit_surface”: {
+“type”: “object”,
+“required”: [“logging”, “reconstructability”],
+“additionalProperties”: true,
+“properties”: {
+“logging”: {
+“type”: “string”,
+“enum”: [“none”, “basic”, “detailed”]
+},
+“reconstructability”: {
+“type”: “string”,
+“enum”: [“none”, “partial”, “full”]
+},
+“opacity_declared”: { “type”: “boolean” },
+“notes”: {
+“type”: “string”,
+“maxLength”: 1000
+}
+}
+},
+“contact”: {
+“type”: “object”,
+“required”: [“email”],
+“additionalProperties”: true,
+“properties”: {
+“email”: {
+“type”: “string”,
+“format”: “email”,
+“maxLength”: 254
+}
+}
+},
+“capabilities”: {
+“description”: “Optional. Declared functional capabilities of the Agent.”,
+“type”: “array”,
+“items”: {
+“type”: “string”,
+“minLength”: 1,
+“maxLength”: 200
+}
+},
+“language”: {
+“description”: “Optional. Declared language posture of the Agent.”,
+“type”: “object”,
+“additionalProperties”: true,
+“properties”: {
+“primary”: {
+“type”: “string”,
+“description”: “BCP 47 language tag for the Agent’s primary operating language.”,
+“minLength”: 2,
+“maxLength”: 35
+},
+“supported”: {
+“type”: “array”,
+“description”: “BCP 47 language tags for additional supported languages.”,
+“items”: {
+“type”: “string”,
+“minLength”: 2,
+“maxLength”: 35
+}
+}
+}
+},
+“extensions”: {
+“description”: “Optional. Structured container for non-normative extension data. Compatible with x- prefix convention (Section 13.2). Implementations MUST NOT use this object to redefine or override normative fields.”,
+“type”: “object”,
+“additionalProperties”: true
+}
+}
+}</code></pre>
+
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       ANNEX B
+  ══════════════════════════════════════════ -->
+
+  <div class="annex-banner">Annex B — Non-Normative</div>
+
+  <section id="annex-b">
+    <h2 class="sec-title">Annex B — Conformant Example (Non-Normative)</h2>
+    <p class="normative-note">This annex is informative. The following example illustrates a structurally conformant Agent Manifest under this specification.</p>
+
+```
+<pre><code>{
+```
+
+“manifest_version”: “1.0”,
+“agent_id”: “finance-agent.alpha-01”,
+“agent_name”: “Financial Analysis Agent”,
+“agent_version”: “2.3.0”,
+“owner”: {
+“type”: “organization”,
+“identifier”: “Acme Financial Systems Ltd.”
+},
+“purpose”: {
+“primary_code”: “financial.analysis”,
+“description”: “Provides automated financial data analysis and generates structured investment risk summaries.”
+},
+“forbidden_actions”: [
+“execute_transactions”,
+“access_external_accounts_without_authorization”
+],
+“autonomy”: {
+“level”: 2
+},
+“risk_profile”: {
+“level”: “medium”,
+“notes”: “Generates financial insights but does not execute transactions.”
+},
+“data_handling”: {
+“stores_personal_data”: true,
+“retention”: “P30D”
+},
+“stopping_authority”: {
+“stoppable_by”: [
+“Acme Financial Systems Ltd. Compliance Team”
+],
+“mechanism”: “Execution token revocation via administrative control panel”,
+“stages”: [“pre-execution”, “mid-execution”]
+},
+“audit_surface”: {
+“logging”: “basic”,
+“reconstructability”: “partial”,
+“opacity_declared”: true,
+“notes”: “Model inference behavior cannot be independently reconstructed beyond logged inputs and outputs.”
+},
+“contact”: {
+“email”: “[email protected]”
+},
+“language”: {
+“primary”: “en”,
+“supported”: [“en”, “es”]
+},
+“capabilities”: [
+“financial-data-analysis”,
+“risk-summary-generation”
+],
+“extensions”: {
+“sector-profile”: “finance-v1”
+},
+“x-sector-profile”: “finance-v1”
+}</code></pre>
+
+```
+<p>This example satisfies:</p>
+<ul class="spec-list">
+  <li>All mandatory fields defined in Section 6,</li>
+  <li>Structural coherence requirements of Section 7,</li>
+  <li>Minimal conformance profile as defined in Section 12.2.1,</li>
+  <li>Extension convention via both <code>"x-"</code> prefixed field and <code>extensions</code> object (Section 13.2),</li>
+  <li>Opacity disclosure as defined in Section 10.4,</li>
+  <li>Optional <code>language</code> and <code>capabilities</code> declarations (Annex A).</li>
+</ul>
+```
+
+  </section>
+
+  <footer>
+    <p>Agent Manifest Core Declarative Specification v1.0 — Open Specification, Standards Track</p>
+    <p>Hernán Alfredo Capucci — Independent Research — February 2026</p>
+    <p style="margin-top:0.5rem; font-size:0.75rem;">
+      Schema identifier: <code>https://agent-manifest-spec.org/spec/v1.0/schema.json</code>
+    </p>
+  </footer>
+
+</div>
+</body>
+</html>
