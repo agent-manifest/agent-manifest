@@ -54,7 +54,7 @@ This framework evaluates a target system using only:
 
 1. The system’s **Agent Manifest** (e.g., `manifest.json`)
 2. Any referenced governance documentation (optional)
-3. The schema contract (normative): `spec/manifest.schema.json`
+3. The schema contract (normative): `spec/vX.Y/schema.json`
 
 -----
 
@@ -142,7 +142,7 @@ Use this checklist to evaluate a manifest.
 
 ### Zone 5 — Audit Opacity
 
-**Question:** Is audit posture declared (logging + reconstructability + opacity)?  
+**Question:** Is audit surface declared (logging + reconstructability + opacity)?  
 **Primary evidence:** `audit_surface.logging`, `audit_surface.reconstructability`, optional `opacity_declared`, `data_handling.retention`
 
 ✅ Pass if:
@@ -164,7 +164,7 @@ Record the evaluation in a simple, shareable format:
 ```json
 {
   "target": "example.agent",
-  "manifest_version": "0.1.0",
+  "manifest_version": "1.0",
   "evaluated_at": "YYYY-MM-DD",
   "zones": {
     "scope_absence": { "status": "pass|flag|fail", "evidence": ["purpose.primary_code"], "notes": "" },
@@ -205,13 +205,14 @@ This framework defines a **review lens** over that contract.
 
 - Manifest: *What is declared.*  
 - Framework: *How declarations are structurally evaluated.*  
-- Validator (future): *How evaluation could be automated and monetized.*
+- Validator (future): *How evaluation could be automated or operationalized.*
 
 -----
 
 ## 9. Stability
 
-This document is non-normative.
+This document is non-normative.  
+It does not modify the Agent Manifest specification.
 
 It may evolve without changing `manifest_version`, provided it does not alter the schema contract.
 
