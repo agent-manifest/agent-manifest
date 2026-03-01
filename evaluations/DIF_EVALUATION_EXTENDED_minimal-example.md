@@ -1,7 +1,7 @@
 # Declarative Integrity Framework (DIF) — Extended Evaluation
 
 Target: Minimal Example Agent  
-Manifest Version: 0.1.0  
+Manifest Version: 1.0  
 Evaluation Type: Declaration Layer Integrity  
 Status: PASS  
 Confidence: Medium–High  
@@ -19,7 +19,7 @@ DIF evaluates:
 - Boundary clarity
 - Autonomy–risk alignment
 - Stopping authority integrity
-- Audit posture adequacy
+- Audit surface adequacy
 - Data handling declaration clarity
 
 This evaluation is non-normative and does not modify the specification.
@@ -52,8 +52,8 @@ Declared:
 - autonomy.level = 1
 - risk_profile.level = low
 
-Level 1 autonomy implies supervised or bounded execution.
-Low risk posture is consistent with advisory/limited execution.
+Level 1 autonomy indicates low independent decision capacity.  
+Low risk posture is consistent with advisory or bounded execution contexts.
 
 Result: PASS
 
@@ -63,7 +63,7 @@ There is no structural contradiction between autonomy and risk.
 
 ## 4. Boundary Adequacy
 
-The manifest includes explicit forbidden actions.
+The manifest includes explicit forbidden actions.  
 This prevents ambiguity around scope expansion.
 
 However, for broader reuse scenarios, additional constraints could include:
@@ -93,13 +93,13 @@ For higher-stakes domains, mechanism detail could be expanded.
 
 ## 6. Audit Surface Evaluation
 
-Declared audit posture: basic / partial
+Declared audit surface: basic / partial
 
-This is acceptable for low-risk domains.
+This is acceptable for low-risk domains.  
 However, reconstruction capacity is limited.
 
-Recommendation:
-Clarify what constitutes "basic" logging in audit_surface.notes.
+Recommendation:  
+Clarify what constitutes "basic" logging in `audit_surface.notes`.
 
 Result: PASS (minimal posture)
 
@@ -134,14 +134,14 @@ The Minimal Example Agent demonstrates:
 
 It qualifies as a structurally sound baseline declaration example.
 
-This evaluation confirms declarative integrity,
+This evaluation confirms declarative integrity,  
 not runtime safety or behavioral guarantees.
 
 ---
 
-Non-Normative Notice:
+## Non-Normative Notice
 
-This document is an evaluation artifact.
-It does not alter the Agent Manifest specification.
-It does not imply certification.
+This document is an evaluation artifact.  
+It does not alter the Agent Manifest specification.  
+It does not imply certification.  
 It represents structured declaration analysis only.
