@@ -2,8 +2,9 @@
 
 This directory contains foundational doctrine and structural analysis that support the Agent Manifest specification.
 
-These documents are **conceptual and architectural**.
-They do not modify the normative specification contract.
+These documents are **conceptual and architectural**.  
+They do not modify the normative specification contract.  
+They do not alter `manifest_version` or schema contracts.
 
 ---
 
@@ -25,7 +26,7 @@ They do not modify the normative specification contract.
 
 ## Notes
 
-- This directory is part of the **Declaration Layer** narrative of the project.
+- This directory supports the conceptual foundations of the **Declaration Layer**.
 - Nothing here adds runtime enforcement.
-- Validators, scoring systems, and policy engines remain external.
-
+- Validators, scoring systems, and policy engines operate outside the core specification.
+```
