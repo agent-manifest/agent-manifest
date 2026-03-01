@@ -28,7 +28,7 @@ Few define, explicitly and before execution:
 
 - Declared negative scope (what the agent must not do)
 - Stopping authority (who can halt it and how)
-- Audit posture (what is logged and reconstructable)
+- Audit surface (what is logged and reconstructable)
 - Data handling commitments
 - Autonomy level boundaries
 
@@ -44,12 +44,12 @@ Agent Manifest introduces a standardized declaration surface for:
 - Purpose
 - Forbidden actions
 - Autonomy level
-- Risk posture
+- Risk profile
 - Data handling commitments
 - Stopping authority
 - Audit surface
 
-It does not enforce behavior.
+It does not enforce behavior.  
 It declares boundaries.
 
 ---
@@ -61,7 +61,7 @@ Security or governance teams may:
 - Request an Agent Manifest prior to production deployment
 - Evaluate declared autonomy against actual runtime capability
 - Review stopping authority design
-- Assess declared audit posture
+- Assess declared audit surface
 - Identify mismatches between purpose and forbidden actions
 - Detect missing negative scope declarations
 
