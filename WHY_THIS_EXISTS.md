@@ -19,9 +19,9 @@ Agent Manifest intentionally does **none** of those.
 Today, agents can act before any clear declaration of:
 - identity
 - purpose
-- constraints
+- declared boundaries
 - autonomy level
-- risk boundaries
+- risk profile
 - data handling assumptions
 
 This creates opacity by default.
@@ -70,7 +70,7 @@ Agent Manifest allows any agent to say, in advance:
 > This is what I am for.  
 > These are my limits.”
 
-Nothing more.
+Nothing more.  
 Nothing less.
 
 ## Why Now
@@ -94,4 +94,3 @@ It is a primitive.
 A building block that others can adopt, ignore, extend, or reference.
 
 Its value comes from being **simple enough to survive**.
-
