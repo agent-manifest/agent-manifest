@@ -1,5 +1,5 @@
 {
-  "manifest_version": "0.1.0",
+  "manifest_version": "1.0",
   "agent_id": "example.payment.execution.agent",
   "agent_name": "Payment Execution Agent (Scoped)",
   "agent_version": "1.0.0",
@@ -40,15 +40,14 @@
   },
   "stopping_authority": {
     "stoppable_by": [
-      "responsible_party",
+      "owner",
       "payments_ops_manager",
       "system_operator"
     ],
     "mechanism": "Immediate kill switch via payments control panel; revoke API keys; disable execution route at the policy engine; quarantine pending jobs.",
     "stages": [
       "pre-execution",
-      "mid-execution",
-      "post-execution"
+      "mid-execution"
     ]
   },
   "audit_surface": {
