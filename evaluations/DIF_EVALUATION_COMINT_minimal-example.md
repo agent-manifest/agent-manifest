@@ -11,8 +11,8 @@ PASS — Declaratively coherent baseline example.
 
 - Required declaration fields are present.
 - Autonomy level (1) is consistent with low risk posture.
-- Stopping authority is declared and structurally sufficient.
-- Audit posture is minimal but acceptable for low-risk usage.
+- Stopping authority is declared and structurally coherent.
+- Audit surface is minimal but acceptable for low-risk usage.
 - Data handling declaration is clear (no personal data stored).
 
 ## Notes
