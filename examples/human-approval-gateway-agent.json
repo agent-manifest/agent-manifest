@@ -1,5 +1,5 @@
 {
-  "manifest_version": "0.1.0",
+  "manifest_version": "1.0",
   "agent_id": "example.human.approval.gateway",
   "agent_name": "Human Approval Gateway Agent",
   "agent_version": "1.0.0",
@@ -42,8 +42,7 @@
     "mechanism": "Disable approval routing service and revoke API credentials via admin control panel. Requests fall back to manual workflow.",
     "stages": [
       "pre-execution",
-      "mid-execution",
-      "pre-dispatch"
+      "mid-execution"
     ]
   },
   "audit_surface": {
