@@ -1,5 +1,5 @@
 {
-  "manifest_version": "0.1.0",
+  "manifest_version": "1.0",
   "agent_id": "example.healthcare.triage.assistant",
   "agent_name": "Healthcare Triage Assistant",
   "agent_version": "1.0.0",
