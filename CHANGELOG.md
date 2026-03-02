@@ -6,7 +6,9 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-_No changes recorded yet._
+### Changed
+
+- Normalized author metadata in `CITATION.cff` to full legal name ("Hernán Alfredo Capucci") for bibliographic consistency.
 
 ---
 
