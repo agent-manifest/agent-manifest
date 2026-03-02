@@ -1,10 +1,10 @@
 cff-version: 1.2.0
 message: "If you use Agent Manifest, please cite it as below."
 authors:
-- family-names: "Capucci"
-  given-names: "Hernan Alfredo"
-title: "Agent Manifest"
-version: "1.0.0"
+  - family-names: "Capucci"
+    given-names: "Hernán Alfredo"
+title: "Agent Manifest — Core Declarative Specification"
+version: "1.0"
 doi: 10.5281/zenodo.18833956
 date-released: 2026-03-02
 url: "https://github.com/hernancapucci/agent-manifest"
