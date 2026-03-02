@@ -1,10 +1,22 @@
 cff-version: 1.2.0
-message: "If you use Agent Manifest, please cite it as below."
+title: "Agent Manifest"
+message: "If you use Agent Manifest, please cite the archived Zenodo record."
+type: software
+version: "1.0.0"
+doi: "10.5281/zenodo.18833956"
+date-released: "2026-03-02"
+url: "https://github.com/hernancapucci/agent-manifest"
+license: "Apache-2.0"
+
 authors:
   - family-names: "Capucci"
     given-names: "Hernán Alfredo"
-title: "Agent Manifest — Core Declarative Specification"
-version: "1.0"
-doi: 10.5281/zenodo.18833956
-date-released: 2026-03-02
-url: "https://github.com/hernancapucci/agent-manifest"
+
+preferred-citation:
+  type: report
+  title: "Agent Manifest — Core Declarative Specification (v1.0)"
+  authors:
+    - family-names: "Capucci"
+      given-names: "Hernán Alfredo"
+  doi: "10.5281/zenodo.18833956"
+  year: 2026
