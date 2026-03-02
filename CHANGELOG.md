@@ -9,6 +9,8 @@ All notable changes to this project will be documented in this file.
 ### Changed
 
 - Normalized author metadata in `CITATION.cff` to full legal name ("Hernán Alfredo Capucci") for bibliographic consistency.
+  
+- Configured `CITATION.cff` to use Zenodo v1.0 archived specification as the preferred citation target (DOI: 10.5281/zenodo.18833956).
 
 ---
 
