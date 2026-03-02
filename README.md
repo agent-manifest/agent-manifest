@@ -346,7 +346,18 @@ Before autonomy, execution, or capability, an agent must declare the authority f
 See:  
 [Pre-Execution Authority](./foundations/pre-execution-authority/README.md)
 
----
+----
+
+## Citation
+
+The citable archived version of Agent Manifest v1.0 is available on Zenodo:
+
+Core Declarative Specification (Standard):  
+https://doi.org/10.5281/zenodo.18833956  
+
+Companion analysis:  
+https://doi.org/10.5281/zenodo.18834845
+
 
 ## Authorship
 
