@@ -1,0 +1,10 @@
+{
+  "registry_type": "agent-manifest-public-registry",
+  "registry_version": "1.0",
+  "registry_name": "Agent Manifest Public Registry",
+  "registry_url": "https://raw.githubusercontent.com/hernancapucci/agent-manifest-dataset/main/registry.json",
+  "dataset_repository": "https://github.com/hernancapucci/agent-manifest-dataset",
+  "specification_repository": "https://github.com/hernancapucci/agent-manifest",
+  "registry_repository": "https://github.com/hernancapucci/agent-manifest-registry",
+  "description": "Discovery endpoint for the Agent Manifest Public Registry."
+}
