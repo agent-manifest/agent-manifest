@@ -302,6 +302,14 @@ Without validation, accountability erodes.
 
 -----
 
+## Ecosystem Infrastructure
+
+Operational components of the Agent Manifest ecosystem (generator, dataset, registry and discovery endpoint) are documented in:
+
+[docs/ecosystem-map.md](docs/ecosystem-map.md)
+
+-----
+
 ## Governance
 
 This repository defines the open specification.
