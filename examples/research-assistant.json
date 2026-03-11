@@ -1,4 +1,6 @@
 {
+  "$schema": "https://agent-manifest-spec.org/spec/v1.0/schema.json",
+  
   "manifest_version": "1.0",
   "agent_id": "example.research.assistant",
   "agent_name": "Research Assistant (Read-Only)",
