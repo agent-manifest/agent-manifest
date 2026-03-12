@@ -12,8 +12,17 @@
 
 - **Markdown rendering (normatively identical):**  
   [`spec/v1.0/spec.md`](./spec/v1.0/spec.md)
-  
 
+  -----
+
+## Conceptual Architecture
+
+The Agent Manifest ecosystem forms a layered declarative infrastructure for autonomous systems.
+
+![Agent Manifest Ecosystem Architecture](docs/architecture/agent-manifest-ecosystem.svg)
+
+-----
+  
 A minimal specification that requires autonomous systems to declare operational boundaries before execution.
 
 It standardizes how AI agents declare identity, constraints, autonomy level, risk profile, and data handling prior to interacting with external systems.
