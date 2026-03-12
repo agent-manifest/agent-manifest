@@ -1,5 +1,18 @@
 # ARCHITECTURE
 
+## Conceptual Ecosystem Architecture
+
+Agent Manifest is part of a broader declarative infrastructure for AI agent identity and interaction.
+
+The ecosystem architecture is illustrated below.
+
+![Agent Manifest Ecosystem Architecture](docs/architecture/agent-manifest-ecosystem.svg)
+
+
+---
+
+This document focuses specifically on the **internal architectural constraints of the specification itself**.
+
 Agent Manifest is a minimal specification that operates strictly at the **Declaration Layer**.
 
 It does not execute agents.  
