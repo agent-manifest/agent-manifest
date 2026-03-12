@@ -1,77 +1,77 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 720" width="520" height="720" font-family="Georgia, 'Times New Roman', serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 680" width="520" height="680" font-family="Georgia, 'Times New Roman', serif">
 
-  <!-- Background -->
+  <!-- Background completo sin transparencia -->
 
-  <rect width="520" height="720" fill="#FAFAF8"/>
+  <rect width="520" height="680" fill="#FAFAF8"/>
 
   <!-- Title -->
 
-<text x="260" y="42" text-anchor="middle" font-size="13" fill="#888" letter-spacing="2" font-family="'Courier New', monospace">CONCEPTUAL ARCHITECTURE</text>
-<text x="260" y="64" text-anchor="middle" font-size="11" fill="#aaa" letter-spacing="1" font-family="'Courier New', monospace">Agent Manifest Ecosystem</text>
+<text x="260" y="36" text-anchor="middle" font-size="13" fill="#888" letter-spacing="2" font-family="'Courier New', monospace">CONCEPTUAL ARCHITECTURE</text>
+<text x="260" y="54" text-anchor="middle" font-size="11" fill="#aaa" letter-spacing="1" font-family="'Courier New', monospace">Agent Manifest Ecosystem</text>
 
   <!-- ∈ Principle -->
 
-  <rect x="110" y="90" width="300" height="72" rx="4" fill="#1A1A1A"/>
-  <text x="260" y="121" text-anchor="middle" font-size="22" fill="#E8E0D0" font-weight="bold">∈ Principle</text>
-  <text x="260" y="146" text-anchor="middle" font-size="11" fill="#888" letter-spacing="1" font-family="'Courier New', monospace">THE DESTINATION OF ACTIONS</text>
+  <rect x="90" y="70" width="340" height="72" rx="4" fill="#1A1A1A"/>
+  <text x="260" y="101" text-anchor="middle" font-size="22" fill="#E8E0D0" font-weight="bold">∈ Principle</text>
+  <text x="260" y="126" text-anchor="middle" font-size="11" fill="#888" letter-spacing="1" font-family="'Courier New', monospace">THE DESTINATION OF ACTIONS</text>
 
   <!-- Arrow 1 -->
 
-  <line x1="260" y1="162" x2="260" y2="192" stroke="#CCC" stroke-width="1.5"/>
-  <polygon points="260,198 255,188 265,188" fill="#CCC"/>
+  <line x1="260" y1="142" x2="260" y2="166" stroke="#CCC" stroke-width="1.5"/>
+  <polygon points="260,172 255,162 265,162" fill="#CCC"/>
 
-  <!-- Agent Manifest Spec -->
+  <!-- Agent Manifest -->
 
-  <rect x="110" y="198" width="300" height="72" rx="4" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="1.5"/>
-  <text x="260" y="229" text-anchor="middle" font-size="15" fill="#1A1A1A" font-weight="bold">Agent Manifest</text>
-  <text x="260" y="251" text-anchor="middle" font-size="11" fill="#666" letter-spacing="1" font-family="'Courier New', monospace">SPECIFICATION &amp; DECLARATION LAYER</text>
+  <rect x="90" y="172" width="340" height="72" rx="4" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="1.5"/>
+  <text x="260" y="203" text-anchor="middle" font-size="15" fill="#1A1A1A" font-weight="bold">Agent Manifest</text>
+  <text x="260" y="225" text-anchor="middle" font-size="11" fill="#666" letter-spacing="1" font-family="'Courier New', monospace">SPECIFICATION &amp; DECLARATION LAYER</text>
 
   <!-- Arrow 2 -->
 
-  <line x1="260" y1="270" x2="260" y2="300" stroke="#CCC" stroke-width="1.5"/>
-  <polygon points="260,306 255,296 265,296" fill="#CCC"/>
+  <line x1="260" y1="244" x2="260" y2="268" stroke="#CCC" stroke-width="1.5"/>
+  <polygon points="260,274 255,264 265,264" fill="#CCC"/>
 
   <!-- Ambassador -->
 
-  <rect x="110" y="306" width="300" height="72" rx="4" fill="#FFFFFF" stroke="#999" stroke-width="1"/>
-  <text x="260" y="337" text-anchor="middle" font-size="15" fill="#1A1A1A" font-weight="bold">Ambassador</text>
-  <text x="260" y="359" text-anchor="middle" font-size="11" fill="#666" letter-spacing="1" font-family="'Courier New', monospace">MANIFEST GENERATOR</text>
+  <rect x="90" y="274" width="340" height="72" rx="4" fill="#FFFFFF" stroke="#999" stroke-width="1"/>
+  <text x="260" y="305" text-anchor="middle" font-size="15" fill="#1A1A1A" font-weight="bold">Ambassador</text>
+  <text x="260" y="327" text-anchor="middle" font-size="11" fill="#666" letter-spacing="1" font-family="'Courier New', monospace">MANIFEST GENERATOR</text>
 
   <!-- Arrow 3 -->
 
-  <line x1="260" y1="378" x2="260" y2="408" stroke="#CCC" stroke-width="1.5"/>
-  <polygon points="260,414 255,404 265,404" fill="#CCC"/>
+  <line x1="260" y1="346" x2="260" y2="370" stroke="#CCC" stroke-width="1.5"/>
+  <polygon points="260,376 255,366 265,366" fill="#CCC"/>
 
   <!-- Dataset -->
 
-  <rect x="110" y="414" width="300" height="72" rx="4" fill="#FFFFFF" stroke="#999" stroke-width="1"/>
-  <text x="260" y="445" text-anchor="middle" font-size="15" fill="#1A1A1A" font-weight="bold">Manifest Dataset</text>
-  <text x="260" y="467" text-anchor="middle" font-size="11" fill="#666" letter-spacing="1" font-family="'Courier New', monospace">PUBLIC DECLARATIONS</text>
+  <rect x="90" y="376" width="340" height="72" rx="4" fill="#FFFFFF" stroke="#999" stroke-width="1"/>
+  <text x="260" y="407" text-anchor="middle" font-size="15" fill="#1A1A1A" font-weight="bold">Manifest Dataset</text>
+  <text x="260" y="429" text-anchor="middle" font-size="11" fill="#666" letter-spacing="1" font-family="'Courier New', monospace">PUBLIC DECLARATIONS</text>
 
   <!-- Arrow 4 -->
 
-  <line x1="260" y1="486" x2="260" y2="516" stroke="#CCC" stroke-width="1.5"/>
-  <polygon points="260,522 255,512 265,512" fill="#CCC"/>
+  <line x1="260" y1="448" x2="260" y2="472" stroke="#CCC" stroke-width="1.5"/>
+  <polygon points="260,478 255,468 265,468" fill="#CCC"/>
 
   <!-- Registry -->
 
-  <rect x="110" y="522" width="300" height="72" rx="4" fill="#FFFFFF" stroke="#999" stroke-width="1"/>
-  <text x="260" y="553" text-anchor="middle" font-size="15" fill="#1A1A1A" font-weight="bold">Agent Manifest Registry</text>
-  <text x="260" y="575" text-anchor="middle" font-size="11" fill="#666" letter-spacing="1" font-family="'Courier New', monospace">DISCOVERY &amp; FEDERATION</text>
+  <rect x="90" y="478" width="340" height="72" rx="4" fill="#FFFFFF" stroke="#999" stroke-width="1"/>
+  <text x="260" y="509" text-anchor="middle" font-size="15" fill="#1A1A1A" font-weight="bold">Agent Manifest Registry</text>
+  <text x="260" y="531" text-anchor="middle" font-size="11" fill="#666" letter-spacing="1" font-family="'Courier New', monospace">DISCOVERY &amp; FEDERATION</text>
 
   <!-- Arrow 5 -->
 
-  <line x1="260" y1="594" x2="260" y2="624" stroke="#CCC" stroke-width="1.5"/>
-  <polygon points="260,630 255,620 265,620" fill="#CCC"/>
+  <line x1="260" y1="550" x2="260" y2="574" stroke="#CCC" stroke-width="1.5"/>
+  <polygon points="260,580 255,570 265,570" fill="#CCC"/>
 
   <!-- Boundary Handshake -->
 
-  <rect x="110" y="630" width="300" height="72" rx="4" fill="#FFFFFF" stroke="#999" stroke-width="1" stroke-dasharray="5,3"/>
-  <text x="260" y="661" text-anchor="middle" font-size="15" fill="#1A1A1A" font-weight="bold">Boundary Handshake</text>
-  <text x="260" y="683" text-anchor="middle" font-size="11" fill="#666" letter-spacing="1" font-family="'Courier New', monospace">AGENT INTERACTION LAYER</text>
+  <rect x="90" y="580" width="340" height="72" rx="4" fill="#FFFFFF" stroke="#999" stroke-width="1" stroke-dasharray="5,3"/>
+  <text x="260" y="611" text-anchor="middle" font-size="15" fill="#1A1A1A" font-weight="bold">Boundary Handshake</text>
+  <text x="260" y="633" text-anchor="middle" font-size="11" fill="#666" letter-spacing="1" font-family="'Courier New', monospace">AGENT INTERACTION LAYER</text>
 
   <!-- Footer -->
 
-<text x="260" y="714" text-anchor="middle" font-size="9" fill="#BBB" letter-spacing="1" font-family="'Courier New', monospace">agent-manifest-spec.org · CC BY 4.0 · Hernán Alfredo Capucci</text>
+<text x="260" y="666" text-anchor="middle" font-size="9" fill="#BBB" letter-spacing="1" font-family="'Courier New', monospace">agent-manifest-spec.org · CC BY 4.0 · Hernán Alfredo Capucci</text>
 
 </svg>
