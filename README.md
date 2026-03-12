@@ -101,7 +101,7 @@ Your agent now declares its boundary surface before execution.
 
 ```json
 {
-"$schema": "https://agent-manifest-spec.org/spec/v1.0/schema.json",
+  "$schema": "https://agent-manifest-spec.org/spec/v1.0/schema.json",
 
   "manifest_version": "1.0",
   "agent_id": "example.minimal.agent",
