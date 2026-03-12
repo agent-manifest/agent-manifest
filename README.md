@@ -34,6 +34,8 @@ You can integrate Agent Manifest in under five minutes.
 
 ```json
 {
+  "$schema": "https://agent-manifest-spec.org/spec/v1.0/schema.json",
+
   "manifest_version": "1.0",
   "agent_id": "my.agent",
   "agent_name": "My Agent",
@@ -99,6 +101,8 @@ Your agent now declares its boundary surface before execution.
 
 ```json
 {
+"$schema": "https://agent-manifest-spec.org/spec/v1.0/schema.json",
+
   "manifest_version": "1.0",
   "agent_id": "example.minimal.agent",
   "agent_name": "Minimal Example Agent",
@@ -304,9 +308,13 @@ Without validation, accountability erodes.
 
 ## Ecosystem Infrastructure
 
-Operational components of the Agent Manifest ecosystem (generator, dataset, registry and discovery endpoint) are documented in:
+Agent Manifest defines the declaration layer of a broader open ecosystem.
+
+Operational components such as the generator, dataset repository, registry, and discovery endpoint are documented in:
 
 [docs/ecosystem-map.md](docs/ecosystem-map.md)
+
+These infrastructure components operate independently from the core specification and may evolve without modifying the normative spec.
 
 -----
 
