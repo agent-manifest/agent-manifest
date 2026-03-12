@@ -6,6 +6,11 @@ The system is organized as a minimal infrastructure for declarative AI agent ide
 
 -----
 
+## Ecosystem Architecture
+
+![Agent Manifest Ecosystem Architecture](architecture/agent-manifest-ecosystem.svg)
+
+-----
 ## System Overview
 
 The Agent Manifest system follows this operational flow:
