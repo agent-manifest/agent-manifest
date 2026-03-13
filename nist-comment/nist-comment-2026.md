@@ -57,8 +57,9 @@ Agent Manifest occupies Layer 1 — currently absent from NIST’s proposed stac
 
 The complete submission is available in this directory:
 
-- [`Capucci_AgentManifest_NIST_PublicComment_2026.pdf`](./Capucci_AgentManifest_NIST_PublicComment_2026.pdf)
-- [`Capucci_AgentManifest_NIST_PublicComment_2026.docx`](./Capucci_AgentManifest_NIST_PublicComment_2026.docx)
+- [Capucci AgentManifest NIST PublicComment 2026.pdf](./Capucci%20AgentManifest%20NIST%20PublicComment%202026.pdf)
+  
+- [Capucci AgentManifest NIST PublicComment 2026.docx](./Capucci%20AgentManifest%20NIST%20PublicComment%202026.docx)
 
 
 Also archived on Zenodo:  
