@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19000957.svg)](https://doi.org/10.5281/zenodo.19000957)
+
 # Public Comment — NIST NCCoE
 
 ## Accelerating the Adoption of Software and AI Agent Identity and Authorization
