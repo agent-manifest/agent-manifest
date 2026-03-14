@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agent Manifest — Minimal Declaration Layer for Autonomous AI Systems</title>
+  <meta name="description" content="Agent Manifest is a minimal, execution-agnostic declarative specification that enables autonomous systems to declare operational boundaries prior to execution.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f5f4f0;
+      --bg2: #edecea;
+      --ink: #1a1917;
+      --ink2: #6b6860;
+      --ink3: #9b9890;
+      --accent: #1a1917;
+      --rule: #d8d6d0;
+      --mono: 'DM Mono', monospace;
+      --sans: 'DM Sans', sans-serif;
+    }
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 15px; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 300;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--rule);
+  transition: text-decoration-color 0.15s;
+}
+a:hover { text-decoration-color: var(--ink); }
+
+/* Layout */
+.page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Header */
+header {
+  padding: 64px 0 48px;
+  border-bottom: 1px solid var(--rule);
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards;
+}
+
+.badge {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink2);
+  border: 1px solid var(--rule);
+  padding: 3px 8px;
+  border-radius: 2px;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-family: var(--sans);
+  font-size: 40px;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  margin-bottom: 10px;
+  line-height: 1.1;
+}
+
+.tagline {
+  font-size: 16px;
+  color: var(--ink2);
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+
+.doi-link {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink3);
+  letter-spacing: 0.04em;
+}
+
+/* Sections */
+section {
+  padding: 36px 0;
+  border-bottom: 1px solid var(--rule);
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards;
+}
+
+section:nth-child(2) { animation-delay: 0.08s; }
+section:nth-child(3) { animation-delay: 0.14s; }
+section:nth-child(4) { animation-delay: 0.20s; }
+section:nth-child(5) { animation-delay: 0.26s; }
+section:nth-child(6) { animation-delay: 0.32s; }
+section:nth-child(7) { animation-delay: 0.38s; }
+section:nth-child(8) { animation-delay: 0.44s; }
+
+.section-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink3);
+  margin-bottom: 16px;
+}
+
+/* Link lists */
+.link-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.link-list li {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.link-list .lk {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--ink3);
+  min-width: 140px;
+  flex-shrink: 0;
+}
+
+.link-list a {
+  font-family: var(--mono);
+  font-size: 12px;
+}
+
+/* Pipeline */
+.pipeline {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--ink2);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  letter-spacing: 0.02em;
+}
+
+.pipeline .node {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.pipeline .arrow {
+  color: var(--ink3);
+}
+
+/* Concept */
+.concept {
+  font-size: 15px;
+  color: var(--ink2);
+  line-height: 1.7;
+  max-width: 580px;
+}
+
+.concept strong {
+  color: var(--ink);
+  font-weight: 400;
+}
+
+.principle {
+  margin-top: 18px;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--ink);
+  letter-spacing: 0.01em;
+}
+
+/* Status table */
+.status-grid {
+  display: grid;
+  gap: 0;
+}
+
+.status-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 13px;
+}
+
+.status-row:last-child { border-bottom: none; }
+
+.status-name {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--ink);
+}
+
+.status-val {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: #3a7a3a;
+  letter-spacing: 0.06em;
+}
+
+/* Footer */
+footer {
+  padding: 36px 0 64px;
+  opacity: 0;
+  animation: fadeUp 0.6s ease 0.5s forwards;
+}
+
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.footer-block {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink3);
+  line-height: 2;
+}
+
+.footer-block strong {
+  color: var(--ink2);
+  font-weight: 500;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 520px) {
+  h1 { font-size: 22px; }
+  .link-list .lk { min-width: 100px; font-size: 11px; }
+  .link-list a { font-size: 11px; }
+  .pipeline { font-size: 11px; }
+}
+
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+
+  <header>
+    <div class="badge">Open Specification</div>
+    <h1>Agent Manifest</h1>
+    <p class="tagline">A minimal declaration layer for autonomous AI systems</p>
+    <p class="doi-link">
+      DOI:&nbsp;<a href="https://doi.org/10.5281/zenodo.18833956" target="_blank" rel="noopener">10.5281/zenodo.18833956</a>
+      &nbsp;·&nbsp; CC BY 4.0
+    </p>
+  </header>
+
+  <!-- CANONICAL SPECIFICATION -->
+
+  <section>
+    <p class="section-label">Canonical Specification</p>
+    <ul class="link-list">
+      <li>
+        <span class="lk">Spec v1.0</span>
+        <a href="https://github.com/hernancapucci/agent-manifest/blob/main/spec/v1.0/agent_manifest_v1.0.html" target="_blank" rel="noopener">spec/v1.0/agent_manifest_v1.0.html</a>
+      </li>
+      <li>
+        <span class="lk">JSON Schema</span>
+        <a href="https://raw.githubusercontent.com/hernancapucci/agent-manifest/main/spec/v1.0/schema.json" target="_blank" rel="noopener">spec/v1.0/schema.json</a>
+      </li>
+      <li>
+        <span class="lk">Spec (Markdown)</span>
+        <a href="https://github.com/hernancapucci/agent-manifest/blob/main/spec/v1.0/spec.md" target="_blank" rel="noopener">spec/v1.0/spec.md</a>
+      </li>
+      <li>
+        <span class="lk">Repository</span>
+        <a href="https://github.com/hernancapucci/agent-manifest" target="_blank" rel="noopener">github.com/hernancapucci/agent-manifest</a>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ARCHITECTURE -->
+
+  <section>
+    <p class="section-label">Architecture</p>
+    <ul class="link-list">
+      <li>
+        <span class="lk">Overview</span>
+        <a href="https://github.com/hernancapucci/agent-manifest/blob/main/docs/ARCHITECTURE.md" target="_blank" rel="noopener">docs/ARCHITECTURE.md</a>
+      </li>
+      <li>
+        <span class="lk">System Flow</span>
+        <a href="https://github.com/hernancapucci/agent-manifest/blob/main/docs/architecture/system-flow.md" target="_blank" rel="noopener">docs/architecture/system-flow.md</a>
+      </li>
+    </ul>
+  </section>
+
+  <!-- REGISTRATION INFRASTRUCTURE -->
+
+  <section>
+    <p class="section-label">Registration Infrastructure</p>
+    <ul class="link-list">
+      <li>
+        <span class="lk">Ambassador</span>
+        <a href="https://hernancapucci.github.io/agent-manifest-ambassador/" target="_blank" rel="noopener">hernancapucci.github.io/agent-manifest-ambassador</a>
+      </li>
+      <li>
+        <span class="lk">Diplomat API</span>
+        <a href="https://agent-manifest-diplomat.vercel.app/api/register" target="_blank" rel="noopener">POST /api/register</a>
+      </li>
+      <li>
+        <span class="lk">Dataset</span>
+        <a href="https://github.com/hernancapucci/agent-manifest-dataset" target="_blank" rel="noopener">github.com/hernancapucci/agent-manifest-dataset</a>
+      </li>
+    </ul>
+  </section>
+
+  <!-- DISCOVERY -->
+
+  <section>
+    <p class="section-label">Discovery</p>
+    <ul class="link-list">
+      <li>
+        <span class="lk">Registry endpoint</span>
+        <a href="https://agent-manifest-spec.org/.well-known/agent-manifest-registry.json" target="_blank" rel="noopener">.well-known/agent-manifest-registry.json</a>
+      </li>
+      <li>
+        <span class="lk">Registry index</span>
+        <a href="https://raw.githubusercontent.com/hernancapucci/agent-manifest-dataset/main/registry.json" target="_blank" rel="noopener">registry.json (raw)</a>
+      </li>
+    </ul>
+  </section>
+
+  <!-- CONCEPT -->
+
+  <section>
+    <p class="section-label">Concept</p>
+    <p class="concept">
+      Agent Manifest allows autonomous systems to declare <strong>identity,
+      purpose, capabilities, and operational boundaries</strong> before interaction.
+      This declaration creates the surface on which validation, auditability,
+      and governance become possible.
+    </p>
+    <p class="principle">
+      The specification declares. It does not execute, validate, score, enforce, or decide.
+    </p>
+  </section>
+
+  <!-- PIPELINE -->
+
+  <section>
+    <p class="section-label">Operational Pipeline</p>
+    <div class="pipeline">
+      <span class="node">Ambassador</span>
+      <span class="arrow">→</span>
+      <span class="node">Diplomat</span>
+      <span class="arrow">→</span>
+      <span class="node">Dataset</span>
+      <span class="arrow">→</span>
+      <span class="node">Registry</span>
+      <span class="arrow">→</span>
+      <span class="node">Discovery</span>
+    </div>
+  </section>
+
+  <!-- STATUS -->
+
+  <section>
+    <p class="section-label">Status</p>
+    <div class="status-grid">
+      <div class="status-row">
+        <span class="status-name">Spec v1.0</span>
+        <span class="status-val">PUBLISHED</span>
+      </div>
+      <div class="status-row">
+        <span class="status-name">Ambassador</span>
+        <span class="status-val">OPERATIONAL</span>
+      </div>
+      <div class="status-row">
+        <span class="status-name">Diplomat API</span>
+        <span class="status-val">OPERATIONAL</span>
+      </div>
+      <div class="status-row">
+        <span class="status-name">Dataset</span>
+        <span class="status-val">PUBLIC</span>
+      </div>
+      <div class="status-row">
+        <span class="status-name">Registry index</span>
+        <span class="status-val">ACTIVE</span>
+      </div>
+      <div class="status-row">
+        <span class="status-name">Discovery endpoint</span>
+        <span class="status-val">ACTIVE</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-block">
+        <strong>Agent Manifest</strong><br>
+        agent-manifest-spec.org<br>
+        <a href="https://github.com/hernancapucci/agent-manifest" target="_blank" rel="noopener">github.com/hernancapucci/agent-manifest</a>
+      </div>
+      <div class="footer-block">
+        <strong>Hernán Alfredo Capucci</strong><br>
+        ORCID: <a href="https://orcid.org/0009-0008-7216-3032" target="_blank" rel="noopener">0009-0008-7216-3032</a><br>
+        DOI: <a href="https://doi.org/10.5281/zenodo.18833956" target="_blank" rel="noopener">10.5281/zenodo.18833956</a>
+      </div>
+      <div class="footer-block">
+        <strong>License</strong><br>
+        CC BY 4.0<br>
+        Open Specification
+      </div>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
