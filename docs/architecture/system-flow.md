@@ -118,7 +118,7 @@ Each entry contains:
 
 The registry is discoverable via a standard `.well-known` path.
 
-- URL: `https://agent-manifest-spec.org/.well-known/agent-manifest-registry.json`
+- URL: [https://agent-manifest-spec.org/.well-known/agent-manifest-registry.json](https://agent-manifest-spec.org/.well-known/agent-manifest-registry.json)
 
 ```json
 {
