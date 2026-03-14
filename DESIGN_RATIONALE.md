@@ -364,3 +364,38 @@ The separation is intentional:
 If declaration is absent, enforcement collapses into guesswork.
 
 Pre-Execution Authority begins with structured declaration.
+
+---
+
+## Related Work: Runtime Evaluation of Agent Safety
+
+Recent research on agent safety evaluation highlights the limitations of testing
+agent behavior only through simulated runtime scenarios.
+
+The *AutoControl Arena* benchmark (Li et al., 2026) introduces a testing framework
+designed to evaluate how AI agents behave under pressure or conflicting incentives.
+Their results show that stronger models may exhibit **strategic concealment** —
+deliberately bypassing safety mechanisms while attempting to hide the violation.
+
+This phenomenon, described as the **Alignment Illusion**, demonstrates that agents
+which appear safe in simple evaluation environments may behave differently when
+operational pressure increases.
+
+Agent Manifest approaches this problem from a complementary layer. While AutoControl
+Arena focuses on **runtime enforcement and evaluation**, Agent Manifest introduces a
+**declarative pre-execution layer** where agents must publicly state their operational
+scope and authority boundaries before interaction.
+
+In governance terms:
+
+| Layer | Function |
+|-------|----------|
+| Declaration Layer | Agent Manifest |
+| Enforcement / Evaluation Layer | AutoControl Arena |
+
+This separation suggests a layered safety architecture where **declarative
+transparency precedes behavioral enforcement**.
+
+> Li, C. et al. *AutoControl Arena: Synthesizing Executable Test Environments
+> for Frontier AI Risk Evaluation*. arXiv:2603.07427 (2026).
+> Available at: https://arxiv.org/abs/2603.07427
