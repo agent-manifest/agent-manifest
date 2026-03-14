@@ -37,7 +37,7 @@ Public interface for creating Agent Manifest declarations.
 - URL: [hernancapucci.github.io/agent-manifest-ambassador](https://hernancapucci.github.io/agent-manifest-ambassador)
 - Input: five structured questions
 - Output: valid Agent Manifest v1.0 JSON
-- Schema: `agent-manifest-spec.org/spec/v1.0/schema.json`
+Schema: [agent-manifest-spec.org/spec/v1.0/schema.json](https://agent-manifest-spec.org/spec/v1.0/schema.json)
 
 The Ambassador ensures that every manifest conforms to the official specification before submission.
 
