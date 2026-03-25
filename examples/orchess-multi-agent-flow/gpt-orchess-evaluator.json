@@ -1,0 +1,39 @@
+{
+  "manifest_version": "1.0",
+  "agent_id": "gpt-orchess-evaluator",
+  "agent_name": "ChatGPT — ORCHESS Evaluator",
+  "agent_version": "1.0.0",
+  "owner": {
+    "type": "individual",
+    "identifier": "Hernán Capucci — ORCID 0009-0008-7216-3032"
+  },
+  "purpose": {
+    "primary_code": "software.review",
+    "description": "Evaluates architectural decisions, code structures and implementation choices produced by other agents within the ORCHESS development flow, under operator direction."
+  },
+  "forbidden_actions": [
+    "execute_or_modify_code_directly",
+    "override_decisions_made_by_operator",
+    "produce_final_implementation_without_operator_review"
+  ],
+  "autonomy": { "level": 1 },
+  "risk_posture": { "level": "low" },
+  "stopping_authority": {
+    "can_self_terminate": true,
+    "mechanism": "Flags unresolvable contradictions between agents and defers to operator for resolution.",
+    "stages": ["pre-execution", "mid-execution"]
+  },
+  "audit_surface": {
+    "logging": "detailed",
+    "reconstructability": "full"
+  },
+  "contact": { "email": "contact@agent-manifest-spec.org" },
+  "data_handling": { "stores_personal_data": false },
+  "capabilities": [
+    "evaluate code and architecture produced by other agents",
+    "identify logical inconsistencies and structural risks",
+    "propose alternative approaches for operator consideration",
+    "synthesize conflicting agent outputs into structured analysis",
+    "flag scope or boundary violations for operator review"
+  ]
+}
