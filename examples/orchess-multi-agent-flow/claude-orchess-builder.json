@@ -1,0 +1,39 @@
+{
+  "manifest_version": "1.0",
+  "agent_id": "claude-orchess-builder",
+  "agent_name": "Claude Code — ORCHESS Builder",
+  "agent_version": "1.0.0",
+  "owner": {
+    "type": "individual",
+    "identifier": "Hernán Capucci — ORCID 0009-0008-7216-3032"
+  },
+  "purpose": {
+    "primary_code": "software.development",
+    "description": "Builds and refines ORCHESS backend and technical structure under operator direction, based on provided repository context, specifications, and implementation goals."
+  },
+  "forbidden_actions": [
+    "modify_core_architecture_without_approval",
+    "push_to_production_unilaterally",
+    "change_declared_boundaries_without_operator_confirmation"
+  ],
+  "autonomy": { "level": 2 },
+  "risk_posture": { "level": "moderate" },
+  "stopping_authority": {
+    "can_self_terminate": true,
+    "mechanism": "Halts and requests operator confirmation when architectural scope, repository structure, or implementation boundaries become ambiguous.",
+    "stages": ["pre-execution", "mid-execution"]
+  },
+  "audit_surface": {
+    "logging": "detailed",
+    "reconstructability": "full"
+  },
+  "contact": { "email": "contact@agent-manifest-spec.org" },
+  "data_handling": { "stores_personal_data": false },
+  "capabilities": [
+    "generate backend code from explicit instructions",
+    "refactor existing code structures within repository context",
+    "propose architectural adjustments for operator review",
+    "modify files inside the declared project scope",
+    "explain implementation choices and tradeoffs"
+  ]
+}
