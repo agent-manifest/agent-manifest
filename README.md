@@ -371,6 +371,21 @@ Before autonomy, execution, or capability, an agent must declare the authority f
 See:  
 [Pre-Execution Authority](./foundations/pre-execution-authority/README.md)
 
+-----
+
+## Empirical Studies
+
+Empirical evidence related to boundary declaration behavior in AI systems:
+
+- **AI Boundary Declaration Study Dataset**  
+  https://github.com/hernancapucci/agent-manifest-dataset/tree/main/studies/ai-boundary-declaration-study  
+
+  Companion dataset and analysis for the study:  
+  “When AI Systems Don’t Know When to Stop: A Comparative Study of Spontaneous Boundary Declaration and Epistemic Limits in Six Major Models”
+
+  Dataset DOI: https://doi.org/10.5281/zenodo.19235488  
+  Paper DOI: https://doi.org/10.5281/zenodo.19235116
+
 ----
 
 ## Citation
