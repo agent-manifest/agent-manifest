@@ -1,5 +1,10 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18833956.svg)](https://doi.org/10.5281/zenodo.18833956)
 
+## Working Paper
+
+**The Pre-Execution Identity Gap in AI Agents: A Minimal Declarative Layer Proposal**  
+DOI: https://doi.org/10.5281/zenodo.19432968
+
 # Agent Manifest
 
 ## Canonical Specification (v1.0 — Standards Track)
