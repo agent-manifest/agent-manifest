@@ -30,6 +30,13 @@ https://medium.com/@brfnrvf/authority-is-not-inherent-2b3061f402cd
 These papers are hosted externally and are independent publications by the author.
 They are not normative components of the specification.
 
+### Paper #04 — The Pre-Execution Identity Gap
+A formalization of the missing identity layer in autonomous AI systems, introducing a minimal declarative framework (Agent Manifest) for pre-execution boundary definition.
+
+DOI: https://doi.org/10.5281/zenodo.19432968
+
+This paper defines the Pre-Execution Identity Gap and positions declarative identity as a necessary architectural layer for multi-agent systems.
+
 ---
 
 ## Scope
@@ -47,4 +54,4 @@ It examines the principles underlying pre-execution authority and declarative bo
 
 ## Ongoing
 
-Paper #04 — In development.
+Paper #05 — In development.
