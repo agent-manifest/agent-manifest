@@ -5,7 +5,7 @@ type: software
 version: "1.0.0"
 doi: "10.5281/zenodo.18833956"
 date-released: "2026-03-02"
-url: "https://github.com/hernancapucci/agent-manifest"
+url: "https://github.com/agent-manifest/agent-manifest"
 license: "Apache-2.0"
 
 authors:
