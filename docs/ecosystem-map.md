@@ -41,7 +41,7 @@ The ecosystem currently consists of five repositories.
 
 ## 1. agent-manifest
 
-Repository: <https://github.com/hernancapucci/agent-manifest>
+Repository: <https://github.com/agent-manifest/agent-manifest>
 
 Role: The canonical specification of the Agent Manifest standard.
 
@@ -60,7 +60,7 @@ This repository defines the structure of a valid Agent Manifest.
 
 ## 2. agent-manifest-ambassador
 
-Repository: <https://github.com/hernancapucci/agent-manifest-ambassador>
+Repository: <https://github.com/agent-manifest/agent-manifest-ambassador>
 
 Role: Manifest generator.
 
@@ -76,7 +76,7 @@ Capabilities:
 
 ## 3. agent-manifest-dataset
 
-Repository: <https://github.com/hernancapucci/agent-manifest-dataset>
+Repository: <https://github.com/agent-manifest/agent-manifest-dataset>
 
 Role: Operational dataset and registration pipeline.
 
@@ -97,7 +97,7 @@ manifests/YYYY/MM/agent-name.json
 
 ## 4. agent-manifest-registry
 
-Repository: <https://github.com/hernancapucci/agent-manifest-registry>
+Repository: <https://github.com/agent-manifest/agent-manifest-registry>
 
 Role: Registry definition and discovery layer.
 
@@ -113,7 +113,7 @@ https://agent-manifest-spec.org/.well-known/agent-manifest-registry.json
 
 ## 5. boundary-handshake
 
-Repository: <https://github.com/hernancapucci/boundary-handshake>
+Repository: <https://github.com/agent-manifest/boundary-handshake>
 
 Role: Conceptual extension exploring compatibility verification between agents prior to interaction.
 
