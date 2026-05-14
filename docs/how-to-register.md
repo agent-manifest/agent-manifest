@@ -63,7 +63,7 @@ The Ambassador helps produce a structurally valid manifest.
 
 The Ambassador creates a pre-filled GitHub Issue in the dataset repository:
 
-👉 <https://github.com/hernancapucci/agent-manifest-dataset>
+👉 <https://github.com/agent-manifest/agent-manifest-dataset>
 
 The issue contains:
 

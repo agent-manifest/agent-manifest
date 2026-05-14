@@ -80,7 +80,7 @@ The Diplomat acts as the integrity gatekeeper for the public registry.
 
 All accepted manifests are stored in a public repository.
 
-- Repository: [agent-manifest-dataset](https://github.com/hernancapucci/agent-manifest-dataset)
+- Repository: [agent-manifest-dataset](https://github.com/agent-manifest/agent-manifest-dataset)
 - Structure:
 
 ```
@@ -107,7 +107,7 @@ Each entry contains:
 {
   "agent_id": "example-agent",
   "agent_name": "Example Agent",
-  "manifest_url": "https://raw.githubusercontent.com/hernancapucci/agent-manifest-dataset/main/manifests/2026/03/example-agent.json",
+  "manifest_url": "https://raw.githubusercontent.com/agent-manifest/agent-manifest-dataset/main/manifests/2026/03/example-agent.json",
   "registered_at": "2026-03-14"
 }
 ```
@@ -125,9 +125,9 @@ The registry is discoverable via a standard `.well-known` path.
   "registry_type": "agent-manifest-public-registry",
   "registry_version": "1.0",
   "registry_name": "Agent Manifest Public Registry",
-  "registry_url": "https://raw.githubusercontent.com/hernancapucci/agent-manifest-dataset/main/registry.json",
-  "dataset_repository": "https://github.com/hernancapucci/agent-manifest-dataset",
-  "specification_repository": "https://github.com/hernancapucci/agent-manifest"
+  "registry_url": "https://raw.githubusercontent.com/agent-manifest/agent-manifest-dataset/main/registry.json",
+  "dataset_repository": "https://github.com/agent-manifest/agent-manifest-dataset",
+  "specification_repository": "https://github.com/agent-manifest/agent-manifest"
 }
 ```
 
