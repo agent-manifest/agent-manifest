@@ -10,7 +10,7 @@ The example below follows a real registration flow.
 
 The process begins using the Agent Manifest Ambassador.
 
-👉 <https://hernancapucci.github.io/agent-manifest-ambassador/>
+👉 <https://agent-manifest.github.io/agent-manifest-ambassador/>
 
 The user provides the required declaration fields:
 

@@ -46,7 +46,7 @@ The manifest must follow the JSON schema defined in the Agent Manifest specifica
 
 Use the Agent Manifest Ambassador:
 
-👉 <https://hernancapucci.github.io/agent-manifest-ambassador/>
+👉 <https://agent-manifest.github.io/agent-manifest-ambassador/>
 
 Steps:
 
