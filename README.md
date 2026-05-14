@@ -384,7 +384,7 @@ See:
 Empirical evidence related to boundary declaration behavior in AI systems:
 
 - **AI Boundary Declaration Study Dataset**  
-  https://github.com/hernancapucci/agent-manifest-dataset/tree/main/studies/ai-boundary-declaration-study  
+  https://github.com/agent-manifest/agent-manifest-dataset/tree/main/studies/ai-boundary-declaration-study  
 
   Companion dataset and analysis for the study:  
   “When AI Systems Don’t Know When to Stop: A Comparative Study of Spontaneous Boundary Declaration and Epistemic Limits in Six Major Models”

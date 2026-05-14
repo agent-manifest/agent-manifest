@@ -47,7 +47,7 @@ The Ambassador generates a valid Agent Manifest JSON.
 
 After generating the manifest, the Ambassador opens a pre-filled GitHub Issue in the dataset repository:
 
-👉 <https://github.com/hernancapucci/agent-manifest-dataset>
+👉 <https://github.com/agent-manifest/agent-manifest-dataset>
 
 The issue includes:
 
