@@ -2,7 +2,7 @@
 
 This document defines the standard discovery location for an Agent Manifest.
 
-The goal is to allow machines to discover the identity and capabilities of an AI agent through a predictable endpoint.
+The goal is to allow machines to discover the identity and declared boundaries of an AI agent through a predictable endpoint.
 
 ---
 
@@ -22,28 +22,66 @@ This endpoint serves as the canonical discovery location for an agent declaratio
 
 ## 2. Manifest Format
 
-The file must contain a valid Agent Manifest JSON document following the Agent Manifest specification.
+The file must contain a valid Agent Manifest JSON document conforming to the Agent Manifest specification.
+
+Normative JSON Schema:
+
+https://agent-manifest-spec.org/spec/v1.0/schema.json
 
 Example:
 
 ```json
 {
-  "$schema": "https://agent-manifest-spec.org/schema/v1/manifest.schema.json",
-  "specVersion": "1.0.0",
-  "identity": "example-agent",
-  "purpose": "Provides information retrieval capabilities",
-  "capabilities": [
-    "search",
-    "knowledge-query"
+  "$schema": "https://agent-manifest-spec.org/spec/v1.0/schema.json",
+  "manifest_version": "1.0",
+  "agent_id": "example.agent",
+  "agent_name": "Example Agent",
+  "agent_version": "1.0.0",
+
+  "owner": {
+    "type": "organization",
+    "identifier": "Example Organization"
+  },
+
+  "purpose": {
+    "primary_code": "general.assistance",
+    "description": "Provides bounded assistance without irreversible execution."
+  },
+
+  "forbidden_actions": [
+    "execute_irreversible_actions",
+    "access_private_data_without_consent"
   ],
-  "boundaries": [
-    "no-autonomous-execution",
-    "no-system-modification"
-  ],
-  "autonomy_level": "supervised",
-  "declaration_date": "2026-03-08"
+
+  "autonomy": {
+    "level": 1
+  },
+
+  "risk_profile": {
+    "level": "low"
+  },
+
+  "data_handling": {
+    "stores_personal_data": false
+  },
+
+  "stopping_authority": {
+    "stoppable_by": ["owner"],
+    "mechanism": "Manual disable via hosting interface."
+  },
+
+  "audit_surface": {
+    "logging": "basic",
+    "reconstructability": "partial"
+  },
+
+  "contact": {
+    "email": "contact@example.com"
+  }
 }
 ```
+
+Full structural reference: [`spec/v1.0/spec.md`](./spec/v1.0/spec.md)
 
 ---
 
@@ -51,10 +89,10 @@ Example:
 
 Publishing a manifest at the well-known endpoint allows:
 
-• automatic discovery by other agents  
-• compatibility checks between agents  
-• registry indexing  
-• validator verification  
+- automatic discovery by other agents
+- compatibility checks between agents
+- registry indexing
+- validator verification
 
 This makes the Agent Manifest ecosystem machine-discoverable.
 
@@ -68,10 +106,10 @@ The registry does not require agents to submit manifests manually.
 
 Instead it may:
 
-• discover manifests automatically  
-• index them  
-• archive them in the dataset  
-• validate them using the validator  
+- discover manifests automatically
+- index them
+- archive them in the dataset
+- validate them using the validator
 
 ---
 
@@ -79,10 +117,10 @@ Instead it may:
 
 Future versions may include optional metadata fields such as:
 
-• hosting organization  
-• contact endpoint  
-• agent API endpoint  
-• boundary handshake compatibility  
+- hosting organization
+- contact endpoint
+- agent API endpoint
+- boundary handshake compatibility
 
 These fields may be added in later specification versions.
 
@@ -92,10 +130,10 @@ These fields may be added in later specification versions.
 
 The well-known manifest endpoint follows several design principles:
 
-• predictable location  
-• machine readability  
-• minimal structure  
-• compatibility with existing web infrastructure  
+- predictable location
+- machine readability
+- minimal structure
+- compatibility with existing web infrastructure
 
 This approach allows Agent Manifest to function as an internet-native discovery layer for AI agents.
 

@@ -14,31 +14,76 @@ Manifest → Submission → Validation → Dataset → Registry → Discovery
 
 Before registering an agent, you must prepare a valid Agent Manifest declaration.
 
-A manifest describes:
+A manifest declares:
 
-- identity
-- purpose
-- scope
-- capabilities
-- autonomy level
-- responsible party
+- identity (`agent_id`, `agent_name`)
+- owner and accountability (`owner`, `contact`)
+- purpose and scope (`purpose`)
+- hard constraints (`forbidden_actions`)
+- autonomy level (`autonomy.level`)
+- risk profile (`risk_profile`)
+- data handling (`data_handling`)
+- stopping authority (`stopping_authority`)
+- audit surface (`audit_surface`)
 
 Example:
 
 ```json
 {
-  "identity": "demo-agent",
-  "purpose": "research assistant",
-  "scope": {
-    "positive": ["information retrieval", "summarization"],
-    "negative": ["no external execution"]
+  "$schema": "https://agent-manifest-spec.org/spec/v1.0/schema.json",
+  "manifest_version": "1.0",
+  "agent_id": "example.agent",
+  "agent_name": "Example Agent",
+  "agent_version": "1.0.0",
+
+  "owner": {
+    "type": "organization",
+    "identifier": "Example Organization"
   },
-  "capabilities": ["search", "summarization"],
-  "autonomy_level": "supervised"
+
+  "purpose": {
+    "primary_code": "general.assistance",
+    "description": "Provides bounded assistance without irreversible execution."
+  },
+
+  "forbidden_actions": [
+    "execute_irreversible_actions",
+    "access_private_data_without_consent"
+  ],
+
+  "autonomy": {
+    "level": 1
+  },
+
+  "risk_profile": {
+    "level": "low"
+  },
+
+  "data_handling": {
+    "stores_personal_data": false
+  },
+
+  "stopping_authority": {
+    "stoppable_by": ["owner"],
+    "mechanism": "Manual disable via hosting interface."
+  },
+
+  "audit_surface": {
+    "logging": "basic",
+    "reconstructability": "partial"
+  },
+
+  "contact": {
+    "email": "contact@example.com"
+  }
 }
 ```
 
-The manifest must follow the JSON schema defined in the Agent Manifest specification.
+The manifest must follow the JSON schema defined in the Agent Manifest specification:
+
+https://agent-manifest-spec.org/spec/v1.0/schema.json
+
+Full structural reference: [`spec/v1.0/spec.md`](../spec/v1.0/spec.md)
 
 -----
 
@@ -103,7 +148,7 @@ manifests/YYYY/MM/agent-name.json
 Example:
 
 ```
-manifests/2026/03/demo-agent.json
+manifests/2026/03/example-agent.json
 ```
 
 This creates a permanent public record of the declaration.
