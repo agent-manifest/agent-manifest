@@ -12,34 +12,62 @@ The process begins using the Agent Manifest Ambassador.
 
 👉 <https://agent-manifest.github.io/agent-manifest-ambassador/>
 
-The user provides the required declaration fields:
-
-- identity
-- purpose
-- scope
-- capabilities
-- autonomy level
+The user provides the required declaration fields and the Ambassador produces a manifest JSON.
 
 Example declaration:
 
 ```json
 {
-  "identity": "agent-manifest-ambassador",
-  "purpose": "Conversational generator that produces valid Agent Manifest declarations",
-  "scope": {
-    "positive": ["manifest generation", "schema validation"],
-    "negative": ["no external execution", "no autonomous actions"]
+  "$schema": "https://agent-manifest-spec.org/spec/v1.0/schema.json",
+  "manifest_version": "1.0",
+  "agent_id": "agent-manifest-ambassador",
+  "agent_name": "Agent Manifest Ambassador",
+  "agent_version": "0.1.0",
+
+  "owner": {
+    "type": "organization",
+    "identifier": "agent-manifest"
   },
-  "capabilities": [
-    "generate-manifest",
-    "schema-validation",
-    "declaration-assistance"
+
+  "purpose": {
+    "primary_code": "general.assistance",
+    "description": "Conversational generator that produces valid Agent Manifest declarations."
+  },
+
+  "forbidden_actions": [
+    "execute_external_actions",
+    "store_user_data_beyond_session"
   ],
-  "autonomy_level": "supervised"
+
+  "autonomy": {
+    "level": 1
+  },
+
+  "risk_profile": {
+    "level": "low"
+  },
+
+  "data_handling": {
+    "stores_personal_data": false
+  },
+
+  "stopping_authority": {
+    "stoppable_by": ["owner"],
+    "mechanism": "Manual disable via hosting interface."
+  },
+
+  "audit_surface": {
+    "logging": "basic",
+    "reconstructability": "partial"
+  },
+
+  "contact": {
+    "email": "contact@agent-manifest-spec.org"
+  }
 }
 ```
 
-The Ambassador generates a valid Agent Manifest JSON.
+Full structural reference: [`spec/v1.0/spec.md`](../spec/v1.0/spec.md)
 
 -----
 
