@@ -4,7 +4,79 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Agent Manifest — Core Declarative Specification v1.0</title>
+  <title>Agent Manifest v1.0 Specification</title>
+  <meta name="description" content="The canonical v1.0 specification for Agent Manifest, a declaration layer for AI agent identity, authority, operational boundaries, autonomy, risk profile, data handling, stopping authority, audit surface, and contact." />
+  <meta name="author" content="Hernán Alfredo Capucci" />
+  <meta name="keywords" content="Agent Manifest, specification, v1.0, declaration layer, AI agent, autonomous systems, JSON schema, open specification" />
+  <meta name="theme-color" content="#f5f4f0" />
+  <link rel="canonical" href="https://agent-manifest-spec.org/spec/v1.0/agent_manifest_v1.0.html" />
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Agent Manifest" />
+  <meta property="og:title" content="Agent Manifest v1.0 Specification" />
+  <meta property="og:description" content="The canonical v1.0 specification for Agent Manifest — a declaration layer for AI agent identity, authority, boundaries, autonomy, risk, data handling, stopping authority, and audit surface." />
+  <meta property="og:url" content="https://agent-manifest-spec.org/spec/v1.0/agent_manifest_v1.0.html" />
+  <meta property="og:image" content="https://agent-manifest-spec.org/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Agent Manifest — Open Specification, v1.0, CC BY 4.0" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="article:author" content="Hernán Alfredo Capucci" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Agent Manifest v1.0 Specification" />
+  <meta name="twitter:description" content="The canonical v1.0 specification for Agent Manifest — a declaration layer for AI agent boundaries, autonomy, risk, and audit surface." />
+  <meta name="twitter:image" content="https://agent-manifest-spec.org/og-image.png" />
+  <meta name="twitter:image:alt" content="Agent Manifest — Open Specification, v1.0, CC BY 4.0" />
+
+  <!-- Machine-readable companion -->
+  <link rel="alternate" type="application/schema+json" title="Agent Manifest JSON Schema v1.0" href="/spec/v1.0/schema.json" />
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "name": "Agent Manifest v1.0 Specification",
+    "headline": "Agent Manifest v1.0 Specification",
+    "description": "The canonical v1.0 specification for Agent Manifest, a declaration layer for AI agent identity, authority, operational boundaries, autonomy, risk profile, data handling, stopping authority, audit surface, and contact.",
+    "url": "https://agent-manifest-spec.org/spec/v1.0/agent_manifest_v1.0.html",
+    "inLanguage": "en",
+    "version": "1.0",
+    "datePublished": "2026",
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "identifier": "https://doi.org/10.5281/zenodo.18833956",
+    "isAccessibleForFree": true,
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Agent Manifest",
+      "url": "https://agent-manifest-spec.org/"
+    },
+    "sameAs": [
+      "https://github.com/agent-manifest/agent-manifest",
+      "https://doi.org/10.5281/zenodo.18833956"
+    ],
+    "author": {
+      "@type": "Person",
+      "name": "Hernán Alfredo Capucci",
+      "identifier": "https://orcid.org/0009-0008-7216-3032",
+      "sameAs": "https://orcid.org/0009-0008-7216-3032"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Agent Manifest Project",
+      "url": "https://agent-manifest-spec.org/"
+    }
+  }
+  </script>
+
   <style>
     /* ── Reset & Base ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
