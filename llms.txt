@@ -1,0 +1,98 @@
+# Agent Manifest
+
+A minimal, open specification that enables autonomous AI systems to declare
+identity, purpose, authority, operational boundaries, autonomy level, risk
+profile, data handling, stopping authority, audit surface, and contact
+before execution.
+
+This specification declares boundaries; it does not execute, enforce, or
+score agent behavior.
+
+## Canonical URLs
+
+- Site:          https://agent-manifest-spec.org/
+- Specification: https://agent-manifest-spec.org/spec/v1.0/agent_manifest_v1.0.html
+- JSON Schema:   https://agent-manifest-spec.org/spec/v1.0/schema.json
+- Discovery:     https://agent-manifest-spec.org/.well-known/agent-manifest-registry.json
+
+## Source repositories
+
+- Organization:        https://github.com/agent-manifest
+- Core specification:  https://github.com/agent-manifest/agent-manifest
+- Public dataset:      https://github.com/agent-manifest/agent-manifest-dataset
+- Registry governance: https://github.com/agent-manifest/agent-manifest-registry
+- Ambassador (UI):     https://github.com/agent-manifest/agent-manifest-ambassador
+- Diplomat (API):      https://github.com/agent-manifest/agent-manifest-diplomat
+- Boundary Handshake:  https://github.com/agent-manifest/boundary-handshake
+- Ambassador (live):   https://agent-manifest.github.io/agent-manifest-ambassador/
+
+## Identifiers
+
+- DOI:     https://doi.org/10.5281/zenodo.18833956
+- Version: 1.0
+- License: CC BY 4.0 (specification and documentation)
+- Author:  Hernán Alfredo Capucci
+- ORCID:   https://orcid.org/0009-0008-7216-3032
+
+## Core doctrine
+
+1. Declaration before execution.
+   An agent that declares its identity, purpose, and boundaries before
+   acting is structurally different from one that does not.
+
+2. Defines boundaries, not behavior.
+   The specification standardizes how agents declare what they are and
+   what they will not do. It does not specify how agents execute.
+
+3. Declaration Layer only.
+   Agent Manifest sits below enforcement and execution layers. Validators,
+   policy engines, audit systems, and runtimes are separate concerns.
+
+4. Execution-agnostic.
+   The specification is independent of any framework, runtime, language,
+   or hosting environment.
+
+5. Standard first. Product later.
+   Adoption is voluntary. The specification is open, versioned, and
+   designed to be composed with governance, discovery, and policy layers
+   built by others.
+
+## Field surface (v1.0)
+
+A v1.0 Agent Manifest declares:
+
+- agent_id, agent_name, agent_version
+- manifest_version
+- owner.type, owner.identifier
+- purpose.primary_code, purpose.description
+- forbidden_actions
+- autonomy.level (0–3)
+- risk_profile.level (low | medium | high)
+- data_handling.stores_personal_data, data_handling.retention
+- stopping_authority.stoppable_by, stopping_authority.mechanism
+- audit_surface.logging, audit_surface.reconstructability
+- contact.email
+
+## Operational pipeline
+
+  Ambassador  →  Diplomat  →  Dataset  →  Registry  →  Discovery
+
+- Ambassador: conversational generator that produces v1.0 JSON manifests.
+- Diplomat:   serverless registration endpoint that validates submissions.
+- Dataset:    public, append-only archive of declared manifests.
+- Registry:   governance and indexing of declarations.
+- Discovery:  the .well-known JSON endpoint that points consumers to the
+              registry and dataset.
+
+## What Agent Manifest is not
+
+- Not a runtime, framework, or agent execution engine.
+- Not a behavioral monitor, observability layer, or audit system.
+- Not a compliance certification or scoring service.
+- Not a guarantee of behavior — a declaration of declared constraints.
+- Not a replacement for governance, policy, or legal frameworks.
+
+## Citation
+
+Capucci, H. A. (2026). Agent Manifest v1.0. Zenodo.
+https://doi.org/10.5281/zenodo.18833956
