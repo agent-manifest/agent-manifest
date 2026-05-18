@@ -4,8 +4,75 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Agent Manifest — Minimal Declaration Layer for Autonomous AI Systems</title>
-  <meta name="description" content="Agent Manifest is a minimal, execution-agnostic declarative specification that enables autonomous systems to declare operational boundaries prior to execution.">
+  <title>Agent Manifest — Declaration Layer for AI Agents</title>
+  <meta name="description" content="Agent Manifest is an open specification for declaring AI agent identity, purpose, authority, boundaries, autonomy, risk, data handling, stopping authority, audit surface, and contact before execution.">
+  <meta name="author" content="Hernán Alfredo Capucci">
+  <meta name="keywords" content="agent manifest, declaration layer, AI agent specification, autonomous systems, agent identity, agent boundaries, agent autonomy, agent governance, open specification, JSON schema, AI standard">
+  <meta name="theme-color" content="#f5f4f0">
+  <meta name="color-scheme" content="light">
+  <link rel="canonical" href="https://agent-manifest-spec.org/">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Agent Manifest">
+  <meta property="og:title" content="Agent Manifest — Declaration Layer for AI Agents">
+  <meta property="og:description" content="An open specification for declaring AI agent identity, purpose, authority, boundaries, autonomy, risk, data handling, stopping authority, and audit surface before execution.">
+  <meta property="og:url" content="https://agent-manifest-spec.org/">
+  <meta property="og:image" content="https://agent-manifest-spec.org/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Agent Manifest — Open Specification, v1.0, CC BY 4.0">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Agent Manifest — Declaration Layer for AI Agents">
+  <meta name="twitter:description" content="An open specification for declaring AI agent identity, purpose, authority, boundaries, autonomy, risk, data handling, stopping authority, and audit surface before execution.">
+  <meta name="twitter:image" content="https://agent-manifest-spec.org/og-image.png">
+  <meta name="twitter:image:alt" content="Agent Manifest — Open Specification, v1.0, CC BY 4.0">
+
+  <!-- Machine-readable companions -->
+  <link rel="alternate" type="application/json" title="Agent Manifest Discovery" href="/.well-known/agent-manifest-registry.json">
+  <link rel="alternate" type="application/schema+json" title="Agent Manifest JSON Schema v1.0" href="/spec/v1.0/schema.json">
+
+  <!-- JSON-LD: spec as a TechArticle authored by an ORCID-identified Person -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "name": "Agent Manifest",
+    "headline": "Agent Manifest — Declaration Layer for AI Agents",
+    "description": "An open specification for declaring AI agent identity, purpose, authority, boundaries, autonomy, risk, data handling, stopping authority, and audit surface before execution.",
+    "url": "https://agent-manifest-spec.org/",
+    "inLanguage": "en",
+    "version": "1.0",
+    "datePublished": "2026",
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "identifier": "https://doi.org/10.5281/zenodo.18833956",
+    "isAccessibleForFree": true,
+    "sameAs": [
+      "https://github.com/agent-manifest/agent-manifest",
+      "https://doi.org/10.5281/zenodo.18833956"
+    ],
+    "author": {
+      "@type": "Person",
+      "name": "Hernán Alfredo Capucci",
+      "identifier": "https://orcid.org/0009-0008-7216-3032",
+      "sameAs": "https://orcid.org/0009-0008-7216-3032"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Agent Manifest Project",
+      "url": "https://agent-manifest-spec.org/"
+    }
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
@@ -289,15 +356,15 @@ footer {
       </li>
       <li>
         <span class="lk">JSON Schema</span>
-        <a href="https://raw.githubusercontent.com/hernancapucci/agent-manifest/main/spec/v1.0/schema.json" target="_blank" rel="noopener">spec/v1.0/schema.json</a>
+        <a href="https://raw.githubusercontent.com/agent-manifest/agent-manifest/main/spec/v1.0/schema.json" target="_blank" rel="noopener">spec/v1.0/schema.json</a>
       </li>
       <li>
         <span class="lk">Spec (Markdown)</span>
-        <a href="https://github.com/hernancapucci/agent-manifest/blob/main/spec/v1.0/spec.md" target="_blank" rel="noopener">spec/v1.0/spec.md</a>
+        <a href="https://github.com/agent-manifest/agent-manifest/blob/main/spec/v1.0/spec.md" target="_blank" rel="noopener">spec/v1.0/spec.md</a>
       </li>
       <li>
         <span class="lk">Repository</span>
-        <a href="https://github.com/hernancapucci/agent-manifest" target="_blank" rel="noopener">github.com/hernancapucci/agent-manifest</a>
+        <a href="https://github.com/agent-manifest/agent-manifest" target="_blank" rel="noopener">github.com/agent-manifest/agent-manifest</a>
       </li>
     </ul>
   </section>
@@ -309,11 +376,11 @@ footer {
     <ul class="link-list">
       <li>
         <span class="lk">Overview</span>
-        <a href="https://github.com/hernancapucci/agent-manifest/blob/main/docs/ARCHITECTURE.md" target="_blank" rel="noopener">docs/ARCHITECTURE.md</a>
+        <a href="https://github.com/agent-manifest/agent-manifest/blob/main/docs/ARCHITECTURE.md" target="_blank" rel="noopener">docs/ARCHITECTURE.md</a>
       </li>
       <li>
         <span class="lk">System Flow</span>
-        <a href="https://github.com/hernancapucci/agent-manifest/blob/main/docs/architecture/system-flow.md" target="_blank" rel="noopener">docs/architecture/system-flow.md</a>
+        <a href="https://github.com/agent-manifest/agent-manifest/blob/main/docs/architecture/system-flow.md" target="_blank" rel="noopener">docs/architecture/system-flow.md</a>
       </li>
     </ul>
   </section>
@@ -325,7 +392,7 @@ footer {
     <ul class="link-list">
       <li>
         <span class="lk">Ambassador</span>
-        <a href="https://hernancapucci.github.io/agent-manifest-ambassador/" target="_blank" rel="noopener">hernancapucci.github.io/agent-manifest-ambassador</a>
+        <a href="https://agent-manifest.github.io/agent-manifest-ambassador/" target="_blank" rel="noopener">agent-manifest.github.io/agent-manifest-ambassador</a>
       </li>
       <li>
         <span class="lk">Diplomat API</span>
@@ -333,7 +400,7 @@ footer {
       </li>
       <li>
         <span class="lk">Dataset</span>
-        <a href="https://github.com/hernancapucci/agent-manifest-dataset" target="_blank" rel="noopener">github.com/hernancapucci/agent-manifest-dataset</a>
+        <a href="https://github.com/agent-manifest/agent-manifest-dataset" target="_blank" rel="noopener">github.com/agent-manifest/agent-manifest-dataset</a>
       </li>
     </ul>
   </section>
@@ -349,7 +416,7 @@ footer {
       </li>
       <li>
         <span class="lk">Registry index</span>
-        <a href="https://raw.githubusercontent.com/hernancapucci/agent-manifest-dataset/main/registry.json" target="_blank" rel="noopener">registry.json (raw)</a>
+        <a href="https://raw.githubusercontent.com/agent-manifest/agent-manifest-dataset/main/registry.json" target="_blank" rel="noopener">registry.json (raw)</a>
       </li>
     </ul>
   </section>
@@ -425,7 +492,7 @@ footer {
       <div class="footer-block">
         <strong>Agent Manifest</strong><br>
         agent-manifest-spec.org<br>
-        <a href="https://github.com/hernancapucci/agent-manifest" target="_blank" rel="noopener">github.com/hernancapucci/agent-manifest</a>
+        <a href="https://github.com/agent-manifest/agent-manifest" target="_blank" rel="noopener">github.com/agent-manifest/agent-manifest</a>
       </div>
       <div class="footer-block">
         <strong>Hernán Alfredo Capucci</strong><br>
