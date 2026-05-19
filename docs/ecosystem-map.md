@@ -1,3 +1,8 @@
+---
+title: Ecosystem Map
+description: Structure of the Agent Manifest ecosystem and the role of each repository.
+---
+
 # Agent Manifest Ecosystem Map
 
 This document describes the structure of the Agent Manifest ecosystem and the role of each repository.
