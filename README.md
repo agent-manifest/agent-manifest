@@ -1,12 +1,20 @@
+![Status](https://img.shields.io/badge/status-published-1a1917?style=flat-square)
+![Version](https://img.shields.io/badge/version-1.0-1a1917?style=flat-square)
+![License](https://img.shields.io/badge/license-CC%20BY%204.0-lightgrey?style=flat-square)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18833956.svg)](https://doi.org/10.5281/zenodo.18833956)
 
-## Working Paper
-
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19432968.svg)](https://doi.org/10.5281/zenodo.19432968)
-
-**The Pre-Execution Identity Gap in AI Agents: A Minimal Declarative Layer Proposal**
-
 # Agent Manifest
+
+A minimal declaration layer for autonomous AI systems.
+
+**Start here**
+
+- **Specification** — https://agent-manifest-spec.org/spec/v1.0/agent_manifest_v1.0.html
+- **Schema** — https://agent-manifest-spec.org/spec/v1.0/schema.json
+- **Generator (Ambassador)** — https://agent-manifest.github.io/agent-manifest-ambassador/
+- **Registry / Discovery** — https://agent-manifest-spec.org/.well-known/agent-manifest-registry.json
+
+-----
 
 ## Canonical Specification (v1.0 — Standards Track)
 
@@ -19,7 +27,7 @@
 - **Markdown rendering (normatively identical):**  
   [`spec/v1.0/spec.md`](./spec/v1.0/spec.md)
 
-  -----
+-----
 
 ## Conceptual Architecture
 
@@ -27,8 +35,6 @@ The Agent Manifest ecosystem forms a layered declarative infrastructure for auto
 
 ![Agent Manifest Ecosystem Architecture](docs/architecture/agent-manifest-ecosystem.svg)
 
------
-  
 A minimal specification that requires autonomous systems to declare operational boundaries before execution.
 
 It standardizes how AI agents declare identity, constraints, autonomy level, risk profile, and data handling prior to interacting with external systems.
@@ -38,6 +44,63 @@ This repository defines a Declaration Layer only.
 It does not define behavior. It defines boundaries.
 
 Agent Manifest does not execute, validate, score, enforce, or decide.
+
+-----
+
+## What Agent Manifest is
+
+Agent Manifest is a declarative surface that may include:
+
+- Agent identity  
+- Operational domain (Scope)  
+- Autonomy level  
+- Tool access scope  
+- Data handling guarantees  
+- Risk profile  
+- Human oversight conditions  
+- Version commitments  
+
+It is intentionally minimal and does not mandate internal architecture.
+
+-----
+
+## What Agent Manifest is not
+
+Agent Manifest does not:
+
+- Execute agents  
+- Enforce compliance  
+- Guarantee safety  
+- Replace governance frameworks  
+- Certify correctness  
+- Score risk  
+- Monitor behavior  
+
+It defines what an agent *declares* — not what it *does*.
+
+Validation, scoring, auditing, and enforcement belong to separate systems.
+
+-----
+
+## Why Agent Manifest exists
+
+As AI systems become increasingly autonomous, interactions between agents, humans, APIs, and infrastructures require clarity prior to execution.
+
+Most systems describe capabilities.  
+Few describe constraints.
+
+Agent Manifest introduces a structural principle:
+
+> Autonomous systems should declare boundaries before action.
+
+This specification provides a public declaration layer — not a runtime, not a framework, not a governance engine.
+
+It is designed to be:
+
+- Minimal  
+- Composable  
+- Execution-agnostic  
+- Forward-compatible  
 
 -----
 
@@ -179,110 +242,6 @@ For additional examples see:
 
 -----
 
-## Why Agent Manifest exists
-
-As AI systems become increasingly autonomous, interactions between agents, humans, APIs, and infrastructures require clarity prior to execution.
-
-Most systems describe capabilities.  
-Few describe constraints.
-
-Agent Manifest introduces a structural principle:
-
-> Autonomous systems should declare boundaries before action.
-
-This specification provides a public declaration layer — not a runtime, not a framework, not a governance engine.
-
-It is designed to be:
-
-- Minimal  
-- Composable  
-- Execution-agnostic  
-- Forward-compatible  
-
------
-
-## What Agent Manifest is
-
-Agent Manifest is a declarative surface that may include:
-
-- Agent identity  
-- Operational domain (Scope)  
-- Autonomy level  
-- Tool access scope  
-- Data handling guarantees  
-- Risk profile  
-- Human oversight conditions  
-- Version commitments  
-
-It is intentionally minimal and does not mandate internal architecture.
-
------
-
-## What Agent Manifest is not
-
-Agent Manifest does not:
-
-- Execute agents  
-- Enforce compliance  
-- Guarantee safety  
-- Replace governance frameworks  
-- Certify correctness  
-- Score risk  
-- Monitor behavior  
-
-It defines what an agent *declares* — not what it *does*.
-
-Validation, scoring, auditing, and enforcement belong to separate systems.
-
------
-
-## Stability
-
-The normative specification contract is defined in:
-
-- [`spec/v1.0/spec.md`](./spec/v1.0/spec.md)  
-- [`spec/v1.0/schema.json`](./spec/v1.0/schema.json)  
-
-The constitutional core is defined in:
-
-- [`CORE_PRINCIPLES.md`](./CORE_PRINCIPLES.md)
-
-See: [`STABILITY.md`](./STABILITY.md) and [`VERSIONING_POLICY.md`](./VERSIONING_POLICY.md)
-
------
-
-## Start here
-
-If you are new to Agent Manifest, read in this order:
-
-1. [WHY_THIS_EXISTS.md](./WHY_THIS_EXISTS.md)  
-2. [WHAT_THIS_IS.md](./WHAT_THIS_IS.md)  
-3. [CORE_PRINCIPLES.md](./CORE_PRINCIPLES.md)  
-4. [`spec/v1.0/`](./spec/v1.0/)  
-5. [`examples/`](./examples/)  
-
------
-
-## Design Rationale
-
-The structural reasoning behind the specification is documented in:
-
-[DESIGN_RATIONALE.md](./DESIGN_RATIONALE.md)
-
-This document explains the architectural decisions, boundary-first philosophy, autonomy model, and execution-agnostic design principles that shape Agent Manifest.
-
------
-
-## Security & Governance Context
-
-Agent Manifest may be referenced during security and governance review of autonomous systems.
-
-For structured review guidance, see:
-
-[SECURITY_REVIEW_CONTEXT.md](./SECURITY_REVIEW_CONTEXT.md)
-
------
-
 ## Architectural Layering
 
 Agent Manifest operates strictly at the Declaration Layer.
@@ -333,6 +292,29 @@ These infrastructure components operate independently from the core specificatio
 
 -----
 
+## Stability and versioning
+
+The normative specification contract is defined in:
+
+- [`spec/v1.0/spec.md`](./spec/v1.0/spec.md)  
+- [`spec/v1.0/schema.json`](./spec/v1.0/schema.json)  
+
+The constitutional core is defined in:
+
+- [`CORE_PRINCIPLES.md`](./CORE_PRINCIPLES.md)
+
+See: [`STABILITY.md`](./STABILITY.md) and [`VERSIONING_POLICY.md`](./VERSIONING_POLICY.md)
+
+Agent Manifest follows semantic versioning:
+
+- MAJOR: structural or constitutional changes  
+- MINOR: compatible clarifications  
+- PATCH: editorial or formatting updates  
+
+Documentation and examples may evolve while `manifest_version` remains `1.0` until a formal spec bump is declared.
+
+-----
+
 ## Governance
 
 This repository defines the open specification.
@@ -344,15 +326,40 @@ Proposals for modification must preserve the core principles defined in
 
 -----
 
-## Versioning
+## Further reading
 
-Agent Manifest follows semantic versioning:
+The structural reasoning behind the specification — its architectural decisions, boundary-first philosophy, autonomy model, and execution-agnostic design principles — is documented in:
 
-- MAJOR: structural or constitutional changes  
-- MINOR: compatible clarifications  
-- PATCH: editorial or formatting updates  
+[DESIGN_RATIONALE.md](./DESIGN_RATIONALE.md)
 
-Documentation and examples may evolve while `manifest_version` remains `1.0` until a formal spec bump is declared.
+Agent Manifest may also be referenced during security and governance review of autonomous systems. For structured review guidance, see:
+
+[SECURITY_REVIEW_CONTEXT.md](./SECURITY_REVIEW_CONTEXT.md)
+
+-----
+
+## Recommended reading order
+
+If you are new to Agent Manifest, read in this order:
+
+1. [WHY_THIS_EXISTS.md](./WHY_THIS_EXISTS.md)  
+2. [WHAT_THIS_IS.md](./WHAT_THIS_IS.md)  
+3. [CORE_PRINCIPLES.md](./CORE_PRINCIPLES.md)  
+4. [`spec/v1.0/`](./spec/v1.0/)  
+5. [`examples/`](./examples/)  
+
+-----
+
+## Foundational Doctrine
+
+Agent Manifest is grounded in the principle of Pre-Execution Authority.
+
+Before autonomy, execution, or capability, an agent must declare the authority framework under which it operates.
+
+> No autonomy without authority.
+
+See:  
+[Pre-Execution Authority](./foundations/pre-execution-authority/README.md)
 
 -----
 
@@ -365,17 +372,6 @@ Agents should be able to declare who they are, what they can do, and where their
 This specification remains neutral, minimal, and open.
 
 Its value emerges through adoption.
-
------
-
-## Foundational Doctrine
-
-Agent Manifest is grounded in the principle of Pre-Execution Authority.
-
-Before autonomy, execution, or capability, an agent must declare the authority framework under which it operates.
-
-See:  
-[Pre-Execution Authority](./foundations/pre-execution-authority/README.md)
 
 -----
 
@@ -392,7 +388,15 @@ Empirical evidence related to boundary declaration behavior in AI systems:
   Dataset DOI: https://doi.org/10.5281/zenodo.19235488  
   Paper DOI: https://doi.org/10.5281/zenodo.19235116
 
-----
+-----
+
+## Companion analysis (working paper)
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19432968.svg)](https://doi.org/10.5281/zenodo.19432968)
+
+**The Pre-Execution Identity Gap in AI Agents: A Minimal Declarative Layer Proposal**
+
+-----
 
 ## Citation
 
@@ -404,6 +408,7 @@ https://doi.org/10.5281/zenodo.18833956
 Companion analysis:  
 https://doi.org/10.5281/zenodo.18834845
 
+-----
 
 ## Authorship
 
@@ -411,3 +416,17 @@ Agent Manifest was conceived and authored by
 **Hernán Alfredo Capucci** (2026)
 
 The specification is maintained as an open standard.
+
+---
+
+**Part of the [Agent Manifest](https://agent-manifest-spec.org) ecosystem**
+
+[Spec](https://github.com/agent-manifest/agent-manifest) ·
+[Registry](https://github.com/agent-manifest/agent-manifest-registry) ·
+[Dataset](https://github.com/agent-manifest/agent-manifest-dataset) ·
+[Ambassador](https://github.com/agent-manifest/agent-manifest-ambassador) ·
+[Diplomat](https://github.com/agent-manifest/agent-manifest-diplomat) ·
+[Boundary Handshake](https://github.com/agent-manifest/boundary-handshake) ·
+[∈ Principle](https://github.com/agent-manifest/e-principle)
+
+CC BY 4.0 · Hernán Alfredo Capucci · [ORCID 0009-0008-7216-3032](https://orcid.org/0009-0008-7216-3032)
