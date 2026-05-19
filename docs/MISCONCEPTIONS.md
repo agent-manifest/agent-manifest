@@ -1,3 +1,8 @@
+---
+title: Common Misconceptions
+description: Clarifications of recurring misunderstandings about Agent Manifest scope and intent.
+---
+
 # Common Misconceptions
 
 Applies to Agent Manifest v1.x canonical specification.

@@ -1,3 +1,8 @@
+---
+title: Registration Demo
+description: End-to-end demonstration of the operational registration pipeline.
+---
+
 # Registration Demo — Agent Manifest
 
 This document demonstrates the full operational registration pipeline using the Agent Manifest infrastructure.
