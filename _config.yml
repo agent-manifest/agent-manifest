@@ -1,2 +1,5 @@
+url: https://agent-manifest-spec.org
+title: Agent Manifest
+description: A minimal declaration layer for autonomous AI systems.
 include:
   - .well-known
