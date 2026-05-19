@@ -1,3 +1,8 @@
+---
+title: Operational Architecture
+description: Operational infrastructure of the Agent Manifest ecosystem from generation to discovery.
+---
+
 # Operational Architecture
 
 This document describes the operational infrastructure of the Agent Manifest ecosystem.

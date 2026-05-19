@@ -1,3 +1,8 @@
+---
+title: How to Register an Agent
+description: Step-by-step guide for registering an agent using the Agent Manifest infrastructure.
+---
+
 # How to Register an Agent
 
 This guide explains how to register an agent using the Agent Manifest infrastructure.

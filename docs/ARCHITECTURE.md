@@ -1,3 +1,8 @@
+---
+title: Architecture
+description: Internal architectural constraints of the Agent Manifest specification.
+---
+
 # ARCHITECTURE
 
 ## Conceptual Ecosystem Architecture
@@ -6,7 +11,7 @@ Agent Manifest is part of a broader declarative infrastructure for AI agent iden
 
 The ecosystem architecture is illustrated below.
 
-![Agent Manifest Ecosystem Architecture](docs/architecture/agent-manifest-ecosystem.svg)
+![Agent Manifest Ecosystem Architecture](architecture/agent-manifest-ecosystem.svg)
 
 
 ---
@@ -96,7 +101,7 @@ Examples of external extension domains:
 - Validator interpretation layers
 - Interoperability conventions between agents
 
-Extensions must not modify constitutional guarantees defined in [CORE_PRINCIPLES.md](./CORE_PRINCIPLES.md).
+Extensions must not modify constitutional guarantees defined in [CORE_PRINCIPLES.md](../CORE_PRINCIPLES.md).
 
 ---
 
@@ -133,4 +138,4 @@ Without verification, accountability erodes.
 The specification is grounded in **Pre-Execution Authority**:  
 a boundary-first doctrine where authority and constraints are declared prior to autonomy and execution.
 
-See: [Pre-Execution Authority](./foundations/pre-execution-authority/README.md)
+See: [Pre-Execution Authority](../foundations/pre-execution-authority/README.md)
