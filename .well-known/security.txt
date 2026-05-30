@@ -1,0 +1,4 @@
+Contact: https://github.com/agent-manifest/agent-manifest/security/advisories/new
+Policy: https://github.com/agent-manifest/agent-manifest/blob/main/SECURITY.md
+Canonical: https://agent-manifest-spec.org/.well-known/security.txt
+Preferred-Languages: en
