@@ -17,7 +17,7 @@
     "change_declared_boundaries_without_operator_confirmation"
   ],
   "autonomy": { "level": 2 },
-  "risk_posture": { "level": "moderate" },
+  "risk_profile": { "level": "medium" },
   "stopping_authority": {
     "can_self_terminate": true,
     "mechanism": "Halts and requests operator confirmation when architectural scope, repository structure, or implementation boundaries become ambiguous.",
