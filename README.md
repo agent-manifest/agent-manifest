@@ -336,6 +336,10 @@ Agent Manifest may also be referenced during security and governance review of a
 
 [SECURITY_REVIEW_CONTEXT.md](./SECURITY_REVIEW_CONTEXT.md)
 
+For how Agent Manifest composes with adjacent agent protocols, see:
+
+[How Agent Manifest relates to A2A, MCP, and agents.json](./docs/comparison.md)
+
 -----
 
 ## Recommended reading order
