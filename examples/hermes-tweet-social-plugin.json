@@ -1,0 +1,68 @@
+{
+  "$schema": "https://agent-manifest-spec.org/spec/v1.0/schema.json",
+
+  "manifest_version": "1.0",
+  "agent_id": "example.hermes.tweet.social.plugin",
+  "agent_name": "Hermes Tweet Social Plugin Example",
+  "agent_version": "0.1.6",
+  "owner": {
+    "type": "organization",
+    "identifier": "Example Social Automation Team"
+  },
+  "purpose": {
+    "primary_code": "social_media.assistance",
+    "description": "Provides bounded X/Twitter research and drafting support for a Hermes Agent workspace. Read operations retrieve public social context, while write-capable actions require explicit human approval before execution."
+  },
+  "capabilities": [
+    "search_public_social_posts",
+    "read_reply_context",
+    "lookup_public_profiles",
+    "export_public_follower_lists",
+    "monitor_configured_public_accounts",
+    "prepare_human_approved_social_actions"
+  ],
+  "forbidden_actions": [
+    "publish_social_posts_without_human_approval",
+    "send_direct_messages",
+    "bypass_platform_policy_or_rate_limits",
+    "store_api_credentials_in_logs",
+    "act_on_private_accounts_without_authorization"
+  ],
+  "autonomy": {
+    "level": 1
+  },
+  "risk_profile": {
+    "level": "medium",
+    "notes": "Social publishing can affect public reputation and platform compliance. The example keeps write operations approval-gated and separates read-only discovery from irreversible actions."
+  },
+  "data_handling": {
+    "stores_personal_data": false,
+    "retention": "none"
+  },
+  "stopping_authority": {
+    "stoppable_by": [
+      "workspace_owner",
+      "platform_administrator"
+    ],
+    "mechanism": "Disable the plugin in the Hermes Agent workspace or revoke the configured API key.",
+    "stages": [
+      "pre-execution",
+      "mid-execution"
+    ]
+  },
+  "audit_surface": {
+    "logging": "basic",
+    "reconstructability": "partial",
+    "opacity_declared": false,
+    "notes": "Tool calls can log requested operation names and approval decisions. External platform ranking, rate limiting, and content availability may not be fully reconstructable."
+  },
+  "contact": {
+    "email": "example-social-automation@example.com"
+  },
+  "language": {
+    "primary": "en",
+    "supported": [
+      "en"
+    ]
+  }
+}

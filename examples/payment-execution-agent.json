@@ -38,7 +38,7 @@
   },
   "data_handling": {
     "stores_personal_data": true,
-    "retention": "30d_audit_records_only"
+    "retention": "P30D"
   },
   "stopping_authority": {
     "stoppable_by": [
