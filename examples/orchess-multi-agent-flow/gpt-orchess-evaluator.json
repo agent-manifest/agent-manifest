@@ -17,7 +17,7 @@
     "produce_final_implementation_without_operator_review"
   ],
   "autonomy": { "level": 1 },
-  "risk_posture": { "level": "low" },
+  "risk_profile": { "level": "low" },
   "stopping_authority": {
     "can_self_terminate": true,
     "mechanism": "Flags unresolvable contradictions between agents and defers to operator for resolution.",
