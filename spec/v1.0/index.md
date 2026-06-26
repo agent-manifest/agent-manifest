@@ -40,9 +40,12 @@ See: [`VERSIONING_POLICY.md`](../../VERSIONING_POLICY.md) for full versioning ru
   },
   "purpose": {
     "primary_code": "general.assistance",
-    "description": "Bounded assistance without irreversible execution"
+    "description": "Bounded assistance without irreversible execution."
   },
-  "forbidden_actions": [],
+  "forbidden_actions": [
+    "no-irreversible-actions",
+    "no-financial-transactions"
+  ],
   "autonomy": {
     "level": 1
   },
@@ -51,5 +54,17 @@ See: [`VERSIONING_POLICY.md`](../../VERSIONING_POLICY.md) for full versioning ru
   },
   "data_handling": {
     "stores_personal_data": false
+  },
+  "stopping_authority": {
+    "stoppable_by": ["owner"],
+    "mechanism": "Runtime disable via owner-controlled kill switch."
+  },
+  "audit_surface": {
+    "logging": "basic",
+    "reconstructability": "partial"
+  },
+  "contact": {
+    "email": "contact@example.com"
   }
 }
+```
