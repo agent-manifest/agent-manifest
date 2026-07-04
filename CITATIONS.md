@@ -27,7 +27,7 @@ https://arxiv.org/abs/2606.30546
 
 **Referenced work.** Hernán Alfredo Capucci. 2026. *Agent Manifest: Core Declarative Specification v1.0.* https://agent-manifest-spec.org/spec/v1.0/agent_manifest_v1.0.html
 
-**Positioning note.** MAS-Lab operates at the runtime, validation, and evaluation layers. Agent Manifest operates at the declaration layer and is static by design (see [docs/MISCONCEPTIONS.md](./docs/MISCONCEPTIONS.md)). The two are architecturally complementary.
+**Positioning note.** MAS-Lab operates at the runtime, validation, and evaluation layers. Agent Manifest operates at the declaration layer and is static by design (see [docs/MISCONCEPTIONS.md](./docs/MISCONCEPTIONS.md)). The two are architecturally complementary. A detailed comparison is available in [docs/comparison-mas-lab.md](./docs/comparison-mas-lab.md).
 
 This citation does not imply any affiliation, endorsement, or collaboration between the authors of MAS-Lab and the author of Agent Manifest.
 

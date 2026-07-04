@@ -344,6 +344,10 @@ For how Agent Manifest composes with adjacent agent protocols, see:
 
 [How Agent Manifest relates to A2A, MCP, and agents.json](./docs/comparison.md)
 
+For how it relates to specification-driven runtime and validation frameworks, see:
+
+[Agent Manifest and MAS-Lab: Declaration Layer vs. Specification-Driven Runtime](./docs/comparison-mas-lab.md)
+
 -----
 
 ## Recommended reading order

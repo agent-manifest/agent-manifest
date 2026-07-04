@@ -53,3 +53,7 @@ https://agent.example.com/.well-known/agent-manifest.json
 The Agent Card tells a counterparty *how to reach and use* the agent. The Agent Manifest tells the same counterparty — and the agent's own operators, auditors, and accountable owner — *under what declared identity, boundaries, and accountability* it operates. The two documents describe different things about the same agent, and an agent that connects to tools over MCP can carry all three concerns at once: MCP for tool access, the Agent Card for communication, and the Agent Manifest for governance.
 
 Nothing in Agent Manifest requires A2A, MCP, or agents.json, and nothing in those requires Agent Manifest. They are designed to coexist.
+
+## See also
+
+For how Agent Manifest relates to specification-driven runtime and validation frameworks, see [Agent Manifest and MAS-Lab](./comparison-mas-lab.md).
