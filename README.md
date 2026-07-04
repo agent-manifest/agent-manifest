@@ -45,6 +45,10 @@ It does not define behavior. It defines boundaries.
 
 Agent Manifest does not execute, validate, score, enforce, or decide.
 
+It is static by design: Agent Manifest models commitments, not behavior.  
+Runtime behavior, enforcement, and observability belong to external layers.  
+See [Common Misconceptions](./docs/MISCONCEPTIONS.md).
+
 -----
 
 ## What Agent Manifest is
