@@ -18,6 +18,11 @@ All notable changes to this project will be documented in this file.
 
 First canonical public release.
 
+> Date note: 2026-02-28 is the repository/specification release date.
+> The archived citable version (DOI 10.5281/zenodo.18833956) was published
+> on Zenodo on 2026-03-02, which is the date recorded in `CITATION.cff`
+> and `codemeta.json`. Both dates are correct; they refer to different events.
+
 ### Added
 
 - Established canonical specification under `spec/v1.0/`.
