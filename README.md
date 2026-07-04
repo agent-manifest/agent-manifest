@@ -412,6 +412,8 @@ https://doi.org/10.5281/zenodo.18833956
 Companion analysis:  
 https://doi.org/10.5281/zenodo.18834845
 
+External works citing Agent Manifest are tracked in [CITATIONS.md](./CITATIONS.md).
+
 -----
 
 ## Authorship

@@ -55,3 +55,9 @@ It examines the principles underlying pre-execution authority and declarative bo
 ## Ongoing
 
 Paper #05 — In development.
+
+---
+
+## External citations
+
+External academic and technical works citing Agent Manifest are tracked in [CITATIONS.md](./CITATIONS.md).
