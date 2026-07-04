@@ -342,7 +342,7 @@ Agent Manifest may also be referenced during security and governance review of a
 
 For how Agent Manifest composes with adjacent agent protocols, see:
 
-[How Agent Manifest relates to A2A, MCP, and agents.json](./docs/comparison.md)
+[How Agent Manifest relates to A2A, MCP, agents.json, OASF, and Agent Spec](./docs/comparison.md)
 
 For how it relates to specification-driven runtime and validation frameworks, see:
 

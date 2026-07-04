@@ -127,3 +127,9 @@ One is a promise made outward, before execution.
 The other is machinery that checks a system against its own specification.
 
 A trustworthy agent ecosystem needs both layers — declared commitments that anyone can read, and validated implementations that operators can trust.
+
+---
+
+## See also
+
+For how Agent Manifest relates to interaction protocols (A2A, MCP, agents.json) and to the declarative specifications MAS-Lab groups it with (OASF, Agent Spec), see [the general comparison](./comparison.md).
