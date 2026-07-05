@@ -100,14 +100,14 @@ Pre-Execution Authority may be expressed through six conceptual blocks:
 
 ### 4.4 Autonomy Gradient
 
-A declared autonomy level, for example:
+A declared autonomy level, aligned with the normative interpretation in spec v1.0:
 
-- Level 0 — Fully supervised  
-- Level 1 — User-confirmed  
-- Level 2 — Conditional autonomy  
-- Level 3 — Scoped autonomy  
+- Level 0 — No execution: advisory / descriptive only  
+- Level 1 — Supervised: actions only under explicit user instruction or approval  
+- Level 2 — Scoped autonomy: bounded workflows within declared constraints  
+- Level 3 — High autonomy: execution within declared constraints without per-step approval  
 
-These levels are illustrative and non-normative.
+This document is non-normative. The authoritative definition of `autonomy.level` is the canonical specification (`spec/v1.0/spec.md`).
 
 Autonomy becomes a declared variable, not an implicit assumption.
 

@@ -107,6 +107,28 @@ not in runtime control.
 
 ---
 
+## 6. "It only describes static structure"
+
+Correct — and deliberate.
+
+Agent Manifest is static by design.
+
+It declares commitments, boundaries, identity, and accountability.
+
+It does not model behavior: reasoning patterns, orchestration flows, message exchange, or runtime dynamics.
+
+> Agent Manifest models commitments, not behavior.
+
+Behavior, enforcement, and observability belong to external layers.
+
+Specification-driven runtime and validation frameworks — such as MAS-Lab (arXiv:2606.30546) — operate at those layers.
+
+They are complementary, not competing.
+
+A declaration must remain static to be readable, portable, and verifiable by third parties before any interaction begins.
+
+---
+
 ## Architectural Reminder
 
 Agent Manifest is:

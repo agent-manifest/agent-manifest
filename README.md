@@ -45,6 +45,10 @@ It does not define behavior. It defines boundaries.
 
 Agent Manifest does not execute, validate, score, enforce, or decide.
 
+It is static by design: Agent Manifest models commitments, not behavior.  
+Runtime behavior, enforcement, and observability belong to external layers.  
+See [Common Misconceptions](./docs/MISCONCEPTIONS.md).
+
 -----
 
 ## What Agent Manifest is
@@ -338,7 +342,11 @@ Agent Manifest may also be referenced during security and governance review of a
 
 For how Agent Manifest composes with adjacent agent protocols, see:
 
-[How Agent Manifest relates to A2A, MCP, and agents.json](./docs/comparison.md)
+[How Agent Manifest relates to A2A, MCP, agents.json, OASF, and Agent Spec](./docs/comparison.md)
+
+For how it relates to specification-driven runtime and validation frameworks, see:
+
+[Agent Manifest and MAS-Lab: Declaration Layer vs. Specification-Driven Runtime](./docs/comparison-mas-lab.md)
 
 -----
 
@@ -411,6 +419,8 @@ https://doi.org/10.5281/zenodo.18833956
 
 Companion analysis:  
 https://doi.org/10.5281/zenodo.18834845
+
+External works citing Agent Manifest are tracked in [CITATIONS.md](./CITATIONS.md).
 
 -----
 

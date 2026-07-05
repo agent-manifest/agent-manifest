@@ -19,7 +19,7 @@
   "autonomy": { "level": 1 },
   "risk_profile": { "level": "low" },
   "stopping_authority": {
-    "can_self_terminate": true,
+    "stoppable_by": ["owner", "self"],
     "mechanism": "Flags unresolvable contradictions between agents and defers to operator for resolution.",
     "stages": ["pre-execution", "mid-execution"]
   },

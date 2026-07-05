@@ -19,7 +19,7 @@
   "autonomy": { "level": 2 },
   "risk_profile": { "level": "medium" },
   "stopping_authority": {
-    "can_self_terminate": true,
+    "stoppable_by": ["owner", "self"],
     "mechanism": "Halts and requests operator confirmation when architectural scope, repository structure, or implementation boundaries become ambiguous.",
     "stages": ["pre-execution", "mid-execution"]
   },
