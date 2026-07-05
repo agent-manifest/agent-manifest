@@ -1,0 +1,39 @@
+name: Validate Examples
+
+on:
+  pull_request:
+    paths:
+      - "examples/**"
+      - "spec/**"
+      - ".github/workflows/validate-examples.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "examples/**"
+      - "spec/**"
+      - ".github/workflows/validate-examples.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate-examples:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Validate examples against the v1.0 schema
+        run: |
+          npx --yes -p ajv-cli@5 -p ajv-formats@3 ajv validate \
+            --spec=draft2020 -c ajv-formats --strict=false \
+            -s spec/v1.0/schema.json \
+            -d "examples/*.json" \
+            -d "examples/orchess-multi-agent-flow/*.json"
