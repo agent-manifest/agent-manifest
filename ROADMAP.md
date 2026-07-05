@@ -45,7 +45,7 @@ Observation before expansion.
 
 Only after architectural maturity:
 
-- Optional validation CLI
+- Optional validation CLI — an initial standalone validator exists in [`agent-manifest-cli`](https://github.com/agent-manifest/agent-manifest-cli)
 - Optional SDK references
 - Optional integration patterns
 - Optional registry concepts

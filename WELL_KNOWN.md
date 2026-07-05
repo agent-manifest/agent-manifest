@@ -87,12 +87,12 @@ Full structural reference: [`spec/v1.0/spec.md`](./spec/v1.0/spec.md)
 
 ## 3. Purpose
 
-Publishing a manifest at the well-known endpoint allows:
+Publishing a manifest at the well-known endpoint enables:
 
-- automatic discovery by other agents
+- discovery by other agents and tooling
 - compatibility checks between agents
 - registry indexing
-- validator verification
+- validation tooling (planned — see [ROADMAP.md](./ROADMAP.md))
 
 This makes the Agent Manifest ecosystem machine-discoverable.
 
@@ -100,16 +100,20 @@ This makes the Agent Manifest ecosystem machine-discoverable.
 
 ## 4. Relationship to the Registry
 
-The central registry may discover manifests through the well-known endpoint.
+Today, registration is submission-based: manifests reach the registry
+through the Ambassador → Diplomat pipeline or the dataset's issue-based
+path, and accepted manifests are archived in the public dataset and
+indexed in `registry.json`.
 
-The registry does not require agents to submit manifests manually.
-
-Instead it may:
+The well-known endpoint is what makes automatic discovery possible.
+Future registry versions may crawl well-known endpoints to:
 
 - discover manifests automatically
 - index them
 - archive them in the dataset
-- validate them using the validator
+- validate them
+
+That auto-discovery layer is future work, not current behavior.
 
 ---
 
