@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+Repository releases and the specification version move on separate
+tracks; see [`VERSIONING_POLICY.md`](./VERSIONING_POLICY.md). The
+specification has remained `manifest_version: 1.0` since [1.0].
+
 ---
 
 ## [Unreleased]
@@ -11,6 +15,40 @@ All notable changes to this project will be documented in this file.
 - Normalized author metadata in `CITATION.cff` to full legal name ("Hernán Alfredo Capucci") for bibliographic consistency.
   
 - Configured `CITATION.cff` to use Zenodo v1.0 archived specification as the preferred citation target (DOI: 10.5281/zenodo.18833956).
+
+---
+
+## [1.1.0] - 2026-03-12
+
+Repository release. No changes to the normative specification
+(`spec/v1.0/`); `manifest_version` remains `1.0`.
+
+### Added
+
+- Conceptual architecture diagram for the ecosystem
+  (`docs/architecture/agent-manifest-ecosystem.svg`), referenced from
+  `README.md` and `docs/ARCHITECTURE.md`.
+- Ecosystem mapping documentation (`docs/ecosystem-map.md`).
+- Registration guides: `docs/how-to-register.md` and
+  `docs/registration-demo.md`.
+- Well-known discovery endpoint on the spec site
+  (`.well-known/agent-manifest-registry.json`).
+- `$schema` references in all examples to improve editor validation.
+
+### Changed
+
+- Architecture documentation refinements and documentation structure
+  improvements.
+
+---
+
+## [1.0.0] - 2026-03-02
+
+Zenodo trigger release for DOI registration. Content identical to
+[1.0] (zero commits between the `v1.0` and `v1.0.0` tags); the tag
+exists so the GitHub–Zenodo integration could publish the archived,
+citable version of the specification
+(DOI: 10.5281/zenodo.18833956).
 
 ---
 
@@ -41,6 +79,34 @@ First canonical public release.
 
 - This release supersedes all pre-1.0 development iterations.
 - Version 1.0 represents the first frozen, canonical specification state.
+
+---
+
+## [0.2.0] - 2026-02-14
+
+Foundational consolidation. No modifications to the normative
+specification or JSON Schema.
+
+### Added
+
+- Pre-Execution Authority as explicit grounding doctrine
+  (`foundations/pre-execution-authority/`).
+- `DESIGN_RATIONALE.md` (architectural reasoning).
+- `ROADMAP.md` (architecture-first direction).
+- `CORE_PRINCIPLES.md`, `CONTRIBUTING.md`, `SECURITY.md`.
+- Doctrinal references integrated into `README.md`.
+
+### Changed
+
+- Clarified the separation between doctrine and technical
+  specification, and the stability-over-velocity posture.
+
+### Notes
+
+- The [0.1.0] section below was written on 2026-02-16 and documents the
+  cumulative pre-1.0 baseline; several of its doctrinal items landed
+  between the `v0.1.0` (2026-02-04) and `v0.2.0` (2026-02-14) tags and
+  are the substance of this release.
 
 ---
 
