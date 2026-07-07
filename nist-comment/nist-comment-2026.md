@@ -8,8 +8,8 @@
 **Date:** March 13, 2026  
 **To:** AI-Identity@nist.gov  
 **ORCID:** 0009-0008-7216-3032  
-**Spec:** https://agent-manifest-spec.org  
-**DOI:** https://doi.org/10.5281/zenodo.18833956
+**Spec:** https://agent-manifest-spec.org (DOI: https://doi.org/10.5281/zenodo.18833956)  
+**DOI of this comment:** https://doi.org/10.5281/zenodo.19000957
 
 -----
 
@@ -17,7 +17,7 @@
 
 This document was submitted as a formal public comment in response to the NIST NCCoE concept paper:
 
-> *“Accelerating the Adoption of Software and AI Agent Identity and Authorization”*  
+> *"Accelerating the Adoption of Software and AI Agent Identity and Authorization"*  
 > National Cybersecurity Center of Excellence (NCCoE), February 5, 2026  
 > Comment period open through April 2, 2026
 
@@ -42,7 +42,7 @@ Agent Manifest fills this gap with a minimal pre-execution declaration layer.
 |3. Authorization |Is the agent permitted to perform this action?     |Policy engines, NGAC         |
 |4. Audit         |What did the agent do, and can it be reconstructed?|Logging, SIEM                |
 
-Agent Manifest occupies Layer 1 — currently absent from NIST’s proposed stack.
+Agent Manifest occupies Layer 1 — currently absent from NIST's proposed stack.
 
 -----
 
@@ -65,14 +65,14 @@ The complete submission is available in this directory:
 
 
 Also archived on Zenodo:  
-DOI: https://doi.org/10.5281/zenodo.18833956
+DOI: https://doi.org/10.5281/zenodo.19000957
 
 -----
 
 ## Status
 
 - [x] Submitted to AI-Identity@nist.gov — March 13, 2026
-- [ ] Archived on Zenodo
+- [x] Archived on Zenodo — March 13, 2026
 - [ ] Listed in NIST public comment record
 
 -----
