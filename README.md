@@ -286,7 +286,7 @@ Without validation, accountability erodes.
 
 ## Ecosystem Infrastructure
 
-Agent Manifest defines the declaration layer of a broader open ecosystem.
+Agent Manifest defines a declaration layer within a broader open ecosystem.
 
 Operational components such as the generator, dataset repository, registry, and discovery endpoint are documented in:
 
