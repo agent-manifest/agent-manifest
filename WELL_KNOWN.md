@@ -92,7 +92,7 @@ Publishing a manifest at the well-known endpoint enables:
 - discovery by other agents and tooling
 - compatibility checks between agents
 - registry indexing
-- validation tooling (planned — see [ROADMAP.md](./ROADMAP.md))
+- validation tooling — [agent-manifest-cli](https://github.com/agent-manifest/agent-manifest-cli) (offline validation against the canonical v1.0 schema)
 
 This makes the Agent Manifest ecosystem machine-discoverable.
 

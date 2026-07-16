@@ -40,7 +40,7 @@ Discovery Endpoint
 
 ## Ecosystem Architecture
 
-The Agent Manifest ecosystem consists of six repositories.
+The Agent Manifest ecosystem consists of seven repositories.
 
 -----
 
@@ -48,7 +48,7 @@ The Agent Manifest ecosystem consists of six repositories.
 
 Repository: <https://github.com/agent-manifest/agent-manifest>
 
-Role: The canonical specification of the Agent Manifest standard.
+Role: Hosts the canonical Agent Manifest specification.
 
 Contains:
 
@@ -130,11 +130,19 @@ https://agent-manifest-spec.org/.well-known/agent-manifest-registry.json
 
 -----
 
-## 6. boundary-handshake
+## 6. agent-manifest-cli
+
+Repository: <https://github.com/agent-manifest/agent-manifest-cli>
+
+Role: Command-line tool for offline validation of manifests against the canonical v1.0 JSON Schema.
+
+-----
+
+## 7. boundary-handshake
 
 Repository: <https://github.com/agent-manifest/boundary-handshake>
 
-Role: Conceptual extension exploring compatibility verification between agents prior to interaction.
+Role: Conceptual extension exploring compatibility evaluation between agents prior to interaction.
 
 This repository is experimental and not part of the current operational pipeline.
 
@@ -142,18 +150,28 @@ This repository is experimental and not part of the current operational pipeline
 
 ## Operational Pipeline
 
-The current operational pipeline is:
+The current operational pipeline has two submission paths.
+
+Direct (Ambassador):
 
 ```
 Ambassador
 ↓
+Diplomat API (schema validation)
+↓
+Dataset storage
+↓
+Registry update
+↓
+Discovery endpoint
+```
+
+Manual (GitHub Issue):
+
+```
 GitHub Issue submission
 ↓
-Diplomat (registration gateway)
-↓
-Dataset workflow
-↓
-Manifest validation
+Dataset workflow (schema validation)
 ↓
 Dataset storage
 ↓
@@ -173,6 +191,7 @@ Operational today:
 - agent-manifest-diplomat
 - agent-manifest-dataset
 - agent-manifest-registry
+- agent-manifest-cli
 
 Conceptual / research:
 

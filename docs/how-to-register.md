@@ -105,17 +105,27 @@ Steps:
 1. Declare autonomy level.
 1. Review the generated JSON.
 
-The Ambassador helps produce a structurally valid manifest.
+The Ambassador helps produce a structurally complete manifest. Full conformance with the canonical v1.0 JSON Schema is validated at submission.
 
 -----
 
 ## 3. Submit the Manifest
 
-The Ambassador creates a pre-filled GitHub Issue in the dataset repository:
+There are two submission paths:
+
+**A. Direct submission (Ambassador).** The Ambassador submits the manifest to the Diplomat API:
+
+```
+POST https://agent-manifest-diplomat.vercel.app/api/register
+```
+
+The Diplomat validates the manifest against the canonical v1.0 JSON Schema and, if accepted, stores it in the dataset repository.
+
+**B. Manual submission (GitHub Issue).** Alternatively, open an issue containing the manifest JSON in the dataset repository:
 
 👉 <https://github.com/agent-manifest/agent-manifest-dataset>
 
-The issue contains:
+The issue should contain:
 
 - agent identity
 - manifest JSON
@@ -127,7 +137,9 @@ Review the issue and click **Submit new issue**.
 
 ## 4. Automated Validation
 
-After submission, an automated workflow is triggered.
+Direct submissions (path A) are validated by the Diplomat at the API endpoint before storage; no issue is involved.
+
+After a manual issue submission (path B), an automated workflow is triggered.
 
 The workflow:
 

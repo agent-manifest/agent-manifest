@@ -78,23 +78,25 @@ Full structural reference: [`spec/v1.0/spec.md`](../spec/v1.0/spec.md)
 
 ## 2. Create the Submission
 
-After generating the manifest, the Ambassador opens a pre-filled GitHub Issue in the dataset repository:
+After generating the manifest, the Ambassador submits it directly to the Diplomat API:
+
+```
+POST https://agent-manifest-diplomat.vercel.app/api/register
+```
+
+The Diplomat validates the manifest against the canonical v1.0 JSON Schema and, if accepted, stores it in the dataset repository.
+
+A manifest can also be submitted manually, by opening an issue with the manifest JSON in the dataset repository:
 
 👉 <https://github.com/agent-manifest/agent-manifest-dataset>
-
-The issue includes:
-
-- the manifest JSON
-- the agent identity
-- submission metadata
-
-The user reviews the content and submits the issue.
 
 -----
 
 ## 3. Workflow Execution
 
-Submitting the issue triggers an automated workflow.
+Direct API submissions are validated by the Diplomat at the endpoint.
+
+A manual issue submission triggers an automated workflow.
 
 The workflow performs:
 

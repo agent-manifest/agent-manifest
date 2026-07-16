@@ -73,7 +73,7 @@ DOI: https://doi.org/10.5281/zenodo.19000957
 
 - [x] Submitted to AI-Identity@nist.gov — March 13, 2026
 - [x] Archived on Zenodo — March 13, 2026
-- [ ] Listed in NIST public comment record
+- Tracking closed — July 2026. The comment period closed on April 2, 2026. The NCCoE does not publish individual comments for this concept paper, so no public listing is expected. No further action is planned. This document is preserved unchanged as the record of the submission as sent.
 
 -----
 
