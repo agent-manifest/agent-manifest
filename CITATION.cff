@@ -1,10 +1,10 @@
 cff-version: 1.2.0
 title: "Agent Manifest"
-message: "If you use Agent Manifest, please cite the archived Zenodo record."
+message: "If you use Agent Manifest, please cite the specification (see preferred-citation). To cite this software repository itself, use the metadata of this file."
 type: software
-version: "1.0.0"
-doi: "10.5281/zenodo.18833956"
-date-released: "2026-03-02"
+version: "1.1.0"
+doi: "10.5281/zenodo.18986018"
+date-released: "2026-03-12"
 url: "https://github.com/agent-manifest/agent-manifest"
 license: "CC-BY-4.0"
 
@@ -21,4 +21,5 @@ preferred-citation:
       given-names: "Hernán Alfredo"
       orcid: "https://orcid.org/0009-0008-7216-3032"
   doi: "10.5281/zenodo.18833956"
+  version: "1.0"
   year: 2026
