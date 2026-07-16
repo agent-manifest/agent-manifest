@@ -40,11 +40,11 @@ Ambassador → Diplomat → Dataset → Registry → Discovery
 Public interface for creating Agent Manifest declarations.
 
 - URL: [agent-manifest.github.io/agent-manifest-ambassador](https://agent-manifest.github.io/agent-manifest-ambassador)
-- Input: five structured questions
-- Output: valid Agent Manifest v1.0 JSON
+- Input: six structured questions
+- Output: complete Agent Manifest v1.0 JSON
 Schema: [agent-manifest-spec.org/spec/v1.0/schema.json](https://agent-manifest-spec.org/spec/v1.0/schema.json)
 
-The Ambassador ensures that every manifest conforms to the official specification before submission.
+The Ambassador guides the user through composing the manifest. Conformance with the official specification is validated server-side: the Diplomat checks every submission against the canonical v1.0 JSON Schema before it is stored.
 
 -----
 
@@ -53,11 +53,11 @@ The Ambassador ensures that every manifest conforms to the official specificatio
 Endpoint that receives, validates, and stores manifests.
 
 - Endpoint: `POST https://agent-manifest-diplomat.vercel.app/api/register`
-- Validates: `manifest_version`, `agent_id`, required fields
+- Validates: the full canonical v1.0 JSON Schema (required fields, types, and constraints)
 - On success: writes manifest to the public dataset
 - On failure: returns structured error with rejection reason
 
-The Diplomat acts as the integrity gatekeeper for the public registry.
+The Diplomat acts as the structural validation gate for the public registry.
 
 **Response (accepted):**
 
@@ -66,9 +66,11 @@ The Diplomat acts as the integrity gatekeeper for the public registry.
   "status": "accepted",
   "agent_id": "example-agent",
   "stored_at": "manifests/2026/03/example-agent.json",
-  "registry_updated": true
+  "registry_updated": false
 }
 ```
+
+`registry_updated` is `false` at submission time: the registry index is rebuilt afterwards by the dataset repository's automation, not within the API call.
 
 **Response (rejected):**
 
@@ -145,7 +147,7 @@ Any system can locate the registry by reading this endpoint — no prior configu
 ```
 Agent or User
      ↓
-Ambassador (generates valid manifest)
+Ambassador (composes manifest)
      ↓
 Diplomat API (validates + stores)
      ↓
