@@ -52,7 +52,7 @@ score agent behavior.
    The specification is independent of any framework, runtime, language,
    or hosting environment.
 
-5. Standard first. Product later.
+5. Specification first. Product later.
    Adoption is voluntary. The specification is open, versioned, and
    designed to be composed with governance, discovery, and policy layers
    built by others.

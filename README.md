@@ -16,7 +16,7 @@ A minimal declaration layer for autonomous AI systems.
 
 -----
 
-## Canonical Specification (v1.0 — Standards Track)
+## Canonical Specification (v1.0)
 
 - **HTML (rendered canonical document):**  
   https://agent-manifest-spec.org/spec/v1.0/agent_manifest_v1.0.html
@@ -286,7 +286,7 @@ Without validation, accountability erodes.
 
 ## Ecosystem Infrastructure
 
-Agent Manifest defines the declaration layer of a broader open ecosystem.
+Agent Manifest defines a declaration layer within a broader open ecosystem.
 
 Operational components such as the generator, dataset repository, registry, and discovery endpoint are documented in:
 
@@ -429,7 +429,7 @@ External works citing Agent Manifest are tracked in [CITATIONS.md](./CITATIONS.m
 Agent Manifest was conceived and authored by  
 **Hernán Alfredo Capucci** (2026)
 
-The specification is maintained as an open standard.
+The specification is maintained in the open — open license, public versioning, and a transparent process.
 
 ---
 

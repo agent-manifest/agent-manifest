@@ -83,7 +83,7 @@ Monetization last.
 
 ## Declarative Integrity — Future Direction
 
-Agent Manifest currently defines the Declaration Layer and its structural foundations.
+Agent Manifest currently defines a declaration layer — a candidate declarative primitive — and its structural foundations.
 
 Future work may include formalization and automation of the **Declarative Integrity Framework (DIF)** as a validator layer.
 

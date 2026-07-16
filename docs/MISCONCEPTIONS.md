@@ -135,7 +135,7 @@ Agent Manifest is:
 
 - A declaration layer
 - A precondition for verification
-- A portability standard for agent boundaries
+- A portable declaration format for agent boundaries
 
 It is not:
 
