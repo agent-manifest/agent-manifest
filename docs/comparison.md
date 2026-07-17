@@ -90,6 +90,38 @@ None replaces the others. An agent could plausibly carry all three: an OASF reco
 
 **Sources** (primary, accessed July 2026): [github.com/agntcy/oasf](https://github.com/agntcy/oasf) and [docs.agntcy.org](https://docs.agntcy.org/oasf/open-agentic-schema-framework/) (OASF); [arXiv:2510.04173](https://arxiv.org/abs/2510.04173) (Amini et al., *Open Agent Specification (Agent Spec) Technical Report*), [github.com/oracle/agent-spec](https://github.com/oracle/agent-spec), and [oracle.github.io/agent-spec](https://oracle.github.io/agent-spec/) (Agent Spec).
 
+## Authorization, transport, and provider-side policy
+
+The comparisons above place Agent Manifest beside other *agent-facing* artifacts. It also sits beside three adjacent layers it is sometimes confused with: authorization, transport, and provider-side content policy. In each case Agent Manifest addresses a different problem and is designed to compose with — not replace — the layer in question.
+
+### Authorization is a grant; a manifest is a self-declaration
+
+OAuth 2.0 (RFC 6749) and the consolidating OAuth 2.1 draft answer *access control*: an authorization server issues a scoped access token at request time, and a resource server rejects a request that lacks a valid one. The declaring actor is the resource's own authority; the moment is the request; the effect is enforced.
+
+Agent Manifest addresses a different problem. Its author is the agent's deployer, not a resource server; its moment is before any interaction; and it grants nothing and enforces nothing — a counterparty simply reads it. A manifest never issues, carries, or checks a token, and OAuth never states an agent's owner, purpose, or `forbidden_actions`. The two compose: an agent can present its manifest to establish accountability before it ever runs an OAuth flow to obtain access, and a manifest's declared `identity` may reference the OAuth client it authenticates as.
+
+The Model Context Protocol makes the separation concrete: when MCP uses authorization it builds on OAuth 2.1 (the MCP server acting as an OAuth resource server) and says nothing about declaring an agent's identity, purpose, or negative scope. Authorization and declaration are different layers.
+
+### Provider-side policy is the mirror image
+
+A second family of standards lets the party *being accessed* declare its terms for automated use: the IETF AI-preferences work (AIPREF), W3C ODRL, and the Robots Exclusion Protocol (RFC 9309) each let a content publisher, rights-holder, or site owner state how automated systems may use their content or service. These are provider-side, and — like Agent Manifest — they declare rather than enforce.
+
+Agent Manifest is their actor-side counterpart: it is published by the party that acts (the agent's deployer) and describes the agent itself. A complete pre-interaction handshake has two halves — the provider stating its terms, and the actor stating its identity and self-imposed limits. Agent Manifest addresses the actor-side half. The provider-side space, and whether its concerns belong inside existing standards or a new one, is surveyed separately in the [Agentic Surface Research](https://github.com/agent-manifest/agentic-surface-research) repository.
+
+The closest structural precedent is robots.txt: a static, well-known, pre-interaction file that declares intent without enforcing it. Agent Manifest applies the same pattern from the other side of the interaction.
+
+### At a glance
+
+| Layer | Problem it answers | Who declares | Moment | Mechanism | Relation to Agent Manifest |
+| --- | --- | --- | --- | --- | --- |
+| OAuth 2.0 / 2.1 | May this caller access this resource now? | Authorization server (resource-side) | Request time | Access token | Complementary; a manifest can precede an OAuth flow |
+| MCP | How does a host reach an agent's tools and resources? | Server (authorization delegated to OAuth) | Runtime | JSON-RPC over a transport | Complementary; a manifest can accompany an MCP-connected agent |
+| AIPREF / ODRL / robots.txt | How may automated systems use *my* content or service? | Content publisher / rights-holder / site owner (provider-side) | Before fetch | HTTP header / policy document / robots.txt | Complementary mirror image; Agent Manifest is the actor-side declaration |
+
+None of these describes an agent's declared identity, ownership, `forbidden_actions`, autonomy level, stopping authority, or audit surface — that is the concern Agent Manifest declares, and it is designed to sit beside them.
+
+**Sources** (primary, accessed July 2026): OAuth 2.0 [RFC 6749](https://www.rfc-editor.org/rfc/rfc6749.html) and the OAuth 2.1 draft [draft-ietf-oauth-v2-1](https://datatracker.ietf.org/doc/draft-ietf-oauth-v2-1/); MCP authorization [modelcontextprotocol.io](https://modelcontextprotocol.io/specification/2025-11-25/basic/authorization); AIPREF vocabulary [draft-ietf-aipref-vocab](https://datatracker.ietf.org/doc/draft-ietf-aipref-vocab/); ODRL Information Model 2.2 [w3.org/TR/odrl-model](https://www.w3.org/TR/odrl-model/); Robots Exclusion Protocol [RFC 9309](https://www.rfc-editor.org/rfc/rfc9309.html).
+
 ## See also
 
 For how Agent Manifest relates to specification-driven runtime and validation frameworks, see [Agent Manifest and MAS-Lab](./comparison-mas-lab.md).

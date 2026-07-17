@@ -2,7 +2,7 @@
 
 Agent Manifest exists to solve a simple but increasingly critical problem:
 
-As AI agents become more autonomous, composable, and networked, there is no neutral, shared way for an agent to publicly declare **who it is**, **what it intends**, and **what it will not do**.
+As AI agents become more autonomous, composable, and networked, much of the surrounding tooling describes how they communicate, what they can do, or how the services they call constrain access. Comparatively little lets an agent's deployer declare, before interaction and in a neutral, portable form, **who it is**, **what it intends**, **what it will not do**, and **who is accountable for it**.
 
 Most existing approaches focus on:
 - execution
