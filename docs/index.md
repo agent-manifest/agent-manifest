@@ -28,6 +28,10 @@ The normative specification lives in
 ## Misconceptions
 - [Common Misconceptions](./MISCONCEPTIONS.md) — clarifications of recurring misunderstandings.
 
+## Positioning
+- [How Agent Manifest relates to A2A, MCP, agents.json, OASF, and Agent Spec](./comparison.md) — where Agent Manifest sits beside adjacent agent protocols, authorization, and provider-side policy.
+- [Agent Manifest and MAS-Lab](./comparison-mas-lab.md) — declaration layer vs. specification-driven runtime.
+
 ## Specification
 - [Specification (Markdown)](../spec/v1.0/spec.md)
 - [JSON Schema](../spec/v1.0/schema.json)
