@@ -11,7 +11,7 @@
 import {
   toCSL, toBibTeX, toRIS, toAPA, toHighwire, toJSONLD, toOpenGraph, toDublinCore, toSignposting
 } from './derive.js';
-import { currentVersion } from './lib/canonical.js';
+import { currentVersion, BASE_URL, worksUrl } from './lib/canonical.js';
 
 // ---- escaping --------------------------------------------------------------
 
@@ -69,6 +69,18 @@ function openGraphMeta(work) {
   return lines.join('\n');
 }
 
+// Twitter card. No image is invented, so the card is a plain summary (never
+// summary_large_image, which would advertise a preview image we do not have).
+function twitterMeta(work) {
+  const og = toOpenGraph(work);
+  const lines = [];
+  const push = (name, content) => { if (content !== undefined && content !== null && content !== '') lines.push(`  <meta name="${name}" content="${attr(content)}">`); };
+  push('twitter:card', 'summary');
+  push('twitter:title', og['og:title']);
+  push('twitter:description', og['og:description']);
+  return lines.join('\n');
+}
+
 function signpostingLinks(work) {
   const sp = toSignposting(work);
   return sp.links
@@ -77,12 +89,49 @@ function signpostingLinks(work) {
     .join('\n');
 }
 
-function jsonLdScript(work) {
-  // Stable, sorted-key JSON so the embedded block is byte-stable across runs.
+// Stable, sorted-key JSON so every embedded block is byte-stable across runs.
+function stableJson(value) {
   const sort = (v) => Array.isArray(v) ? v.map(sort) : (v && typeof v === 'object'
     ? Object.fromEntries(Object.keys(v).sort().map((k) => [k, sort(v[k])])) : v);
-  const json = JSON.stringify(sort(toJSONLD(work)), null, 2);
-  return `  <script type="application/ld+json">\n${json}\n  </script>`;
+  return JSON.stringify(sort(value), null, 2);
+}
+
+function jsonLdScript(work) {
+  return `  <script type="application/ld+json">\n${stableJson(toJSONLD(work))}\n  </script>`;
+}
+
+// Page-structural JSON-LD (WebPage + BreadcrumbList) distinct from the Work's
+// canonical ScholarlyArticle record. Improves machine/GEO comprehension of where
+// the page sits in the site; the ScholarlyArticle stays the citable entity.
+function structuralJsonLd(work) {
+  const canonical = worksUrl(work.slug);
+  const og = toOpenGraph(work);
+  const graph = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'WebPage',
+        '@id': `${canonical}#webpage`,
+        url: canonical,
+        name: work.title,
+        description: og['og:description'],
+        inLanguage: work.language,
+        isPartOf: { '@type': 'WebSite', '@id': `${BASE_URL}/#website`, name: 'Agent Manifest', url: `${BASE_URL}/` },
+        breadcrumb: { '@id': `${canonical}#breadcrumb` },
+        mainEntity: { '@id': canonical }
+      },
+      {
+        '@type': 'BreadcrumbList',
+        '@id': `${canonical}#breadcrumb`,
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Agent Manifest', item: `${BASE_URL}/` },
+          { '@type': 'ListItem', position: 2, name: 'Works', item: `${BASE_URL}/works/` },
+          { '@type': 'ListItem', position: 3, name: work.title }
+        ]
+      }
+    ]
+  };
+  return `  <script type="application/ld+json">\n${stableJson(graph)}\n  </script>`;
 }
 
 // ---- inline styles (self-contained, theme-light, accessible, responsive) ---
@@ -103,6 +152,14 @@ const STYLE = `
     header.site .wrap { display:flex; align-items:baseline; gap:.5rem; padding-top:1rem; padding-bottom:1rem; flex-wrap:wrap; }
     header.site .brand { font-weight:700; }
     header.site .surface { color:var(--muted); font-size:.85rem; }
+    nav.breadcrumb { border-bottom:1px solid var(--line); font-size:.85rem; }
+    nav.breadcrumb ol { list-style:none; display:flex; flex-wrap:wrap; gap:.4rem; margin:0; padding:.6rem 0; }
+    nav.breadcrumb li { color:var(--muted); }
+    nav.breadcrumb li + li::before { content:"/"; padding-right:.4rem; color:var(--line); }
+    nav.breadcrumb [aria-current="page"] { color:var(--fg); }
+    ul.history { list-style:none; padding:0; margin:0; }
+    ul.history li { margin:.3rem 0; }
+    ul.history time { color:var(--muted); font-variant-numeric: tabular-nums; }
     main { padding:2rem 0 3rem; }
     h1 { font-size:1.9rem; line-height:1.25; margin:.2rem 0 1rem; }
     h2 { font-size:1.2rem; margin:2rem 0 .6rem; padding-bottom:.25rem; border-bottom:1px solid var(--line); }
@@ -124,7 +181,6 @@ const STYLE = `
     .note { color:var(--muted); font-size:.9rem; }
     footer.site { border-top:1px solid var(--line); color:var(--muted); font-size:.85rem; }
     footer.site .wrap { padding-top:1.25rem; padding-bottom:2rem; }
-    .staging-banner { background:#8a1c1c; color:#fff; text-align:center; padding:.5rem 1rem; font-size:.85rem; }
     @media (max-width:520px) {
       body { font-size:16px; }
       h1 { font-size:1.5rem; }
@@ -198,6 +254,36 @@ function relationsHtml(work) {
   ].join('\n');
 }
 
+function breadcrumbHtml(work) {
+  return [
+    '  <nav class="breadcrumb" aria-label="Breadcrumb">',
+    '    <div class="wrap">',
+    '      <ol>',
+    '        <li><a href="/">Agent Manifest</a></li>',
+    '        <li><a href="/works/">Works</a></li>',
+    `        <li aria-current="page">${esc(work.title)}</li>`,
+    '      </ol>',
+    '    </div>',
+    '  </nav>'
+  ].join('\n');
+}
+
+function historyHtml(work) {
+  const versions = (work.versions ?? []).filter((v) => v.date);
+  if (!versions.length) return '';
+  // Newest first; each version's changelog lines flattened to one honest entry.
+  const rows = [...versions].sort((a, b) => (a.date < b.date ? 1 : -1)).map((v) => {
+    const note = (v.changelog ?? []).join(' ').trim();
+    return `      <li><time datetime="${attr(v.date)}">${esc(v.date)}</time> — ${esc(v.vN)}${note ? ` — ${esc(note)}` : ''}</li>`;
+  });
+  return [
+    '    <section aria-labelledby="hist-h">',
+    '      <h2 id="hist-h">Revision history</h2>',
+    `      <ul class="history">\n${rows.join('\n')}\n      </ul>`,
+    '    </section>'
+  ].join('\n');
+}
+
 function provenanceHtml(work) {
   const a = work.authors?.[0];
   const zenodo = (work.external_urls ?? []).find((e) => e.rel === 'sameAs')?.url;
@@ -224,6 +310,7 @@ export function toLandingHTML(work, opts = {}) {
     '  <meta name="viewport" content="width=device-width, initial-scale=1">',
     `  <title>${esc(work.title)}</title>`,
     `  <meta name="description" content="${attr(desc)}">`,
+    `  <meta name="author" content="${attr((work.authors ?? []).map((a) => a.name_human).join(', '))}">`,
     `  <link rel="canonical" href="${attr(canonical)}">`,
     staging ? '  <!-- STAGING ONLY: temporary index suppression; MUST be removed before production. Not a property of the Work. -->' : null,
     staging ? '  <meta name="robots" content="noindex, nofollow">' : null,
@@ -237,17 +324,23 @@ export function toLandingHTML(work, opts = {}) {
     '  <!-- Open Graph -->',
     openGraphMeta(work),
     '',
+    '  <!-- Twitter card (summary; no invented preview image) -->',
+    twitterMeta(work),
+    '',
     '  <!-- Signposting (typed links) -->',
     signpostingLinks(work),
     '',
-    '  <!-- schema.org JSON-LD -->',
+    '  <!-- schema.org JSON-LD — canonical ScholarlyArticle -->',
     jsonLdScript(work),
+    '',
+    '  <!-- schema.org JSON-LD — page structure (WebPage + BreadcrumbList) -->',
+    structuralJsonLd(work),
     '',
     `  <style>${STYLE}\n  </style>`
   ].filter((l) => l !== null).join('\n');
 
   const body = [
-    staging ? '  <div class="staging-banner" role="note">Local staging preview — not published, not indexable. Temporary.</div>' : null,
+    staging ? '  <div role="note" style="background:#8a1c1c;color:#fff;text-align:center;padding:.5rem 1rem;font-size:.85rem;">Local staging preview — not published, not indexable. Temporary.</div>' : null,
     '  <a class="skip" href="#main">Skip to content</a>',
     '  <header class="site">',
     '    <div class="wrap">',
@@ -255,6 +348,7 @@ export function toLandingHTML(work, opts = {}) {
     '      <span class="surface">Academic Surface</span>',
     '    </div>',
     '  </header>',
+    breadcrumbHtml(work),
     '  <main id="main">',
     '    <div class="wrap">',
     '      <article aria-labelledby="title">',
@@ -285,6 +379,8 @@ export function toLandingHTML(work, opts = {}) {
     `          <p class="note">Cite the immutable version DOI <a class="doi" href="https://doi.org/${attr(cur?.doi_version)}">${esc(cur?.doi_version)}</a>. Use the concept DOI to reference all versions.</p>`,
     '          ' + citeHtml(work),
     '        </section>',
+    '',
+    historyHtml(work),
     '',
     relationsHtml(work),
     '',

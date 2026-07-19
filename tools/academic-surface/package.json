@@ -13,6 +13,8 @@
     "isolation-check": "node ./src/isolation-check.js",
     "derive": "node ./src/derive.js",
     "stage": "node ./src/build-site.js",
+    "publish-site": "node ./src/publish-site.js",
+    "publish-check": "node ./src/publish-site.js --check",
     "preview": "python3 -m http.server -d staging 8081"
   },
   "keywords": [

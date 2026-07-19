@@ -108,7 +108,9 @@ test('D3: index.json carries only minimal public provenance', () => {
   assert.ok(!('build_activity' in idx.provenance));
   assert.ok(!('methodological_notes' in idx.provenance));
   assert.ok(!readText('index.json').includes('7ab96aa9'), 'external md5 must not leak into public API');
-  assert.equal(idx.publication_status, 'not-published');
+  // Published pilot: status is 'published' and no internal scaffolding remains.
+  assert.equal(idx.publication_status, 'published');
+  assert.ok(!('_internal' in idx), '_internal must be stripped from a published record');
 });
 
 // 22) signposting complete
@@ -158,12 +160,15 @@ test('D3: derived metadata satisfies ASV-EXP/SCH/WEB on an augmented public Work
   assert.equal(errors.length, 0, JSON.stringify(errors.map((e) => e.rule_id)));
 });
 
-// 28,29,30) isolation: derived stays internal, no front matter, no public materialization
-test('D3: derived output is isolated (no front matter, no public /works)', () => {
+// 28,29,30) isolation: the DERIVER writes only into derived/ under the excluded
+// module, with no Jekyll front matter. Public materialization is a separate, gated
+// step handled by publish-site.js — the deriver itself never touches /works.
+test('D3: derived output is isolated under tools/ (no front matter, deriver writes only derived/)', () => {
   assert.ok(DERIVED.includes(join('tools', 'academic-surface', 'content')));
   for (const f of ['README.md']) {
     assert.notEqual(readText(f).slice(0, 3), '---', `${f} has front matter`);
   }
-  const repoRoot = join(HERE, '..', '..', '..');
-  assert.equal(existsSync(join(repoRoot, 'works', 'declaration-layers')), false);
+  // The deriver targets only derived/ (no stray outputs elsewhere).
+  const { extra } = checkDerived(work, DERIVED);
+  assert.deepEqual(extra, []);
 });

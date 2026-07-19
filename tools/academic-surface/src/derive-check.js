@@ -8,6 +8,8 @@ import { join } from 'node:path';
 import { SEVERITY } from './diagnostics.js';
 import { BASE_URL, currentVersion, scholarDate, worksUrl } from './lib/canonical.js';
 
+const isPublished = (work) => work.visibility === 'public' && work.status === 'published';
+
 function d(file, message, evidence) {
   return { rule_id: 'CONSISTENCY', severity: SEVERITY.ERROR, file, message, evidence };
 }
@@ -17,6 +19,7 @@ function expected(work) {
   const cur = currentVersion(work);
   const landing = worksUrl(work.slug);
   const art = (cur?.artifacts ?? []).find((a) => a.kind === 'pdf');
+  const dates = (work.versions ?? []).map((v) => v.date).filter(Boolean).sort();
   return {
     title: work.title,
     versionDoi: cur?.doi_version,
@@ -24,6 +27,8 @@ function expected(work) {
     language: work.language,
     date: cur?.date,
     scholarDate: scholarDate(cur?.date),
+    lastModified: dates.length ? dates[dates.length - 1] : (cur?.date ?? null),
+    version: cur?.vN,
     landing,
     pdf: art ? `${BASE_URL}${art.path}` : null,
     supplementDoi: (work.relations ?? []).find((r) => r.predicate === 'isSupplementTo')?.target_doi ?? null
@@ -81,6 +86,9 @@ export function checkConsistency(work, dir) {
   need(ld.name === E.title && ld.headline === E.title, 'schema.json', 'name/headline mismatch', ld.name);
   need(ld['@type'] === 'ScholarlyArticle', 'schema.json', '@type not ScholarlyArticle', ld['@type']);
   need(ld.datePublished === E.date, 'schema.json', 'datePublished mismatch', ld.datePublished);
+  need(ld.dateModified === E.lastModified, 'schema.json', 'dateModified mismatch', ld.dateModified);
+  need(ld.mainEntityOfPage === E.landing, 'schema.json', 'mainEntityOfPage not landing', ld.mainEntityOfPage);
+  need(ld.version === E.version, 'schema.json', 'version mismatch', ld.version);
   need(ld.inLanguage === E.language, 'schema.json', 'inLanguage mismatch', ld.inLanguage);
   const ids = (ld.identifier ?? []).map((i) => i.value);
   need(ids.includes(E.versionDoi) && ids.includes(E.conceptDoi), 'schema.json', 'identifier missing version/concept DOI', ids);
@@ -109,7 +117,9 @@ export function checkConsistency(work, dir) {
   need(idx.language === E.language, 'index.json', 'language mismatch', idx.language);
   need(idx.links?.landing === E.landing, 'index.json', 'landing mismatch', idx.links);
   need(idx.artifacts?.[0]?.future_url === E.pdf, 'index.json', 'future PDF url mismatch', idx.artifacts);
-  need(idx.publication_status === 'not-published', 'index.json', 'publication_status not not-published', idx.publication_status);
+  const expectedStatus = isPublished(work) ? 'published' : 'not-published';
+  need(idx.publication_status === expectedStatus, 'index.json', `publication_status not ${expectedStatus}`, idx.publication_status);
+  if (isPublished(work)) need(!('_internal' in idx), 'index.json', 'published record must not carry _internal', Object.keys(idx));
 
   // signposting.json
   const sp = readJson('signposting.json');
@@ -133,9 +143,25 @@ export function checkConsistency(work, dir) {
     need(metaC('citation_language') === E.language, 'index.html', 'citation_language not en', metaC('citation_language'));
     need(ld['@type'] === 'ScholarlyArticle', 'index.html', 'JSON-LD @type not ScholarlyArticle', ld['@type']);
     need(ld.url === E.landing, 'index.html', 'JSON-LD url not future landing', ld.url);
+    need(ld.dateModified === E.lastModified, 'index.html', 'JSON-LD dateModified mismatch', ld.dateModified);
     const ids = (ld.identifier ?? []).map((i) => i.value);
     need(ids.includes(E.versionDoi) && ids.includes(E.conceptDoi), 'index.html', 'JSON-LD missing version/concept DOI', ids);
     need(!/name="robots"[^>]*noindex/.test(html), 'index.html', 'canonical landing must not carry a permanent noindex', null);
+    // EC layer: author meta, Twitter card, visible breadcrumb + BreadcrumbList,
+    // WebPage node, and a visible revision history.
+    need(/<meta name="author" content="[^"]+">/.test(html), 'index.html', 'author meta missing', null);
+    need(metaC('twitter:card') === 'summary', 'index.html', 'twitter:card not summary', metaC('twitter:card'));
+    need(!/twitter:card"[^>]*summary_large_image/.test(html) && !html.includes('summary_large_image'), 'index.html', 'twitter card must not advertise an image we do not have', null);
+    need(/<nav class="breadcrumb" aria-label="Breadcrumb">/.test(html), 'index.html', 'visible breadcrumb missing', null);
+    const graphs = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((m) => { try { return JSON.parse(m[1]); } catch { return null; } });
+    const nodes = graphs.flatMap((g) => g?.['@graph'] ?? (g ? [g] : []));
+    const types = nodes.map((n) => n?.['@type']);
+    need(types.includes('WebPage'), 'index.html', 'WebPage JSON-LD missing', types);
+    const bc = nodes.find((n) => n?.['@type'] === 'BreadcrumbList');
+    need(!!bc && (bc.itemListElement ?? []).length === 3, 'index.html', 'BreadcrumbList missing or wrong length', bc?.itemListElement?.length);
+    need(bc?.itemListElement?.[2]?.name === E.title, 'index.html', 'breadcrumb leaf not the work title', bc?.itemListElement?.[2]?.name);
+    need(/<h2 id="hist-h">Revision history<\/h2>/.test(html), 'index.html', 'revision history section missing', null);
+    need(html.includes(`<time datetime="${E.date}">`), 'index.html', 'revision history missing version date', null);
   }
 
   return { ok: out.length === 0, diagnostics: out };

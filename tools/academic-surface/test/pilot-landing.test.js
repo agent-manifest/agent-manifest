@@ -38,7 +38,9 @@ test('D4: staging variant injects a TEMPORARY noindex + banner only', () => {
   const html = toLandingHTML(work, { staging: true });
   assert.match(html, /<meta name="robots" content="noindex, nofollow">/);
   assert.match(html, /STAGING ONLY: temporary index suppression/);
-  assert.match(html, /class="staging-banner"/);
+  assert.match(html, /Local staging preview — not published, not indexable/);
+  // The production landing carries no staging vocabulary at all.
+  assert.ok(!toLandingHTML(work).toLowerCase().includes('staging'), 'production landing must contain no staging markers');
 });
 
 test('D4: landing structure & accessibility invariants', () => {
@@ -130,15 +132,20 @@ test('D4: staging is deterministic (identical bytes across rebuilds)', () => {
   }
 });
 
-test('D4: staging never materializes a public /works path in the repo', () => {
-  // The default staging root is under the excluded module, never the repo root.
+test('D4: staging is confined and non-indexable, distinct from the public tree', () => {
+  // Staging writes only under its own root and is temporarily non-indexable; it
+  // must never contaminate the separate, indexable public /works surface.
   const out = mkdtempSync(join(tmpdir(), 'am-stage-'));
   try {
     const r = buildStaging({ ssotPath: SSOT, outRoot: out });
-    assert.ok(r.outDir.startsWith(out));
-    for (const p of [join(REPO_ROOT, 'works', 'declaration-layers'), join(REPO_ROOT, '_site', 'works', 'declaration-layers')]) {
-      assert.equal(existsSync(p), false, `unexpected public materialization: ${p}`);
-    }
+    assert.ok(r.outDir.startsWith(out), 'staging output must be confined to its own root');
+    assert.equal(existsSync(join(REPO_ROOT, '_site')), false, 'no Jekyll build artifact expected');
+    // The staged landing carries a temporary staging noindex.
+    const staged = readFileSync(join(r.outDir, 'index.html'), 'utf8');
+    assert.match(staged, /name="robots"[^>]*noindex/, 'staged landing must be temporarily noindex');
+    // The published landing (if materialized) is the distinct, indexable surface.
+    const pub = join(REPO_ROOT, 'works', 'declaration-layers', 'index.html');
+    if (existsSync(pub)) assert.doesNotMatch(readFileSync(pub, 'utf8'), /name="robots"[^>]*noindex/, 'public landing must not be noindex');
   } finally {
     rmSync(out, { recursive: true, force: true });
   }

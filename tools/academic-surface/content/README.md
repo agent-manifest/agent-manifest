@@ -1,20 +1,35 @@
-# Academic Surface — internal content (NOT published)
+# Academic Surface — internal content (SSOT / source)
 
-This directory holds **real, not-yet-publishable** Academic Surface records used to
-model and validate the SSOT with the Gate C tooling. It is deliberately kept
-**inside** `tools/academic-surface/`, which is excluded from the Jekyll build
-(`_config.yml: exclude: [tools]`), so nothing here reaches the public site.
+This directory holds the **real SSOT and source artifacts** of the Academic Surface.
+It is the *internal* source of truth; it is deliberately kept **inside**
+`tools/academic-surface/`, which is excluded from the Jekyll build
+(`_config.yml: exclude: [tools]`), so the source itself never reaches the public
+site. The **public surface** is a separate, deterministic build under `/works/`
+produced by `npm run publish-site` — see "Publication gate" below.
 
 Contract for anything under `content/`:
 
 - Records are **not** fixtures: `test_fixture: false`, real DOIs/authors allowed.
-- Records carry `visibility: draft` until a future publication gate authorizes a surface.
-- **No** Jekyll front matter, **no** `/works/` page, **no** sitemap/robots/nav entry,
-  **no** `web`/`scholar`/`exports` surface directives are materialized here.
-- Downloaded artifacts (e.g. a PDF fetched once for checksum/inspection) live here for
-  fixity/validation only; they are never linked from the site and never published.
+- A record carries `visibility: draft` until the publication gate is authorized; once
+  authorized it becomes `visibility: public` with materialized `web`/`scholar`/`exports`
+  surface directives (the pilot amw-014 is now public).
+- **No** Jekyll front matter here, and this source tree is never itself served — the
+  public copy is written to the repo-root `/works/` tree, not under `tools/`.
+- Downloaded artifacts (e.g. the PDF fetched once for checksum/inspection) live here as
+  the internal source; the published copy under `/works/` is byte-identical (fixity).
 - The test suite (`fixtures-hygiene`, `coverage`) never scans this directory; the
-  `isolation` suite asserts this content cannot leak to a public `/works/` path.
+  `isolation` suite asserts the *source* stays excluded and that `/tools/` never
+  surfaces publicly.
+
+## Publication gate
+
+`npm run publish-site` materializes every public+published Work to the repo-root
+`/works/<slug>/` tree (13 deterministic representations + the fixity-verified PDF) and
+regenerates `/works/index.html`. `npm run publish-check` fails on any drift between the
+committed public tree and a fresh SSOT regeneration, or on a published landing that
+carries `noindex`. The Existence Compiler / SEO / GEO / DEL layer applied to the
+surface and its rule-by-rule traceability are documented in
+[`docs/EXISTENCE-COMPILER.md`](../docs/EXISTENCE-COMPILER.md).
 
 ## `pilot/declaration-layers/`
 

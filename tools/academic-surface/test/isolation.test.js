@@ -29,24 +29,28 @@ test('no module .md/.html carries Jekyll front matter', () => {
   }
 });
 
-// Real (non-fixture) content — e.g. the Gate D1 pilot SSOT — is only permitted
-// inside the excluded module tree and must never be materialized as a public
-// /works/ page. This guards the real DOI/PDF from leaking onto the surface.
-test('real pilot content stays inside the excluded module, never a public /works page', () => {
+// The internal SSOT/PDF/generator stay inside the excluded module tree. Publishing
+// the Academic Surface is the authorized gate, so a SEPARATE public copy at
+// <repo>/works/ is expected — what must never happen is the *module source* itself
+// leaking into the Jekyll build or the internal /tools/ path surfacing publicly.
+test('internal module source stays excluded; the public /works surface is a separate tree', () => {
   const contentDir = join(MODULE_DIR, 'content');
-  // 1) any real content directory must live under tools/academic-surface (excluded via `tools`)
-  const inExcluded = contentDir.startsWith(MODULE_DIR);
-  assert.equal(inExcluded, true, 'real content must live under the excluded module');
+  assert.ok(contentDir.startsWith(MODULE_DIR), 'real content/source must live under the excluded module');
 
-  // 2) no public /works materialization of the pilot anywhere in the repo (root or built site)
-  for (const p of [join(REPO_ROOT, 'works', 'declaration-layers'), join(REPO_ROOT, '_site', 'works', 'declaration-layers'), join(REPO_ROOT, '_works', 'declaration-layers')]) {
-    assert.equal(existsSync(p), false, `unexpected public materialization: ${p}`);
+  // The public copy, if materialized, lives at the repo root — never under tools/.
+  const pub = join(REPO_ROOT, 'works', 'declaration-layers');
+  assert.equal(pub.startsWith(MODULE_DIR), false, 'public works tree must not live under the excluded module');
+  if (existsSync(pub)) {
+    const landing = join(pub, 'index.html');
+    assert.ok(existsSync(landing), 'a published work must have a landing');
+    assert.doesNotMatch(readFileSync(landing, 'utf8'), /name="robots"[^>]*noindex/, 'published landing must not carry noindex');
+    assert.equal(existsSync(join(pub, 'README.md')), false, 'internal README must never be published');
   }
 
-  // 3) committed sitemap/robots must not reference the pilot slug
+  // The committed sitemap/robots must never expose the internal /tools/ path.
   for (const f of ['sitemap.xml', 'robots.txt']) {
     const fp = join(REPO_ROOT, f);
-    if (existsSync(fp)) assert.ok(!/declaration-layers/.test(readFileSync(fp, 'utf8')), `${f} references the pilot slug`);
+    if (existsSync(fp)) assert.ok(!/\/tools\//.test(readFileSync(fp, 'utf8')), `${f} references the internal /tools/ path`);
   }
 });
 

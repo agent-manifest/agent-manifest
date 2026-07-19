@@ -1,0 +1,1 @@
+Capucci, H. A. (2026). *Declaration Layers and the Evaluation of Agent Boundaries*. https://doi.org/10.5281/zenodo.18880520

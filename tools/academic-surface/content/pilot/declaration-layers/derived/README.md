@@ -1,9 +1,12 @@
-# Derived academic representations — NOT published (Gate D3)
+# Derived academic representations (source of the public surface)
 
 Deterministic, offline derivations of the pilot Work `amw-014` from the SSOT
-(`../work.json`). **Regenerated, never hand-edited.** All files stay under
-`tools/` (excluded from Jekyll) and are **not** materialized on any public
-`/works/` path in D3.
+(`../work.json`). **Regenerated, never hand-edited.** These are the internal source
+representations under `tools/` (excluded from Jekyll). The **public** copy is a
+byte-identical materialization written by `npm run publish-site` to the repo-root
+`/works/declaration-layers/` tree (13 representations + the fixity-verified PDF);
+`npm run publish-check` fails on any drift. This README is internal and is never
+published.
 
 Regenerate / verify (from the module root):
 

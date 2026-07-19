@@ -15,7 +15,7 @@
   ],
   "type": "working-paper",
   "status": "published",
-  "visibility": "draft",
+  "visibility": "public",
   "language": "en",
   "abstract": "This paper examines the role of declaration layers in alignment evaluation for autonomous AI systems.\n\nBuilding on recent research on scheming and deceptive behaviors in AI systems, it proposes that explicit boundary declarations may complement behavioral alignment approaches by reducing structural ambiguity in agent evaluation contexts.\n\nThe paper introduces the concept of declaration layers as a governance-oriented interface through which AI agents disclose operational authority, constraints, and accountability structures prior to execution. Agent Manifest is presented as an example of such a declarative infrastructure.\n\nBy clarifying agent boundaries before action, declaration layers may improve interpretability of behavioral evaluations and support institutional oversight frameworks for increasingly autonomous AI systems.",
   "keywords": [
@@ -69,6 +69,75 @@
       "target_doi": "10.5281/zenodo.18834845"
     }
   ],
+  "web": {
+    "canonical": "https://agent-manifest-spec.org/works/declaration-layers",
+    "robots_noindex": false,
+    "version_signposted": true,
+    "signposting": ["cite-as", "describedby", "author", "license", "type", "item", "alternate"],
+    "alternates": [
+      "https://agent-manifest-spec.org/works/declaration-layers/cite.bib",
+      "https://agent-manifest-spec.org/works/declaration-layers/cite.ris",
+      "https://agent-manifest-spec.org/works/declaration-layers/cite.json",
+      "https://agent-manifest-spec.org/works/declaration-layers/index.json",
+      "https://agent-manifest-spec.org/works/declaration-layers/schema.json"
+    ],
+    "jsonld_type": "ScholarlyArticle",
+    "jsonld": {
+      "inLanguage": "en",
+      "sameAs": [
+        "https://zenodo.org/records/18880520",
+        "https://doi.org/10.5281/zenodo.18880520"
+      ],
+      "identifier": "10.5281/zenodo.18880520",
+      "author_identifier": ["0009-0008-7216-3032"]
+    }
+  },
+  "scholar": {
+    "citation_title": "Declaration Layers and the Evaluation of Agent Boundaries",
+    "citation_author": ["Capucci, Hernán Alfredo"],
+    "citation_publication_date": "2026/03/05",
+    "citation_pdf_url": "https://agent-manifest-spec.org/works/declaration-layers/declaration-layers.pdf",
+    "abstract_prerendered": true
+  },
+  "exports": {
+    "canonical_source": "csl-json",
+    "csl_json": {
+      "title": "Declaration Layers and the Evaluation of Agent Boundaries",
+      "DOI": "10.5281/zenodo.18880520"
+    },
+    "formats": [
+      {
+        "name": "bibtex",
+        "fields": {
+          "title": "Declaration Layers and the Evaluation of Agent Boundaries",
+          "authors": ["Capucci, Hernán Alfredo"],
+          "date": "2026-03-05",
+          "doi": "10.5281/zenodo.18880520",
+          "version": "v1"
+        }
+      },
+      {
+        "name": "ris",
+        "fields": {
+          "title": "Declaration Layers and the Evaluation of Agent Boundaries",
+          "authors": ["Capucci, Hernán Alfredo"],
+          "date": "2026-03-05",
+          "doi": "10.5281/zenodo.18880520",
+          "version": "v1"
+        }
+      },
+      {
+        "name": "csl-json",
+        "fields": {
+          "title": "Declaration Layers and the Evaluation of Agent Boundaries",
+          "authors": ["Capucci, Hernán Alfredo"],
+          "date": "2026-03-05",
+          "doi": "10.5281/zenodo.18880520",
+          "version": "v1"
+        }
+      }
+    ]
+  },
   "provenance": {
     "intellectual_author": {
       "name": "Hernán Alfredo Capucci",
@@ -92,7 +161,7 @@
     },
     "methodological_notes": "Origin fixity: the Zenodo MD5 (md5:7ab96aa974640389a6b2ddcd9e2d4d3f) matches the locally downloaded copy byte-for-byte; the surface checksum is sha-256 recomputed locally (4f6368cef12d640126576bf0e74bf1c14bd0c0cf52a932a90530ff0d611acb6c). The PDF first page shows 'Independent Research' whereas the Zenodo affiliation is null; affiliation is left unset per the authoritative Zenodo record. Zenodo resource_type is the generic 'publication' with no subtype; the canonical SSOT type is working-paper (no genuine external conflict, so no type_discrepancy is recorded). The abstract is the Zenodo HTML description flattened to plain text without alteration of meaning."
   },
-  "notes": "D1 SSOT of the Academic Surface pilot (amw-014). REAL content, NOT yet publishable: visibility=draft, stored under tools/academic-surface/content/ (excluded from Jekyll), no public /works/ page, no surface directives (web/scholar/exports blocks are deferred to D3/D4 per the Gate D0 plan). Topics are proposed pending ratification. The isSupplementTo target (amw-003, DOI 10.5281/zenodo.18834845) is modeled as an external target_doi because amw-003 is not yet materialized in the internal corpus; its inverse (isSupplementedBy) is registered as pending for when amw-003 enters the surface.",
+  "notes": "SSOT of the Academic Surface pilot (amw-014). Publication gate: visibility=public with materialized surface directives (web/scholar/exports). This SSOT and generator remain internal under tools/academic-surface/ (excluded from Jekyll); the public surface is a deterministic build under /works/declaration-layers/. citation_pdf_url and canonical point to the public landing. pdf_title is intentionally omitted: the embedded PDF doc-info title is not yet corrected (deferred to M-07), so no unverified embedded-title match is asserted. The isSupplementTo target (amw-003, DOI 10.5281/zenodo.18834845) is modeled as an external target_doi because amw-003 is not yet materialized in the internal corpus; its inverse (isSupplementedBy) is registered as pending for when amw-003 enters the surface.",
   "versions": [
     {
       "id": "amw-014-v1",

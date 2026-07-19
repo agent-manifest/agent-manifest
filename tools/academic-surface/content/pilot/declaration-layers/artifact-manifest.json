@@ -33,8 +33,8 @@
   },
   "future_public_path": "/works/declaration-layers/declaration-layers.pdf",
   "current_internal_path": "tools/academic-surface/content/pilot/declaration-layers/declaration-layers.pdf",
-  "current_visibility": "internal",
-  "publication_status": "not-published",
+  "current_visibility": "public",
+  "publication_status": "published",
   "embedded_doc_info": {
     "title": null,
     "author": null,
@@ -55,5 +55,5 @@
     ],
     "validated_at": "2026-07-19"
   },
-  "notes": "Technical evidence for the Gate D2 Artifact of the pilot amw-014. This manifest DESCRIBES the file; bibliographic Work data lives in work.json (the SSOT). Shared fields (artifact_id/work_id/version_id, mime, bytes, sha-256 checksum, text_extractable, future path) MUST match work.json exactly; divergence is a blocking error. The embedded PDF doc-info Title/Author/etc. are absent (only Producer/dates set); this is a gap, not a conflict, and any future correction would require a new version/DOI (not performed in D2). NOT published: current_visibility=internal, publication_status=not-published, no /works/ materialization."
+  "notes": "Technical evidence for the Artifact of the pilot amw-014. This manifest DESCRIBES the file; bibliographic Work data lives in work.json (the SSOT). Shared fields (artifact_id/work_id/version_id, mime, bytes, sha-256 checksum, text_extractable, public path) MUST match work.json exactly; divergence is a blocking error. The embedded PDF doc-info Title/Author/etc. are absent (only Producer/dates set); this is a gap, not a conflict, and any future correction would require a new version/DOI (deferred to M-07). Publication gate: current_visibility=public, publication_status=published. Two byte-identical copies exist — the internal source under current_internal_path and the served public copy at future_public_path (/works/declaration-layers/declaration-layers.pdf, field name kept for checker stability); the sha-256 above is authoritative for both."
 }

@@ -49,9 +49,16 @@ export function checkArtifactManifest(manifest, work, opts = {}) {
     out.push(d('MANIFEST-MIME', SEVERITY.ERROR, `mime '${manifest.mime}' incoherent with kind '${manifest.kind}'`, manifest.mime));
   }
 
-  // MANIFEST-STATE — must stay internal / not-published; text must be verified true
-  if (manifest.current_visibility !== 'internal') out.push(d('MANIFEST-STATE', SEVERITY.ERROR, `Artifact manifest not internal (current_visibility=${manifest.current_visibility})`, manifest.current_visibility));
-  if (manifest.publication_status !== 'not-published') out.push(d('MANIFEST-STATE', SEVERITY.ERROR, `Artifact marked published before its gate (publication_status=${manifest.publication_status})`, manifest.publication_status));
+  // MANIFEST-STATE — visibility/publication_status must stay COHERENT with the SSOT:
+  // a draft/unlisted Work keeps an internal/not-published artifact; only a public +
+  // published Work may carry a public/published artifact. This preserves the
+  // guardrail (no artifact published ahead of its Work) while tracking the real,
+  // gated publication state. Text extractability must be verified true.
+  const workPublished = work.visibility === 'public' && work.status === 'published';
+  const expectVisibility = workPublished ? 'public' : 'internal';
+  const expectPubStatus = workPublished ? 'published' : 'not-published';
+  if (manifest.current_visibility !== expectVisibility) out.push(d('MANIFEST-STATE', SEVERITY.ERROR, `current_visibility '${manifest.current_visibility}' incoherent with the Work (expected '${expectVisibility}')`, manifest.current_visibility));
+  if (manifest.publication_status !== expectPubStatus) out.push(d('MANIFEST-STATE', SEVERITY.ERROR, `publication_status '${manifest.publication_status}' incoherent with the Work (expected '${expectPubStatus}')`, manifest.publication_status));
   if (manifest.text_extractable === true) { /* ok */ }
   else if (manifest.text_extractable === false) out.push(d('MANIFEST-STATE', SEVERITY.ERROR, 'text_extractable is false (PDF has no selectable text layer)', false));
   else out.push(d('MANIFEST-STATE', SEVERITY.WARNING, 'text_extractable not yet verified (null/undefined)', manifest.text_extractable ?? null));
