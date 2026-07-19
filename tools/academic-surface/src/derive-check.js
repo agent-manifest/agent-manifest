@@ -116,6 +116,28 @@ export function checkConsistency(work, dir) {
   need(sp.urls?.version_doi === `https://doi.org/${E.versionDoi}`, 'signposting.json', 'version DOI url mismatch', sp.urls);
   need(sp.urls?.pdf === E.pdf, 'signposting.json', 'pdf url mismatch', sp.urls);
 
+  // index.html (canonical landing) — the human surface must agree with the
+  // metadata it embeds, and must NOT carry a permanent noindex.
+  if (existsSync(join(dir, 'index.html'))) {
+    const html = readText('index.html');
+    const metaC = (name) => (html.match(new RegExp(`<meta name="${name}" content="([^"]*)"`)) ?? [])[1];
+    const ldMatch = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
+    const ld = ldMatch ? JSON.parse(ldMatch[1]) : {};
+    need(html.includes(`<title>${E.title}</title>`), 'index.html', 'title mismatch', null);
+    need(html.includes(`<h1 id="title">${E.title}</h1>`), 'index.html', 'h1 mismatch', null);
+    need(html.includes(`<link rel="canonical" href="${E.landing}">`), 'index.html', 'canonical not future landing', null);
+    need(metaC('citation_title') === E.title, 'index.html', 'citation_title mismatch', metaC('citation_title'));
+    need(metaC('citation_doi') === E.versionDoi, 'index.html', 'citation_doi not version DOI', metaC('citation_doi'));
+    need(metaC('citation_publication_date') === E.scholarDate, 'index.html', 'citation_publication_date mismatch', metaC('citation_publication_date'));
+    need(metaC('citation_pdf_url') === E.pdf, 'index.html', 'citation_pdf_url mismatch', metaC('citation_pdf_url'));
+    need(metaC('citation_language') === E.language, 'index.html', 'citation_language not en', metaC('citation_language'));
+    need(ld['@type'] === 'ScholarlyArticle', 'index.html', 'JSON-LD @type not ScholarlyArticle', ld['@type']);
+    need(ld.url === E.landing, 'index.html', 'JSON-LD url not future landing', ld.url);
+    const ids = (ld.identifier ?? []).map((i) => i.value);
+    need(ids.includes(E.versionDoi) && ids.includes(E.conceptDoi), 'index.html', 'JSON-LD missing version/concept DOI', ids);
+    need(!/name="robots"[^>]*noindex/.test(html), 'index.html', 'canonical landing must not carry a permanent noindex', null);
+  }
+
   return { ok: out.length === 0, diagnostics: out };
 }
 

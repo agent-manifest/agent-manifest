@@ -34,7 +34,7 @@ test('D3: on-disk derived files match regeneration (no drift, no extras)', () =>
 });
 
 // 25) writer only targets derived/ (checkDerived treats README as allowed, nothing else stray)
-test('D3: no unexpected files in derived/ beyond the 12 outputs + README', () => {
+test('D3: no unexpected files in derived/ beyond the 13 outputs + README', () => {
   const { extra } = checkDerived(work, DERIVED);
   assert.deepEqual(extra, []);
 });

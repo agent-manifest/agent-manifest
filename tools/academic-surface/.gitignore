@@ -1,6 +1,10 @@
 # Local-only; the module is internal tooling, never published, never built into the site.
 node_modules/
 
+# Ephemeral, non-indexable local staging preview (assembled by `npm run stage`).
+# Never committed, never deployed. Regenerate from the SSOT + derived/ at will.
+staging/
+
 # Scratch validation reports / temp / logs / caches / tarballs / coverage
 *.report.json
 *.log

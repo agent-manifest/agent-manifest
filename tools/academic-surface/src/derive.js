@@ -9,6 +9,7 @@
 import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { BASE_URL, currentVersion, scholarDate, TYPE_TO_JSONLD, worksUrl } from './lib/canonical.js';
+import { toLandingHTML } from './landing.js';
 
 // ---- helpers ---------------------------------------------------------------
 
@@ -303,7 +304,10 @@ export const DERIVERS = {
   'dublin-core.json': (w) => stable(toDublinCore(w)),
   'opengraph.json': (w) => stable(toOpenGraph(w)),
   'index.json': (w) => stable(toIndexJSON(w)),
-  'signposting.json': (w) => stable(toSignposting(w))
+  'signposting.json': (w) => stable(toSignposting(w)),
+  // Human landing (production-faithful, no noindex). The temporary staging
+  // noindex block is injected only by the staging assembler (src/build-site.js).
+  'index.html': (w) => toLandingHTML(w)
 };
 
 export function renderAll(work) {

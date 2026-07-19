@@ -24,12 +24,26 @@ npm run derive -- content/pilot/declaration-layers/work.json --check  # fail on 
 | `schema.json` | schema.org JSON-LD | `ScholarlyArticle`; embedded in D4 |
 | `dublin-core.json` | Dublin Core | data object |
 | `opengraph.json` | OpenGraph | data object; no image asset |
-| `index.json` | machine API | carries `publication_status` + `_internal` (strip before D4/D5) |
+| `index.json` | machine API | carries `publication_status` + `_internal` (strip before D5) |
 | `signposting.json` | `<link>` model | `status: model-only`; no headers/HTML |
+| `index.html` | human landing page | production-faithful; **no** noindex; renders the metadata above |
 
 **DOI policy:** the version DOI `10.5281/zenodo.18880520` is the preferred /
 immutable citation identifier; the concept DOI `10.5281/zenodo.18880519` is the
 Work identity / continuity link. Both appear where the format supports it.
 
-**Not materialized:** every future URL under `https://agent-manifest-spec.org/works/declaration-layers`
-is planned only. No landing, no `/works/`, no sitemap, no HTML in D3.
+**Landing (`index.html`):** the production-faithful human page. It embeds the
+canonical link, `citation_*`, Dublin Core, OpenGraph, signposting `<link>`s and
+schema.org JSON-LD rendered from the same builders as the metadata files. It
+carries **no** `noindex` — index-suppression is never baked into the Work.
+
+**Local staging (`npm run stage`):** assembles a servable, git-ignored,
+non-indexable preview under `../../../../staging/works/declaration-layers/`
+(landing + PDF + all metadata). Only there is a **temporary** `noindex` (robots
+meta + `robots.txt` Disallow) injected; it must disappear before production.
+See `../../../../staging/STAGING.md` after building.
+
+**Not materialized publicly:** every URL under
+`https://agent-manifest-spec.org/works/declaration-layers` is planned only. No
+public `/works/`, no sitemap, no robots or nav change. The staging tree is local
+and never deployed.

@@ -11,7 +11,9 @@
     "test": "node --test",
     "validate": "node ./bin/academic-surface.js validate",
     "isolation-check": "node ./src/isolation-check.js",
-    "derive": "node ./src/derive.js"
+    "derive": "node ./src/derive.js",
+    "stage": "node ./src/build-site.js",
+    "preview": "python3 -m http.server -d staging 8081"
   },
   "keywords": [
     "academic-surface",
