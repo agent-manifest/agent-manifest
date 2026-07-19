@@ -10,7 +10,8 @@
   "scripts": {
     "test": "node --test",
     "validate": "node ./bin/academic-surface.js validate",
-    "isolation-check": "node ./src/isolation-check.js"
+    "isolation-check": "node ./src/isolation-check.js",
+    "derive": "node ./src/derive.js"
   },
   "keywords": [
     "academic-surface",
