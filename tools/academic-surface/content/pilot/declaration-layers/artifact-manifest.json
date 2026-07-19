@@ -1,0 +1,59 @@
+{
+  "manifest_kind": "artifact-manifest",
+  "manifest_version": 1,
+  "artifact_id": "amw-014-v1-pdf",
+  "work_id": "amw-014",
+  "version_id": "amw-014-v1",
+  "kind": "pdf",
+  "source_filename": "Declaration Layers and the Evaluation of Agent Boundaries.pdf",
+  "internal_filename": "declaration-layers.pdf",
+  "source_url": "https://zenodo.org/api/records/18880520/files/Declaration%20Layers%20and%20the%20Evaluation%20of%20Agent%20Boundaries.pdf/content",
+  "source_record_id": "18880520",
+  "source_doi_version": "10.5281/zenodo.18880520",
+  "mime": "application/pdf",
+  "bytes": 104506,
+  "page_count": 13,
+  "pdf_version": "1.3",
+  "encrypted": false,
+  "tagged": false,
+  "text_extractable": true,
+  "extracted_character_count": 12934,
+  "fonts_embedded": true,
+  "embedded_files": 0,
+  "link_annotations": 0,
+  "external_checksum": {
+    "algorithm": "md5",
+    "value": "7ab96aa974640389a6b2ddcd9e2d4d3f",
+    "source": "Zenodo record 18880520 files[0].checksum"
+  },
+  "internal_checksum": {
+    "algorithm": "sha-256",
+    "value": "4f6368cef12d640126576bf0e74bf1c14bd0c0cf52a932a90530ff0d611acb6c",
+    "generated_at": "2026-07-19"
+  },
+  "future_public_path": "/works/declaration-layers/declaration-layers.pdf",
+  "current_internal_path": "tools/academic-surface/content/pilot/declaration-layers/declaration-layers.pdf",
+  "current_visibility": "internal",
+  "publication_status": "not-published",
+  "embedded_doc_info": {
+    "title": null,
+    "author": null,
+    "subject": null,
+    "keywords": null,
+    "creator": null,
+    "producer": "iOS Version 18.7.2 (Build 22H124) Quartz PDFContext",
+    "creation_date": "2026-03-05T12:44:50Z",
+    "mod_date": "2026-03-05T12:44:50Z"
+  },
+  "provenance": {
+    "generated_by": { "name": "Hernán Alfredo Capucci", "is_human": true, "orcid": "0009-0008-7216-3032" },
+    "method": "Read-only inspection with poppler (pdfinfo/pdffonts/pdftotext/pdfdetach) plus shasum/md5; no OCR; the PDF was not modified, recompressed, or regenerated.",
+    "tools": [
+      { "tool": "poppler pdftotext/pdfinfo/pdffonts/pdfdetach", "version": "26.04.0" },
+      { "tool": "shasum", "version": "6.02", "note": "sha-256" },
+      { "tool": "md5", "note": "BSD md5 (origin fixity cross-check)" }
+    ],
+    "validated_at": "2026-07-19"
+  },
+  "notes": "Technical evidence for the Gate D2 Artifact of the pilot amw-014. This manifest DESCRIBES the file; bibliographic Work data lives in work.json (the SSOT). Shared fields (artifact_id/work_id/version_id, mime, bytes, sha-256 checksum, text_extractable, future path) MUST match work.json exactly; divergence is a blocking error. The embedded PDF doc-info Title/Author/etc. are absent (only Producer/dates set); this is a gap, not a conflict, and any future correction would require a new version/DOI (not performed in D2). NOT published: current_visibility=internal, publication_status=not-published, no /works/ materialization."
+}
