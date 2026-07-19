@@ -1,0 +1,30 @@
+# Academic Surface — internal content (NOT published)
+
+This directory holds **real, not-yet-publishable** Academic Surface records used to
+model and validate the SSOT with the Gate C tooling. It is deliberately kept
+**inside** `tools/academic-surface/`, which is excluded from the Jekyll build
+(`_config.yml: exclude: [tools]`), so nothing here reaches the public site.
+
+Contract for anything under `content/`:
+
+- Records are **not** fixtures: `test_fixture: false`, real DOIs/authors allowed.
+- Records carry `visibility: draft` until a future publication gate authorizes a surface.
+- **No** Jekyll front matter, **no** `/works/` page, **no** sitemap/robots/nav entry,
+  **no** `web`/`scholar`/`exports` surface directives are materialized here.
+- Downloaded artifacts (e.g. a PDF fetched once for checksum/inspection) live here for
+  fixity/validation only; they are never linked from the site and never published.
+- The test suite (`fixtures-hygiene`, `coverage`) never scans this directory; the
+  `isolation` suite asserts this content cannot leak to a public `/works/` path.
+
+## `pilot/declaration-layers/`
+
+Gate D1 SSOT of the pilot Work **amw-014** — *Declaration Layers and the Evaluation
+of Agent Boundaries* (version DOI `10.5281/zenodo.18880520`, concept DOI
+`10.5281/zenodo.18880519`). `work.json` is the canonical record; `declaration-layers.pdf`
+is the single authorized local copy of the original, retained only for checksum/fixity.
+
+Validate offline:
+
+```
+node bin/academic-surface.js validate content/pilot/declaration-layers/work.json --as-of=2026-07-19
+```
