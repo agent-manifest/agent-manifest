@@ -1,0 +1,22 @@
+{
+  "record_kind": "work",
+  "test_fixture": true,
+  "id": "fixt-103",
+  "slug": "a-fictitious-artifact-bad-work",
+  "title": "Fictitious Artifact-Bad Work",
+  "authors": [ { "name_human": "A. Fictitious Author", "name_normalized": "Author, A. Fictitious", "is_human": true, "agent_type": "human", "orcid": "0000-0002-1825-0097" } ],
+  "type": "working-paper",
+  "status": "draft",
+  "visibility": "draft",
+  "language": "en",
+  "doi_concept": "10.5555/example.artbad.concept",
+  "licenses": [ { "spdx": "CC-BY-4.0" } ],
+  "versions": [
+    {
+      "id": "fixt-103-v1", "vN": "v1", "date": "2099-01-01", "doi_version": "10.5555/example.artbad.v1", "is_current": true,
+      "artifacts": [
+        { "id": "fixt-103-v1-pdf", "kind": "pdf", "path": "/pdfs/misplaced.pdf", "mime": "application/pdf", "bytes": 6291456, "checksum": "deadbeef", "checksum_algorithm": "md5", "text_extractable": false }
+      ]
+    }
+  ]
+}

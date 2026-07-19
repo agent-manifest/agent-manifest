@@ -1,0 +1,75 @@
+{
+  "record_kind": "corpus",
+  "works": [
+    {
+      "record_kind": "work",
+      "test_fixture": true,
+      "id": "fixt-020-en",
+      "slug": "a-fictitious-work-en",
+      "title": "A Fictitious Work",
+      "authors": [ { "name_human": "A. Fictitious Author", "name_normalized": "Author, A. Fictitious", "is_human": true, "agent_type": "human", "orcid": "0000-0002-1825-0097" } ],
+      "type": "working-paper",
+      "status": "published",
+      "visibility": "public",
+      "language": "en",
+      "abstract": "Fictitious English abstract for validator fixtures.",
+      "doi_concept": "10.5555/example.trans.en.concept",
+      "licenses": [ { "spdx": "CC-BY-4.0" } ],
+      "relations": [ { "predicate": "isTranslationOf", "target_id": "fixt-020-es" } ],
+      "web": {
+        "canonical": "https://agent-manifest-spec.org/works/a-fictitious-work-en",
+        "robots_noindex": false,
+        "version_signposted": true,
+        "signposting": ["cite-as", "author"],
+        "hreflang": [ { "lang": "es", "href": "https://agent-manifest-spec.org/works/a-fictitious-work-es" } ]
+      },
+      "scholar": {
+        "citation_title": "A Fictitious Work",
+        "citation_author": ["Author, A. Fictitious"],
+        "citation_publication_date": "2099/02/01",
+        "citation_pdf_url": "https://agent-manifest-spec.org/works/a-fictitious-work-en/paper.pdf",
+        "pdf_title": "A Fictitious Work",
+        "abstract_prerendered": true
+      },
+      "versions": [
+        { "id": "fixt-020-en-v1", "vN": "v1", "date": "2099-02-01", "doi_version": "10.5555/example.trans.en.v1", "is_current": true,
+          "artifacts": [ { "id": "fixt-020-en-v1-pdf", "kind": "pdf", "path": "/works/a-fictitious-work-en/paper.pdf", "mime": "application/pdf", "bytes": 90000, "checksum": "00000000000000000000000000000000000000000000000000000000000000a1", "checksum_algorithm": "sha-256", "text_extractable": true } ] }
+      ]
+    },
+    {
+      "record_kind": "work",
+      "test_fixture": true,
+      "id": "fixt-020-es",
+      "slug": "a-fictitious-work-es",
+      "title": "Una obra ficticia",
+      "authors": [ { "name_human": "A. Fictitious Author", "name_normalized": "Author, A. Fictitious", "is_human": true, "agent_type": "human", "orcid": "0000-0002-1825-0097" } ],
+      "type": "working-paper",
+      "status": "published",
+      "visibility": "public",
+      "language": "es",
+      "abstract": "Resumen ficticio en español para fixtures del validador.",
+      "doi_concept": "10.5555/example.trans.es.concept",
+      "licenses": [ { "spdx": "CC-BY-4.0" } ],
+      "relations": [ { "predicate": "hasTranslation", "target_id": "fixt-020-en" } ],
+      "web": {
+        "canonical": "https://agent-manifest-spec.org/works/a-fictitious-work-es",
+        "robots_noindex": false,
+        "version_signposted": true,
+        "signposting": ["cite-as", "author"],
+        "hreflang": [ { "lang": "en", "href": "https://agent-manifest-spec.org/works/a-fictitious-work-en" } ]
+      },
+      "scholar": {
+        "citation_title": "Una obra ficticia",
+        "citation_author": ["Author, A. Fictitious"],
+        "citation_publication_date": "2099/02/01",
+        "citation_pdf_url": "https://agent-manifest-spec.org/works/a-fictitious-work-es/paper.pdf",
+        "pdf_title": "Una obra ficticia",
+        "abstract_prerendered": true
+      },
+      "versions": [
+        { "id": "fixt-020-es-v1", "vN": "v1", "date": "2099-02-01", "doi_version": "10.5555/example.trans.es.v1", "is_current": true,
+          "artifacts": [ { "id": "fixt-020-es-v1-pdf", "kind": "pdf", "path": "/works/a-fictitious-work-es/paper.pdf", "mime": "application/pdf", "bytes": 91000, "checksum": "00000000000000000000000000000000000000000000000000000000000000b2", "checksum_algorithm": "sha-256", "text_extractable": true } ] }
+      ]
+    }
+  ]
+}

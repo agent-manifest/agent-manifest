@@ -1,0 +1,25 @@
+{
+  "record_kind": "corpus",
+  "works": [
+    {
+      "record_kind": "work", "test_fixture": true,
+      "id": "fixt-106", "slug": "a-fictitious-exception-work", "title": "Fictitious Exception Work",
+      "authors": [ { "name_human": "A. Fictitious Author", "name_normalized": "Author, A. Fictitious", "is_human": true, "agent_type": "human", "orcid": "0000-0002-1825-0097" } ],
+      "type": "working-paper", "status": "draft", "visibility": "draft", "language": "enc",
+      "doi_concept": "10.5555/example.exc.concept",
+      "licenses": [ { "spdx": "CC-BY-4.0" } ],
+      "versions": [ { "id": "fixt-106-v1", "vN": "v1", "date": "2099-01-01", "doi_version": "10.5555/example.exc.v1", "is_current": true } ]
+    }
+  ],
+  "governed_exceptions": [
+    {
+      "id": "EXC-2020-001",
+      "rules": ["ASV-WORK-007"],
+      "justification": "Fictitious expired exception used to prove reactivation.",
+      "scope": { "work_ids": ["fixt-106"] },
+      "expires": "2020-01-01",
+      "evidence": "fixture://exceptions-expired",
+      "registered_in": "fixture"
+    }
+  ]
+}

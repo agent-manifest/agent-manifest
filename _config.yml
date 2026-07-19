@@ -3,3 +3,7 @@ title: Agent Manifest
 description: A minimal declaration layer for autonomous AI systems.
 include:
   - .well-known
+# Internal repository tooling (Gate C Academic Surface validator). Excluded from
+# the Jekyll build so it never reaches _site, the sitemap, or any public route.
+exclude:
+  - tools

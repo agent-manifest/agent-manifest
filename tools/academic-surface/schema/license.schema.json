@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agent-manifest-spec.org/schema/academic-surface/license.schema.json",
+  "title": "License",
+  "description": "A license attached to a Work. SPDX validity is checked semantically by ASV-WORK-011.",
+  "type": "object",
+  "required": ["spdx"],
+  "additionalProperties": false,
+  "properties": {
+    "spdx": { "type": "string", "minLength": 1, "description": "SPDX identifier, e.g. CC-BY-4.0 or Apache-2.0." },
+    "label": { "type": "string" },
+    "url": { "type": "string" }
+  }
+}

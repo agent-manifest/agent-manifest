@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agent-manifest-spec.org/schema/academic-surface/exception-record.schema.json",
+  "title": "ExceptionRecord",
+  "description": "A governed exception (§R). Never silent, never global, always with an expiry. An expired exception reactivates the original severity.",
+  "type": "object",
+  "required": ["id", "rules", "justification", "scope", "expires", "evidence"],
+  "additionalProperties": false,
+  "properties": {
+    "id": { "type": "string", "pattern": "^EXC-\\d{4}-\\d{3,}$", "description": "e.g. EXC-2026-001." },
+    "rules": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "pattern": "^ASV-[A-Z]+-\\d{3}$" }
+    },
+    "justification": { "type": "string", "minLength": 1 },
+    "scope": {
+      "type": "object",
+      "description": "Specific targets; MUST NOT be empty/global (semantic check).",
+      "additionalProperties": false,
+      "properties": {
+        "work_ids": { "type": "array", "items": { "type": "string" } },
+        "slugs": { "type": "array", "items": { "type": "string" } },
+        "paths": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "expires": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$", "description": "Mandatory expiry/review date." },
+    "evidence": { "type": "string", "minLength": 1, "description": "Link/reference to the governance decision." },
+    "registered_in": { "type": "string", "description": "Governance Inbox / Roadmap entry." }
+  }
+}

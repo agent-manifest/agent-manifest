@@ -1,0 +1,26 @@
+{
+  "record_kind": "work",
+  "test_fixture": true,
+  "id": "fixt-030",
+  "slug": "a-fictitious-retracted-note",
+  "title": "A Fictitious Withdrawn Work",
+  "authors": [ { "name_human": "A. Fictitious Author", "name_normalized": "Author, A. Fictitious", "is_human": true, "agent_type": "human", "orcid": "0000-0002-1825-0097" } ],
+  "type": "working-paper",
+  "status": "withdrawn",
+  "visibility": "public",
+  "language": "en",
+  "doi_concept": "10.5555/example.withdrawn.concept",
+  "licenses": [ { "spdx": "CC-BY-4.0" } ],
+  "withdrawal": {
+    "tombstone": true,
+    "http_status": 200,
+    "noindex": false,
+    "unlisted": false,
+    "removed_from_active_indexes": true,
+    "in_historical_sitemap": true,
+    "reason": "Fictitious retraction for validator fixtures."
+  },
+  "versions": [
+    { "id": "fixt-030-v1", "vN": "v1", "date": "2098-11-20", "doi_version": "10.5555/example.withdrawn.v1", "is_current": true }
+  ]
+}

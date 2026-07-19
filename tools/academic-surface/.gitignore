@@ -1,0 +1,13 @@
+# Local-only; the module is internal tooling, never published, never built into the site.
+node_modules/
+
+# Scratch validation reports / temp / logs / caches / tarballs / coverage
+*.report.json
+*.log
+*.tgz
+*.tmp
+tmp/
+.cache/
+coverage/
+.nyc_output/
+.DS_Store

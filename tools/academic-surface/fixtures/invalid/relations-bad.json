@@ -1,0 +1,25 @@
+{
+  "record_kind": "corpus",
+  "works": [
+    {
+      "record_kind": "work", "test_fixture": true,
+      "id": "fixt-104-a", "slug": "a-fictitious-relbad-a", "title": "Fictitious RelBad A",
+      "authors": [ { "name_human": "A. Fictitious Author", "name_normalized": "Author, A. Fictitious", "is_human": true, "agent_type": "human", "orcid": "0000-0002-1825-0097" } ],
+      "type": "working-paper", "status": "draft", "visibility": "draft", "language": "en",
+      "doi_concept": "10.5555/example.relbad.a.concept",
+      "licenses": [ { "spdx": "CC-BY-4.0" } ],
+      "relations": [ { "predicate": "Obsoletes", "target_id": "fixt-104-b" } ],
+      "versions": [ { "id": "fixt-104-a-v1", "vN": "v1", "date": "2099-01-01", "doi_version": "10.5555/example.relbad.a.v1", "is_current": true } ]
+    },
+    {
+      "record_kind": "work", "test_fixture": true,
+      "id": "fixt-104-b", "slug": "a-fictitious-relbad-b", "title": "Fictitious RelBad B",
+      "authors": [ { "name_human": "A. Fictitious Author", "name_normalized": "Author, A. Fictitious", "is_human": true, "agent_type": "human", "orcid": "0000-0002-1825-0097" } ],
+      "type": "working-paper", "status": "draft", "visibility": "draft", "language": "en",
+      "doi_concept": "10.5555/example.relbad.b.concept",
+      "licenses": [ { "spdx": "CC-BY-4.0" } ],
+      "relations": [ { "predicate": "Obsoletes", "target_id": "fixt-104-a" } ],
+      "versions": [ { "id": "fixt-104-b-v1", "vN": "v1", "date": "2099-01-02", "doi_version": "10.5555/example.relbad.b.v1", "is_current": true } ]
+    }
+  ]
+}

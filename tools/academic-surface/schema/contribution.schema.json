@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agent-manifest-spec.org/schema/academic-surface/contribution.schema.json",
+  "title": "Contribution",
+  "description": "A non-authorial human contribution role. Technical/AI assistance is NEVER a contribution; it belongs only in a non-authorial methodological note (ASV-PROV-004).",
+  "type": "object",
+  "required": ["contributor", "role", "is_human"],
+  "additionalProperties": false,
+  "properties": {
+    "contributor": { "type": "string", "minLength": 1 },
+    "role": { "type": "string", "minLength": 1, "description": "e.g. editor, reviewer, translator." },
+    "is_human": { "type": "boolean" },
+    "agent_type": { "type": "string", "enum": ["human", "ai", "software", "organization", "service"] },
+    "orcid": { "type": "string", "pattern": "^\\d{4}-\\d{4}-\\d{4}-\\d{3}[\\dX]$" }
+  }
+}

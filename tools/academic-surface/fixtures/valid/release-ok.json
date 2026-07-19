@@ -1,0 +1,16 @@
+{
+  "record_kind": "release",
+  "slug": "a-fictitious-multiversion-work",
+  "outgoing": {
+    "vN": "v1",
+    "frozen_path": "/works/a-fictitious-multiversion-work/v1",
+    "frozen": true,
+    "validated": true,
+    "doi_version": "10.5555/example.multi.v1",
+    "checksum_verified": true,
+    "self_canonical": true
+  },
+  "incoming": { "vN": "v2", "current_path": "/works/a-fictitious-multiversion-work" },
+  "atomic_swap": true,
+  "failure_injected": false
+}

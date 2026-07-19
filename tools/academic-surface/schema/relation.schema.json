@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agent-manifest-spec.org/schema/academic-surface/relation.schema.json",
+  "title": "Relation",
+  "description": "A typed relation in the knowledge graph. Predicate vocabulary is restricted to DataCite relationTypes plus the single proprietary pair ams:implements / ams:isImplementedBy. Generic 'relatedWork' and 'ams:supersedes' are forbidden (ASV-REL-001/005/006).",
+  "type": "object",
+  "required": ["predicate"],
+  "additionalProperties": false,
+  "properties": {
+    "predicate": {
+      "type": "string",
+      "enum": [
+        "isSupplementTo", "isSupplementedBy",
+        "references", "isReferencedBy",
+        "isTranslationOf", "hasTranslation",
+        "Obsoletes", "IsObsoletedBy",
+        "isVersionOf", "hasVersion",
+        "isPartOf", "hasPart",
+        "isBasedOn",
+        "ams:implements", "ams:isImplementedBy"
+      ]
+    },
+    "target_id": { "type": "string", "description": "Internal Work id (e.g. amw-003) when the target is inside the corpus." },
+    "target_doi": { "type": "string", "description": "External DOI when the target is outside the corpus." },
+    "target_title": { "type": "string" }
+  },
+  "anyOf": [
+    { "required": ["target_id"] },
+    { "required": ["target_doi"] }
+  ]
+}

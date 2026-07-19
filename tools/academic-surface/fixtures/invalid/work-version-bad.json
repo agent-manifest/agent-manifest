@@ -1,0 +1,18 @@
+{
+  "record_kind": "work",
+  "test_fixture": true,
+  "id": "fixt-102",
+  "slug": "a-fictitious-version-bad-work",
+  "title": "Fictitious Version-Bad Work",
+  "authors": [ { "name_human": "A. Fictitious Author", "name_normalized": "Author, A. Fictitious", "is_human": true, "agent_type": "human", "orcid": "0000-0002-1825-0097" } ],
+  "type": "working-paper",
+  "status": "draft",
+  "visibility": "draft",
+  "language": "en",
+  "doi_concept": "10.5555/example.verbad.concept",
+  "licenses": [ { "spdx": "CC-BY-4.0" } ],
+  "versions": [
+    { "id": "fixt-102-v1", "vN": "v1", "date": "2098-01-01", "doi_version": "10.5555/example.verbad.v1", "is_current": true },
+    { "id": "fixt-102-v3", "vN": "v3", "date": "2099-01-01", "doi_version": "10.5555/example.verbad.v3", "is_current": true }
+  ]
+}
