@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agent-manifest-spec.org/schema/academic-surface/author.schema.json",
+  "title": "Author",
+  "description": "An intellectual author of a Work. Authors MUST be human (is_human=true). The human-authorship invariant is enforced by ASV-WORK-004 and ASV-PROV-001/003 via the explicit is_human attestation (not by name matching).",
+  "type": "object",
+  "required": ["name_human", "name_normalized", "is_human"],
+  "additionalProperties": false,
+  "properties": {
+    "name_human": { "type": "string", "minLength": 1, "description": "Display form, e.g. 'H. A. Capucci'." },
+    "name_normalized": { "type": "string", "minLength": 1, "description": "Sort form, e.g. 'Capucci, H. A.'." },
+    "is_human": { "type": "boolean", "description": "Explicit attestation. MUST be true for an author (semantic rule)." },
+    "agent_type": { "type": "string", "enum": ["human", "ai", "software", "organization", "service"], "description": "Optional explicit classification; anything other than 'human' is rejected for authorship." },
+    "orcid": { "type": "string", "pattern": "^\\d{4}-\\d{4}-\\d{4}-\\d{3}[\\dX]$", "description": "ORCID iD; checksum verified by ASV-WORK-004." },
+    "affiliation": { "type": "string" }
+  }
+}

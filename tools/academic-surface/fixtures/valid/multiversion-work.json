@@ -1,0 +1,80 @@
+{
+  "record_kind": "work",
+  "test_fixture": true,
+  "id": "fixt-010",
+  "slug": "a-fictitious-multiversion-work",
+  "title": "A Fictitious Multiversion Work",
+  "authors": [
+    { "name_human": "A. Fictitious Author", "name_normalized": "Author, A. Fictitious", "is_human": true, "agent_type": "human", "orcid": "0000-0002-1825-0097" }
+  ],
+  "type": "working-paper",
+  "status": "published",
+  "visibility": "public",
+  "language": "en",
+  "abstract": "A fictitious abstract used only for validator fixtures. It is prerendered plain text and contains no real research content.",
+  "keywords": ["fixture", "example"],
+  "doi_concept": "10.5555/example.multi.concept",
+  "tier": 2,
+  "licenses": [ { "spdx": "CC-BY-4.0", "label": "Creative Commons Attribution 4.0" } ],
+  "provenance": {
+    "intellectual_author": { "name": "A. Fictitious Author", "is_human": true, "orcid": "0000-0002-1825-0097" },
+    "record_creator": { "name": "A. Fictitious Author", "is_human": true, "orcid": "0000-0002-1825-0097" },
+    "build_activity": { "tool": "academic-surface-generator", "version": "0.0.0", "note": "Fixture-only; the tool is never an author." }
+  },
+  "external_urls": [ { "url": "https://example.org/records/multi", "rel": "sameAs", "label": "Preservation copy (fictitious)" } ],
+  "web": {
+    "canonical": "https://agent-manifest-spec.org/works/a-fictitious-multiversion-work",
+    "robots_noindex": false,
+    "version_signposted": true,
+    "signposting": ["cite-as", "describedby", "author", "type"],
+    "alternates": ["https://agent-manifest-spec.org/works/a-fictitious-multiversion-work/citation.bib", "https://agent-manifest-spec.org/works/a-fictitious-multiversion-work/citation.json"],
+    "jsonld_type": "ScholarlyArticle",
+    "jsonld": {
+      "inLanguage": "en",
+      "sameAs": ["https://example.org/records/multi"],
+      "identifier": "10.5555/example.multi.v2",
+      "author_identifier": ["0000-0002-1825-0097"]
+    }
+  },
+  "scholar": {
+    "citation_title": "A Fictitious Multiversion Work",
+    "citation_author": ["Author, A. Fictitious"],
+    "citation_publication_date": "2099/03/10",
+    "citation_pdf_url": "https://agent-manifest-spec.org/works/a-fictitious-multiversion-work/paper.pdf",
+    "pdf_title": "A Fictitious Multiversion Work",
+    "abstract_prerendered": true
+  },
+  "exports": {
+    "canonical_source": "csl-json",
+    "csl_json": { "title": "A Fictitious Multiversion Work", "DOI": "10.5555/example.multi.v2" },
+    "formats": [
+      { "name": "bibtex", "fields": { "title": "A Fictitious Multiversion Work", "authors": ["Author, A. Fictitious"], "date": "2099-03-10", "doi": "10.5555/example.multi.v2", "version": "v2" } },
+      { "name": "csl-json", "fields": { "title": "A Fictitious Multiversion Work", "authors": ["Author, A. Fictitious"], "date": "2099-03-10", "doi": "10.5555/example.multi.v2", "version": "v2" } }
+    ]
+  },
+  "versions": [
+    {
+      "id": "fixt-010-v1",
+      "vN": "v1",
+      "date": "2098-06-01",
+      "doi_version": "10.5555/example.multi.v1",
+      "is_current": false,
+      "web": { "canonical": "https://agent-manifest-spec.org/works/a-fictitious-multiversion-work/v1", "path": "/works/a-fictitious-multiversion-work/v1" },
+      "changelog": ["Initial fictitious version."],
+      "artifacts": [
+        { "id": "fixt-010-v1-pdf", "kind": "pdf", "path": "/works/a-fictitious-multiversion-work/v1/paper.pdf", "mime": "application/pdf", "bytes": 102400, "checksum": "0000000000000000000000000000000000000000000000000000000000000001", "checksum_algorithm": "sha-256", "text_extractable": true }
+      ]
+    },
+    {
+      "id": "fixt-010-v2",
+      "vN": "v2",
+      "date": "2099-03-10",
+      "doi_version": "10.5555/example.multi.v2",
+      "is_current": true,
+      "changelog": ["Second fictitious version."],
+      "artifacts": [
+        { "id": "fixt-010-v2-pdf", "kind": "pdf", "path": "/works/a-fictitious-multiversion-work/paper.pdf", "mime": "application/pdf", "bytes": 110000, "checksum": "0000000000000000000000000000000000000000000000000000000000000002", "checksum_algorithm": "sha-256", "text_extractable": true }
+      ]
+    }
+  ]
+}

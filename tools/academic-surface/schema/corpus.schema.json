@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agent-manifest-spec.org/schema/academic-surface/corpus.schema.json",
+  "title": "Academic Surface Corpus",
+  "description": "A collection of Work Records plus corpus-level governed exceptions. Enables cross-record validation (ASV-CORP-*, cross-target ASV-REL-*).",
+  "type": "object",
+  "required": ["record_kind", "works"],
+  "additionalProperties": false,
+  "properties": {
+    "record_kind": { "const": "corpus" },
+    "works": { "type": "array", "minItems": 1, "items": { "$ref": "work-record.schema.json" } },
+    "governed_exceptions": { "type": "array", "items": { "$ref": "exception-record.schema.json" } }
+  }
+}

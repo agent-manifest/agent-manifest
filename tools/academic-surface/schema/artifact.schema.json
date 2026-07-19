@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agent-manifest-spec.org/schema/academic-surface/artifact.schema.json",
+  "title": "Artifact",
+  "description": "A downloadable artifact nested under exactly one Version (ASV-ART-001). Never declared at Work level.",
+  "type": "object",
+  "required": ["id", "kind", "path", "bytes", "checksum", "checksum_algorithm"],
+  "additionalProperties": false,
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "kind": { "type": "string", "enum": ["pdf", "epub", "dataset", "html", "code"] },
+    "path": { "type": "string", "minLength": 1, "description": "Site-relative path; PDF must be co-located with its landing (ASV-ART-003)." },
+    "mime": { "type": "string" },
+    "bytes": { "type": "integer", "minimum": 0 },
+    "checksum": { "type": "string", "minLength": 1 },
+    "checksum_algorithm": { "type": "string", "enum": ["sha-256", "sha-512", "sha-384", "sha-1", "md5"] },
+    "text_extractable": { "type": ["boolean", "null"], "description": "true/false, or null when not yet verified (V-C → INFO)." },
+    "language": { "type": "string" }
+  }
+}

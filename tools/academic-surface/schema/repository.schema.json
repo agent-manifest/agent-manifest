@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agent-manifest-spec.org/schema/academic-surface/repository.schema.json",
+  "title": "Repository",
+  "description": "A code repository link. Only code lives here; identity/preservation links go in external_urls[] (ASV-WORK-013).",
+  "type": "object",
+  "required": ["url", "role"],
+  "additionalProperties": false,
+  "properties": {
+    "url": { "type": "string", "minLength": 1 },
+    "role": { "type": "string", "enum": ["ams:implements", "ams:isImplementedBy", "sameAs"] },
+    "label": { "type": "string" }
+  }
+}

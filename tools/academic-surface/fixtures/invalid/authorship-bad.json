@@ -1,0 +1,27 @@
+{
+  "record_kind": "work",
+  "test_fixture": true,
+  "id": "fixt-105",
+  "slug": "a-fictitious-authorship-bad-work",
+  "title": "Fictitious Authorship-Bad Work",
+  "authors": [
+    { "name_human": "Assistant Model", "name_normalized": "Assistant Model", "is_human": false, "agent_type": "ai" }
+  ],
+  "type": "working-paper",
+  "status": "draft",
+  "visibility": "draft",
+  "language": "en",
+  "doi_concept": "10.5555/example.authbad.concept",
+  "licenses": [ { "spdx": "CC-BY-4.0" } ],
+  "provenance": {
+    "intellectual_author": { "name": "Assistant Model", "is_human": false },
+    "record_creator": { "name": "A. Fictitious Author", "is_human": true },
+    "build_activity": { "tool": "Assistant Model" }
+  },
+  "contributions": [
+    { "contributor": "Assistant Model", "role": "drafting", "is_human": false, "agent_type": "ai" }
+  ],
+  "versions": [
+    { "id": "fixt-105-v1", "vN": "v1", "date": "2099-01-01", "doi_version": "10.5555/example.authbad.v1", "is_current": true }
+  ]
+}

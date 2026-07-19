@@ -1,0 +1,142 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agent-manifest-spec.org/schema/academic-surface/work-record.schema.json",
+  "title": "Academic Surface Work Record",
+  "description": "Root document for a single Work in the Academic Surface SSOT (Gate A contract §6). Content fields plus declared surface directives (web/scholar/exports) that the future generator will materialize; the validator checks the whole record for invariant compliance BEFORE any rendering.",
+  "type": "object",
+  "required": ["id", "slug", "title", "authors", "type", "status", "visibility", "language", "licenses", "versions"],
+  "additionalProperties": false,
+  "properties": {
+    "record_kind": { "const": "work" },
+    "id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$", "description": "Opaque, unique, immutable id; never reassigned from a withdrawn Work (ASV-WORK-001)." },
+    "slug": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$", "description": "Topical, stable; no year/version/type/status token (semantic ASV-WORK-002)." },
+    "title": { "type": "string", "minLength": 1 },
+    "subtitle": { "type": "string" },
+    "alt_titles": { "type": "array", "items": { "type": "string" } },
+    "authors": { "type": "array", "minItems": 1, "items": { "$ref": "author.schema.json" } },
+    "contributions": { "type": "array", "items": { "$ref": "contribution.schema.json" } },
+    "date": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+    "type": { "type": "string", "enum": ["paper", "working-paper", "standard", "manifesto", "book", "dataset", "software", "public-comment", "report", "essay"] },
+    "status": { "type": "string", "enum": ["draft", "published", "withdrawn"] },
+    "visibility": { "type": "string", "enum": ["public", "unlisted", "draft"] },
+    "language": { "type": "string", "minLength": 2, "description": "BCP-47 tag on the surface (en/es); 'enc' is invalid here (ASV-WORK-007)." },
+    "abstract": { "type": "string" },
+    "keywords": { "type": "array", "items": { "type": "string" } },
+    "topics": { "type": "array", "items": { "type": "string" } },
+    "series": { "type": "array", "items": { "type": "string" } },
+    "collections": { "type": "array", "items": { "type": "string" } },
+    "doi_concept": { "type": "string", "description": "Zenodo concept DOI (resolves-to-latest); distinct from every doi_version (ASV-WORK-009)." },
+    "isbn": { "type": "string" },
+    "tier": { "type": ["integer", "null"], "enum": [1, 2, 3, null] },
+    "external_corpus": { "type": "boolean", "description": "true = this record documents a work belonging to a separate, independent corpus; it MUST NOT be a member/layer/dependency of this surface (ASV-CORP-004)." },
+    "licenses": { "type": "array", "minItems": 1, "items": { "$ref": "license.schema.json" } },
+    "versions": { "type": "array", "minItems": 1, "items": { "$ref": "version.schema.json" } },
+    "repositories": { "type": "array", "items": { "$ref": "repository.schema.json" } },
+    "external_urls": { "type": "array", "items": { "$ref": "external-url.schema.json" } },
+    "relations": { "type": "array", "items": { "$ref": "relation.schema.json" } },
+    "preferred_citation_override": { "type": ["string", "object"] },
+    "provenance": { "$ref": "provenance.schema.json" },
+    "notes": { "type": "string" },
+    "governed_exceptions": { "type": "array", "items": { "$ref": "exception-record.schema.json" } },
+    "test_fixture": { "type": "boolean", "description": "MUST be true in every fixture; excludes the record from any generated surface/sitemap." },
+
+    "web": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Declared surface directives for the current landing (validated for invariant compliance).",
+      "properties": {
+        "canonical": { "type": "string", "description": "Self-canonical URL of /works/<slug> (ASV-WEB-001/006)." },
+        "robots_noindex": { "type": "boolean", "description": "Public Works must not be noindex (ASV-WORK-012)." },
+        "hreflang": { "type": "array", "items": { "type": "object", "additionalProperties": false, "required": ["lang", "href"], "properties": { "lang": { "type": "string" }, "href": { "type": "string" } } } },
+        "signposting": { "type": "array", "items": { "type": "string" } },
+        "alternates": { "type": "array", "items": { "type": "string" } },
+        "version_signposted": { "type": "boolean", "description": "Landing shows current vN + DOI + immutable-cite guidance (ASV-WEB-007, acta §5.B)." },
+        "jsonld_type": { "type": "string", "description": "Schema.org @type; must map from `type` (ASV-WEB-020)." },
+        "jsonld": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "inLanguage": { "type": "string" },
+            "sameAs": { "type": "array", "items": { "type": "string" } },
+            "identifier": { "type": "string" },
+            "author_identifier": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "alias_redirects": {
+          "type": "array",
+          "description": "Previously published slugs/URLs and how they resolve now (ASV-WEB-010).",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["from", "status"],
+            "properties": {
+              "from": { "type": "string" },
+              "status": { "type": "integer" }
+            }
+          }
+        }
+      }
+    },
+
+    "scholar": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Declared Google Scholar citation_* meta tags (validated for presence/consistency; ASV-SCH-*).",
+      "properties": {
+        "citation_title": { "type": "string" },
+        "citation_author": { "type": "array", "items": { "type": "string" } },
+        "citation_publication_date": { "type": "string", "description": "YYYY/MM/DD, derived from the current Version date." },
+        "citation_pdf_url": { "type": "string" },
+        "abstract_prerendered": { "type": "boolean" },
+        "pdf_title": { "type": "string", "description": "Declared embedded PDF title; must match citation_title (ASV-SCH-005, conceptual)." }
+      }
+    },
+
+    "exports": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Declared citation exports. Consistency across formats is enforced by ASV-EXP-002.",
+      "properties": {
+        "canonical_source": { "type": "string", "enum": ["csl-json"] },
+        "csl_json": { "type": "object" },
+        "formats": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["name", "fields"],
+            "properties": {
+              "name": { "type": "string", "enum": ["bibtex", "ris", "apa", "mla", "chicago", "plain", "markdown", "csl-json"] },
+              "fields": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "title": { "type": "string" },
+                  "authors": { "type": "array", "items": { "type": "string" } },
+                  "date": { "type": "string" },
+                  "doi": { "type": "string" },
+                  "version": { "type": "string" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "withdrawal": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Present only when status=withdrawn. Tombstone semantics (acta §7 / ASV-WD-*).",
+      "properties": {
+        "tombstone": { "type": "boolean" },
+        "http_status": { "type": "integer" },
+        "noindex": { "type": "boolean" },
+        "unlisted": { "type": "boolean" },
+        "removed_from_active_indexes": { "type": "boolean" },
+        "in_historical_sitemap": { "type": "boolean" },
+        "reason": { "type": "string" }
+      }
+    }
+  }
+}

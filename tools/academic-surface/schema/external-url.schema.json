@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agent-manifest-spec.org/schema/academic-surface/external-url.schema.json",
+  "title": "ExternalURL",
+  "description": "A non-code external identity/surface link (Zenodo record, profile). Code repositories belong in repositories[], not here (ASV-WORK-013).",
+  "type": "object",
+  "required": ["url", "rel"],
+  "additionalProperties": false,
+  "properties": {
+    "url": { "type": "string", "minLength": 1 },
+    "rel": { "type": "string", "enum": ["sameAs", "cite-as", "describedby", "author"] },
+    "label": { "type": "string" }
+  }
+}

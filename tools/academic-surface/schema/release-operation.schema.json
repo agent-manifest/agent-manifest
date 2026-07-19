@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agent-manifest-spec.org/schema/academic-surface/release-operation.schema.json",
+  "title": "Release Operation",
+  "description": "A declarative model of the atomic release ritual (acta §6 / ASV-RLS-*). Lets the validator check the atomic-release invariants deterministically, without performing any real publication.",
+  "type": "object",
+  "required": ["record_kind", "slug", "outgoing", "incoming"],
+  "additionalProperties": false,
+  "properties": {
+    "record_kind": { "const": "release" },
+    "slug": { "type": "string" },
+    "outgoing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["vN"],
+      "properties": {
+        "vN": { "type": "string", "pattern": "^v\\d+$" },
+        "frozen_path": { "type": "string", "description": "e.g. /works/<slug>/v1" },
+        "frozen": { "type": "boolean", "description": "Outgoing version materialized at /vN." },
+        "validated": { "type": "boolean", "description": "Frozen /vN passed all applicable checks." },
+        "doi_version": { "type": "string" },
+        "checksum_verified": { "type": "boolean" },
+        "self_canonical": { "type": "boolean" }
+      }
+    },
+    "incoming": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["vN"],
+      "properties": {
+        "vN": { "type": "string", "pattern": "^v\\d+$" },
+        "current_path": { "type": "string", "description": "e.g. /works/<slug>" }
+      }
+    },
+    "atomic_swap": { "type": "boolean", "description": "Replacement of the current is atomic (no intermediate published state)." },
+    "failure_injected": { "type": "boolean", "description": "Simulate a freeze/validate failure to test safe-abort (ASV-RLS-004)." }
+  }
+}
