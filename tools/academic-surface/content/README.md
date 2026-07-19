@@ -23,6 +23,15 @@ of Agent Boundaries* (version DOI `10.5281/zenodo.18880520`, concept DOI
 `10.5281/zenodo.18880519`). `work.json` is the canonical record; `declaration-layers.pdf`
 is the single authorized local copy of the original, retained only for checksum/fixity.
 
+Gate D2 adds `artifact-manifest.json` — extended **technical** evidence for the same
+file (page count, PDF version, embedded doc-info, fonts, fixity, future public path).
+Separation of concerns: `work.json` holds the contractual Artifact fields the
+validator/generator need; the manifest holds technical evidence. Shared fields
+(artifact/work/version ids, mime, bytes, sha-256, text_extractable, future path)
+**must match `work.json` exactly** — enforced by `src/artifact-manifest.js`
+(`checkArtifactManifest`) and `test/pilot-artifact.test.js`. Divergence is a blocking
+error. The manifest never repeats bibliographic Work metadata.
+
 Validate offline:
 
 ```
