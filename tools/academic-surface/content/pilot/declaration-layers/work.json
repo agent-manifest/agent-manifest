@@ -1,0 +1,121 @@
+{
+  "record_kind": "work",
+  "test_fixture": false,
+  "id": "amw-014",
+  "slug": "declaration-layers",
+  "title": "Declaration Layers and the Evaluation of Agent Boundaries",
+  "authors": [
+    {
+      "name_human": "Hernán Alfredo Capucci",
+      "name_normalized": "Capucci, Hernán Alfredo",
+      "is_human": true,
+      "agent_type": "human",
+      "orcid": "0009-0008-7216-3032"
+    }
+  ],
+  "type": "working-paper",
+  "status": "published",
+  "visibility": "draft",
+  "language": "en",
+  "abstract": "This paper examines the role of declaration layers in alignment evaluation for autonomous AI systems.\n\nBuilding on recent research on scheming and deceptive behaviors in AI systems, it proposes that explicit boundary declarations may complement behavioral alignment approaches by reducing structural ambiguity in agent evaluation contexts.\n\nThe paper introduces the concept of declaration layers as a governance-oriented interface through which AI agents disclose operational authority, constraints, and accountability structures prior to execution. Agent Manifest is presented as an example of such a declarative infrastructure.\n\nBy clarifying agent boundaries before action, declaration layers may improve interpretability of behavioral evaluations and support institutional oversight frameworks for increasingly autonomous AI systems.",
+  "keywords": [
+    "agent-boundaries",
+    "pre-execution-authority",
+    "declarative-boundaries",
+    "agent-manifest",
+    "agent-specification",
+    "ai-specification",
+    "agent-governance",
+    "ai-standards",
+    "llm-agents",
+    "autonomous-systems",
+    "json-schema",
+    "ai-safety"
+  ],
+  "topics": [
+    "agent-governance",
+    "agent-boundaries",
+    "ai-safety"
+  ],
+  "doi_concept": "10.5281/zenodo.18880519",
+  "tier": null,
+  "licenses": [
+    {
+      "spdx": "CC-BY-4.0",
+      "label": "Creative Commons Attribution 4.0 International",
+      "url": "https://creativecommons.org/licenses/by/4.0/"
+    }
+  ],
+  "external_urls": [
+    {
+      "url": "https://zenodo.org/records/18880520",
+      "rel": "sameAs",
+      "label": "Zenodo preservation record (version)"
+    },
+    {
+      "url": "https://doi.org/10.5281/zenodo.18880520",
+      "rel": "cite-as",
+      "label": "Version DOI (cite-as)"
+    },
+    {
+      "url": "https://orcid.org/0009-0008-7216-3032",
+      "rel": "author",
+      "label": "Author ORCID"
+    }
+  ],
+  "relations": [
+    {
+      "predicate": "isSupplementTo",
+      "target_doi": "10.5281/zenodo.18834845"
+    }
+  ],
+  "provenance": {
+    "intellectual_author": {
+      "name": "Hernán Alfredo Capucci",
+      "is_human": true,
+      "orcid": "0009-0008-7216-3032"
+    },
+    "record_creator": {
+      "name": "Hernán Alfredo Capucci",
+      "is_human": true,
+      "orcid": "0009-0008-7216-3032"
+    },
+    "build_activity": {
+      "tool": "academic-surface (Gate C validator)",
+      "version": "0.1.0",
+      "note": "SSOT modeled and validated with the Gate C tooling; the tool is never an author."
+    },
+    "external_metadata": {
+      "language_observed": "enc",
+      "relation_observed": "isSupplementTo 10.5281/zenodo.18834845",
+      "note": "Zenodo record 18880520 declares language 'enc' (non-BCP-47); the surface uses 'en'. Correction in Zenodo is deferred to F13/M-07; the work is NOT modified."
+    },
+    "methodological_notes": "Origin fixity: the Zenodo MD5 (md5:7ab96aa974640389a6b2ddcd9e2d4d3f) matches the locally downloaded copy byte-for-byte; the surface checksum is sha-256 recomputed locally (4f6368cef12d640126576bf0e74bf1c14bd0c0cf52a932a90530ff0d611acb6c). The PDF first page shows 'Independent Research' whereas the Zenodo affiliation is null; affiliation is left unset per the authoritative Zenodo record. Zenodo resource_type is the generic 'publication' with no subtype; the canonical SSOT type is working-paper (no genuine external conflict, so no type_discrepancy is recorded). The abstract is the Zenodo HTML description flattened to plain text without alteration of meaning."
+  },
+  "notes": "D1 SSOT of the Academic Surface pilot (amw-014). REAL content, NOT yet publishable: visibility=draft, stored under tools/academic-surface/content/ (excluded from Jekyll), no public /works/ page, no surface directives (web/scholar/exports blocks are deferred to D3/D4 per the Gate D0 plan). Topics are proposed pending ratification. The isSupplementTo target (amw-003, DOI 10.5281/zenodo.18834845) is modeled as an external target_doi because amw-003 is not yet materialized in the internal corpus; its inverse (isSupplementedBy) is registered as pending for when amw-003 enters the surface.",
+  "versions": [
+    {
+      "id": "amw-014-v1",
+      "vN": "v1",
+      "date": "2026-03-05",
+      "doi_version": "10.5281/zenodo.18880520",
+      "is_current": true,
+      "changelog": [
+        "Initial published version (Zenodo record 18880520, 2026-03-05)."
+      ],
+      "artifacts": [
+        {
+          "id": "amw-014-v1-pdf",
+          "kind": "pdf",
+          "path": "/works/declaration-layers/declaration-layers.pdf",
+          "mime": "application/pdf",
+          "bytes": 104506,
+          "checksum": "4f6368cef12d640126576bf0e74bf1c14bd0c0cf52a932a90530ff0d611acb6c",
+          "checksum_algorithm": "sha-256",
+          "text_extractable": true,
+          "language": "en"
+        }
+      ]
+    }
+  ]
+}
