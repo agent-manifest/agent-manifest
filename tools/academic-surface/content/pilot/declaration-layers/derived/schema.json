@@ -1,0 +1,62 @@
+{
+  "@context": "https://schema.org",
+  "@id": "https://agent-manifest-spec.org/works/declaration-layers",
+  "@type": "ScholarlyArticle",
+  "abstract": "This paper examines the role of declaration layers in alignment evaluation for autonomous AI systems.\n\nBuilding on recent research on scheming and deceptive behaviors in AI systems, it proposes that explicit boundary declarations may complement behavioral alignment approaches by reducing structural ambiguity in agent evaluation contexts.\n\nThe paper introduces the concept of declaration layers as a governance-oriented interface through which AI agents disclose operational authority, constraints, and accountability structures prior to execution. Agent Manifest is presented as an example of such a declarative infrastructure.\n\nBy clarifying agent boundaries before action, declaration layers may improve interpretability of behavioral evaluations and support institutional oversight frameworks for increasingly autonomous AI systems.",
+  "author": [
+    {
+      "@type": "Person",
+      "identifier": "https://orcid.org/0009-0008-7216-3032",
+      "name": "Hernán Alfredo Capucci",
+      "sameAs": "https://orcid.org/0009-0008-7216-3032"
+    }
+  ],
+  "datePublished": "2026-03-05",
+  "encoding": {
+    "@type": "MediaObject",
+    "contentUrl": "https://agent-manifest-spec.org/works/declaration-layers/declaration-layers.pdf",
+    "encodingFormat": "application/pdf"
+  },
+  "headline": "Declaration Layers and the Evaluation of Agent Boundaries",
+  "identifier": [
+    {
+      "@type": "PropertyValue",
+      "name": "Version DOI",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.18880520"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Concept DOI",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.18880519"
+    }
+  ],
+  "inLanguage": "en",
+  "isSupplementTo": {
+    "@type": "CreativeWork",
+    "identifier": "10.5281/zenodo.18834845",
+    "url": "https://doi.org/10.5281/zenodo.18834845"
+  },
+  "keywords": [
+    "agent-boundaries",
+    "pre-execution-authority",
+    "declarative-boundaries",
+    "agent-manifest",
+    "agent-specification",
+    "ai-specification",
+    "agent-governance",
+    "ai-standards",
+    "llm-agents",
+    "autonomous-systems",
+    "json-schema",
+    "ai-safety"
+  ],
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "name": "Declaration Layers and the Evaluation of Agent Boundaries",
+  "sameAs": [
+    "https://zenodo.org/records/18880520",
+    "https://doi.org/10.5281/zenodo.18880520"
+  ],
+  "url": "https://agent-manifest-spec.org/works/declaration-layers"
+}

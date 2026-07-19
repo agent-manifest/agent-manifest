@@ -1,0 +1,59 @@
+{
+  "links": [
+    {
+      "href": "https://doi.org/10.5281/zenodo.18880520",
+      "note": "immutable version DOI",
+      "rel": "cite-as"
+    },
+    {
+      "href": "https://agent-manifest-spec.org/works/declaration-layers/cite.json",
+      "rel": "describedby",
+      "type": "application/vnd.citationstyles.csl+json"
+    },
+    {
+      "href": "https://agent-manifest-spec.org/works/declaration-layers/schema.json",
+      "rel": "describedby",
+      "type": "application/ld+json"
+    },
+    {
+      "href": "https://orcid.org/0009-0008-7216-3032",
+      "rel": "author"
+    },
+    {
+      "href": "https://creativecommons.org/licenses/by/4.0/",
+      "rel": "license"
+    },
+    {
+      "href": "https://schema.org/ScholarlyArticle",
+      "rel": "type"
+    },
+    {
+      "href": "https://agent-manifest-spec.org/works/declaration-layers/declaration-layers.pdf",
+      "rel": "item",
+      "type": "application/pdf"
+    },
+    {
+      "href": "https://agent-manifest-spec.org/works/declaration-layers/cite.bib",
+      "rel": "alternate",
+      "type": "application/x-bibtex"
+    },
+    {
+      "href": "https://agent-manifest-spec.org/works/declaration-layers/cite.ris",
+      "rel": "alternate",
+      "type": "application/x-research-info-systems"
+    },
+    {
+      "href": "https://agent-manifest-spec.org/works/declaration-layers/index.json",
+      "rel": "alternate",
+      "type": "application/json"
+    }
+  ],
+  "note": "Future <link> relations modeled as data; no headers, no HTML, no deploy in D3.",
+  "status": "model-only",
+  "urls": {
+    "concept_doi": "https://doi.org/10.5281/zenodo.18880519",
+    "conceptual": "https://agent-manifest-spec.org/works/declaration-layers",
+    "pdf": "https://agent-manifest-spec.org/works/declaration-layers/declaration-layers.pdf",
+    "version_doi": "https://doi.org/10.5281/zenodo.18880520"
+  }
+}

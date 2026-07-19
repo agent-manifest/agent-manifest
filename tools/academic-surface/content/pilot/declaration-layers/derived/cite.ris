@@ -1,0 +1,23 @@
+TY  - GEN
+TI  - Declaration Layers and the Evaluation of Agent Boundaries
+AU  - Capucci, Hernán Alfredo
+PY  - 2026
+DA  - 2026/03/05
+DO  - 10.5281/zenodo.18880520
+UR  - https://agent-manifest-spec.org/works/declaration-layers
+LA  - en
+AB  - This paper examines the role of declaration layers in alignment evaluation for autonomous AI systems. Building on recent research on scheming and deceptive behaviors in AI systems, it proposes that explicit boundary declarations may complement behavioral alignment approaches by reducing structural ambiguity in agent evaluation contexts. The paper introduces the concept of declaration layers as a governance-oriented interface through which AI agents disclose operational authority, constraints, and accountability structures prior to execution. Agent Manifest is presented as an example of such a declarative infrastructure. By clarifying agent boundaries before action, declaration layers may improve interpretability of behavioral evaluations and support institutional oversight frameworks for increasingly autonomous AI systems.
+KW  - agent-boundaries
+KW  - pre-execution-authority
+KW  - declarative-boundaries
+KW  - agent-manifest
+KW  - agent-specification
+KW  - ai-specification
+KW  - agent-governance
+KW  - ai-standards
+KW  - llm-agents
+KW  - autonomous-systems
+KW  - json-schema
+KW  - ai-safety
+N1  - Working paper. Concept DOI: 10.5281/zenodo.18880519. Version: v1
+ER  - 

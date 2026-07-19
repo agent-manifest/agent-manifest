@@ -1,0 +1,88 @@
+{
+  "_internal": {
+    "materialized": false,
+    "note": "D3 derived. Strip `_internal` and `publication_status` before D4/D5 materialization."
+  },
+  "abstract": "This paper examines the role of declaration layers in alignment evaluation for autonomous AI systems.\n\nBuilding on recent research on scheming and deceptive behaviors in AI systems, it proposes that explicit boundary declarations may complement behavioral alignment approaches by reducing structural ambiguity in agent evaluation contexts.\n\nThe paper introduces the concept of declaration layers as a governance-oriented interface through which AI agents disclose operational authority, constraints, and accountability structures prior to execution. Agent Manifest is presented as an example of such a declarative infrastructure.\n\nBy clarifying agent boundaries before action, declaration layers may improve interpretability of behavioral evaluations and support institutional oversight frameworks for increasingly autonomous AI systems.",
+  "artifacts": [
+    {
+      "bytes": 104506,
+      "checksum": {
+        "algorithm": "sha-256",
+        "value": "4f6368cef12d640126576bf0e74bf1c14bd0c0cf52a932a90530ff0d611acb6c"
+      },
+      "future_url": "https://agent-manifest-spec.org/works/declaration-layers/declaration-layers.pdf",
+      "kind": "pdf"
+    }
+  ],
+  "authors": [
+    {
+      "name": "Hernán Alfredo Capucci",
+      "orcid": "0009-0008-7216-3032"
+    }
+  ],
+  "current_version": {
+    "date": "2026-03-05",
+    "doi_version": "10.5281/zenodo.18880520",
+    "is_current": true,
+    "vN": "v1"
+  },
+  "doi_concept": "10.5281/zenodo.18880519",
+  "exports": {
+    "apa": "https://agent-manifest-spec.org/works/declaration-layers/cite-apa.txt",
+    "bibtex": "https://agent-manifest-spec.org/works/declaration-layers/cite.bib",
+    "csl-json": "https://agent-manifest-spec.org/works/declaration-layers/cite.json",
+    "markdown": "https://agent-manifest-spec.org/works/declaration-layers/cite.md",
+    "plain": "https://agent-manifest-spec.org/works/declaration-layers/cite-plain.txt",
+    "ris": "https://agent-manifest-spec.org/works/declaration-layers/cite.ris"
+  },
+  "id": "amw-014",
+  "keywords": [
+    "agent-boundaries",
+    "pre-execution-authority",
+    "declarative-boundaries",
+    "agent-manifest",
+    "agent-specification",
+    "ai-specification",
+    "agent-governance",
+    "ai-standards",
+    "llm-agents",
+    "autonomous-systems",
+    "json-schema",
+    "ai-safety"
+  ],
+  "language": "en",
+  "license": {
+    "spdx": "CC-BY-4.0",
+    "url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "links": {
+    "doi_concept": "https://doi.org/10.5281/zenodo.18880519",
+    "doi_version": "https://doi.org/10.5281/zenodo.18880520",
+    "landing": "https://agent-manifest-spec.org/works/declaration-layers",
+    "orcid": "https://orcid.org/0009-0008-7216-3032",
+    "pdf": "https://agent-manifest-spec.org/works/declaration-layers/declaration-layers.pdf",
+    "zenodo": "https://zenodo.org/records/18880520"
+  },
+  "provenance": {
+    "intellectual_author": "Hernán Alfredo Capucci",
+    "orcid": "0009-0008-7216-3032",
+    "surface": "Academic Surface"
+  },
+  "publication_status": "not-published",
+  "relations": [
+    {
+      "inverse": "pending",
+      "predicate": "isSupplementTo",
+      "target_doi": "10.5281/zenodo.18834845"
+    }
+  ],
+  "slug": "declaration-layers",
+  "title": "Declaration Layers and the Evaluation of Agent Boundaries",
+  "topics": [
+    "agent-governance",
+    "agent-boundaries",
+    "ai-safety"
+  ],
+  "type": "working-paper"
+}
