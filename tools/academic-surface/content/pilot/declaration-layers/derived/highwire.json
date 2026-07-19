@@ -1,6 +1,4 @@
 {
-  "note": "Future citation_* meta tags; not injected into HTML in D3. citation_pdf_url is planned, not yet materialized.",
-  "status": "not-published",
   "tags": {
     "citation_abstract_html_url": "https://agent-manifest-spec.org/works/declaration-layers",
     "citation_author": [

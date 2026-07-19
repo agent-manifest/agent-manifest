@@ -40,6 +40,19 @@ function initials(given) {
   return given.split(/\s+/).filter(Boolean).map((g) => `${g[0]}.`).join(' ');
 }
 
+// A Work is publicly materialized once it is public + published. In that state the
+// derived files drop the internal (draft/model-only) wrappers and carry no
+// `_internal` scaffolding; before it, they keep the informative D3 markers.
+function isPublished(work) {
+  return work.visibility === 'public' && work.status === 'published';
+}
+
+// Newest version date across the record (schema.org dateModified / freshness).
+function lastModified(work) {
+  const dates = (work.versions ?? []).map((v) => v.date).filter(Boolean).sort();
+  return dates.length ? dates[dates.length - 1] : currentVersion(work)?.date ?? null;
+}
+
 function futurePdfUrl(work) {
   const cur = currentVersion(work);
   const art = (cur?.artifacts ?? []).find((a) => a.kind === 'pdf');
@@ -152,18 +165,20 @@ export function toMarkdown(work) {
 export function toHighwire(work) {
   const cur = currentVersion(work);
   const u = derivedUrls(work);
+  const tags = {
+    citation_title: work.title,
+    citation_author: (work.authors ?? []).map((a) => a.name_normalized ?? a.name_human),
+    citation_publication_date: scholarDate(cur?.date),
+    citation_pdf_url: u.pdf,
+    citation_doi: cur?.doi_version,
+    citation_abstract_html_url: u.landing,
+    citation_language: work.language
+  };
+  if (isPublished(work)) return { tags };
   return {
     status: 'not-published',
     note: 'Future citation_* meta tags; not injected into HTML in D3. citation_pdf_url is planned, not yet materialized.',
-    tags: {
-      citation_title: work.title,
-      citation_author: (work.authors ?? []).map((a) => a.name_normalized ?? a.name_human),
-      citation_publication_date: scholarDate(cur?.date),
-      citation_pdf_url: u.pdf,
-      citation_doi: cur?.doi_version,
-      citation_abstract_html_url: u.landing,
-      citation_language: work.language
-    }
+    tags
   };
 }
 
@@ -180,12 +195,15 @@ export function toJSONLD(work) {
     url: u.landing,
     name: work.title,
     headline: work.title,
+    mainEntityOfPage: u.landing,
+    version: cur?.vN,
     author: (work.authors ?? []).map((a) => ({
       '@type': 'Person',
       name: a.name_human,
       ...(a.orcid ? { identifier: `https://orcid.org/${a.orcid}`, sameAs: `https://orcid.org/${a.orcid}` } : {})
     })),
     datePublished: cur?.date,
+    dateModified: lastModified(work),
     inLanguage: work.language,
     abstract: work.abstract,
     keywords: work.keywords ?? [],
@@ -261,8 +279,10 @@ export function toIndexJSON(work) {
     exports: { 'csl-json': u.csl, bibtex: u.bibtex, ris: u.ris, apa: u.apa, plain: u.plain, markdown: u.markdown },
     links: { landing: u.landing, pdf: u.pdf, doi_version: u.version_doi, doi_concept: u.concept_doi, zenodo: (work.external_urls ?? []).find((e) => e.rel === 'sameAs')?.url, orcid: (work.authors ?? [])[0]?.orcid ? `https://orcid.org/${work.authors[0].orcid}` : undefined },
     provenance: { intellectual_author: (work.authors ?? [])[0]?.name_human, orcid: (work.authors ?? [])[0]?.orcid, surface: 'Academic Surface' },
-    publication_status: 'not-published',
-    _internal: { materialized: false, note: 'D3 derived. Strip `_internal` and `publication_status` before D4/D5 materialization.' }
+    publication_status: isPublished(work) ? 'published' : 'not-published',
+    // Internal scaffolding is present ONLY before materialization; a published
+    // record carries no `_internal` block.
+    ...(isPublished(work) ? {} : { _internal: { materialized: false, note: 'D3 derived. Strip `_internal` and `publication_status` before D4/D5 materialization.' } })
   };
 }
 
@@ -270,9 +290,11 @@ export function toSignposting(work) {
   const cur = currentVersion(work);
   const u = derivedUrls(work);
   const license = (work.licenses ?? [])[0];
+  const wrapper = isPublished(work)
+    ? {}
+    : { status: 'model-only', note: 'Future <link> relations modeled as data; no headers, no HTML, no deploy in D3.' };
   return {
-    status: 'model-only',
-    note: 'Future <link> relations modeled as data; no headers, no HTML, no deploy in D3.',
+    ...wrapper,
     urls: { conceptual: u.landing, version_doi: u.version_doi, concept_doi: u.concept_doi, pdf: u.pdf },
     links: [
       { rel: 'cite-as', href: u.version_doi, note: 'immutable version DOI' },

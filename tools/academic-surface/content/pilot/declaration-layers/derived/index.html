@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Declaration Layers and the Evaluation of Agent Boundaries</title>
   <meta name="description" content="This paper examines the role of declaration layers in alignment evaluation for autonomous AI systems.">
+  <meta name="author" content="Hernán Alfredo Capucci">
   <link rel="canonical" href="https://agent-manifest-spec.org/works/declaration-layers">
 
   <!-- Highwire / Google Scholar -->
@@ -48,6 +49,11 @@
   <meta property="og:site_name" content="Agent Manifest">
   <meta property="article:author" content="Hernán Alfredo Capucci">
 
+  <!-- Twitter card (summary; no invented preview image) -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Declaration Layers and the Evaluation of Agent Boundaries">
+  <meta name="twitter:description" content="This paper examines the role of declaration layers in alignment evaluation for autonomous AI systems.">
+
   <!-- Signposting (typed links) -->
   <link rel="cite-as" href="https://doi.org/10.5281/zenodo.18880520">
   <link rel="describedby" href="https://agent-manifest-spec.org/works/declaration-layers/cite.json" type="application/vnd.citationstyles.csl+json">
@@ -60,7 +66,7 @@
   <link rel="alternate" href="https://agent-manifest-spec.org/works/declaration-layers/cite.ris" type="application/x-research-info-systems">
   <link rel="alternate" href="https://agent-manifest-spec.org/works/declaration-layers/index.json" type="application/json">
 
-  <!-- schema.org JSON-LD -->
+  <!-- schema.org JSON-LD — canonical ScholarlyArticle -->
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -75,6 +81,7 @@
       "sameAs": "https://orcid.org/0009-0008-7216-3032"
     }
   ],
+  "dateModified": "2026-03-05",
   "datePublished": "2026-03-05",
   "encoding": {
     "@type": "MediaObject",
@@ -117,12 +124,66 @@
     "ai-safety"
   ],
   "license": "https://creativecommons.org/licenses/by/4.0/",
+  "mainEntityOfPage": "https://agent-manifest-spec.org/works/declaration-layers",
   "name": "Declaration Layers and the Evaluation of Agent Boundaries",
   "sameAs": [
     "https://zenodo.org/records/18880520",
     "https://doi.org/10.5281/zenodo.18880520"
   ],
-  "url": "https://agent-manifest-spec.org/works/declaration-layers"
+  "url": "https://agent-manifest-spec.org/works/declaration-layers",
+  "version": "v1"
+}
+  </script>
+
+  <!-- schema.org JSON-LD — page structure (WebPage + BreadcrumbList) -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@id": "https://agent-manifest-spec.org/works/declaration-layers#webpage",
+      "@type": "WebPage",
+      "breadcrumb": {
+        "@id": "https://agent-manifest-spec.org/works/declaration-layers#breadcrumb"
+      },
+      "description": "This paper examines the role of declaration layers in alignment evaluation for autonomous AI systems.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://agent-manifest-spec.org/#website",
+        "@type": "WebSite",
+        "name": "Agent Manifest",
+        "url": "https://agent-manifest-spec.org/"
+      },
+      "mainEntity": {
+        "@id": "https://agent-manifest-spec.org/works/declaration-layers"
+      },
+      "name": "Declaration Layers and the Evaluation of Agent Boundaries",
+      "url": "https://agent-manifest-spec.org/works/declaration-layers"
+    },
+    {
+      "@id": "https://agent-manifest-spec.org/works/declaration-layers#breadcrumb",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "item": "https://agent-manifest-spec.org/",
+          "name": "Agent Manifest",
+          "position": 1
+        },
+        {
+          "@type": "ListItem",
+          "item": "https://agent-manifest-spec.org/works/",
+          "name": "Works",
+          "position": 2
+        },
+        {
+          "@type": "ListItem",
+          "name": "Declaration Layers and the Evaluation of Agent Boundaries",
+          "position": 3
+        }
+      ]
+    }
+  ]
 }
   </script>
 
@@ -142,6 +203,14 @@
     header.site .wrap { display:flex; align-items:baseline; gap:.5rem; padding-top:1rem; padding-bottom:1rem; flex-wrap:wrap; }
     header.site .brand { font-weight:700; }
     header.site .surface { color:var(--muted); font-size:.85rem; }
+    nav.breadcrumb { border-bottom:1px solid var(--line); font-size:.85rem; }
+    nav.breadcrumb ol { list-style:none; display:flex; flex-wrap:wrap; gap:.4rem; margin:0; padding:.6rem 0; }
+    nav.breadcrumb li { color:var(--muted); }
+    nav.breadcrumb li + li::before { content:"/"; padding-right:.4rem; color:var(--line); }
+    nav.breadcrumb [aria-current="page"] { color:var(--fg); }
+    ul.history { list-style:none; padding:0; margin:0; }
+    ul.history li { margin:.3rem 0; }
+    ul.history time { color:var(--muted); font-variant-numeric: tabular-nums; }
     main { padding:2rem 0 3rem; }
     h1 { font-size:1.9rem; line-height:1.25; margin:.2rem 0 1rem; }
     h2 { font-size:1.2rem; margin:2rem 0 .6rem; padding-bottom:.25rem; border-bottom:1px solid var(--line); }
@@ -163,7 +232,6 @@
     .note { color:var(--muted); font-size:.9rem; }
     footer.site { border-top:1px solid var(--line); color:var(--muted); font-size:.85rem; }
     footer.site .wrap { padding-top:1.25rem; padding-bottom:2rem; }
-    .staging-banner { background:#8a1c1c; color:#fff; text-align:center; padding:.5rem 1rem; font-size:.85rem; }
     @media (max-width:520px) {
       body { font-size:16px; }
       h1 { font-size:1.5rem; }
@@ -180,6 +248,15 @@
       <span class="surface">Academic Surface</span>
     </div>
   </header>
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="wrap">
+      <ol>
+        <li><a href="/">Agent Manifest</a></li>
+        <li><a href="/works/">Works</a></li>
+        <li aria-current="page">Declaration Layers and the Evaluation of Agent Boundaries</li>
+      </ol>
+    </div>
+  </nav>
   <main id="main">
     <div class="wrap">
       <article aria-labelledby="title">
@@ -279,6 +356,13 @@ N1  - Working paper. Concept DOI: 10.5281/zenodo.18880519. Version: v1
 ER  -</code></pre>
     </div>
         </section>
+
+    <section aria-labelledby="hist-h">
+      <h2 id="hist-h">Revision history</h2>
+      <ul class="history">
+      <li><time datetime="2026-03-05">2026-03-05</time> — v1 — Initial published version (Zenodo record 18880520, 2026-03-05).</li>
+      </ul>
+    </section>
 
     <section aria-labelledby="rel-h">
       <h2 id="rel-h">Related work</h2>

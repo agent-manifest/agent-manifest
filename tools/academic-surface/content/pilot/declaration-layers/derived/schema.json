@@ -11,6 +11,7 @@
       "sameAs": "https://orcid.org/0009-0008-7216-3032"
     }
   ],
+  "dateModified": "2026-03-05",
   "datePublished": "2026-03-05",
   "encoding": {
     "@type": "MediaObject",
@@ -53,10 +54,12 @@
     "ai-safety"
   ],
   "license": "https://creativecommons.org/licenses/by/4.0/",
+  "mainEntityOfPage": "https://agent-manifest-spec.org/works/declaration-layers",
   "name": "Declaration Layers and the Evaluation of Agent Boundaries",
   "sameAs": [
     "https://zenodo.org/records/18880520",
     "https://doi.org/10.5281/zenodo.18880520"
   ],
-  "url": "https://agent-manifest-spec.org/works/declaration-layers"
+  "url": "https://agent-manifest-spec.org/works/declaration-layers",
+  "version": "v1"
 }

@@ -48,8 +48,6 @@
       "type": "application/json"
     }
   ],
-  "note": "Future <link> relations modeled as data; no headers, no HTML, no deploy in D3.",
-  "status": "model-only",
   "urls": {
     "concept_doi": "https://doi.org/10.5281/zenodo.18880519",
     "conceptual": "https://agent-manifest-spec.org/works/declaration-layers",

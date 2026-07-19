@@ -1,8 +1,4 @@
 {
-  "_internal": {
-    "materialized": false,
-    "note": "D3 derived. Strip `_internal` and `publication_status` before D4/D5 materialization."
-  },
   "abstract": "This paper examines the role of declaration layers in alignment evaluation for autonomous AI systems.\n\nBuilding on recent research on scheming and deceptive behaviors in AI systems, it proposes that explicit boundary declarations may complement behavioral alignment approaches by reducing structural ambiguity in agent evaluation contexts.\n\nThe paper introduces the concept of declaration layers as a governance-oriented interface through which AI agents disclose operational authority, constraints, and accountability structures prior to execution. Agent Manifest is presented as an example of such a declarative infrastructure.\n\nBy clarifying agent boundaries before action, declaration layers may improve interpretability of behavioral evaluations and support institutional oversight frameworks for increasingly autonomous AI systems.",
   "artifacts": [
     {
@@ -69,7 +65,7 @@
     "orcid": "0009-0008-7216-3032",
     "surface": "Academic Surface"
   },
-  "publication_status": "not-published",
+  "publication_status": "published",
   "relations": [
     {
       "inverse": "pending",

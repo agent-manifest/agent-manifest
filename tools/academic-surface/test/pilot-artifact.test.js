@@ -52,12 +52,16 @@ test('D2: wrong future_public_path is blocking (MANIFEST-PATH)', () => {
   assert.ok(hasRule(checkArtifactManifest(m, work), 'MANIFEST-PATH'));
 });
 
-// 5) Artifact marked published before its gate
-test('D2: premature publication_status/visibility is blocking (MANIFEST-STATE)', () => {
-  const m1 = clone(manifest); m1.publication_status = 'published';
-  assert.ok(hasRule(checkArtifactManifest(m1, work), 'MANIFEST-STATE'));
-  const m2 = clone(manifest); m2.current_visibility = 'public';
-  assert.ok(hasRule(checkArtifactManifest(m2, work), 'MANIFEST-STATE'));
+// 5) Manifest state incoherent with the Work is blocking (both directions):
+// an artifact must not be published ahead of a draft Work, nor left internal once
+// its Work is public + published.
+test('D2: manifest state incoherent with the Work is blocking (MANIFEST-STATE)', () => {
+  const draftWork = clone(work); draftWork.visibility = 'draft'; draftWork.status = 'draft';
+  // published manifest against a draft Work -> blocking
+  assert.ok(hasRule(checkArtifactManifest(clone(manifest), draftWork), 'MANIFEST-STATE'));
+  // internal manifest against the published Work -> blocking
+  const internalM = clone(manifest); internalM.current_visibility = 'internal'; internalM.publication_status = 'not-published';
+  assert.ok(hasRule(checkArtifactManifest(internalM, work), 'MANIFEST-STATE'));
 });
 
 // 6) PDF modified with respect to the recorded checksum
@@ -87,15 +91,17 @@ test('D2: wrong work_id/version_id is blocking (MANIFEST-LINK)', () => {
   assert.ok(hasRule(checkArtifactManifest(m2, work), 'MANIFEST-LINK'));
 });
 
-// 10) isolation: PDF + manifest stay under tools/ and are never materialized publicly
-test('D2: Artifact + manifest stay internal, never a public /works path', () => {
-  assert.ok(DIR.includes(join('tools', 'academic-surface', 'content')), 'pilot content must live under the excluded module');
-  const repoRoot = join(HERE, '..', '..', '..');
-  for (const p of [join(repoRoot, 'works'), join(repoRoot, '_site', 'works'), join(repoRoot, '_works')]) {
-    assert.equal(existsSync(join(p, 'declaration-layers')), false, `unexpected public materialization: ${p}`);
-  }
-  assert.equal(manifest.current_visibility, 'internal');
-  assert.equal(manifest.publication_status, 'not-published');
+// 10) The manifest source stays under tools/; its state stays COHERENT with the
+// Work. Now that the Work is public+published, the manifest is public/published and
+// the PDF is materialized (byte-identical) under the separate public /works tree.
+test('D2: Artifact manifest source stays internal; state is coherent with the published Work', () => {
+  assert.ok(DIR.includes(join('tools', 'academic-surface', 'content')), 'pilot source must live under the excluded module');
+  const workPublished = work.visibility === 'public' && work.status === 'published';
+  assert.equal(manifest.current_visibility, workPublished ? 'public' : 'internal');
+  assert.equal(manifest.publication_status, workPublished ? 'published' : 'not-published');
+  // Coherence is enforced by the checker (no MANIFEST-STATE error).
+  const { diagnostics } = checkArtifactManifest(manifest, work);
+  assert.equal(diagnostics.filter((d) => d.rule_id === 'MANIFEST-STATE' && d.severity === SEVERITY.ERROR).length, 0);
 });
 
 // D2.6 — reproducible text-extractability check (native, no OCR). Skipped if
