@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title | default: "Citation" | escape }} — Agent Manifest</title>
+  <!-- Jekyll renders every Markdown file it finds, including the machine citation
+       representation co-located with a published Work. That rendering is a build
+       byproduct, not one of the Work's declared representations: the citation is
+       served as cite.md, and the citable record is the Work landing. It is marked
+       non-indexable so it never competes with the record it belongs to. -->
+  <meta name="robots" content="noindex, follow">
+  <link rel="stylesheet" href="/assets/css/editorial.css">
+</head>
+<body class="doc">
+  <main id="main"><div class="wrap">{{ content }}</div></main>
+</body>
+</html>

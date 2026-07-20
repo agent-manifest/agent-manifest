@@ -1,9 +1,84 @@
 url: https://agent-manifest-spec.org
 title: Agent Manifest
 description: A minimal declaration layer for autonomous AI systems.
+lang: en
+
+# Pinned explicitly so a local build and the GitHub Pages build resolve the same
+# way. Without this key the local build silently omits jekyll-readme-index, and
+# /foundations/, /evaluations/ and /examples/ render at a different URL locally
+# than in production.
+plugins:
+  - jekyll-readme-index
+  - jekyll-relative-links
+
+# Every page of this site declares its own front matter, so a directory README is
+# a front-mattered page and readme-index must be told to accept it — without this
+# the public directory URLs (/foundations/, /evaluations/, /examples/) would move
+# to /<dir>/README.html and the existing URLs would 404.
+readme_index:
+  with_frontmatter: true
+
+# jekyll-optional-front-matter is deliberately NOT enabled. Every file that should
+# be a page carries front matter; the .md files that remain without it are machine
+# representations (works/<slug>/cite.md) and the GitHub community files, none of
+# which should be rendered as a page.
+
 include:
   - .well-known
-# Internal repository tooling (Gate C Academic Surface validator). Excluded from
-# the Jekyll build so it never reaches _site, the sitemap, or any public route.
+
+# Internal repository tooling (Academic Surface validator, generators, and the
+# editorial charter). Excluded from the Jekyll build so it never reaches _site,
+# the sitemap, or any public route. `tools` must stay in this list: the module's
+# own isolation check asserts it.
 exclude:
   - tools
+  - node_modules
+  - vendor
+  - Gemfile
+  - Gemfile.lock
+
+# Every Markdown page is a Documentation-archetype surface (Academic Editorial
+# System v2.1, Part V.4) and is rendered by _layouts/default.html. `section`
+# drives the SiteHeader surface label and the Breadcrumb; root-level records
+# declare their own in front matter.
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+  - scope:
+      path: "docs"
+    values:
+      section: Documentation
+      section_url: /docs/
+  - scope:
+      path: "spec"
+    values:
+      section: Specification
+      section_url: /spec/v1.0/
+  - scope:
+      path: "foundations"
+    values:
+      section: Foundations
+      section_url: /foundations/
+  - scope:
+      path: "evaluations"
+    values:
+      section: Evaluations
+      section_url: /evaluations/
+  - scope:
+      path: "examples"
+    values:
+      section: Examples
+      section_url: /examples/
+  - scope:
+      path: "nist-comment"
+    values:
+      section: Public comment
+  # Published Works are self-contained generated records: they carry their own
+  # chrome and their own inlined stylesheet, and must never be wrapped in a
+  # layout. `cite.md` is a machine citation representation, not a page.
+  - scope:
+      path: "works"
+    values:
+      layout: machine-representation
