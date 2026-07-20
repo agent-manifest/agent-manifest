@@ -99,28 +99,31 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
+    /* Home — Home/institutional archetype of the Academic Editorial System v2.1.
+       Tokens mirror tools/academic-surface/src/lib/editorial.js (Appendix A).
+       Editorial layer only; head metadata (JSON-LD, OG, canonical) is untouched. */
     :root {
-      --bg: #f5f4f0;
-      --bg2: #edecea;
-      --ink: #1a1917;
-      --ink2: #6b6860;
-      --ink3: #9b9890;
-      --accent: #1a1917;
-      --rule: #d8d6d0;
-      --mono: 'DM Mono', monospace;
-      --sans: 'DM Sans', sans-serif;
+      --sans:"DM Sans",ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      --mono:"DM Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+      --paper:#f5f4f0; --paper-sunk:#edecea;
+      --ink:#1a1917; --ink-2:#57544d; --ink-faint:#8a8780;
+      --rule:#dcdad4; --rule-strong:#c4c1b8;
+      --focus:#1a3a5c; --ok:#3a6b3a;
+      --page-max:45rem; --measure:40rem;
+      --s-1:.25rem; --s-2:.5rem; --s-3:.75rem; --s-4:1rem; --s-5:1.5rem; --s-6:2rem; --s-7:3rem; --s-8:4rem; --s-9:6rem;
+      --boundary-seg:4rem; /* boundary rule — proprietary gesture (charter II.15) */
     }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { font-size: 15px; }
+html { font-size: 16px; -webkit-text-size-adjust: 100%; }
 
 body {
-  background: var(--bg);
+  background: var(--paper);
   color: var(--ink);
   font-family: var(--sans);
   font-weight: 300;
-  line-height: 1.6;
+  line-height: 1.65;
   min-height: 100vh;
 }
 
@@ -132,108 +135,148 @@ a {
   transition: text-decoration-color 0.15s;
 }
 a:hover { text-decoration-color: var(--ink); }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+
+/* Skip link — accessibility scaffolding (charter II.14, mandatory on Home). */
+.skip { position: absolute; left: -9999px; top: auto; }
+.skip:focus {
+  left: 1rem; top: 1rem; background: var(--focus); color: #fff;
+  padding: .5rem .75rem; border-radius: 3px; z-index: 10; text-decoration: none;
+}
 
 /* Layout */
 .page {
-  max-width: 720px;
+  max-width: var(--page-max);
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 var(--s-5);
 }
 
-/* Header */
+/* Header (hero) — one subtle entrance fade (charter II.9); no per-section stagger. */
 header {
-  padding: 64px 0 48px;
-  border-bottom: 1px solid var(--rule);
+  padding: var(--s-8) 0 var(--s-6);
   opacity: 0;
-  animation: fadeUp 0.6s ease forwards;
+  animation: fadeUp 0.5s ease forwards;
+}
+
+/* The boundary rule — the ecosystem's single proprietary gesture (charter II.15):
+   a two-segment masthead hairline (solid ink origin → faint continuation) that
+   renders Agent Manifest's stance (declaration up to a boundary, no claim beyond).
+   No color, no shadow, no gradient, no motion. One instance per surface. */
+.boundary-rule {
+  position: relative; height: 0;
+  border-top: 1px solid var(--rule);
+  margin-top: var(--s-6);
+}
+.boundary-rule::before {
+  content: ""; position: absolute; left: 0; top: -1px;
+  width: var(--boundary-seg); border-top: 2px solid var(--ink);
 }
 
 .badge {
   display: inline-block;
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: .6875rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--ink2);
+  color: var(--ink-2);
   border: 1px solid var(--rule);
-  padding: 3px 8px;
+  padding: .2rem .55rem;
   border-radius: 2px;
-  margin-bottom: 20px;
+  margin-bottom: var(--s-5);
 }
 
 h1 {
   font-family: var(--sans);
-  font-size: 40px;
+  font-size: 2.5rem;
   font-weight: 500;
   letter-spacing: -0.04em;
-  margin-bottom: 10px;
+  margin-bottom: var(--s-2);
   line-height: 1.1;
 }
 
 .tagline {
-  font-size: 16px;
-  color: var(--ink2);
+  font-size: 1rem;
+  color: var(--ink-2);
   font-weight: 300;
-  margin-bottom: 20px;
+  margin-bottom: var(--s-5);
 }
 
 .doi-link {
   font-family: var(--mono);
-  font-size: 11px;
-  color: var(--ink3);
+  font-size: .75rem;
+  color: var(--ink-2);
   letter-spacing: 0.04em;
 }
 
-/* Sections */
+/* Main + sections */
+main { display: block; opacity: 0; animation: fadeUp 0.5s ease forwards; }
+
 section {
-  padding: 36px 0;
+  padding: var(--s-6) 0;
   border-bottom: 1px solid var(--rule);
-  opacity: 0;
-  animation: fadeUp 0.6s ease forwards;
 }
 
-section:nth-child(2) { animation-delay: 0.08s; }
-section:nth-child(3) { animation-delay: 0.14s; }
-section:nth-child(4) { animation-delay: 0.20s; }
-section:nth-child(5) { animation-delay: 0.26s; }
-section:nth-child(6) { animation-delay: 0.32s; }
-section:nth-child(7) { animation-delay: 0.38s; }
-section:nth-child(8) { animation-delay: 0.44s; }
-
+/* Section eyebrow (mono classifier — charter Eyebrow) + editorial group heading. */
 .section-label {
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: .6875rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--ink3);
-  margin-bottom: 16px;
+  color: var(--ink-2);
+  margin-bottom: var(--s-2);
 }
 
-/* Link lists */
-.link-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+.group-title {
+  font-family: var(--sans);
+  font-size: 1.375rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: var(--s-4);
 }
 
-.link-list li {
-  display: flex;
-  align-items: baseline;
-  gap: 12px;
+.subhead {
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--ink);
+  margin: var(--s-6) 0 var(--s-3);
 }
 
-.link-list .lk {
+/* Directory — the terminal listing becomes an editorial directory: each entry is a
+   sans name + sans description (institutional voice); monospace is reserved for the
+   machine locator (path, endpoint, format), per charter II.6. Hairline-separated. */
+.dir { list-style: none; }
+
+.dir li {
+  border-top: 1px solid var(--rule);
+  padding: var(--s-4) 0;
+}
+.dir li:first-child { border-top: 0; padding-top: 0; }
+
+.dir .name {
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  font-weight: 400;
+  color: var(--ink);
+  text-decoration: none;
+}
+.dir .name:hover { text-decoration: underline; text-decoration-color: var(--ink); text-underline-offset: 3px; }
+
+.dir .desc {
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: .9375rem;
+  color: var(--ink-2);
+  max-width: var(--measure);
+  margin: .15rem 0 var(--s-2);
+}
+
+.dir .path {
   font-family: var(--mono);
-  font-size: 12px;
-  color: var(--ink3);
-  min-width: 140px;
-  flex-shrink: 0;
-}
-
-.link-list a {
-  font-family: var(--mono);
-  font-size: 12px;
+  font-size: .75rem;
+  color: var(--ink-2);
+  letter-spacing: .01em;
   word-break: break-all;
   overflow-wrap: anywhere;
 }
@@ -241,8 +284,8 @@ section:nth-child(8) { animation-delay: 0.44s; }
 /* Pipeline */
 .pipeline {
   font-family: var(--mono);
-  font-size: 12px;
-  color: var(--ink2);
+  font-size: .75rem;
+  color: var(--ink-2);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -256,15 +299,15 @@ section:nth-child(8) { animation-delay: 0.44s; }
 }
 
 .pipeline .arrow {
-  color: var(--ink3);
+  color: var(--ink-faint);
 }
 
 /* Concept */
 .concept {
-  font-size: 15px;
-  color: var(--ink2);
+  font-size: 1rem;
+  color: var(--ink-2);
   line-height: 1.7;
-  max-width: 580px;
+  max-width: var(--measure);
 }
 
 .concept strong {
@@ -272,12 +315,17 @@ section:nth-child(8) { animation-delay: 0.44s; }
   font-weight: 400;
 }
 
+/* The declarative principle — doctrinal prose, so it takes the editorial (sans)
+   voice, not the machine register; monospace is reserved for identifiers and data. */
 .principle {
-  margin-top: 18px;
-  font-family: var(--mono);
-  font-size: 12px;
+  margin-top: var(--s-4);
+  padding-left: var(--s-4);
+  border-left: 2px solid var(--rule-strong);
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  font-weight: 400;
   color: var(--ink);
-  letter-spacing: 0.01em;
+  max-width: var(--measure);
 }
 
 /* Status table */
@@ -290,50 +338,50 @@ section:nth-child(8) { animation-delay: 0.44s; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 9px 0;
+  padding: .55rem 0;
   border-bottom: 1px solid var(--rule);
-  font-size: 13px;
+  font-size: .8125rem;
 }
 
 .status-row:last-child { border-bottom: none; }
 
 .status-name {
   font-family: var(--mono);
-  font-size: 12px;
+  font-size: .75rem;
   color: var(--ink);
 }
 
 .status-val {
   font-family: var(--mono);
-  font-size: 11px;
-  color: #3a7a3a;
+  font-size: .6875rem;
+  color: var(--ok);
   letter-spacing: 0.06em;
 }
 
 /* Footer */
 footer {
-  padding: 36px 0 64px;
+  padding: var(--s-6) 0 var(--s-8);
   opacity: 0;
-  animation: fadeUp 0.6s ease 0.5s forwards;
+  animation: fadeUp 0.5s ease forwards;
 }
 
 .footer-inner {
   display: flex;
   flex-wrap: wrap;
-  gap: 24px;
+  gap: var(--s-5);
   justify-content: space-between;
   align-items: flex-start;
 }
 
 .footer-block {
   font-family: var(--mono);
-  font-size: 11px;
-  color: var(--ink3);
+  font-size: .6875rem;
+  color: var(--ink-2);
   line-height: 2;
 }
 
 .footer-block strong {
-  color: var(--ink2);
+  color: var(--ink);
   font-weight: 500;
 }
 
@@ -343,15 +391,25 @@ footer {
 }
 
 @media (max-width: 520px) {
-  h1 { font-size: 22px; }
-  .link-list .lk { min-width: 100px; font-size: 11px; }
-  .link-list a { font-size: 11px; }
-  .pipeline { font-size: 11px; }
+  h1 { font-size: 1.75rem; }
+  .group-title { font-size: 1.1875rem; }
+  .pipeline { font-size: .6875rem; }
+}
+
+/* Respect reduced-motion: without this, disabling the entrance animation would
+   strand the fade elements at opacity:0. Force them visible and static. */
+@media (prefers-reduced-motion: reduce) {
+  header, main, section, footer {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
 
   </style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <div class="page">
 
   <!-- HEADER -->
@@ -364,120 +422,14 @@ footer {
       DOI:&nbsp;<a href="https://doi.org/10.5281/zenodo.18833956" target="_blank" rel="noopener">10.5281/zenodo.18833956</a>
       &nbsp;·&nbsp; CC BY 4.0
     </p>
+    <div class="boundary-rule" aria-hidden="true"></div>
   </header>
 
-  <!-- CANONICAL SPECIFICATION -->
+  <main id="main">
 
+  <!-- CONCEPT / IDENTITY -->
   <section>
-    <p class="section-label">Canonical Specification</p>
-    <ul class="link-list">
-      <li>
-        <span class="lk">Spec v1.0</span>
-        <a href="https://agent-manifest-spec.org/spec/v1.0/agent_manifest_v1.0.html" target="_blank" rel="noopener">spec/v1.0/agent_manifest_v1.0.html</a>
-      </li>
-      <li>
-        <span class="lk">JSON Schema</span>
-        <a href="https://raw.githubusercontent.com/agent-manifest/agent-manifest/main/spec/v1.0/schema.json" target="_blank" rel="noopener">spec/v1.0/schema.json</a>
-      </li>
-      <li>
-        <span class="lk">Spec (Markdown)</span>
-        <a href="https://github.com/agent-manifest/agent-manifest/blob/main/spec/v1.0/spec.md" target="_blank" rel="noopener">spec/v1.0/spec.md</a>
-      </li>
-      <li>
-        <span class="lk">Repository</span>
-        <a href="https://github.com/agent-manifest/agent-manifest" target="_blank" rel="noopener">github.com/agent-manifest/agent-manifest</a>
-      </li>
-    </ul>
-  </section>
-
-  <!-- DOCUMENTATION -->
-
-  <section>
-    <p class="section-label">Documentation</p>
-    <ul class="link-list">
-      <li>
-        <span class="lk">Docs index</span>
-        <a href="https://agent-manifest-spec.org/docs/" target="_blank" rel="noopener">agent-manifest-spec.org/docs/</a>
-      </li>
-      <li>
-        <span class="lk">How to Register</span>
-        <a href="https://agent-manifest-spec.org/docs/how-to-register.html" target="_blank" rel="noopener">docs/how-to-register.html</a>
-      </li>
-    </ul>
-  </section>
-
-  <!-- ARCHITECTURE -->
-
-  <section>
-    <p class="section-label">Architecture</p>
-    <ul class="link-list">
-      <li>
-        <span class="lk">Overview</span>
-        <a href="https://agent-manifest-spec.org/docs/ARCHITECTURE.html" target="_blank" rel="noopener">docs/ARCHITECTURE.html</a>
-      </li>
-      <li>
-        <span class="lk">System Flow</span>
-        <a href="https://agent-manifest-spec.org/docs/architecture/system-flow.html" target="_blank" rel="noopener">docs/architecture/system-flow.html</a>
-      </li>
-    </ul>
-  </section>
-
-  <!-- REGISTRATION INFRASTRUCTURE -->
-
-  <section>
-    <p class="section-label">Registration Infrastructure</p>
-    <ul class="link-list">
-      <li>
-        <span class="lk">Ambassador</span>
-        <a href="https://agent-manifest.github.io/agent-manifest-ambassador/" target="_blank" rel="noopener">agent-manifest.github.io/agent-manifest-ambassador</a>
-      </li>
-      <li>
-        <span class="lk">Diplomat API</span>
-        <a href="https://agent-manifest-diplomat.vercel.app/api/register" target="_blank" rel="noopener">POST /api/register</a>
-      </li>
-      <li>
-        <span class="lk">Dataset</span>
-        <a href="https://github.com/agent-manifest/agent-manifest-dataset" target="_blank" rel="noopener">github.com/agent-manifest/agent-manifest-dataset</a>
-      </li>
-    </ul>
-  </section>
-
-  <!-- DISCOVERY -->
-
-  <section>
-    <p class="section-label">Discovery</p>
-    <ul class="link-list">
-      <li>
-        <span class="lk">Registry endpoint</span>
-        <a href="https://agent-manifest-spec.org/.well-known/agent-manifest-registry.json" target="_blank" rel="noopener">.well-known/agent-manifest-registry.json</a>
-      </li>
-      <li>
-        <span class="lk">Registry index</span>
-        <a href="https://raw.githubusercontent.com/agent-manifest/agent-manifest-dataset/main/registry.json" target="_blank" rel="noopener">registry.json (raw)</a>
-      </li>
-    </ul>
-  </section>
-
-  <!-- RESEARCH -->
-
-  <section>
-    <p class="section-label">Research</p>
-    <ul class="link-list">
-      <li>
-        <span class="lk">Academic Surface</span>
-        <a href="https://agent-manifest-spec.org/works/" target="_blank" rel="noopener">works/</a>
-      </li>
-      <li>
-        <span class="lk">Declaration Layers (working paper)</span>
-        <a href="https://agent-manifest-spec.org/works/declaration-layers" target="_blank" rel="noopener">works/declaration-layers</a>
-      </li>
-    </ul>
-  </section>
-
-  <!-- CONCEPT -->
-
-  <section>
-    <p class="section-label">Concept</p>
+    <h2 class="group-title">Concept</h2>
     <p class="concept">
       Agent Manifest allows autonomous systems to declare <strong>identity,
       purpose, capabilities, and operational boundaries</strong> before interaction.
@@ -489,10 +441,101 @@ footer {
     </p>
   </section>
 
-  <!-- PIPELINE -->
+  <section>
+    <h2 class="group-title">Specification</h2>
+    <ul class="dir">
+        <li>
+          <a class="name" href="https://agent-manifest-spec.org/spec/v1.0/agent_manifest_v1.0.html" target="_blank" rel="noopener">Specification v1.0</a>
+          <p class="desc">The canonical declarative specification.</p>
+          <div class="path">spec/v1.0/agent_manifest_v1.0.html</div>
+        </li>
+        <li>
+          <a class="name" href="https://raw.githubusercontent.com/agent-manifest/agent-manifest/main/spec/v1.0/schema.json" target="_blank" rel="noopener">JSON Schema</a>
+          <p class="desc">Normative schema for structural validation.</p>
+          <div class="path">spec/v1.0/schema.json</div>
+        </li>
+        <li>
+          <a class="name" href="https://github.com/agent-manifest/agent-manifest/blob/main/spec/v1.0/spec.md" target="_blank" rel="noopener">Specification (Markdown)</a>
+          <p class="desc">Plain-text source of the specification.</p>
+          <div class="path">spec/v1.0/spec.md</div>
+        </li>
+        <li>
+          <a class="name" href="https://github.com/agent-manifest/agent-manifest" target="_blank" rel="noopener">Repository</a>
+          <p class="desc">Source, issues, and revision history.</p>
+          <div class="path">github.com/agent-manifest/agent-manifest</div>
+        </li>
+    </ul>
+  </section>
 
   <section>
-    <p class="section-label">Operational Pipeline</p>
+    <h2 class="group-title">Documentation</h2>
+    <ul class="dir">
+        <li>
+          <a class="name" href="https://agent-manifest-spec.org/docs/" target="_blank" rel="noopener">Documentation</a>
+          <p class="desc">Reference and guides for the specification.</p>
+          <div class="path">agent-manifest-spec.org/docs/</div>
+        </li>
+        <li>
+          <a class="name" href="https://agent-manifest-spec.org/docs/how-to-register.html" target="_blank" rel="noopener">How to register</a>
+          <p class="desc">Steps to publish a manifest to the registry.</p>
+          <div class="path">docs/how-to-register.html</div>
+        </li>
+        <li>
+          <a class="name" href="https://agent-manifest-spec.org/docs/ARCHITECTURE.html" target="_blank" rel="noopener">Architecture</a>
+          <p class="desc">The three-layer declaration model.</p>
+          <div class="path">docs/ARCHITECTURE.html</div>
+        </li>
+        <li>
+          <a class="name" href="https://agent-manifest-spec.org/docs/architecture/system-flow.html" target="_blank" rel="noopener">System flow</a>
+          <p class="desc">How declaration, enforcement, and execution relate.</p>
+          <div class="path">docs/architecture/system-flow.html</div>
+        </li>
+    </ul>
+  </section>
+
+  <section>
+    <h2 class="group-title">Research</h2>
+    <ul class="dir">
+        <li>
+          <a class="name" href="https://agent-manifest-spec.org/works/" target="_blank" rel="noopener">Academic Surface</a>
+          <p class="desc">The ecosystem’s citable record of works.</p>
+          <div class="path">works/</div>
+        </li>
+        <li>
+          <a class="name" href="https://agent-manifest-spec.org/works/e-principle" target="_blank" rel="noopener">∈ Principle</a>
+          <p class="desc">Foundational statement on public authorship in the age of AI.</p>
+          <div class="path">works/e-principle</div>
+        </li>
+        <li>
+          <a class="name" href="https://agent-manifest-spec.org/works/declaration-layers" target="_blank" rel="noopener">Declaration Layers</a>
+          <p class="desc">Working paper on the evaluation of agent boundaries.</p>
+          <div class="path">works/declaration-layers</div>
+        </li>
+    </ul>
+  </section>
+
+  <!-- INFRASTRUCTURE -->
+  <section>
+    <h2 class="group-title">Infrastructure</h2>
+    <ul class="dir">
+        <li>
+          <a class="name" href="https://agent-manifest.github.io/agent-manifest-ambassador/" target="_blank" rel="noopener">Ambassador</a>
+          <p class="desc">Guided manifest authoring and submission.</p>
+          <div class="path">agent-manifest.github.io/agent-manifest-ambassador</div>
+        </li>
+        <li>
+          <a class="name" href="https://agent-manifest-diplomat.vercel.app/api/register" target="_blank" rel="noopener">Diplomat API</a>
+          <p class="desc">Manifest registration endpoint.</p>
+          <div class="path">POST /api/register</div>
+        </li>
+        <li>
+          <a class="name" href="https://github.com/agent-manifest/agent-manifest-dataset" target="_blank" rel="noopener">Dataset</a>
+          <p class="desc">Public corpus of registered manifests.</p>
+          <div class="path">github.com/agent-manifest/agent-manifest-dataset</div>
+        </li>
+    </ul>
+
+    <h3 class="subhead">Operational pipeline</h3>
     <div class="pipeline">
       <span class="node">Ambassador</span>
       <span class="arrow">→</span>
@@ -504,12 +547,8 @@ footer {
       <span class="arrow">→</span>
       <span class="node">Discovery</span>
     </div>
-  </section>
 
-  <!-- STATUS -->
-
-  <section>
-    <p class="section-label">Status</p>
+    <h3 class="subhead">Status</h3>
     <div class="status-grid">
       <div class="status-row">
         <span class="status-name">Spec v1.0</span>
@@ -537,6 +576,24 @@ footer {
       </div>
     </div>
   </section>
+
+  <section>
+    <h2 class="group-title">Discovery</h2>
+    <ul class="dir">
+        <li>
+          <a class="name" href="https://agent-manifest-spec.org/.well-known/agent-manifest-registry.json" target="_blank" rel="noopener">Registry endpoint</a>
+          <p class="desc">Well-known discovery document.</p>
+          <div class="path">.well-known/agent-manifest-registry.json</div>
+        </li>
+        <li>
+          <a class="name" href="https://raw.githubusercontent.com/agent-manifest/agent-manifest-dataset/main/registry.json" target="_blank" rel="noopener">Registry index</a>
+          <p class="desc">Raw registry index.</p>
+          <div class="path">registry.json (raw)</div>
+        </li>
+    </ul>
+  </section>
+
+  </main>
 
   <!-- FOOTER -->
 

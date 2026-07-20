@@ -1,0 +1,194 @@
+{
+  "record_kind": "work",
+  "test_fixture": false,
+  "id": "amw-005",
+  "slug": "e-principle",
+  "title": "∈ Principle",
+  "authors": [
+    {
+      "name_human": "Hernán Alfredo Capucci",
+      "name_normalized": "Capucci, Hernán Alfredo",
+      "is_human": true,
+      "agent_type": "human",
+      "orcid": "0009-0008-7216-3032"
+    }
+  ],
+  "type": "software",
+  "status": "published",
+  "visibility": "public",
+  "language": "en",
+  "abstract": "The ∈ Principle introduces a philosophical and institutional proposal for public authorship in the age of artificial intelligence. The symbol ∈ marks the moment when a work enters the public sphere with an explicitly assumed author behind it. The principle extends from historical acts of authorship to the emerging challenge of autonomous AI agents.",
+  "keywords": [
+    "authorship",
+    "public responsibility",
+    "AI governance",
+    "AI accountability",
+    "autonomous agents",
+    "Agent Manifest",
+    "digital institutions"
+  ],
+  "topics": [
+    "authorship",
+    "public responsibility",
+    "AI accountability"
+  ],
+  "doi_concept": "10.5281/zenodo.18965668",
+  "tier": null,
+  "ecosystem_role": "∈ Principle states a foundational idea: a public work exists when someone assumes responsibility for it. It is a philosophical and institutional proposal for public authorship in the age of artificial intelligence — not a copyright, not a signature, and not a quality seal.\n\nSeveral independent initiatives in the Agent Manifest ecosystem, including the Agent Manifest specification, are conceptually related to this principle and operationalize the same idea for autonomous systems. Each work stands on its own; none is a layer or component of another.",
+  "licenses": [
+    {
+      "spdx": "CC-BY-4.0",
+      "label": "Creative Commons Attribution 4.0 International",
+      "url": "https://creativecommons.org/licenses/by/4.0/"
+    }
+  ],
+  "repositories": [
+    {
+      "url": "https://github.com/agent-manifest/e-principle",
+      "role": "sameAs",
+      "label": "Source repository (GitHub)"
+    }
+  ],
+  "external_urls": [
+    {
+      "url": "https://zenodo.org/records/18965669",
+      "rel": "sameAs",
+      "label": "Zenodo preservation record (version)"
+    },
+    {
+      "url": "https://doi.org/10.5281/zenodo.18965669",
+      "rel": "cite-as",
+      "label": "Version DOI (cite-as)"
+    },
+    {
+      "url": "https://orcid.org/0009-0008-7216-3032",
+      "rel": "author",
+      "label": "Author ORCID"
+    }
+  ],
+  "relations": [
+    {
+      "predicate": "isBasedOn",
+      "target_doi": "10.5281/zenodo.18945860"
+    },
+    {
+      "predicate": "isBasedOn",
+      "target_doi": "10.5281/zenodo.18945953"
+    }
+  ],
+  "web": {
+    "canonical": "https://agent-manifest-spec.org/works/e-principle",
+    "robots_noindex": false,
+    "version_signposted": true,
+    "signposting": ["cite-as", "describedby", "author", "license", "type", "item", "alternate"],
+    "alternates": [
+      "https://agent-manifest-spec.org/works/e-principle/cite.bib",
+      "https://agent-manifest-spec.org/works/e-principle/cite.ris",
+      "https://agent-manifest-spec.org/works/e-principle/cite.json",
+      "https://agent-manifest-spec.org/works/e-principle/index.json",
+      "https://agent-manifest-spec.org/works/e-principle/schema.json"
+    ],
+    "jsonld_type": "SoftwareSourceCode",
+    "jsonld": {
+      "inLanguage": "en",
+      "sameAs": [
+        "https://zenodo.org/records/18965669",
+        "https://doi.org/10.5281/zenodo.18965669"
+      ],
+      "identifier": "10.5281/zenodo.18965669",
+      "author_identifier": ["0009-0008-7216-3032"]
+    }
+  },
+  "exports": {
+    "canonical_source": "csl-json",
+    "csl_json": {
+      "title": "∈ Principle",
+      "DOI": "10.5281/zenodo.18965669"
+    },
+    "formats": [
+      {
+        "name": "bibtex",
+        "fields": {
+          "title": "∈ Principle",
+          "authors": ["Capucci, Hernán Alfredo"],
+          "date": "2026-03-11",
+          "doi": "10.5281/zenodo.18965669",
+          "version": "v1"
+        }
+      },
+      {
+        "name": "ris",
+        "fields": {
+          "title": "∈ Principle",
+          "authors": ["Capucci, Hernán Alfredo"],
+          "date": "2026-03-11",
+          "doi": "10.5281/zenodo.18965669",
+          "version": "v1"
+        }
+      },
+      {
+        "name": "csl-json",
+        "fields": {
+          "title": "∈ Principle",
+          "authors": ["Capucci, Hernán Alfredo"],
+          "date": "2026-03-11",
+          "doi": "10.5281/zenodo.18965669",
+          "version": "v1"
+        }
+      }
+    ]
+  },
+  "provenance": {
+    "intellectual_author": {
+      "name": "Hernán Alfredo Capucci",
+      "is_human": true,
+      "orcid": "0009-0008-7216-3032"
+    },
+    "record_creator": {
+      "name": "Hernán Alfredo Capucci",
+      "is_human": true,
+      "orcid": "0009-0008-7216-3032"
+    },
+    "build_activity": {
+      "tool": "academic-surface (Gate C validator)",
+      "version": "0.1.0",
+      "note": "SSOT modeled and validated with the Gate C tooling; the tool is never an author."
+    },
+    "type_discrepancies": [
+      {
+        "source": "other",
+        "value": "codemeta.json in the source repository declares @type 'CreativeWork' (a generic creative work). The canonical resource type follows the authoritative Zenodo deposit, which registers record 18965669 as resource_type 'software'. A registry that classifies the intellectual content under a textual/other-scholarly category is recorded here observationally only, never as a second canonical type (V-A resolved to software)."
+      }
+    ],
+    "external_metadata": {
+      "relation_observed": "codemeta.json declares ∈ Principle isBasedOn the two book editions (18945860 EN, 18945953 ES); carried verbatim as isBasedOn relations. The English and Spanish editions are a bilingual pair, are separate Works, and are never merged into this record.",
+      "note": "Resource type: Zenodo is authoritative for the resource type of this Work, and Zenodo registers record 18965669 as 'software' (V-A closed as software; one DOI, one Work). The canonical type is therefore 'software'; the differing codemeta/ORCID classification is recorded under type_discrepancies as observation only. Artifact: the citable version 1.0 (Zenodo record 18965669) offers exactly one downloadable file — the GitHub release source archive 'hernancapucci/e-principle-v1.0.zip' — which is the real, authoritative Artifact of this Work (kind=code). No PDF is served: the ∈ Principle software deposit contains no article PDF, so this Work is not a Google Scholar (Highwire+PDF) candidate, and no citation_pdf_url is fabricated. The two book editions are related Works (isBasedOn), never the Artifact, Version, or full-text rendering of ∈ Principle. No affiliation and no publisher are asserted (the authoritative records leave them unset); missing fields are left unset rather than invented."
+    },
+    "methodological_notes": "Artifact fixity: the served file is the immutable Zenodo copy of the release source archive (record 18965669, files[0] 'hernancapucci/e-principle-v1.0.zip'). Its Zenodo MD5 (2f6242efc16d6782033179b8b2e9b24c) matches the downloaded copy byte-for-byte; the authoritative surface checksum is the sha-256 recomputed locally (616c469f379e94a913b0a9eb8c1f1b8ee1338cbfb0e914e0769714799d072471), over 1281279 bytes. The archive is the GitHub-generated source snapshot at tag v1.0 (repository tree hernancapucci-e-principle-912b9aa). The file was not modified, recompressed, or regenerated. text_extractable is null (not applicable: a binary archive has no PDF-style selectable text layer)."
+  },
+  "notes": "SSOT of the Academic Surface Foundational Work amw-005 (∈ Principle). Canonical resource type is 'software' — Zenodo is authoritative for the resource type, and record 18965669 is registered as software (inventory item V-A closed as software: one DOI = one Work; the differing codemeta/ORCID classification is recorded observationally under provenance.type_discrepancies, never as a second type). The Artifact is the real release source archive (kind=code, e-principle-v1.0.zip), co-located under /works/e-principle/ with sha-256 fixity and a Zenodo MD5 cross-check; there is no article PDF, so no Scholar citation_pdf_url is emitted. 'Foundational work' is an editorial/intellectual role (ecosystem_role), independent of the resource type. Publication gate: visibility=public with materialized surface directives (web/exports). This SSOT and generator remain internal under tools/academic-surface/ (excluded from Jekyll); the public surface is a deterministic build under /works/e-principle/. canonical and the landing point to the public record. The visible title uses the authoritative symbol ∈ (U+2208, 'belongs to'); the slug 'e-principle' is the ASCII technical identifier. The isBasedOn targets are external book DOIs (the EN and ES editions), not yet materialized as internal Works; their inverse is registered as pending for when the editions enter the surface.",
+  "versions": [
+    {
+      "id": "amw-005-v1",
+      "vN": "v1",
+      "date": "2026-03-11",
+      "doi_version": "10.5281/zenodo.18965669",
+      "is_current": true,
+      "changelog": [
+        "Initial published version (Zenodo concept 18965668, version 18965669; v1.0, 2026-03-11)."
+      ],
+      "artifacts": [
+        {
+          "id": "amw-005-v1-src",
+          "kind": "code",
+          "path": "/works/e-principle/e-principle-v1.0.zip",
+          "mime": "application/zip",
+          "bytes": 1281279,
+          "checksum": "616c469f379e94a913b0a9eb8c1f1b8ee1338cbfb0e914e0769714799d072471",
+          "checksum_algorithm": "sha-256",
+          "text_extractable": null
+        }
+      ]
+    }
+  ]
+}

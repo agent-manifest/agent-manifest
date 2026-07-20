@@ -1,0 +1,68 @@
+{
+  "@context": "https://schema.org",
+  "@id": "https://agent-manifest-spec.org/works/e-principle",
+  "@type": "SoftwareSourceCode",
+  "abstract": "The ∈ Principle introduces a philosophical and institutional proposal for public authorship in the age of artificial intelligence. The symbol ∈ marks the moment when a work enters the public sphere with an explicitly assumed author behind it. The principle extends from historical acts of authorship to the emerging challenge of autonomous AI agents.",
+  "author": [
+    {
+      "@type": "Person",
+      "identifier": "https://orcid.org/0009-0008-7216-3032",
+      "name": "Hernán Alfredo Capucci",
+      "sameAs": "https://orcid.org/0009-0008-7216-3032"
+    }
+  ],
+  "codeRepository": "https://github.com/agent-manifest/e-principle",
+  "dateModified": "2026-03-11",
+  "datePublished": "2026-03-11",
+  "encoding": {
+    "@type": "MediaObject",
+    "contentUrl": "https://agent-manifest-spec.org/works/e-principle/e-principle-v1.0.zip",
+    "encodingFormat": "application/zip"
+  },
+  "headline": "∈ Principle",
+  "identifier": [
+    {
+      "@type": "PropertyValue",
+      "name": "Version DOI",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.18965669"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Concept DOI",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.18965668"
+    }
+  ],
+  "inLanguage": "en",
+  "isBasedOn": [
+    {
+      "@type": "CreativeWork",
+      "identifier": "10.5281/zenodo.18945860",
+      "url": "https://doi.org/10.5281/zenodo.18945860"
+    },
+    {
+      "@type": "CreativeWork",
+      "identifier": "10.5281/zenodo.18945953",
+      "url": "https://doi.org/10.5281/zenodo.18945953"
+    }
+  ],
+  "keywords": [
+    "authorship",
+    "public responsibility",
+    "AI governance",
+    "AI accountability",
+    "autonomous agents",
+    "Agent Manifest",
+    "digital institutions"
+  ],
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "mainEntityOfPage": "https://agent-manifest-spec.org/works/e-principle",
+  "name": "∈ Principle",
+  "sameAs": [
+    "https://zenodo.org/records/18965669",
+    "https://doi.org/10.5281/zenodo.18965669"
+  ],
+  "url": "https://agent-manifest-spec.org/works/e-principle",
+  "version": "v1"
+}

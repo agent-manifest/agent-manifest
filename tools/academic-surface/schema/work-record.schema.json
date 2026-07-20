@@ -23,6 +23,7 @@
     "abstract": { "type": "string" },
     "keywords": { "type": "array", "items": { "type": "string" } },
     "topics": { "type": "array", "items": { "type": "string" } },
+    "ecosystem_role": { "type": "string", "description": "Optional editorial statement of the work's intellectual function in the ecosystem, rendered on the landing. Factual and non-promotional; never a claim of primacy, adoption, or authority." },
     "series": { "type": "array", "items": { "type": "string" } },
     "collections": { "type": "array", "items": { "type": "string" } },
     "doi_concept": { "type": "string", "description": "Zenodo concept DOI (resolves-to-latest); distinct from every doi_version (ASV-WORK-009)." },

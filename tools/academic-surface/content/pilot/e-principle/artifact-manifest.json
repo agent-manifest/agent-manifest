@@ -1,0 +1,49 @@
+{
+  "manifest_kind": "artifact-manifest",
+  "manifest_version": 1,
+  "artifact_id": "amw-005-v1-src",
+  "work_id": "amw-005",
+  "version_id": "amw-005-v1",
+  "kind": "code",
+  "source_filename": "hernancapucci/e-principle-v1.0.zip",
+  "internal_filename": "e-principle-v1.0.zip",
+  "source_url": "https://zenodo.org/api/records/18965669/files/hernancapucci/e-principle-v1.0.zip/content",
+  "source_record_id": "18965669",
+  "source_doi_version": "10.5281/zenodo.18965669",
+  "mime": "application/zip",
+  "bytes": 1281279,
+  "encrypted": false,
+  "text_extractable": null,
+  "archive": {
+    "format": "zip",
+    "release_tag": "v1.0",
+    "repository": "https://github.com/agent-manifest/e-principle",
+    "top_level_dir": "hernancapucci-e-principle-912b9aa/",
+    "note": "GitHub-generated source snapshot of the ∈ Principle repository at tag v1.0, archived by Zenodo as the software deposit."
+  },
+  "external_checksum": {
+    "algorithm": "md5",
+    "value": "2f6242efc16d6782033179b8b2e9b24c",
+    "source": "Zenodo record 18965669 files[0].checksum"
+  },
+  "internal_checksum": {
+    "algorithm": "sha-256",
+    "value": "616c469f379e94a913b0a9eb8c1f1b8ee1338cbfb0e914e0769714799d072471",
+    "generated_at": "2026-07-20"
+  },
+  "future_public_path": "/works/e-principle/e-principle-v1.0.zip",
+  "current_internal_path": "tools/academic-surface/content/pilot/e-principle/e-principle-v1.0.zip",
+  "current_visibility": "public",
+  "publication_status": "published",
+  "provenance": {
+    "generated_by": { "name": "Hernán Alfredo Capucci", "is_human": true, "orcid": "0009-0008-7216-3032" },
+    "method": "Downloaded the immutable Zenodo copy of the release source archive (record 18965669, files[0]); verified its Zenodo MD5 byte-for-byte and recomputed the authoritative sha-256. The archive was not modified, recompressed, or regenerated.",
+    "tools": [
+      { "tool": "curl", "note": "download of the Zenodo file content endpoint" },
+      { "tool": "shasum", "version": "6.02", "note": "sha-256" },
+      { "tool": "md5", "note": "BSD md5 (origin fixity cross-check against Zenodo)" }
+    ],
+    "validated_at": "2026-07-20"
+  },
+  "notes": "Technical evidence for the served Artifact of amw-005 (∈ Principle): the real release SOURCE ARCHIVE of the ∈ Principle software (kind=code), NOT a PDF and NOT either book edition. The Zenodo MD5 (2f6242efc16d6782033179b8b2e9b24c) matches the served copy byte-for-byte; the sha-256 above is authoritative for the served file. This is a software deposit, so there are no PDF fields (page_count/pdf_version/text-layer) — text_extractable is null (not applicable). Bibliographic Work data lives in work.json (the SSOT). Shared fields (artifact_id/work_id/version_id, mime, bytes, sha-256 checksum, text_extractable=null, future_public_path) MUST match work.json exactly; divergence is a blocking error. Publication gate: current_visibility=public, publication_status=published. Two byte-identical copies exist — the internal source under current_internal_path and the served public copy at future_public_path (/works/e-principle/e-principle-v1.0.zip)."
+}

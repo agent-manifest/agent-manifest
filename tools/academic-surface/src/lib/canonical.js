@@ -15,6 +15,18 @@ export function currentVersion(work) {
   return (work.versions ?? []).find((v) => v.is_current === true) ?? null;
 }
 
+/**
+ * The primary downloadable artifact of the current version, of ANY kind
+ * (pdf, code, dataset, …). The generators used to assume a PDF; a software or
+ * dataset Work carries a different artifact kind, so representation code reads
+ * the artifact generically and only branches on `kind` where a format genuinely
+ * differs (e.g. Scholar citation_pdf_url, which is PDF-only).
+ */
+export function currentArtifact(work) {
+  const cur = currentVersion(work);
+  return (cur?.artifacts ?? [])[0] ?? null;
+}
+
 export function worksUrl(slug) {
   return `${BASE_URL}/works/${slug}`;
 }
@@ -34,6 +46,49 @@ export function canonicalCitation(work) {
 /** ISO YYYY-MM-DD -> Scholar YYYY/MM/DD. */
 export function scholarDate(iso) {
   return typeof iso === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(iso) ? iso.replace(/-/g, '/') : null;
+}
+
+/**
+ * Per-type human/format specifics. The `working-paper` values reproduce the
+ * pilot's existing bytes exactly; every other type extends the same shape.
+ * `label` is the human class name (badge, facts row, citation notes);
+ * `cslType`/`cslGenre` drive CSL-JSON; `bibtex`/`risTy` drive the entry types.
+ */
+export const TYPE_META = Object.freeze({
+  'paper':          { label: 'Paper',          cslType: 'article', cslGenre: null,            bibtex: 'misc', risTy: 'GEN' },
+  'working-paper':  { label: 'Working paper',  cslType: 'article', cslGenre: 'Working paper', bibtex: 'misc', risTy: 'GEN' },
+  'standard':       { label: 'Standard',       cslType: 'article', cslGenre: 'Standard',      bibtex: 'misc', risTy: 'GEN' },
+  'manifesto':      { label: 'Manifesto',      cslType: 'article', cslGenre: 'Manifesto',     bibtex: 'misc', risTy: 'GEN' },
+  'essay':          { label: 'Essay',          cslType: 'article', cslGenre: 'Essay',         bibtex: 'misc', risTy: 'GEN' },
+  'report':         { label: 'Report',         cslType: 'report',  cslGenre: null,            bibtex: 'techreport', risTy: 'RPRT' },
+  'public-comment': { label: 'Public comment', cslType: 'report',  cslGenre: null,            bibtex: 'techreport', risTy: 'RPRT' },
+  'book':           { label: 'Book',           cslType: 'book',    cslGenre: null,            bibtex: 'book', risTy: 'BOOK' },
+  // Non-textual kinds. They do NOT emit Google Scholar citation_* tags
+  // (see TEXTUAL_TYPES); their CSL/BibTeX/RIS still carry an honest, citable
+  // entry. RIS COMP = computer program; CSL 'software'/'dataset' are 1.0.2 types.
+  'software':       { label: 'Software',       cslType: 'software', cslGenre: null,           bibtex: 'misc', risTy: 'COMP' },
+  'dataset':        { label: 'Dataset',        cslType: 'dataset',  cslGenre: null,           bibtex: 'misc', risTy: 'DATA' }
+});
+
+/** Type specifics with a safe generic fallback. */
+export function typeMeta(type) {
+  return TYPE_META[type] ?? { label: type ?? 'Document', cslType: 'article', cslGenre: null, bibtex: 'misc', risTy: 'GEN' };
+}
+
+/** BCP-47 tag -> human language name for the visible facts row. */
+export const LANG_LABEL = Object.freeze({ en: 'English', es: 'Spanish' });
+export function langLabel(code) {
+  return LANG_LABEL[code] ?? code;
+}
+
+/**
+ * DCMI Type Vocabulary value for the Dublin Core `DC.type`. Textual works are
+ * 'Text'; software and datasets map to their DCMI kinds. Anything unmapped is a
+ * textual document by default (preserves prior behavior for every textual type).
+ */
+export const DC_TYPE = Object.freeze({ software: 'Software', dataset: 'Dataset' });
+export function dublinCoreType(type) {
+  return DC_TYPE[type] ?? 'Text';
 }
 
 /** Schema.org @type expected from the canonical Work type (ASV-WEB-020). */

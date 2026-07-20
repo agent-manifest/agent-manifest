@@ -34,15 +34,37 @@ is not a separate pillar. Scoring is explicitly **non-normative**
 | Signposting typed `<link>` (cite-as/describedby/author/license/type/item/alternate) | AI Readability · additional-machine-representations | `derive.js` `toSignposting` |
 | License metadata (visible + JSON-LD `license`) | Trust · reuse terms | `landing.js` + `toJSONLD` |
 
+## Applied on the second work landing (`/works/e-principle`)
+
+The layer is applied by the **same deterministic generators**, so ∈ Principle
+(Foundational Work amw-005) carries the same structural head + body signals as the
+table above — with the signals correctly adapted to its **software** resource type:
+
+| Signal | Value on this work | Where |
+|---|---|---|
+| schema.org `@type` | `SoftwareSourceCode` (canonical type is software; Zenodo is authoritative for the resource type — V-A closed as software) | `TYPE_TO_JSONLD['software']` |
+| `codeRepository` | the source repository `github.com/agent-manifest/e-principle`, also shown as a visible "Source repository" line | `toJSONLD` / `provenanceHtml` |
+| Google Scholar `citation_*` | **omitted** — a non-textual Work is not a Highwire+PDF article; no `citation_pdf_url` is fabricated | `toHighwire` (gated by `isTextual`) |
+| Served artifact | the **real release source archive** `e-principle-v1.0.zip` (kind=code), fixity-verified (sha-256; Zenodo MD5 `2f6242…b24c` cross-check). The two book editions are **related Works, never the artifact** | `artifact-manifest.json` |
+| DataCite relations | `isBasedOn` the two book editions (18945860 EN, 18945953 ES), carried verbatim into JSON-LD + Dublin Core + the visible "Related work" block | `toJSONLD`/`toDublinCore`/`relationsHtml` |
+| Dublin Core / Open Graph | `DC.type` = `Software`; `og:type` = `website` (no `article:*`) | `toDublinCore`/`toOpenGraph` |
+| Preferred citation | ∈ Principle **version DOI** 18965669 (per the work's CITATION.cff); concept DOI 18965668 | `facts` / exports |
+| Intellectual function | visible **"Role in the ecosystem"** section — factual, non-promotional, states independence (no layer/component framing). "Foundational work" is an editorial role, independent of the resource type | `ecosystemRoleHtml` |
+| Type observation | codemeta/ORCID may classify the content differently; recorded observationally under `provenance.type_discrepancies`, never as a second canonical type | SSOT provenance |
+
+Deliberately **not** invented: no PDF (the software deposit has none, so this Work
+is not a Scholar candidate), no ISBN, no publisher, no affiliation, no preview image
+(`summary` Twitter card only).
+
 ## Applied on the site (once)
 
 | Signal | DEL/EC basis | Where |
 |---|---|---|
 | `/works/` index with `CollectionPage` + `ItemList` + `BreadcrumbList` JSON-LD | GEO · generative_ui_transformability (structured, transformable listing) | `works-index.js` |
-| `sitemap.xml` entries for `/works/` and the work, with `<lastmod>` | Technical Presence · xml-sitemap (`SPEC.md:79`); freshness (`agentic-discovery.ts:168`) | repo `sitemap.xml` |
+| `sitemap.xml` entries for `/works/` and each work (declaration-layers, e-principle), with `<lastmod>` | Technical Presence · xml-sitemap (`SPEC.md:79`); freshness (`agentic-discovery.ts:168`) | repo `sitemap.xml` |
 | `robots.txt` `Allow: /` + `Sitemap:` (already present) | Technical Presence · robots-txt-valid | repo `robots.txt` (unchanged) |
-| `llms.txt` link to the Academic Surface | AI Readability · llms-txt (`existence-compiler/public/llms.txt`) | repo `llms.txt` (one line) |
-| Discoverable link from the home page | Technical Presence · crawlability / internal linking | repo `index.html` (Research section) |
+| `llms.txt` links to the Academic Surface and to each canonical work | AI Readability · llms-txt (`existence-compiler/public/llms.txt`) | repo `llms.txt` |
+| Discoverable links from the home page (Research: Academic Surface + each work) | Technical Presence · crawlability / internal linking | repo `index.html` (Research section) |
 
 ## Deliberately deferred / NOT applied (with reason)
 

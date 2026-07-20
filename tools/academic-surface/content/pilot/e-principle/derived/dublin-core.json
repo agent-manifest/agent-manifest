@@ -1,0 +1,20 @@
+{
+  "creator": [
+    "Capucci, Hernán Alfredo"
+  ],
+  "date": "2026-03-11",
+  "description": "The ∈ Principle introduces a philosophical and institutional proposal for public authorship in the age of artificial intelligence. The symbol ∈ marks the moment when a work enters the public sphere with an explicitly assumed author behind it. The principle extends from historical acts of authorship to the emerging challenge of autonomous AI agents.",
+  "identifier": [
+    "https://doi.org/10.5281/zenodo.18965669",
+    "https://doi.org/10.5281/zenodo.18965668"
+  ],
+  "language": "en",
+  "relation": [
+    "https://doi.org/10.5281/zenodo.18945860",
+    "https://doi.org/10.5281/zenodo.18945953"
+  ],
+  "rights": "Creative Commons Attribution 4.0 International (CC-BY-4.0)",
+  "source": "https://zenodo.org/records/18965669",
+  "title": "∈ Principle",
+  "type": "Software"
+}

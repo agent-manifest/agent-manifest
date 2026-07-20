@@ -1,85 +1,25 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Works — Agent Manifest Academic Surface</title>
-  <meta name="description" content="Scholarly works published on the Agent Manifest Academic Surface, each with a citable DOI and machine-readable metadata.">
-  <link rel="canonical" href="https://agent-manifest-spec.org/works/">
-  <meta property="og:title" content="Works — Agent Manifest Academic Surface">
-  <meta property="og:description" content="Scholarly works published on the Agent Manifest Academic Surface.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://agent-manifest-spec.org/works/">
-  <meta property="og:site_name" content="Agent Manifest">
-  <meta name="twitter:card" content="summary">
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@id": "https://agent-manifest-spec.org/works/#collection",
-      "@type": "CollectionPage",
-      "breadcrumb": {
-        "@id": "https://agent-manifest-spec.org/works/#breadcrumb"
-      },
-      "description": "Scholarly works published on the Agent Manifest Academic Surface, each with a citable DOI and machine-readable metadata.",
-      "inLanguage": "en",
-      "isPartOf": {
-        "@id": "https://agent-manifest-spec.org/#website",
-        "@type": "WebSite",
-        "name": "Agent Manifest",
-        "url": "https://agent-manifest-spec.org/"
-      },
-      "mainEntity": {
-        "@id": "https://agent-manifest-spec.org/works/#list"
-      },
-      "name": "Works — Agent Manifest Academic Surface",
-      "url": "https://agent-manifest-spec.org/works/"
-    },
-    {
-      "@id": "https://agent-manifest-spec.org/works/#list",
-      "@type": "ItemList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "name": "Declaration Layers and the Evaluation of Agent Boundaries",
-          "position": 1,
-          "url": "https://agent-manifest-spec.org/works/declaration-layers"
-        },
-        {
-          "@type": "ListItem",
-          "name": "∈ Principle",
-          "position": 2,
-          "url": "https://agent-manifest-spec.org/works/e-principle"
-        }
-      ],
-      "itemListOrder": "https://schema.org/ItemListUnordered",
-      "numberOfItems": 2
-    },
-    {
-      "@id": "https://agent-manifest-spec.org/works/#breadcrumb",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "item": "https://agent-manifest-spec.org/",
-          "name": "Agent Manifest",
-          "position": 1
-        },
-        {
-          "@type": "ListItem",
-          "name": "Works",
-          "position": 2
-        }
-      ]
-    }
-  ]
-}
-  </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-  <style>
+// Academic Editorial System v1.0 — the single shared editorial layer for the
+// generated Academic Surface pages (Work landing + /works index). See
+// tools/academic-surface/docs/EDITORIAL-SYSTEM.md for the governing spec.
+//
+// This module owns ONLY the editorial layer: design tokens, one stylesheet, and
+// the brand font links. It never touches SSOT, metadata (citation_*, JSON-LD,
+// Highwire, DC, OG, signposting, exports), canonical, validators, or determinism.
+// It is a pure string module: no clock, no network. Same import -> same bytes.
+
+// Brand fonts (DM Sans + DM Mono), matching the ecosystem Home. A robust system
+// fallback stack (in the tokens below) keeps the page fully legible if the fonts
+// fail to load. Emitting a static <link> is deterministic — no fetch at build.
+export const FONT_LINKS = [
+  '  <link rel="preconnect" href="https://fonts.googleapis.com">',
+  '  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>',
+  '  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">'
+].join('\n');
+
+// The canonical stylesheet. Tokens (Appendix A of the governing doc) + reset +
+// shared chrome + component rules for both generated surfaces. No raw hex or
+// magic px outside the :root token block. Contains no "staging" vocabulary.
+export const EDITORIAL_STYLE = `
     :root{
       --sans:"DM Sans",ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
       --mono:"DM Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
@@ -188,7 +128,7 @@
       text-transform:uppercase; color:var(--ink-2); cursor:pointer; list-style:none; }
     details.cite-format summary::-webkit-details-marker{ display:none; }
     details.cite-format summary::before{ content:"+"; color:var(--ink-faint); padding-right:.55rem; font-family:var(--mono); }
-    details.cite-format[open] summary::before{ content:"\2212"; }
+    details.cite-format[open] summary::before{ content:"\\2212"; }
     details.cite-format pre{ margin:var(--s-3) 0 0; }
     details.cite-format .dl{ font-family:var(--mono); font-size:.75rem; color:var(--ink-2); margin:var(--s-2) 0 0; }
     .sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden;
@@ -232,58 +172,32 @@
       h2{ font-size:1.1875rem; }
       dl.facts{ grid-template-columns:1fr; gap:.1rem var(--s-2); }
       dl.facts dd{ margin-bottom:var(--s-3); }
-    }
-  </style>
-</head>
-<body>
-  <a class="skip" href="#main">Skip to content</a>
-  <header class="site">
-    <div class="wrap">
-      <span class="brand">Agent Manifest</span>
-      <span class="surface">Academic Surface</span>
-      <div class="boundary-rule" aria-hidden="true"></div>
-    </div>
-  </header>
-  <nav class="breadcrumb" aria-label="Breadcrumb">
-    <div class="wrap">
-      <ol>
-        <li><a href="/">Agent Manifest</a></li>
-        <li aria-current="page">Works</li>
-      </ol>
-    </div>
-  </nav>
-  <main id="main">
-    <div class="wrap">
-      <h1>Works</h1>
-      <p class="lead">Scholarly works on the Agent Manifest Academic Surface. Each work has a canonical landing page, a citable version DOI, and co-located machine-readable metadata.</p>
-            <div class="scope">
-        <p>The Academic Surface is the ecosystem’s place of record for its citable scholarly and technical works — working papers, specifications, datasets, and software that document Agent Manifest and its declaration layer.</p>
-        <p>A work appears here only once it is public, versioned, and preserved with a registered DOI; drafts and unregistered material never appear. The corpus grows only by governed incorporation, one record at a time, through the publication protocol — it makes no forward promises and advertises no roadmap.</p>
-      </div>
-      <p class="corpus-count">2 works are currently published.</p>
-      <ul class="works">
-        <li>
-          <h2><a href="/works/declaration-layers">Declaration Layers and the Evaluation of Agent Boundaries</a></h2>
-          <p class="by">Hernán Alfredo Capucci · Working paper · <time datetime="2026-03-05">2026-03-05</time></p>
-          <p class="desc">This paper examines the role of declaration layers in alignment evaluation for autonomous AI systems.</p>
-          <p class="afford">Canonical landing<span>·</span>Version DOI<span>·</span>Machine-readable metadata</p>
-          <p class="doi">DOI: <a href="https://doi.org/10.5281/zenodo.18880520">https://doi.org/10.5281/zenodo.18880520</a></p>
-        </li>
-        <li>
-          <p class="eyebrow">Foundational work</p>
-          <h2><a href="/works/e-principle">∈ Principle</a></h2>
-          <p class="by">Hernán Alfredo Capucci · Software · <time datetime="2026-03-11">2026-03-11</time></p>
-          <p class="desc">The ∈ Principle introduces a philosophical and institutional proposal for public authorship in the age of artificial intelligence.</p>
-          <p class="afford">Canonical landing<span>·</span>Version DOI<span>·</span>Machine-readable metadata</p>
-          <p class="doi">DOI: <a href="https://doi.org/10.5281/zenodo.18965669">https://doi.org/10.5281/zenodo.18965669</a></p>
-        </li>
-      </ul>
-    </div>
-  </main>
-  <footer class="site">
-    <div class="wrap">
-      <p>Agent Manifest — Academic Surface. Preservation of record via Zenodo; citation via DOI.</p>
-    </div>
-  </footer>
-</body>
-</html>
+    }`;
+
+// Shared chrome markup builders — identical structure across generated surfaces
+// so both pages emit the same header/footer/skip contract.
+export function skipLink() {
+  return '  <a class="skip" href="#main">Skip to content</a>';
+}
+
+export function siteHeader(surface = 'Academic Surface') {
+  return [
+    '  <header class="site">',
+    '    <div class="wrap">',
+    '      <span class="brand">Agent Manifest</span>',
+    `      <span class="surface">${surface}</span>`,
+    '      <div class="boundary-rule" aria-hidden="true"></div>',
+    '    </div>',
+    '  </header>'
+  ].join('\n');
+}
+
+export function siteFooter(innerHtml) {
+  return [
+    '  <footer class="site">',
+    '    <div class="wrap">',
+    `      <p>${innerHtml}</p>`,
+    '    </div>',
+    '  </footer>'
+  ].join('\n');
+}
