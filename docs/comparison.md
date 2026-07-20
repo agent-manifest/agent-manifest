@@ -1,3 +1,8 @@
+---
+title: How Agent Manifest relates to A2A, MCP, agents.json, OASF, and Agent Spec
+description: Where Agent Manifest sits beside adjacent agent protocols, declarative agent specifications, authorization, and provider-side policy.
+---
+
 # How Agent Manifest relates to A2A, MCP, agents.json, OASF, and Agent Spec
 
 Agent Manifest is not a communication protocol and does not compete with one.
@@ -6,13 +11,13 @@ Agent Manifest is not a communication protocol and does not compete with one.
 * MCP defines how agents access tools, resources, and context.
 * Agent Manifest defines under what identity, authority, boundaries, risk posture, auditability, and accountability an agent exists — before any interaction or execution begins.
 
-Agent Manifest is a pre-interaction governance declaration layer. It composes with A2A and MCP; it does not replace them.
+Agent Manifest is a declaration layer that applies before interaction. It composes with A2A and MCP; it does not replace them.
 
 The specification declares. It does not execute, validate, score, enforce, or decide.
 
 ## How the layers line up
 
-The table below places Agent Manifest v1.0 alongside the A2A Agent Card, agents.json, and MCP. The goal is to show where each one focuses, not to rank them. Where a row says "Not modeled," it simply means that concern lives in a different layer — often one of the other artifacts in this table. Agent Manifest field names are taken directly from `spec/v1.0/schema.json`.
+The table below places Agent Manifest v1.0 alongside the A2A Agent Card, agents.json, and MCP. The goal is to show where each one focuses, not to rank them. Where a row says "Not modeled," it means that concern lives in a different layer — often one of the other artifacts in this table. Agent Manifest field names are taken directly from `spec/v1.0/schema.json`.
 
 | Dimension | Agent Manifest v1.0 | A2A Agent Card | agents.json | MCP |
 | --- | --- | --- | --- | --- |
@@ -34,7 +39,7 @@ The table below places Agent Manifest v1.0 alongside the A2A Agent Card, agents.
 | **Discovery** | Published as a static document at `.well-known/agent-manifest.json` | Published at a well-known URI (e.g. `.well-known/agent-card.json`) | Hosted `agents.json` file referencing the API | Host-configured server connections; registries emerging |
 | **Governance / project maturity** | v1.0 specification; `spec/v1.0/` frozen | Open specification, actively maintained | Open specification | Open protocol specification |
 
-A2A answers “how do I talk to this agent?”. MCP answers “how does this agent reach its tools?”. agents.json answers “what can this API do for an agent?”. Agent Manifest answers a question none of them ask: “who is accountable for this agent, what must it never do, who can stop it, and how can its actions be reconstructed?” These are complementary layers, not competing ones.
+A2A answers “how do I talk to this agent?”. MCP answers “how does this agent reach its tools?”. agents.json answers “what can this API do for an agent?”. Agent Manifest addresses a different concern: “who is accountable for this agent, what must it never do, who can stop it, and how can its actions be reconstructed?” These are complementary layers, not competing ones.
 
 ## Composability
 
@@ -84,9 +89,9 @@ As before, "Not modeled" means the concern lives in a different layer, not that 
 | **Validation / enforcement** | None in-spec; enables external validators | Schema-conformance validation | Input/output and static validation plus a cross-runtime conformance test suite; no runtime guardrails |
 | **Maintainer / license** | Open specification, CC BY 4.0 | AGNTCY (a Linux Foundation project), Apache-2.0 | Oracle, Apache-2.0 / UPL 1.0 |
 
-Each answers a different question. OASF answers "what is this agent and what can it do — in a record a directory can index?". Agent Spec answers "how is this agent built, so that any runtime can execute it?". Agent Manifest answers "who is accountable for this agent, what must it never do, who can stop it, and how can its actions be reconstructed?".
+Each answers a different question. OASF answers "what is this agent and what can it do — in a record a directory can index?". Agent Spec answers "how is this agent built, so that any runtime can execute it?". Agent Manifest addresses a different concern: accountability, negative scope, stopping authority, and audit surface, as set out above.
 
-None replaces the others. An agent could plausibly carry all three: an OASF record for discovery, an Agent Spec definition for portable execution, and an Agent Manifest for public accountability. Composition among these artifacts is already the norm — OASF itself ships an `agentspec` integration module for embedding Agent Spec definitions in its records.
+None replaces the others. An agent could plausibly carry all three: an OASF record for discovery, an Agent Spec definition for portable execution, and an Agent Manifest for public accountability. OASF ships an `agentspec` integration module for embedding Agent Spec definitions in its records, so composition is already possible.
 
 **Sources** (primary, accessed July 2026): [github.com/agntcy/oasf](https://github.com/agntcy/oasf) and [docs.agntcy.org](https://docs.agntcy.org/oasf/open-agentic-schema-framework/) (OASF); [arXiv:2510.04173](https://arxiv.org/abs/2510.04173) (Amini et al., *Open Agent Specification (Agent Spec) Technical Report*), [github.com/oracle/agent-spec](https://github.com/oracle/agent-spec), and [oracle.github.io/agent-spec](https://oracle.github.io/agent-spec/) (Agent Spec).
 

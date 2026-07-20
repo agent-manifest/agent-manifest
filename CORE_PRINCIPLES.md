@@ -1,4 +1,10 @@
-# Agent Manifest — Core Principles (v1)
+---
+title: Core principles (v1.x)
+description: The constitutional constraints of the Agent Manifest specification, modifiable only under a major version change.
+section: Concept
+---
+
+# Core principles (v1.x)
 
 ## Status
 
@@ -34,7 +40,7 @@ Every agent must declare a distinct and persistent Identity sufficient for refer
 
 Every agent must declare a Responsible Party capable of answering for and stopping the agent.
 
-Orphaned agents are structurally non-compliant for production deployment.
+Orphaned agents are structurally incomplete for production deployment.
 
 ---
 
@@ -83,7 +89,7 @@ Opacity must be declared if present.
 
 ## 8. Denial by Default
 
-If an agent cannot truthfully declare the required structural elements defined above, the default structural position is non-authorization for autonomous operation.
+If an agent cannot truthfully declare the required structural elements defined above, the default structural position is structural invalidity for autonomous operation.
 
 ---
 

@@ -1,13 +1,19 @@
-# Agent Manifest — Roadmap
+---
+title: Roadmap
+description: The stated direction of the Agent Manifest specification, and what is explicitly not planned.
+section: Governance
+---
+
+# Roadmap
 
 ## Current Phase
 
-Agent Manifest is in its foundational stage.
+Agent Manifest is in its foundational stage. The v1.0 specification is published and frozen.
 
 The priority is conceptual clarity, structural minimalism, and architectural coherence.
 
 This project does not optimize for rapid feature expansion.
-It optimizes for long-term legitimacy and structural soundness.
+It prioritizes structural stability over feature velocity.
 
 ---
 
@@ -70,14 +76,12 @@ Structural integrity before ecosystem scale.
 ## Long-Term View
 
 If agent autonomy becomes structurally significant in digital infrastructure,
-declarative authority frameworks will be necessary.
+declarative authority frameworks may become necessary.
 
 Agent Manifest positions itself as a foundational layer —
 not a runtime, not a product, not a platform.
 
-Architecture first.
-Adoption second.
-Monetization last.
+
 
 ---
 
@@ -102,3 +106,6 @@ Evaluation precedes enforcement.
 
 ---
 
+Architecture first.
+Adoption second.
+Monetization last.

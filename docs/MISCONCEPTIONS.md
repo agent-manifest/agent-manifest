@@ -1,11 +1,11 @@
 ---
-title: Common Misconceptions
-description: Clarifications of recurring misunderstandings about Agent Manifest scope and intent.
+title: Common misconceptions
+description: Clarifications of recurring misunderstandings about the scope, positioning, and architectural intent of Agent Manifest v1.0.
 ---
 
-# Common Misconceptions
+# Common misconceptions
 
-Applies to Agent Manifest v1.x canonical specification.
+Applies to Agent Manifest v1.0.
 
 This document addresses recurring misunderstandings about Agent Manifest.
 
@@ -15,7 +15,7 @@ It clarifies scope, positioning, and architectural intent.
 
 ## 1. "Agents can lie"
 
-Yes.
+An agent can state commitments it does not honor in execution.
 
 Agent Manifest does not prevent deception.
 
@@ -30,13 +30,13 @@ If an agent violates its own manifest:
 Without declaration, contradiction cannot exist formally.
 
 Agent Manifest does not eliminate dishonesty.
-It makes dishonesty structurally visible.
+A declared commitment can be compared against observed behavior by an external validator. The commitment is structural; it is not a runtime control.
 
 ---
 
 ## 2. "It’s just documentation"
 
-No.
+A manifest and a document describing an agent serve different functions.
 
 Documentation describes behavior.
 
@@ -102,9 +102,6 @@ It enables enforcement systems to:
 - Verify declared boundaries
 - Audit behavioral commitments
 
-Power lies in structured commitment,
-not in runtime control.
-
 ---
 
 ## 6. "It only describes static structure"
@@ -117,13 +114,12 @@ It declares commitments, boundaries, identity, and accountability.
 
 It does not model behavior: reasoning patterns, orchestration flows, message exchange, or runtime dynamics.
 
-> Agent Manifest models commitments, not behavior.
-
 Behavior, enforcement, and observability belong to external layers.
 
-Specification-driven runtime and validation frameworks — such as MAS-Lab (arXiv:2606.30546) — operate at those layers.
+> Agent Manifest models commitments, not behavior.
 
-They are complementary, not competing.
+Specification-driven runtime and validation frameworks — such as MAS-Lab (arXiv:2606.30546) — operate at those layers.
+They are complementary, not competing. See [Agent Manifest and MAS-Lab](./comparison-mas-lab.md).
 
 A declaration must remain static to be readable, portable, and verifiable by third parties before any interaction begins.
 

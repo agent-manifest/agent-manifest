@@ -1,9 +1,9 @@
 ---
-title: Operational Architecture
-description: Operational infrastructure of the Agent Manifest ecosystem from generation to discovery.
+title: Operational architecture
+description: Operational infrastructure of the Agent Manifest ecosystem, from manifest generation through validation, storage, and public discovery.
 ---
 
-# Operational Architecture
+# Operational architecture
 
 This document describes the operational infrastructure of the Agent Manifest ecosystem.
 It complements the conceptual architecture described in the main README.
@@ -11,13 +11,13 @@ It complements the conceptual architecture described in the main README.
 -----
 
 **Agent Manifest — Operational Infrastructure**  
-Status: Operational · Version: 1.0 · Updated: March 2026
+Status: Operational · Version: 1.0 · Updated: July 2026
 
 -----
 
 ## Overview
 
-This document describes the operational pipeline of the Agent Manifest ecosystem — the real infrastructure flow from manifest generation to public discovery.
+This document describes the operational pipeline of the Agent Manifest ecosystem — the infrastructure flow from manifest generation to public discovery.
 
 The system is composed of five components that form a continuous, auditable public registration pipeline.
 
@@ -42,7 +42,7 @@ Public interface for creating Agent Manifest declarations.
 - URL: [agent-manifest.github.io/agent-manifest-ambassador](https://agent-manifest.github.io/agent-manifest-ambassador)
 - Input: six structured questions
 - Output: complete Agent Manifest v1.0 JSON
-Schema: [agent-manifest-spec.org/spec/v1.0/schema.json](https://agent-manifest-spec.org/spec/v1.0/schema.json)
+- Schema: [agent-manifest-spec.org/spec/v1.0/schema.json](https://agent-manifest-spec.org/spec/v1.0/schema.json)
 
 The Ambassador guides the user through composing the manifest. Conformance with the official specification is validated server-side: the Diplomat checks every submission against the canonical v1.0 JSON Schema before it is stored.
 
@@ -97,7 +97,7 @@ manifests/
       agent-id.json
 ```
 
-This structure provides transparency, version history, and public auditability for every registered agent.
+Manifests are stored by year and month and retain full Git history.
 
 -----
 
@@ -138,7 +138,7 @@ The registry is discoverable via a standard `.well-known` path.
 }
 ```
 
-Any system can locate the registry by reading this endpoint — no prior configuration required.
+The endpoint returns the registry location.
 
 -----
 
@@ -174,18 +174,22 @@ Discovery Endpoint (.well-known)
 
 ## Current Status
 
-|Component         |Status                                  |
-|------------------|----------------------------------------|
-|Spec v1.0         |Published — DOI: 10.5281/zenodo.18833956|
-|Ambassador        |Operational                             |
-|Diplomat API      |Operational                             |
-|Dataset           |Public                                  |
-|Registry generator|Automated via GitHub Actions            |
-|Discovery endpoint|Active                                  |
+|Component         |Status     |Note                        |
+|------------------|-----------|----------------------------|
+|Spec v1.0         |Published  |DOI: 10.5281/zenodo.18833956|
+|Ambassador        |Operational|                            |
+|Diplomat API      |Operational|                            |
+|Dataset           |Public     |                            |
+|Registry generator|Operational|Rebuilt by GitHub Actions   |
+|Discovery endpoint|Active     |                            |
 
 -----
 
-## Future Extensions
+## Possible extensions
+
+The following are directions under consideration. None is committed, dated, or
+promised; the governed direction of the project is recorded in
+[ROADMAP.md](../../ROADMAP.md).
 
 - `GET /agents/{agent_id}` — direct agent lookup by ID
 - `/.well-known/agent-manifest.json` — domain-level agent identity publication

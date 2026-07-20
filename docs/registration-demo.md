@@ -1,13 +1,13 @@
 ---
-title: Registration Demo
-description: End-to-end demonstration of the operational registration pipeline.
+title: Registration demo
+description: Illustrative end-to-end walkthrough of the Agent Manifest registration pipeline, from manifest generation to the discovery endpoint.
 ---
 
-# Registration Demo — Agent Manifest
+# Registration demo
 
 This document demonstrates the full operational registration pipeline using the Agent Manifest infrastructure.
 
-The example below follows a real registration flow.
+The example below is an illustrative registration flow.
 
 -----
 
@@ -15,7 +15,7 @@ The example below follows a real registration flow.
 
 The process begins using the Agent Manifest Ambassador.
 
-👉 <https://agent-manifest.github.io/agent-manifest-ambassador/>
+<https://agent-manifest.github.io/agent-manifest-ambassador/>
 
 The user provides the required declaration fields and the Ambassador produces a manifest JSON.
 
@@ -88,7 +88,7 @@ The Diplomat validates the manifest against the canonical v1.0 JSON Schema and, 
 
 A manifest can also be submitted manually, by opening an issue with the manifest JSON in the dataset repository:
 
-👉 <https://github.com/agent-manifest/agent-manifest-dataset>
+<https://github.com/agent-manifest/agent-manifest-dataset>
 
 -----
 
@@ -125,7 +125,7 @@ Example:
 manifests/2026/03/agent-manifest-ambassador.json
 ```
 
-This creates a permanent public declaration record.
+This creates a public, version-controlled record.
 
 -----
 
@@ -179,5 +179,3 @@ Registry index updated
 ↓
 Discovery endpoint available
 ```
-
-This demonstrates the operational infrastructure of the Agent Manifest system.

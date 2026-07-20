@@ -1,4 +1,10 @@
-# What This Is
+---
+title: What this is
+description: The scope of the Agent Manifest specification, stated together with what falls outside it.
+section: Concept
+---
+
+# What this is
 
 This repository contains the Agent Manifest.
 
@@ -13,7 +19,7 @@ It defines a minimal declarative boundary for what an agent must state before op
 
 ## What This Is
 
-Agent Manifest is a shared reference.
+Agent Manifest is a public reference document.
 
 It exists to articulate:
 
@@ -24,7 +30,7 @@ It exists to articulate:
 - autonomy  
 - accountability  
 
-It provides a stable point of orientation for anyone designing, reasoning about, or governing autonomous or semi-autonomous agents.
+It states what an agent declares before operating.
 
 The core specification is defined in the versioned `spec/` directory.
 

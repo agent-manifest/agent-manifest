@@ -1,13 +1,13 @@
 ---
-title: How to Register an Agent
-description: Step-by-step guide for registering an agent using the Agent Manifest infrastructure.
+title: How to register an agent
+description: Step-by-step guide for registering an agent with the Agent Manifest infrastructure, from manifest preparation to public discovery.
 ---
 
-# How to Register an Agent
+# How to register an agent
 
 This guide explains how to register an agent using the Agent Manifest infrastructure.
 
-The registration process follows a simple pipeline:
+The registration process follows this pipeline:
 
 ```
 Manifest → Submission → Validation → Dataset → Registry → Discovery
@@ -17,7 +17,7 @@ Manifest → Submission → Validation → Dataset → Registry → Discovery
 
 ## 1. Prepare the Agent Manifest
 
-Before registering an agent, you must prepare a valid Agent Manifest declaration.
+A valid manifest is required before registration.
 
 A manifest declares:
 
@@ -96,7 +96,7 @@ Full structural reference: [`spec/v1.0/spec.md`](../spec/v1.0/spec.md)
 
 Use the Agent Manifest Ambassador:
 
-👉 <https://agent-manifest.github.io/agent-manifest-ambassador/>
+<https://agent-manifest.github.io/agent-manifest-ambassador/>
 
 Steps:
 
@@ -123,7 +123,7 @@ The Diplomat validates the manifest against the canonical v1.0 JSON Schema and, 
 
 **B. Manual submission (GitHub Issue).** Alternatively, open an issue containing the manifest JSON in the dataset repository:
 
-👉 <https://github.com/agent-manifest/agent-manifest-dataset>
+<https://github.com/agent-manifest/agent-manifest-dataset>
 
 The issue should contain:
 
@@ -168,7 +168,7 @@ Example:
 manifests/2026/03/example-agent.json
 ```
 
-This creates a permanent public record of the declaration.
+This creates a public, version-controlled record of the declaration.
 
 -----
 
@@ -200,20 +200,36 @@ A successful registration produces:
 - a registry entry
 - a closed GitHub issue documenting the event
 
-This creates a transparent and auditable registration record.
+The stored manifest, the registry entry, and the issue thread are all public.
 
 -----
 
 ## Summary
 
-The complete registration pipeline:
+The registration pipeline has two submission paths.
+
+Path A — direct submission (Ambassador):
+
+```
+Manifest generation
+↓
+Diplomat API (schema validation)
+↓
+Dataset storage
+↓
+Registry update
+↓
+Public discovery
+```
+
+Path B — manual submission (GitHub Issue):
 
 ```
 Manifest generation
 ↓
 GitHub Issue submission
 ↓
-Automated validation
+Automated workflow validation
 ↓
 Dataset storage
 ↓

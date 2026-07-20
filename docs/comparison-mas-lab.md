@@ -1,6 +1,11 @@
+---
+title: Agent Manifest and MAS-Lab
+description: Non-normative comparison relating the Agent Manifest declaration layer to the MAS-Lab specification-driven runtime and validation framework.
+---
+
 # Agent Manifest and MAS-Lab
 
-## Declaration Layer vs. Specification-Driven Runtime
+This page relates the Agent Manifest declaration layer to the MAS-Lab specification-driven runtime.
 
 Agent Manifest and MAS-Lab are complementary, not equivalent.
 
@@ -104,18 +109,18 @@ These are not gaps. They are the boundary of the Declaration Layer. Frameworks l
 
 ---
 
-## What MAS-Lab does not replace
+## Concerns Agent Manifest declares
 
-MAS-Lab validates systems from the inside. It does not provide:
+At the public boundary, a manifest declares:
 
-* Public accountability: a declared, required owner.
+* Public accountability: a required `owner`.
 * A human contact for escalation (`contact.email`).
-* Third-party discoverability of commitments before interaction.
-* A published manifest any counterparty can read.
-* Negative scope declaration (`forbidden_actions`) as a required, portable commitment.
+* Commitments a third party can read before interaction.
+* A published document any counterparty can retrieve.
+* Negative scope (`forbidden_actions`) as a required, portable commitment.
 * Human stopping authority: a declared *who* with the right to stop the agent.
 
-Those concerns are what Agent Manifest declares — and they remain necessary regardless of how well-specified the system's internals are.
+MAS-Lab validates systems from the inside; these declarations are made at a different boundary, and remain necessary regardless of how well-specified the system's internals are.
 
 ---
 
@@ -126,7 +131,7 @@ Those concerns are what Agent Manifest declares — and they remain necessary re
 One is a promise made outward, before execution.
 The other is machinery that checks a system against its own specification.
 
-A trustworthy agent ecosystem needs both layers — declared commitments that anyone can read, and validated implementations that operators can trust.
+The two operate at different boundaries.
 
 ---
 

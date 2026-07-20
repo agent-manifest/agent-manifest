@@ -1,13 +1,13 @@
 ---
-title: Ecosystem Map
-description: Structure of the Agent Manifest ecosystem and the role of each repository.
+title: Ecosystem map
+description: Structure of the Agent Manifest ecosystem, the role of each repository, and the two submission paths of the operational pipeline.
 ---
 
-# Agent Manifest Ecosystem Map
+# Ecosystem map
 
 This document describes the structure of the Agent Manifest ecosystem and the role of each repository.
 
-The system is organized as a minimal infrastructure for declarative AI agent identity.
+The system is organized as a declaration layer for AI agent identity.
 
 -----
 
@@ -38,9 +38,9 @@ Discovery Endpoint
 
 -----
 
-## Ecosystem Architecture
+## Repositories
 
-The Agent Manifest ecosystem consists of seven repositories.
+The ecosystem is organized as the repositories listed below.
 
 -----
 
@@ -208,6 +208,4 @@ The ecosystem provides minimal infrastructure for:
 - auditable registration
 - discoverable agent manifests
 
-The system follows the principle:
-
-**Declare before interacting.**
+The system follows the principle: declare before interacting.

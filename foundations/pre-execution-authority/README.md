@@ -1,4 +1,9 @@
-# Pre-Execution Authority  
+---
+title: Pre-execution authority
+description: The doctrine that an autonomous system declares its authority, scope, and limits before execution rather than after it.
+---
+
+# Pre-execution authority  
 ## Foundational Doctrine for Autonomous Systems  
 Version 1.0  
 February 2026  
@@ -188,4 +193,5 @@ It is a condition for sustainable autonomy.
 
 Author  
 Hernán Alfredo Capucci  
-Independent Researcher
+Independent Researcher  
+ORCID: [0009-0008-7216-3032](https://orcid.org/0009-0008-7216-3032)

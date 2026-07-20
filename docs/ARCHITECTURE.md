@@ -1,9 +1,9 @@
 ---
 title: Architecture
-description: Internal architectural constraints of the Agent Manifest specification.
+description: Internal architectural constraints of the Agent Manifest specification — layered separation, design constraints, and non-goals.
 ---
 
-# ARCHITECTURE
+# Architecture
 
 ## Conceptual Ecosystem Architecture
 
@@ -84,8 +84,7 @@ Agent Manifest must remain:
 - Policy-agnostic (no embedded governance engine)
 - Forward-compatible (refinement over accumulation)
 
-This project does not grow by adding features.  
-It grows by improving clarity.
+Scope is fixed at v1.0; subsequent changes refine clarity rather than add features.
 
 ---
 
@@ -113,7 +112,7 @@ Agent Manifest does not aim to:
 - Certify or score agents as “safe”
 - Replace governance frameworks
 - Define runtime architectures
-- Compete with agent frameworks
+- Define or replace agent frameworks
 
 It defines declarations.  
 Everything else is external.
@@ -122,14 +121,13 @@ Everything else is external.
 
 ## Architectural Integrity
 
-The long-term value of Agent Manifest depends on preserving separation:
+The separation between the three layers is normative.
 
 - Declaration (Manifest)
 - Enforcement (validators / policy / audit)
 - Execution (agents)
 
-Without structured declaration, verification is fragile.  
-Without verification, accountability erodes.
+A declaration is a precondition for third-party verification.
 
 ---
 

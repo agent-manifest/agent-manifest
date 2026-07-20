@@ -1,6 +1,12 @@
-# Agent Manifest Well-Known Endpoint
+---
+title: Well-known endpoint
+description: The discovery location at which an agent publishes its manifest, and what a consumer can expect to find there.
+section: Discovery
+---
 
-This document defines the standard discovery location for an Agent Manifest.
+# Well-known endpoint
+
+This document defines the discovery location used by Agent Manifest.
 
 The goal is to allow machines to discover the identity and declared boundaries of an AI agent through a predictable endpoint.
 
@@ -94,7 +100,7 @@ Publishing a manifest at the well-known endpoint enables:
 - registry indexing
 - validation tooling — [agent-manifest-cli](https://github.com/agent-manifest/agent-manifest-cli) (offline validation against the canonical v1.0 schema)
 
-This makes the Agent Manifest ecosystem machine-discoverable.
+This is intended to make manifests machine-retrievable; automatic discovery is not yet implemented (see the discovery section below).
 
 ---
 
@@ -139,7 +145,7 @@ The well-known manifest endpoint follows several design principles:
 - minimal structure
 - compatibility with existing web infrastructure
 
-This approach allows Agent Manifest to function as an internet-native discovery layer for AI agents.
+Manifests published at this location can be retrieved by other agents and tooling.
 
 ---
 
@@ -147,4 +153,4 @@ This approach allows Agent Manifest to function as an internet-native discovery 
 
 This document defines the canonical discovery endpoint for Agent Manifest declarations.
 
-Agents that publish a manifest at this location are considered discoverable within the Agent Manifest ecosystem.
+Agents that publish a manifest at this location can be retrieved by tooling that expects this path.

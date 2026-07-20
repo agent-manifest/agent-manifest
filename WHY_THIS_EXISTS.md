@@ -1,6 +1,12 @@
-# Why This Exists
+---
+title: Why this exists
+description: "The problem the Agent Manifest declaration layer addresses: declared authority before execution."
+section: Concept
+---
 
-Agent Manifest exists to solve a simple but increasingly critical problem:
+# Why this exists
+
+Agent Manifest addresses a specific problem:
 
 As AI agents become more autonomous, composable, and networked, much of the surrounding tooling describes how they communicate, what they can do, or how the services they call constrain access. Comparatively little lets an agent's deployer declare, before interaction and in a neutral, portable form, **who it is**, **what it intends**, **what it will not do**, and **who is accountable for it**.
 
@@ -26,7 +32,7 @@ Today, agents can act before any clear declaration of:
 
 This creates opacity by default.
 
-Agent Manifest introduces a **declarative layer before interaction**, not after execution.
+Agent Manifest defines a declarative layer that precedes interaction, rather than following execution.
 
 ## What This Is
 

@@ -1,4 +1,10 @@
-# Security Policy
+---
+title: Security policy
+description: How to report a vulnerability in the Agent Manifest specification or tooling, and what the project does not certify.
+section: Governance
+---
+
+# Security policy
 
 ## Scope
 

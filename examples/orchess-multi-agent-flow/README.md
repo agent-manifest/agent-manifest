@@ -1,16 +1,20 @@
-# ORCHESS — Multi-Agent Development Flow with Declared Roles
+---
+title: ORCHESS — multi-agent development flow with declared roles
+description: A record of the two agent manifests used in the author's own ORCHESS development workflow, one declared as builder and one as evaluator.
+---
+
+# ORCHESS — multi-agent development flow with declared roles
 
 ## Context
 
 ORCHESS is a multi-agent orchestration system under active development.
 
-During its construction, the operator (Hernán Capucci) works daily with
+During its construction, the operator (Hernán Alfredo Capucci) works daily with
 multiple AI agents in a structured workflow: one agent builds, another evaluates.
 
-This document captures that workflow as the first documented real-world
-adoption case of Agent Manifest v1.0.
+This document records the manifests used in the author's own workflow.
 
-## Agent 1: Claude Code — ORCHESS Builder
+## Agent 1 — ORCHESS Builder (Claude Code)
 
 Role: construction and implementation under operator direction.
 
@@ -20,7 +24,7 @@ Risk posture: moderate.
 
 Full manifest: [claude-orchess-builder.json](claude-orchess-builder.json)
 
-## Agent 2: ChatGPT — ORCHESS Evaluator
+## Agent 2 — ORCHESS Evaluator (ChatGPT)
 
 Role: architectural review and critical analysis of outputs produced by
 other agents.
@@ -31,7 +35,7 @@ Risk posture: low.
 
 Full manifest: [gpt-orchess-evaluator.json](gpt-orchess-evaluator.json)
 
-## Why This Matters
+## Declared differences between the two agents
 
 These agents operate with different autonomy levels, risk profiles, and
 explicitly distinct roles.
@@ -53,4 +57,4 @@ scope, and responsibility.
 ---
 
 *Case documented: March 2026*  
-*Agent Manifest v1.0 — DOI: https://doi.org/10.5281/zenodo.18833956*
+*Specification DOI: https://doi.org/10.5281/zenodo.18833956 (Agent Manifest v1.0). This page has no DOI of its own.*

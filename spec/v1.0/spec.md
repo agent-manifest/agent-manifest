@@ -1,3 +1,9 @@
+---
+title: Agent Manifest v1.0 — Markdown rendering
+description: Markdown rendering of the Agent Manifest v1.0 specification. The canonical edition is the HTML specification; normative requirements are identical.
+canonical_url: /spec/v1.0/agent_manifest_v1.0.html
+---
+
 # Agent Manifest — Specification (v1.0)
 
 > This Markdown document is a rendering of the canonical normative specification.

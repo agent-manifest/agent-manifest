@@ -1,3 +1,8 @@
+---
+title: Examples (non-normative)
+description: Non-normative Agent Manifest example files covering a range of domains, autonomy levels, and risk postures, validated against the v1.0 schema.
+---
+
 # Examples (non-normative)
 
 This directory contains illustrative Agent Manifest examples.
@@ -31,35 +36,41 @@ Validation rules are defined by the schema:
 
 ## Examples
 
-### If you are building...
+### Starting points by domain
 
-- A support chatbot → start with [customer-support-tier1.json](./customer-support-tier1.json)
-- A financial execution system → see [payment-execution-agent.json](./payment-execution-agent.json)
-- A healthcare assistant → review [healthcare-triage-assistant-agent.json](./healthcare-triage-assistant-agent.json)
-- A human-in-the-loop workflow → examine [human-approval-gateway-agent.json](./human-approval-gateway-agent.json)
-- A monitoring agent → use [monitoring-observer-agent.json](./monitoring-observer-agent.json)
-- A social media plugin -> review [hermes-tweet-social-plugin.json](./hermes-tweet-social-plugin.json)
-- A data pipeline agent → see [data-processing-agent.json](./data-processing-agent.json)
-- A research assistant → review [research-assistant.json](./research-assistant.json)
-- A policy advisory system → examine [policy-advisory-agent.json](./policy-advisory-agent.json)
-- A minimal structurally complete agent → start with [basic-agent.json](./basic-agent.json)
+- A support chatbot → [customer-support-tier1.json](./customer-support-tier1.json)
+- A financial execution system → [payment-execution-agent.json](./payment-execution-agent.json)
+- A healthcare assistant → [healthcare-triage-assistant-agent.json](./healthcare-triage-assistant-agent.json)
+- A human-in-the-loop workflow → [human-approval-gateway-agent.json](./human-approval-gateway-agent.json)
+- A monitoring agent → [monitoring-observer-agent.json](./monitoring-observer-agent.json)
+- A social media plugin → [hermes-tweet-social-plugin.json](./hermes-tweet-social-plugin.json)
+- A data pipeline agent → [data-processing-agent.json](./data-processing-agent.json)
+- A research assistant → [research-assistant.json](./research-assistant.json)
+- A policy advisory system → [policy-advisory-agent.json](./policy-advisory-agent.json)
 
-These examples illustrate how different domains declare authority, autonomy, and risk posture before execution.
+These examples illustrate how different domains declare authority, autonomy, and risk posture before execution. Values in the table below are read from the manifest files themselves.
+
+Note on `basic-agent.json`: despite its filename it is not a minimal, low-risk
+example. It declares autonomy level 2, medium risk, and personal-data storage, and
+is close to a duplicate of `customer-support-tier1.json`. The filename is recorded
+here as a known discrepancy rather than corrected, because the file is a published
+example and renaming it would break existing references.
 
 ---
 
-| File | Autonomy | Risk | Domain |
-|------|----------|------|--------|
-| `basic-agent.json` | 1 | low | general |
-| `research-assistant.json` | 1 | low | research |
-| `human-approval-gateway-agent.json` | 1 | low | governance |
-| `customer-support-tier1.json` | 2 | medium | support |
-| `data-processing-agent.json` | 2 | medium | data |
-| `monitoring-observer-agent.json` | 2 | medium | observability |
-| `hermes-tweet-social-plugin.json` | 1 | medium | social media |
-| `policy-advisory-agent.json` | 1 | medium | policy |
-| `healthcare-triage-assistant-agent.json` | 1 | high | healthcare |
-| `payment-execution-agent.json` | 3 | high | finance |
+
+| Domain | File | Autonomy | Risk |
+|--------|------|----------|------|
+| research | [`research-assistant.json`](./research-assistant.json) | 1 | low |
+| governance | [`human-approval-gateway-agent.json`](./human-approval-gateway-agent.json) | 1 | low |
+| support | [`customer-support-tier1.json`](./customer-support-tier1.json) | 2 | medium |
+| support | [`basic-agent.json`](./basic-agent.json) | 2 | medium |
+| data | [`data-processing-agent.json`](./data-processing-agent.json) | 1 | medium |
+| observability | [`monitoring-observer-agent.json`](./monitoring-observer-agent.json) | 2 | medium |
+| social media | [`hermes-tweet-social-plugin.json`](./hermes-tweet-social-plugin.json) | 1 | medium |
+| policy | [`policy-advisory-agent.json`](./policy-advisory-agent.json) | 1 | medium |
+| healthcare | [`healthcare-triage-assistant-agent.json`](./healthcare-triage-assistant-agent.json) | 1 | high |
+| finance | [`payment-execution-agent.json`](./payment-execution-agent.json) | 3 | high |
 
 ---
 
@@ -67,19 +78,19 @@ These examples illustrate how different domains declare authority, autonomy, and
 
 **Autonomy spectrum:** levels 1, 2, and 3  
 **Risk spectrum:** low, medium, and high  
-**Domains:** general, research, governance, support, data, observability, social media, policy, healthcare, finance
+**Domains:** research, governance, support, data, observability, social media, policy, healthcare, finance
 
 ---
 
 ## Files
 
-- `basic-agent.json` — minimal structurally complete example (low-risk, low autonomy)
+- `basic-agent.json` — Tier 1 support declaration, session-scoped retention, autonomy level 2
 - `research-assistant.json` — read-only posture, opacity declared
 - `human-approval-gateway-agent.json` — human-in-the-loop orchestration
 - `customer-support-tier1.json` — session-scoped support agent
-- `data-processing-agent.json` — transformation pipeline, bounded retention
+- `data-processing-agent.json` — transformation pipeline, bounded retention, autonomy level 1
 - `monitoring-observer-agent.json` — observation-only, no remediation
-- `hermes-tweet-social-plugin.json` - social research with human-approved publishing boundaries
+- `hermes-tweet-social-plugin.json` — social research with human-approved publishing boundaries
 - `policy-advisory-agent.json` — advisory posture, epistemic humility
 - `healthcare-triage-assistant-agent.json` — high-sensitivity domain, life-safety
 - `payment-execution-agent.json` — high-risk financial execution, level 3

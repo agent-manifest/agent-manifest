@@ -35,9 +35,9 @@ The Agent Manifest ecosystem forms a layered declarative infrastructure for auto
 
 ![Agent Manifest Ecosystem Architecture](docs/architecture/agent-manifest-ecosystem.svg)
 
-A minimal specification that requires autonomous systems to declare operational boundaries before execution.
+A minimal specification in which autonomous systems declare operational boundaries before execution.
 
-It standardizes how AI agents declare identity, constraints, autonomy level, risk profile, and data handling prior to interacting with external systems.
+It defines a common form in which AI agents declare identity, constraints, autonomy level, risk profile, and data handling prior to interacting with external systems.
 
 This repository defines a Declaration Layer only.
 
@@ -47,7 +47,7 @@ Agent Manifest does not execute, validate, score, enforce, or decide.
 
 It is static by design: Agent Manifest models commitments, not behavior.  
 Runtime behavior, enforcement, and observability belong to external layers.  
-See [Common Misconceptions](./docs/MISCONCEPTIONS.md).
+See [Common misconceptions](./docs/MISCONCEPTIONS.md).
 
 -----
 
@@ -93,7 +93,7 @@ As AI systems become increasingly autonomous, interactions between agents, human
 Most systems describe capabilities.  
 Few describe constraints.
 
-Agent Manifest introduces a structural principle:
+Agent Manifest states a structural principle:
 
 > Autonomous systems should declare boundaries before action.
 
@@ -108,9 +108,9 @@ It is designed to be:
 
 -----
 
-## 5-Minute Integration
+## Integration
 
-You can integrate Agent Manifest in under five minutes.
+The following procedure produces a minimal valid manifest.
 
 ### 1. Create `manifest.json`
 
@@ -173,7 +173,6 @@ ajv validate -s spec/v1.0/schema.json -d manifest.json
 
 ### 3. Commit it to your repository
 
-Done.
 
 Your agent now declares its boundary surface before execution.
 
@@ -254,7 +253,7 @@ It does not execute agents.
 It does not enforce policy.  
 It does not perform runtime validation.
 
-Instead, it standardizes how agents declare:
+Instead, it defines a common form in which agents declare:
 
 - Identity  
 - Purpose  
@@ -383,7 +382,7 @@ Agents should be able to declare who they are, what they can do, and where their
 
 This specification remains neutral, minimal, and open.
 
-Its value emerges through adoption.
+
 
 -----
 
@@ -414,7 +413,9 @@ Empirical evidence related to boundary declaration behavior in AI systems:
 
 The citable archived version of Agent Manifest v1.0 is available on Zenodo:
 
-Core Declarative Specification (Standard):  
+Its value emerges through adoption.
+
+Core Declarative Specification (v1.0):  
 https://doi.org/10.5281/zenodo.18833956  
 
 Companion analysis:  
@@ -429,7 +430,7 @@ External works citing Agent Manifest are tracked in [CITATIONS.md](./CITATIONS.m
 Agent Manifest was conceived and authored by  
 **Hernán Alfredo Capucci** (2026)
 
-The specification is maintained in the open — open license, public versioning, and a transparent process.
+The specification is maintained under an open license with public versioning; the process is described in GOVERNANCE.md.
 
 ---
 

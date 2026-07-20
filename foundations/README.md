@@ -1,3 +1,8 @@
+---
+title: Foundations
+description: Conceptual and architectural documents supporting the Agent Manifest specification, covering pre-execution authority, gap patterns, and declarative integrity.
+---
+
 # Foundations
 
 This directory contains foundational doctrine and structural analysis that support the Agent Manifest specification.
@@ -29,4 +34,3 @@ They do not alter `manifest_version` or schema contracts.
 - This directory supports the conceptual foundations of the **Declaration Layer**.
 - Nothing here adds runtime enforcement.
 - Validators, scoring systems, and policy engines operate outside the core specification.
-```

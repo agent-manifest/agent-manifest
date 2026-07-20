@@ -1,6 +1,6 @@
 ---
 title: Documentation
-description: Operational and architectural documentation for the Agent Manifest specification.
+description: Operational and architectural documentation for the Agent Manifest specification, covering registration, the ecosystem, and positioning.
 permalink: /docs/
 ---
 
@@ -8,31 +8,33 @@ permalink: /docs/
 
 Operational and architectural documentation for the Agent Manifest specification.
 
-The normative specification lives in
-[`spec/v1.0/spec.md`](../spec/v1.0/spec.md) and
-[`spec/v1.0/schema.json`](../spec/v1.0/schema.json).
+The normative specification is the
+[HTML edition](../spec/v1.0/agent_manifest_v1.0.html), accompanied by
+[`spec/v1.0/schema.json`](../spec/v1.0/schema.json). A
+[Markdown rendering](../spec/v1.0/spec.md) carries identical normative
+requirements.
 
 ## Architecture
 - [Architecture](./ARCHITECTURE.md) — internal architectural constraints of the specification.
 
 ## Operational flow
-- [Operational Architecture](./architecture/system-flow.md) — pipeline from manifest generation to discovery.
+- [Operational architecture](./architecture/system-flow.md) — pipeline from manifest generation to discovery.
 
 ## Registration
-- [How to Register an Agent](./how-to-register.md) — step-by-step registration guide.
-- [Registration Demo](./registration-demo.md) — end-to-end example.
+- [How to register an agent](./how-to-register.md) — step-by-step registration guide.
+- [Registration demo](./registration-demo.md) — end-to-end example.
 
 ## Ecosystem
-- [Ecosystem Map](./ecosystem-map.md) — repositories and their roles.
+- [Ecosystem map](./ecosystem-map.md) — repositories and their roles.
 
 ## Misconceptions
-- [Common Misconceptions](./MISCONCEPTIONS.md) — clarifications of recurring misunderstandings.
+- [Common misconceptions](./MISCONCEPTIONS.md) — clarifications of recurring misunderstandings.
 
 ## Positioning
 - [How Agent Manifest relates to A2A, MCP, agents.json, OASF, and Agent Spec](./comparison.md) — where Agent Manifest sits beside adjacent agent protocols, authorization, and provider-side policy.
 - [Agent Manifest and MAS-Lab](./comparison-mas-lab.md) — declaration layer vs. specification-driven runtime.
 
 ## Specification
-- [Specification (Markdown)](../spec/v1.0/spec.md)
+- [Specification (HTML — canonical)](../spec/v1.0/agent_manifest_v1.0.html)
 - [JSON Schema](../spec/v1.0/schema.json)
-- [Specification (HTML)](../spec/v1.0/agent_manifest_v1.0.html)
+- [Specification (Markdown rendering)](../spec/v1.0/spec.md)
