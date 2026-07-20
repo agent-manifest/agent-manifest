@@ -1,0 +1,57 @@
+{
+  "links": [
+    {
+      "href": "https://doi.org/10.5281/zenodo.18965669",
+      "note": "immutable version DOI",
+      "rel": "cite-as"
+    },
+    {
+      "href": "https://agent-manifest-spec.org/works/e-principle/cite.json",
+      "rel": "describedby",
+      "type": "application/vnd.citationstyles.csl+json"
+    },
+    {
+      "href": "https://agent-manifest-spec.org/works/e-principle/schema.json",
+      "rel": "describedby",
+      "type": "application/ld+json"
+    },
+    {
+      "href": "https://orcid.org/0009-0008-7216-3032",
+      "rel": "author"
+    },
+    {
+      "href": "https://creativecommons.org/licenses/by/4.0/",
+      "rel": "license"
+    },
+    {
+      "href": "https://schema.org/SoftwareSourceCode",
+      "rel": "type"
+    },
+    {
+      "href": "https://agent-manifest-spec.org/works/e-principle/e-principle-v1.0.zip",
+      "rel": "item",
+      "type": "application/zip"
+    },
+    {
+      "href": "https://agent-manifest-spec.org/works/e-principle/cite.bib",
+      "rel": "alternate",
+      "type": "application/x-bibtex"
+    },
+    {
+      "href": "https://agent-manifest-spec.org/works/e-principle/cite.ris",
+      "rel": "alternate",
+      "type": "application/x-research-info-systems"
+    },
+    {
+      "href": "https://agent-manifest-spec.org/works/e-principle/index.json",
+      "rel": "alternate",
+      "type": "application/json"
+    }
+  ],
+  "urls": {
+    "concept_doi": "https://doi.org/10.5281/zenodo.18965668",
+    "conceptual": "https://agent-manifest-spec.org/works/e-principle",
+    "pdf": null,
+    "version_doi": "https://doi.org/10.5281/zenodo.18965669"
+  }
+}

@@ -80,9 +80,10 @@ export function buildStaging(opts = {}) {
   if (existsSync(outDir)) rmSync(outDir, { recursive: true, force: true });
   mkdirSync(outDir, { recursive: true });
 
-  // 1) Metadata <-> PDF fixity: the copied PDF must match the SSOT checksum.
+  // 1) Metadata <-> artifact fixity: the copied artifact (PDF, code archive, …)
+  //    must match the SSOT checksum. The check is sha-256 based and kind-agnostic.
   const cur = currentVersion(work);
-  const art = (cur?.artifacts ?? []).find((a) => a.kind === 'pdf');
+  const art = (cur?.artifacts ?? [])[0];
   const pdfName = art ? art.path.split('/').pop() : null;
   const srcPdf = pdfName ? join(pilotDir, pdfName) : null;
   const fixity = {

@@ -4,7 +4,8 @@
 // clock, no network. Same input -> same bytes. The index advertises only Works
 // that are public + published; drafts never surface here.
 
-import { currentVersion, worksUrl, BASE_URL } from './lib/canonical.js';
+import { currentVersion, worksUrl, BASE_URL, typeMeta } from './lib/canonical.js';
+import { EDITORIAL_STYLE, FONT_LINKS, skipLink, siteHeader, siteFooter } from './lib/editorial.js';
 
 function esc(s) {
   return String(s ?? '')
@@ -30,43 +31,22 @@ export function listedWorks(works) {
 
 const INDEX_URL = `${BASE_URL}/works/`;
 
-const STYLE = `
-    :root { --fg:#1a1a1a; --muted:#555; --bg:#ffffff; --accent:#0b5cad; --line:#e2e2e2; }
-    * { box-sizing:border-box; }
-    body { margin:0; color:var(--fg); background:var(--bg);
-      font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      line-height:1.6; font-size:18px; }
-    .skip { position:absolute; left:-9999px; }
-    .skip:focus { left:1rem; top:1rem; background:var(--accent); color:#fff; padding:.5rem .75rem; border-radius:4px; z-index:10; }
-    a { color:var(--accent); }
-    a:focus-visible { outline:3px solid var(--accent); outline-offset:2px; }
-    .wrap { max-width:760px; margin:0 auto; padding:0 1.25rem; }
-    header.site { border-bottom:1px solid var(--line); }
-    header.site .wrap { display:flex; align-items:baseline; gap:.5rem; padding:1rem 1.25rem; flex-wrap:wrap; }
-    header.site .brand { font-weight:700; }
-    header.site .surface { color:var(--muted); font-size:.85rem; }
-    nav.breadcrumb { border-bottom:1px solid var(--line); font-size:.85rem; }
-    nav.breadcrumb ol { list-style:none; display:flex; gap:.4rem; margin:0; padding:.6rem 0; }
-    nav.breadcrumb li { color:var(--muted); }
-    nav.breadcrumb li + li::before { content:"/"; padding-right:.4rem; color:var(--line); }
-    nav.breadcrumb [aria-current="page"] { color:var(--fg); }
-    main { padding:2rem 0 3rem; }
-    h1 { font-size:1.9rem; margin:.2rem 0 .5rem; }
-    .lead { color:var(--muted); margin:0 0 1.5rem; }
-    ul.works { list-style:none; padding:0; margin:0; }
-    ul.works li { border-top:1px solid var(--line); padding:1.25rem 0; }
-    ul.works h2 { font-size:1.2rem; margin:0 0 .3rem; border:0; }
-    ul.works .by { color:var(--muted); font-size:.95rem; margin:.2rem 0; }
-    ul.works .desc { margin:.4rem 0 0; }
-    ul.works .doi { font-variant-numeric:tabular-nums; font-size:.9rem; }
-    footer.site { border-top:1px solid var(--line); color:var(--muted); font-size:.85rem; }
-    footer.site .wrap { padding:1.25rem 1.25rem 2rem; }
-    @media (max-width:520px) { body { font-size:16px; } h1 { font-size:1.5rem; } }`;
+// Visual layer: the shared Academic Editorial System (src/lib/editorial.js).
 
 function firstSentence(abstract) {
   const flat = (abstract ?? '').replace(/\s*\n\s*/g, ' ').trim();
   const m = flat.match(/^(.*?\.)(\s|$)/);
   return (m ? m[1] : flat).trim();
+}
+
+// Index summary text, per the Editorial Charter III.3 priority: (1) an explicit
+// authorial `summary` field, verbatim, when present and non-empty; (2) otherwise
+// the deterministic first-sentence extract (guarded by the publish tests). We
+// never paraphrase and never fabricate. This is additive: a work without a
+// `summary` field yields the same bytes as before.
+export function summaryText(work) {
+  const authored = typeof work?.summary === 'string' ? work.summary.trim() : '';
+  return authored || firstSentence(work?.abstract);
 }
 
 function workItemHtml(work) {
@@ -76,9 +56,15 @@ function workItemHtml(work) {
   const doi = cur?.doi_version;
   return [
     '        <li>',
+    // Sober role eyebrow (charter III.3): shown only for a work that declares an
+    // intellectual function in the ecosystem (`ecosystem_role`). It uses the shared
+    // .eyebrow class — no new taxonomy, no empty "Foundations" section, no card
+    // padding. A work without the field renders exactly as before.
+    work.ecosystem_role ? '          <p class="eyebrow">Foundational work</p>' : null,
     `          <h2><a href="/works/${attr(work.slug)}">${esc(work.title)}</a></h2>`,
-    `          <p class="by">${authors} · Working paper · <time datetime="${attr(cur?.date)}">${esc(cur?.date)}</time></p>`,
-    `          <p class="desc">${esc(firstSentence(work.abstract))}</p>`,
+    `          <p class="by">${authors} · ${esc(typeMeta(work.type).label)} · <time datetime="${attr(cur?.date)}">${esc(cur?.date)}</time></p>`,
+    `          <p class="desc">${esc(summaryText(work))}</p>`,
+    '          <p class="afford">Canonical landing<span>·</span>Version DOI<span>·</span>Machine-readable metadata</p>',
     doi ? `          <p class="doi">DOI: <a href="https://doi.org/${attr(doi)}">https://doi.org/${esc(doi)}</a></p>` : '',
     '        </li>'
   ].filter(Boolean).join('\n');
@@ -139,21 +125,32 @@ export function toWorksIndexHTML(works) {
     '  <meta property="og:site_name" content="Agent Manifest">',
     '  <meta name="twitter:card" content="summary">',
     collectionJsonLd(listed),
-    `  <style>${STYLE}\n  </style>`
+    FONT_LINKS,
+    `  <style>${EDITORIAL_STYLE}\n  </style>`
   ].join('\n');
 
-  const items = listed.length
-    ? `<ul class="works">\n${listed.map(workItemHtml).join('\n')}\n      </ul>`
-    : '<p class="lead">No works are published yet.</p>';
+  const n = listed.length;
+  const countLine = n === 1
+    ? 'One work is currently published.'
+    : `${n} works are currently published.`;
+
+  // Institutional scope note (charter III.3 introductions: declarative, no promises,
+  // no marketing). States what the surface gathers, the inclusion criterion, and the
+  // governed-growth stance — so a deliberately small corpus reads as a decision.
+  const scope = [
+    '      <div class="scope">',
+    '        <p>The Academic Surface is the ecosystem’s place of record for its citable scholarly and technical works — working papers, specifications, datasets, and software that document Agent Manifest and its declaration layer.</p>',
+    '        <p>A work appears here only once it is public, versioned, and preserved with a registered DOI; drafts and unregistered material never appear. The corpus grows only by governed incorporation, one record at a time, through the publication protocol — it makes no forward promises and advertises no roadmap.</p>',
+    '      </div>'
+  ].join('\n');
+
+  const items = n
+    ? `${scope}\n      <p class="corpus-count">${countLine}</p>\n      <ul class="works">\n${listed.map(workItemHtml).join('\n')}\n      </ul>`
+    : `${scope}\n      <p class="corpus-count">No works are currently published.</p>`;
 
   const body = [
-    '  <a class="skip" href="#main">Skip to content</a>',
-    '  <header class="site">',
-    '    <div class="wrap">',
-    '      <span class="brand">Agent Manifest</span>',
-    '      <span class="surface">Academic Surface</span>',
-    '    </div>',
-    '  </header>',
+    skipLink(),
+    siteHeader('Academic Surface'),
     '  <nav class="breadcrumb" aria-label="Breadcrumb">',
     '    <div class="wrap">',
     '      <ol>',
@@ -169,11 +166,7 @@ export function toWorksIndexHTML(works) {
     '      ' + items,
     '    </div>',
     '  </main>',
-    '  <footer class="site">',
-    '    <div class="wrap">',
-    '      <p>Agent Manifest — Academic Surface. Preservation of record via Zenodo; citation via DOI.</p>',
-    '    </div>',
-    '  </footer>'
+    siteFooter('Agent Manifest — Academic Surface. Preservation of record via Zenodo; citation via DOI.')
   ].join('\n');
 
   return `<!doctype html>\n<html lang="en">\n<head>\n${head}\n</head>\n<body>\n${body}\n</body>\n</html>\n`;

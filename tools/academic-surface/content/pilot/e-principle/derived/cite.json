@@ -1,0 +1,27 @@
+{
+  "DOI": "10.5281/zenodo.18965669",
+  "URL": "https://agent-manifest-spec.org/works/e-principle",
+  "abstract": "The ∈ Principle introduces a philosophical and institutional proposal for public authorship in the age of artificial intelligence. The symbol ∈ marks the moment when a work enters the public sphere with an explicitly assumed author behind it. The principle extends from historical acts of authorship to the emerging challenge of autonomous AI agents.",
+  "author": [
+    {
+      "family": "Capucci",
+      "given": "Hernán Alfredo"
+    }
+  ],
+  "id": "amw-005",
+  "issued": {
+    "date-parts": [
+      [
+        2026,
+        3,
+        11
+      ]
+    ]
+  },
+  "keyword": "authorship, public responsibility, AI governance, AI accountability, autonomous agents, Agent Manifest, digital institutions",
+  "language": "en",
+  "note": "Concept DOI: 10.5281/zenodo.18965668",
+  "title": "∈ Principle",
+  "type": "software",
+  "version": "v1"
+}

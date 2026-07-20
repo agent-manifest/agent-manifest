@@ -12,7 +12,7 @@ import { dirname, join, basename } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { renderAll } from './derive.js';
 import { toWorksIndexHTML, isPublished } from './works-index.js';
-import { currentVersion } from './lib/canonical.js';
+import { currentArtifact } from './lib/canonical.js';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const MODULE_DIR = join(HERE, '..');
@@ -37,10 +37,11 @@ function loadWorks(ssotPaths) {
   return ssotPaths.map((p) => ({ path: p, work: JSON.parse(readFileSync(p, 'utf8')) }));
 }
 
-// Resolve the co-located PDF and verify it against the SSOT checksum (throws on mismatch).
+// Resolve the co-located primary artifact (PDF, code archive, …) and verify it
+// against the SSOT checksum (throws on mismatch). Kind-agnostic: the fixity is a
+// sha-256 comparison, identical for a PDF or a source ZIP.
 function verifiedPdf(pilotDir, work) {
-  const cur = currentVersion(work);
-  const art = (cur?.artifacts ?? []).find((a) => a.kind === 'pdf');
+  const art = currentArtifact(work);
   if (!art) return { pdfName: null, fixity: { checked: false, ok: true } };
   const pdfName = basename(art.path);
   const src = join(pilotDir, pdfName);

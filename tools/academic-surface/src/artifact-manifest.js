@@ -11,12 +11,18 @@
 
 import { SEVERITY } from './diagnostics.js';
 
+// Fields required for every artifact-manifest, regardless of kind.
 const REQUIRED = [
   'manifest_kind', 'artifact_id', 'work_id', 'version_id', 'kind',
-  'internal_filename', 'mime', 'bytes', 'page_count', 'pdf_version',
-  'encrypted', 'text_extractable', 'external_checksum', 'internal_checksum',
+  'internal_filename', 'mime', 'bytes',
+  'external_checksum', 'internal_checksum',
   'future_public_path', 'current_visibility', 'publication_status'
 ];
+
+// PDF-specific technical evidence — required ONLY when kind==='pdf'. A code
+// archive (software) or dataset has no page_count / pdf_version / text layer, so
+// forcing these would be nonsensical; their absence is correct, not a defect.
+const PDF_REQUIRED = ['page_count', 'pdf_version', 'encrypted', 'text_extractable'];
 
 const MIME_BY_KIND = { pdf: 'application/pdf' };
 
@@ -40,6 +46,11 @@ export function checkArtifactManifest(manifest, work, opts = {}) {
   for (const f of REQUIRED) {
     if (manifest[f] === undefined || manifest[f] === null) out.push(d('MANIFEST-SCHEMA', SEVERITY.ERROR, `Required manifest field missing: ${f}`, f));
   }
+  if (manifest.kind === 'pdf') {
+    for (const f of PDF_REQUIRED) {
+      if (manifest[f] === undefined || manifest[f] === null) out.push(d('MANIFEST-SCHEMA', SEVERITY.ERROR, `Required PDF manifest field missing: ${f}`, f));
+    }
+  }
   if (manifest.internal_checksum && manifest.internal_checksum.algorithm !== 'sha-256') {
     out.push(d('MANIFEST-SCHEMA', SEVERITY.ERROR, 'internal_checksum.algorithm must be sha-256', manifest.internal_checksum?.algorithm));
   }
@@ -59,9 +70,13 @@ export function checkArtifactManifest(manifest, work, opts = {}) {
   const expectPubStatus = workPublished ? 'published' : 'not-published';
   if (manifest.current_visibility !== expectVisibility) out.push(d('MANIFEST-STATE', SEVERITY.ERROR, `current_visibility '${manifest.current_visibility}' incoherent with the Work (expected '${expectVisibility}')`, manifest.current_visibility));
   if (manifest.publication_status !== expectPubStatus) out.push(d('MANIFEST-STATE', SEVERITY.ERROR, `publication_status '${manifest.publication_status}' incoherent with the Work (expected '${expectPubStatus}')`, manifest.publication_status));
-  if (manifest.text_extractable === true) { /* ok */ }
-  else if (manifest.text_extractable === false) out.push(d('MANIFEST-STATE', SEVERITY.ERROR, 'text_extractable is false (PDF has no selectable text layer)', false));
-  else out.push(d('MANIFEST-STATE', SEVERITY.WARNING, 'text_extractable not yet verified (null/undefined)', manifest.text_extractable ?? null));
+  // Text-layer expectation is a PDF property only; a code archive / dataset has
+  // no selectable text layer and legitimately carries text_extractable=null.
+  if (manifest.kind === 'pdf') {
+    if (manifest.text_extractable === true) { /* ok */ }
+    else if (manifest.text_extractable === false) out.push(d('MANIFEST-STATE', SEVERITY.ERROR, 'text_extractable is false (PDF has no selectable text layer)', false));
+    else out.push(d('MANIFEST-STATE', SEVERITY.WARNING, 'text_extractable not yet verified (null/undefined)', manifest.text_extractable ?? null));
+  }
 
   // Locate the SSOT artifact for the same version.
   const version = (work.versions ?? []).find((v) => v.id === manifest.version_id);

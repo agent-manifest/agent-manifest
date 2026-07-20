@@ -11,7 +11,9 @@
 import {
   toCSL, toBibTeX, toRIS, toAPA, toHighwire, toJSONLD, toOpenGraph, toDublinCore, toSignposting
 } from './derive.js';
-import { currentVersion, BASE_URL, worksUrl } from './lib/canonical.js';
+import { basename } from 'node:path';
+import { currentVersion, currentArtifact, isTextual, BASE_URL, worksUrl, typeMeta, langLabel, TYPE_TO_JSONLD } from './lib/canonical.js';
+import { EDITORIAL_STYLE, FONT_LINKS, skipLink, siteHeader, siteFooter } from './lib/editorial.js';
 
 // ---- escaping --------------------------------------------------------------
 
@@ -134,59 +136,9 @@ function structuralJsonLd(work) {
   return `  <script type="application/ld+json">\n${stableJson(graph)}\n  </script>`;
 }
 
-// ---- inline styles (self-contained, theme-light, accessible, responsive) ---
-
-const STYLE = `
-    :root { --fg:#1a1a1a; --muted:#555; --bg:#ffffff; --accent:#0b5cad; --line:#e2e2e2; --code-bg:#f5f6f8; }
-    * { box-sizing: border-box; }
-    html { -webkit-text-size-adjust: 100%; }
-    body { margin:0; color:var(--fg); background:var(--bg);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      line-height:1.6; font-size:18px; }
-    .skip { position:absolute; left:-9999px; top:auto; }
-    .skip:focus { left:1rem; top:1rem; background:var(--accent); color:#fff; padding:.5rem .75rem; border-radius:4px; z-index:10; }
-    a { color:var(--accent); }
-    a:focus-visible, button:focus-visible { outline:3px solid var(--accent); outline-offset:2px; }
-    header.site { border-bottom:1px solid var(--line); }
-    .wrap { max-width:760px; margin:0 auto; padding:0 1.25rem; }
-    header.site .wrap { display:flex; align-items:baseline; gap:.5rem; padding-top:1rem; padding-bottom:1rem; flex-wrap:wrap; }
-    header.site .brand { font-weight:700; }
-    header.site .surface { color:var(--muted); font-size:.85rem; }
-    nav.breadcrumb { border-bottom:1px solid var(--line); font-size:.85rem; }
-    nav.breadcrumb ol { list-style:none; display:flex; flex-wrap:wrap; gap:.4rem; margin:0; padding:.6rem 0; }
-    nav.breadcrumb li { color:var(--muted); }
-    nav.breadcrumb li + li::before { content:"/"; padding-right:.4rem; color:var(--line); }
-    nav.breadcrumb [aria-current="page"] { color:var(--fg); }
-    ul.history { list-style:none; padding:0; margin:0; }
-    ul.history li { margin:.3rem 0; }
-    ul.history time { color:var(--muted); font-variant-numeric: tabular-nums; }
-    main { padding:2rem 0 3rem; }
-    h1 { font-size:1.9rem; line-height:1.25; margin:.2rem 0 1rem; }
-    h2 { font-size:1.2rem; margin:2rem 0 .6rem; padding-bottom:.25rem; border-bottom:1px solid var(--line); }
-    .byline { font-size:1.05rem; margin:.25rem 0; }
-    .meta-line { color:var(--muted); font-size:.95rem; margin:.5rem 0 1rem; }
-    dl.facts { display:grid; grid-template-columns:max-content 1fr; gap:.35rem 1rem; margin:0; }
-    dl.facts dt { color:var(--muted); font-weight:600; }
-    dl.facts dd { margin:0; }
-    .abstract p { margin:0 0 .9rem; }
-    ul.tags { list-style:none; padding:0; margin:0; display:flex; flex-wrap:wrap; gap:.4rem; }
-    ul.tags li { background:var(--code-bg); border:1px solid var(--line); border-radius:999px; padding:.15rem .7rem; font-size:.85rem; color:var(--muted); }
-    pre { background:var(--code-bg); border:1px solid var(--line); border-radius:6px; padding:.9rem 1rem; overflow-x:auto; font-size:.85rem; line-height:1.5; }
-    code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
-    .downloads { list-style:none; padding:0; margin:0; }
-    .downloads li { margin:.3rem 0; }
-    .cite-block { margin:1rem 0; }
-    .cite-block h3 { font-size:.95rem; margin:1rem 0 .35rem; }
-    .doi { font-variant-numeric: tabular-nums; }
-    .note { color:var(--muted); font-size:.9rem; }
-    footer.site { border-top:1px solid var(--line); color:var(--muted); font-size:.85rem; }
-    footer.site .wrap { padding-top:1.25rem; padding-bottom:2rem; }
-    @media (max-width:520px) {
-      body { font-size:16px; }
-      h1 { font-size:1.5rem; }
-      dl.facts { grid-template-columns:1fr; gap:.1rem .5rem; }
-      dl.facts dd { margin-bottom:.5rem; }
-    }`;
+// ---- inline styles ---------------------------------------------------------
+// The visual layer is the shared Academic Editorial System (src/lib/editorial.js).
+// Only the editorial layer lives there; every metadata block below is unchanged.
 
 // ---- body sections ---------------------------------------------------------
 
@@ -194,9 +146,9 @@ function facts(work) {
   const cur = currentVersion(work);
   const versionDoi = cur?.doi_version;
   const rows = [
-    ['Type', 'Working paper'],
+    ['Type', typeMeta(work.type).label],
     ['Version', `${esc(cur?.vN)} · ${esc(cur?.date)}`],
-    ['Language', 'English'],
+    ['Language', langLabel(work.language)],
     ['License', `<a href="${attr(work.licenses?.[0]?.url)}" rel="license">${esc(work.licenses?.[0]?.label)}</a>`],
     ['Cite as (version DOI)', `<a class="doi" href="https://doi.org/${attr(versionDoi)}">https://doi.org/${esc(versionDoi)}</a> <span class="note">— preferred, immutable</span>`],
     ['Concept DOI', `<a class="doi" href="https://doi.org/${attr(work.doi_concept)}">https://doi.org/${esc(work.doi_concept)}</a> <span class="note">— all versions</span>`]
@@ -219,21 +171,50 @@ function citeHtml(work) {
   return [
     '<div class="cite-block">',
     '      <h3>APA</h3>',
-    `      <p>${esc(apa)}</p>`,
-    '      <h3>BibTeX</h3>',
-    `      <pre><code>${esc(bib)}</code></pre>`,
-    '      <h3>RIS</h3>',
-    `      <pre><code>${esc(ris)}</code></pre>`,
+    `      <p class="apa" id="apa-cite">${esc(apa)}</p>`,
+    '      <details class="cite-format">',
+    '        <summary>BibTeX</summary>',
+    `        <pre><code>${esc(bib)}</code></pre>`,
+    '        <p class="dl"><a href="cite.bib">Download BibTeX</a></p>',
+    '      </details>',
+    '      <details class="cite-format">',
+    '        <summary>RIS</summary>',
+    `        <pre><code>${esc(ris)}</code></pre>`,
+    '        <p class="dl"><a href="cite.ris">Download RIS</a></p>',
+    '      </details>',
     '    </div>'
   ].join('\n');
 }
 
+// Progressive-enhancement copy control (charter II.10). Injected by script, so with
+// JavaScript disabled there is no dead button — the APA citation stays visible and
+// selectable. Feature-detected, with a textarea fallback; no clock, no network.
+const COPY_SCRIPT = [
+  '  <script>',
+  '  (function(){',
+  '    var src=document.getElementById("apa-cite");',
+  '    if(!src) return;',
+  '    var btn=document.createElement("button");',
+  '    btn.type="button"; btn.className="copy"; btn.textContent="Copy citation";',
+  '    var live=document.createElement("span"); live.className="sr-only"; live.setAttribute("aria-live","polite");',
+  '    src.insertAdjacentElement("afterend", live);',
+  '    src.insertAdjacentElement("afterend", btn);',
+  '    function done(){ live.textContent="Citation copied."; btn.textContent="Copied"; setTimeout(function(){ btn.textContent="Copy citation"; },2000); }',
+  '    function fallback(){ var ta=document.createElement("textarea"); ta.value=src.textContent.trim(); ta.setAttribute("readonly",""); ta.style.position="absolute"; ta.style.left="-9999px"; document.body.appendChild(ta); ta.select(); try{ document.execCommand("copy"); done(); }catch(e){} document.body.removeChild(ta); }',
+  '    btn.addEventListener("click", function(){ var t=src.textContent.trim(); if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(t).then(done,fallback); } else { fallback(); } });',
+  '  })();',
+  '  <\/script>'
+].join('\n');
+
+// Human label for the primary artifact, by kind. PDF is "Full text"; a code
+// archive is a "Source archive"; other kinds fall back to a neutral "Download".
+const ARTIFACT_LABEL = { pdf: 'Full text (PDF)', code: 'Source archive (ZIP)', dataset: 'Dataset', epub: 'Full text (EPUB)', html: 'Full text (HTML)' };
+
 function downloadsHtml(work) {
-  const cur = currentVersion(work);
-  const art = (cur?.artifacts ?? []).find((a) => a.kind === 'pdf');
+  const art = currentArtifact(work);
   const kb = art ? Math.round(art.bytes / 1024) : null;
   const items = [
-    art ? `<a href="declaration-layers.pdf">Full text (PDF)</a> <span class="note">${kb}&nbsp;KB</span>` : null,
+    art ? `<a href="${attr(basename(art.path))}">${esc(ARTIFACT_LABEL[art.kind] ?? 'Download')}</a> <span class="note">${kb}&nbsp;KB</span>` : null,
     '<a href="cite.bib">BibTeX</a>',
     '<a href="cite.ris">RIS</a>',
     '<a href="cite.json">CSL-JSON</a>',
@@ -243,13 +224,45 @@ function downloadsHtml(work) {
   return `<ul class="downloads">\n${items.map((i) => `      <li>${i}</li>`).join('\n')}\n    </ul>`;
 }
 
+// DataCite predicate -> human phrase. Unknown predicates fall back to the raw
+// predicate, so a relation is never dropped silently.
+const RELATION_PHRASE = {
+  isSupplementTo: 'is a supplement to', isSupplementedBy: 'is supplemented by',
+  isBasedOn: 'is based on',
+  references: 'references', isReferencedBy: 'is referenced by',
+  isVersionOf: 'is a version of', hasVersion: 'has version',
+  isPartOf: 'is part of', hasPart: 'has part',
+  isTranslationOf: 'is a translation of', hasTranslation: 'has translation',
+  Obsoletes: 'obsoletes', IsObsoletedBy: 'is obsoleted by'
+};
+
 function relationsHtml(work) {
-  const rel = (work.relations ?? []).find((r) => r.predicate === 'isSupplementTo');
-  if (!rel?.target_doi) return '';
+  const rels = (work.relations ?? []).filter((r) => r.target_doi);
+  if (!rels.length) return '';
+  const noun = typeMeta(work.type).label.toLowerCase();
+  const rows = rels.map((r) => {
+    const phrase = RELATION_PHRASE[r.predicate] ?? r.predicate;
+    return `      <p>This ${esc(noun)} <em>${esc(phrase)}</em> <a class="doi" href="https://doi.org/${attr(r.target_doi)}">https://doi.org/${esc(r.target_doi)}</a>.</p>`;
+  });
   return [
     '    <section aria-labelledby="rel-h">',
     '      <h2 id="rel-h">Related work</h2>',
-    `      <p>This working paper <em>is a supplement to</em> <a class="doi" href="https://doi.org/${attr(rel.target_doi)}">https://doi.org/${esc(rel.target_doi)}</a>.</p>`,
+    ...rows,
+    '    </section>'
+  ].join('\n');
+}
+
+// Optional editorial statement of a work's intellectual function in the
+// ecosystem (SSOT field `ecosystem_role`). Returns null when absent, so records
+// that do not declare a role render exactly as before.
+function ecosystemRoleHtml(work) {
+  if (!work.ecosystem_role) return null;
+  const paras = String(work.ecosystem_role).split('\n\n').map((pp) => `      <p>${esc(pp)}</p>`).join('\n');
+  return [
+    '',
+    '    <section aria-labelledby="role-h">',
+    '      <h2 id="role-h">Role in the ecosystem</h2>',
+    paras,
     '    </section>'
   ].join('\n');
 }
@@ -287,10 +300,14 @@ function historyHtml(work) {
 function provenanceHtml(work) {
   const a = work.authors?.[0];
   const zenodo = (work.external_urls ?? []).find((e) => e.rel === 'sameAs')?.url;
+  // Source repository (code Works). Only rendered when the Work declares one in
+  // repositories[]; a Work without a code repo renders exactly as before.
+  const repo = (work.repositories ?? [])[0];
   return [
     '    <section aria-labelledby="prov-h">',
     '      <h2 id="prov-h">About this record</h2>',
     `      <p>Author: ${esc(a?.name_human)}${a?.orcid ? ` (<a href="https://orcid.org/${attr(a.orcid)}">ORCID ${esc(a.orcid)}</a>)` : ''}.</p>`,
+    repo?.url ? `      <p>Source repository: <a href="${attr(repo.url)}">${esc(repo.url)}</a>.</p>` : '',
     zenodo ? `      <p>Preserved on Zenodo: <a href="${attr(zenodo)}" rel="sameAs">${esc(zenodo)}</a>. This page is the author’s canonical Academic Surface record; the DOI above is the citable identifier.</p>` : '',
     '    </section>'
   ].filter(Boolean).join('\n');
@@ -301,6 +318,7 @@ function provenanceHtml(work) {
 export function toLandingHTML(work, opts = {}) {
   const staging = opts.staging === true;
   const cur = currentVersion(work);
+  const meta = typeMeta(work.type);
   const og = toOpenGraph(work);
   const canonical = toJSONLD(work).url;
   const desc = og['og:description'];
@@ -315,9 +333,11 @@ export function toLandingHTML(work, opts = {}) {
     staging ? '  <!-- STAGING ONLY: temporary index suppression; MUST be removed before production. Not a property of the Work. -->' : null,
     staging ? '  <meta name="robots" content="noindex, nofollow">' : null,
     '',
-    '  <!-- Highwire / Google Scholar -->',
-    citationMeta(work),
-    '',
+    // Google Scholar citation_* tags apply to textual articles only; a
+    // non-textual Work (software/dataset) omits the whole block.
+    isTextual(work.type) ? '  <!-- Highwire / Google Scholar -->' : null,
+    isTextual(work.type) ? citationMeta(work) : null,
+    isTextual(work.type) ? '' : null,
     '  <!-- Dublin Core -->',
     dublinCoreMeta(work),
     '',
@@ -330,31 +350,30 @@ export function toLandingHTML(work, opts = {}) {
     '  <!-- Signposting (typed links) -->',
     signpostingLinks(work),
     '',
-    '  <!-- schema.org JSON-LD — canonical ScholarlyArticle -->',
+    `  <!-- schema.org JSON-LD — canonical ${TYPE_TO_JSONLD[work.type]} -->`,
     jsonLdScript(work),
     '',
     '  <!-- schema.org JSON-LD — page structure (WebPage + BreadcrumbList) -->',
     structuralJsonLd(work),
     '',
-    `  <style>${STYLE}\n  </style>`
+    '  <!-- Brand fonts (DM Sans + DM Mono) with a system fallback stack -->',
+    FONT_LINKS,
+    '',
+    `  <style>${EDITORIAL_STYLE}\n  </style>`
   ].filter((l) => l !== null).join('\n');
 
   const body = [
     staging ? '  <div role="note" style="background:#8a1c1c;color:#fff;text-align:center;padding:.5rem 1rem;font-size:.85rem;">Local staging preview — not published, not indexable. Temporary.</div>' : null,
-    '  <a class="skip" href="#main">Skip to content</a>',
-    '  <header class="site">',
-    '    <div class="wrap">',
-    '      <span class="brand">Agent Manifest</span>',
-    '      <span class="surface">Academic Surface</span>',
-    '    </div>',
-    '  </header>',
+    skipLink(),
+    siteHeader('Academic Surface'),
     breadcrumbHtml(work),
     '  <main id="main">',
     '    <div class="wrap">',
     '      <article aria-labelledby="title">',
+    `        <div class="badge">${esc(meta.label)}</div>`,
     `        <h1 id="title">${esc(work.title)}</h1>`,
     `        <p class="byline">${(work.authors ?? []).map((a) => `${esc(a.name_human)}${a.orcid ? ` <a href="https://orcid.org/${attr(a.orcid)}" aria-label="ORCID for ${attr(a.name_human)}">(ORCID)</a>` : ''}`).join(', ')}</p>`,
-    `        <p class="meta-line">Working paper · ${esc(cur?.date)} · English · Agent Manifest Academic Surface</p>`,
+    `        <p class="meta-line">${esc(meta.label)} · ${esc(cur?.date)} · ${esc(langLabel(work.language))} · Agent Manifest Academic Surface</p>`,
     '        ' + facts(work),
     '',
     '        <section aria-labelledby="abs-h">',
@@ -363,6 +382,7 @@ export function toLandingHTML(work, opts = {}) {
     abstractHtml(work),
     '          </div>',
     '        </section>',
+    ecosystemRoleHtml(work),
     '',
     '        <section aria-labelledby="kw-h">',
     '          <h2 id="kw-h">Keywords</h2>',
@@ -388,13 +408,12 @@ export function toLandingHTML(work, opts = {}) {
     '      </article>',
     '    </div>',
     '  </main>',
-    '  <footer class="site">',
-    '    <div class="wrap">',
-    '      <p>Agent Manifest — Academic Surface. Content licensed under ' +
+    siteFooter(
+      'Agent Manifest — Academic Surface. Content licensed under ' +
       `<a href="${attr(work.licenses?.[0]?.url)}" rel="license">${esc(work.licenses?.[0]?.spdx)}</a>. ` +
-      'Preservation of record via Zenodo; citation via DOI.</p>',
-    '    </div>',
-    '  </footer>'
+      'Preservation of record via Zenodo; citation via DOI.'
+    ),
+    COPY_SCRIPT
   ].filter((l) => l !== null).join('\n');
 
   return `<!doctype html>\n<html lang="${attr(work.language)}">\n<head>\n${head}\n</head>\n<body>\n${body}\n</body>\n</html>\n`;

@@ -8,7 +8,7 @@
 
 import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
-import { BASE_URL, currentVersion, scholarDate, TYPE_TO_JSONLD, worksUrl } from './lib/canonical.js';
+import { BASE_URL, currentVersion, currentArtifact, dublinCoreType, isTextual, scholarDate, TYPE_TO_JSONLD, typeMeta, worksUrl } from './lib/canonical.js';
 import { toLandingHTML } from './landing.js';
 
 // ---- helpers ---------------------------------------------------------------
@@ -53,18 +53,30 @@ function lastModified(work) {
   return dates.length ? dates[dates.length - 1] : currentVersion(work)?.date ?? null;
 }
 
+// Scholar-only URL: the served artifact ONLY when it is a PDF. A non-PDF Work
+// (software, dataset) has no citation_pdf_url — Scholar's Highwire pattern is
+// PDF-specific and must not be faked for other artifact kinds.
 function futurePdfUrl(work) {
-  const cur = currentVersion(work);
-  const art = (cur?.artifacts ?? []).find((a) => a.kind === 'pdf');
+  const art = currentArtifact(work);
+  return art && art.kind === 'pdf' ? `${BASE_URL}${art.path}` : null;
+}
+
+// The served artifact of ANY kind (pdf/code/dataset/…), used for the download
+// link, schema.org encoding, and Signposting `item`.
+function artifactUrl(work) {
+  const art = currentArtifact(work);
   return art ? `${BASE_URL}${art.path}` : null;
 }
 
 function derivedUrls(work) {
   const landing = worksUrl(work.slug);
   const cur = currentVersion(work);
+  const art = currentArtifact(work);
   return {
     landing,
     pdf: futurePdfUrl(work),
+    artifact: artifactUrl(work),
+    artifactMime: art?.mime ?? null,
     version_doi: cur?.doi_version ? `https://doi.org/${cur.doi_version}` : null,
     concept_doi: work.doi_concept ? `https://doi.org/${work.doi_concept}` : null,
     csl: `${landing}/cite.json`,
@@ -84,10 +96,11 @@ export function toCSL(work) {
   const cur = currentVersion(work);
   const [y, m, d] = (cur?.date ?? '').split('-').map(Number);
   const u = derivedUrls(work);
+  const meta = typeMeta(work.type);
   return {
     id: work.id,
-    type: 'article',
-    genre: 'Working paper',
+    type: meta.cslType,
+    ...(meta.cslGenre ? { genre: meta.cslGenre } : {}),
     title: work.title,
     author: (work.authors ?? []).map((a) => splitName(a.name_normalized, a.name_human)),
     issued: { 'date-parts': [[y, m, d]] },
@@ -104,9 +117,10 @@ export function toCSL(work) {
 export function toBibTeX(work) {
   const c = toCSL(work);
   const cur = currentVersion(work);
+  const meta = typeMeta(work.type);
   const authors = c.author.map((a) => `${a.family}, ${a.given}`).join(' and ');
   const L = [
-    `@misc{${work.id},`,
+    `@${meta.bibtex}{${work.id},`,
     `  title = {${c.title}},`,
     `  author = {${authors}},`,
     `  year = {${c.issued['date-parts'][0][0]}},`,
@@ -115,7 +129,7 @@ export function toBibTeX(work) {
     `  url = {${c.URL}},`,
     `  language = {${c.language}},`,
     `  keywords = {${c.keyword}},`,
-    `  note = {Working paper. ${c.note}. Version: ${cur?.vN}}`,
+    `  note = {${meta.label}. ${c.note}. Version: ${cur?.vN}}`,
     `}`
   ];
   return L.join('\n') + '\n';
@@ -126,12 +140,13 @@ export function toRIS(work) {
   const cur = currentVersion(work);
   const [y, m, d] = c.issued['date-parts'][0];
   const pad = (n) => String(n).padStart(2, '0');
-  const L = ['TY  - GEN', `TI  - ${c.title}`];
+  const meta = typeMeta(work.type);
+  const L = [`TY  - ${meta.risTy}`, `TI  - ${c.title}`];
   for (const a of c.author) L.push(`AU  - ${a.family}, ${a.given}`);
   const abLine = (c.abstract ?? '').replace(/\s*\n\s*/g, ' ').trim();
   L.push(`PY  - ${y}`, `DA  - ${y}/${pad(m)}/${pad(d)}`, `DO  - ${c.DOI}`, `UR  - ${c.URL}`, `LA  - ${c.language}`, `AB  - ${abLine}`);
   for (const k of work.keywords ?? []) L.push(`KW  - ${k}`);
-  L.push(`N1  - Working paper. Concept DOI: ${work.doi_concept}. Version: ${cur?.vN}`, 'ER  - ');
+  L.push(`N1  - ${meta.label}. Concept DOI: ${work.doi_concept}. Version: ${cur?.vN}`, 'ER  - ');
   return L.join('\n') + '\n';
 }
 
@@ -161,8 +176,18 @@ export function toMarkdown(work) {
 }
 
 // Highwire pairs (D4 lifts `.tags` into <meta name="citation_*">). The wrapper
-// marks that nothing is materialized yet.
+// marks that nothing is materialized yet. Google Scholar's citation_* pattern is
+// for textual articles only: a non-textual Work (software, dataset) emits NO
+// citation_* tags — forcing them for software would be dishonest and is barred
+// by ASV-WORK-014.
 export function toHighwire(work) {
+  if (!isTextual(work.type)) {
+    return {
+      status: 'not-emitted',
+      note: `Non-textual resource type (${work.type}); Google Scholar citation_* tags do not apply and are intentionally omitted.`,
+      tags: {}
+    };
+  }
   const cur = currentVersion(work);
   const u = derivedUrls(work);
   const tags = {
@@ -186,8 +211,9 @@ export function toJSONLD(work) {
   const cur = currentVersion(work);
   const u = derivedUrls(work);
   const zenodo = (work.external_urls ?? []).find((e) => e.rel === 'sameAs')?.url;
-  const rel = (work.relations ?? []).find((r) => r.predicate === 'isSupplementTo');
   const license = (work.licenses ?? [])[0];
+  const art = currentArtifact(work);
+  const repo = (work.repositories ?? [])[0];
   const doc = {
     '@context': 'https://schema.org',
     '@type': TYPE_TO_JSONLD[work.type],
@@ -212,13 +238,25 @@ export function toJSONLD(work) {
       { '@type': 'PropertyValue', propertyID: 'DOI', name: 'Concept DOI', value: work.doi_concept }
     ],
     ...(license?.url ? { license: license.url } : {}),
+    // codeRepository is the defining property of a SoftwareSourceCode; carried
+    // only when the Work declares a source repository (repositories[]).
+    ...(repo?.url ? { codeRepository: repo.url } : {}),
     sameAs: [zenodo, `https://doi.org/${cur?.doi_version}`].filter(Boolean),
-    encoding: { '@type': 'MediaObject', contentUrl: u.pdf, encodingFormat: 'application/pdf' }
+    // Encoding reflects the REAL served artifact (its own MIME), not a hardcoded
+    // PDF. Present only when an artifact is served.
+    ...(art ? { encoding: { '@type': 'MediaObject', contentUrl: `${BASE_URL}${art.path}`, encodingFormat: art.mime } } : {})
   };
-  if (rel?.target_doi) {
-    // DataCite predicate carried verbatim; schema.org-only parsers ignore it,
-    // DataCite is authoritative (already on Zenodo).
-    doc.isSupplementTo = { '@type': 'CreativeWork', identifier: rel.target_doi, url: `https://doi.org/${rel.target_doi}` };
+  // Every declared relation with an external DOI is carried verbatim under its
+  // DataCite predicate. schema.org-only parsers ignore unknown predicates;
+  // DataCite is authoritative (already on Zenodo). A predicate repeated across
+  // targets becomes an array, so multi-edition relations (e.g. a work based on
+  // two book editions) are preserved.
+  for (const r of work.relations ?? []) {
+    if (!r.target_doi) continue;
+    const node = { '@type': 'CreativeWork', identifier: r.target_doi, url: `https://doi.org/${r.target_doi}` };
+    if (doc[r.predicate] === undefined) doc[r.predicate] = node;
+    else if (Array.isArray(doc[r.predicate])) doc[r.predicate].push(node);
+    else doc[r.predicate] = [doc[r.predicate], node];
   }
   return doc;
 }
@@ -226,18 +264,17 @@ export function toJSONLD(work) {
 export function toDublinCore(work) {
   const cur = currentVersion(work);
   const zenodo = (work.external_urls ?? []).find((e) => e.rel === 'sameAs')?.url;
-  const rel = (work.relations ?? []).find((r) => r.predicate === 'isSupplementTo');
   const license = (work.licenses ?? [])[0];
   return {
     title: work.title,
     creator: (work.authors ?? []).map((a) => a.name_normalized ?? a.name_human),
     date: cur?.date,
-    type: 'Text',
+    type: dublinCoreType(work.type),
     language: work.language,
     identifier: [`https://doi.org/${cur?.doi_version}`, `https://doi.org/${work.doi_concept}`],
     rights: license ? `${license.label ?? license.spdx} (${license.spdx})` : undefined,
     description: work.abstract,
-    relation: rel?.target_doi ? [`https://doi.org/${rel.target_doi}`] : [],
+    relation: (work.relations ?? []).map((r) => (r.target_doi ? `https://doi.org/${r.target_doi}` : null)).filter(Boolean),
     source: zenodo
   };
 }
@@ -245,21 +282,25 @@ export function toDublinCore(work) {
 export function toOpenGraph(work) {
   const u = derivedUrls(work);
   const firstPara = (work.abstract ?? '').split('\n\n')[0];
+  // og:type 'article' only for textual works; a software/dataset Work is a
+  // 'website' (the OG vocabulary has no software type), and the article:*
+  // properties then do not apply.
+  const ogType = isTextual(work.type) ? 'article' : 'website';
   return {
     'og:title': work.title,
     'og:description': firstPara,
-    'og:type': 'article',
+    'og:type': ogType,
     'og:url': u.landing,
     'og:locale': work.language,
     'og:site_name': 'Agent Manifest',
-    'article:author': (work.authors ?? []).map((a) => a.name_human)
+    ...(ogType === 'article' ? { 'article:author': (work.authors ?? []).map((a) => a.name_human) } : {})
   };
 }
 
 export function toIndexJSON(work) {
   const cur = currentVersion(work);
   const u = derivedUrls(work);
-  const art = (cur?.artifacts ?? []).find((a) => a.kind === 'pdf');
+  const art = currentArtifact(work);
   const license = (work.licenses ?? [])[0];
   return {
     id: work.id,
@@ -274,7 +315,7 @@ export function toIndexJSON(work) {
     license: license ? { spdx: license.spdx, url: license.url } : undefined,
     doi_concept: work.doi_concept,
     current_version: cur ? { vN: cur.vN, date: cur.date, doi_version: cur.doi_version, is_current: true } : null,
-    artifacts: art ? [{ kind: 'pdf', future_url: u.pdf, bytes: art.bytes, checksum: { algorithm: art.checksum_algorithm, value: art.checksum } }] : [],
+    artifacts: art ? [{ kind: art.kind, future_url: `${BASE_URL}${art.path}`, bytes: art.bytes, checksum: { algorithm: art.checksum_algorithm, value: art.checksum } }] : [],
     relations: (work.relations ?? []).map((r) => ({ predicate: r.predicate, target_doi: r.target_doi, target_id: r.target_id, inverse: 'pending' })),
     exports: { 'csl-json': u.csl, bibtex: u.bibtex, ris: u.ris, apa: u.apa, plain: u.plain, markdown: u.markdown },
     links: { landing: u.landing, pdf: u.pdf, doi_version: u.version_doi, doi_concept: u.concept_doi, zenodo: (work.external_urls ?? []).find((e) => e.rel === 'sameAs')?.url, orcid: (work.authors ?? [])[0]?.orcid ? `https://orcid.org/${work.authors[0].orcid}` : undefined },
@@ -303,7 +344,7 @@ export function toSignposting(work) {
       { rel: 'author', href: cur && (work.authors ?? [])[0]?.orcid ? `https://orcid.org/${work.authors[0].orcid}` : undefined },
       { rel: 'license', href: license?.url },
       { rel: 'type', href: `https://schema.org/${TYPE_TO_JSONLD[work.type]}` },
-      { rel: 'item', href: u.pdf, type: 'application/pdf' },
+      { rel: 'item', href: u.artifact, type: u.artifactMime },
       { rel: 'alternate', href: u.bibtex, type: 'application/x-bibtex' },
       { rel: 'alternate', href: u.ris, type: 'application/x-research-info-systems' },
       { rel: 'alternate', href: u.json, type: 'application/json' }

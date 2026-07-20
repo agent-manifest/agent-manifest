@@ -1,0 +1,84 @@
+{
+  "abstract": "The ∈ Principle introduces a philosophical and institutional proposal for public authorship in the age of artificial intelligence. The symbol ∈ marks the moment when a work enters the public sphere with an explicitly assumed author behind it. The principle extends from historical acts of authorship to the emerging challenge of autonomous AI agents.",
+  "artifacts": [
+    {
+      "bytes": 1281279,
+      "checksum": {
+        "algorithm": "sha-256",
+        "value": "616c469f379e94a913b0a9eb8c1f1b8ee1338cbfb0e914e0769714799d072471"
+      },
+      "future_url": "https://agent-manifest-spec.org/works/e-principle/e-principle-v1.0.zip",
+      "kind": "code"
+    }
+  ],
+  "authors": [
+    {
+      "name": "Hernán Alfredo Capucci",
+      "orcid": "0009-0008-7216-3032"
+    }
+  ],
+  "current_version": {
+    "date": "2026-03-11",
+    "doi_version": "10.5281/zenodo.18965669",
+    "is_current": true,
+    "vN": "v1"
+  },
+  "doi_concept": "10.5281/zenodo.18965668",
+  "exports": {
+    "apa": "https://agent-manifest-spec.org/works/e-principle/cite-apa.txt",
+    "bibtex": "https://agent-manifest-spec.org/works/e-principle/cite.bib",
+    "csl-json": "https://agent-manifest-spec.org/works/e-principle/cite.json",
+    "markdown": "https://agent-manifest-spec.org/works/e-principle/cite.md",
+    "plain": "https://agent-manifest-spec.org/works/e-principle/cite-plain.txt",
+    "ris": "https://agent-manifest-spec.org/works/e-principle/cite.ris"
+  },
+  "id": "amw-005",
+  "keywords": [
+    "authorship",
+    "public responsibility",
+    "AI governance",
+    "AI accountability",
+    "autonomous agents",
+    "Agent Manifest",
+    "digital institutions"
+  ],
+  "language": "en",
+  "license": {
+    "spdx": "CC-BY-4.0",
+    "url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "links": {
+    "doi_concept": "https://doi.org/10.5281/zenodo.18965668",
+    "doi_version": "https://doi.org/10.5281/zenodo.18965669",
+    "landing": "https://agent-manifest-spec.org/works/e-principle",
+    "orcid": "https://orcid.org/0009-0008-7216-3032",
+    "pdf": null,
+    "zenodo": "https://zenodo.org/records/18965669"
+  },
+  "provenance": {
+    "intellectual_author": "Hernán Alfredo Capucci",
+    "orcid": "0009-0008-7216-3032",
+    "surface": "Academic Surface"
+  },
+  "publication_status": "published",
+  "relations": [
+    {
+      "inverse": "pending",
+      "predicate": "isBasedOn",
+      "target_doi": "10.5281/zenodo.18945860"
+    },
+    {
+      "inverse": "pending",
+      "predicate": "isBasedOn",
+      "target_doi": "10.5281/zenodo.18945953"
+    }
+  ],
+  "slug": "e-principle",
+  "title": "∈ Principle",
+  "topics": [
+    "authorship",
+    "public responsibility",
+    "AI accountability"
+  ],
+  "type": "software"
+}
