@@ -21,6 +21,7 @@
     "visibility": { "type": "string", "enum": ["public", "unlisted", "draft"] },
     "language": { "type": "string", "minLength": 2, "description": "BCP-47 tag on the surface (en/es); 'enc' is invalid here (ASV-WORK-007)." },
     "abstract": { "type": "string" },
+    "summary": { "type": "string", "description": "Optional authorial short form, used verbatim as the index description (Academic Editorial System v2.1, III.3 Summaries, priority 1). Without it the index falls back to a guarded first-sentence extract of the abstract." },
     "keywords": { "type": "array", "items": { "type": "string" } },
     "topics": { "type": "array", "items": { "type": "string" } },
     "ecosystem_role": { "type": "string", "description": "Optional editorial statement of the work's intellectual function in the ecosystem, rendered on the landing. Factual and non-promotional; never a claim of primacy, adoption, or authority." },

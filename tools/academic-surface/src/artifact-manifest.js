@@ -10,6 +10,7 @@
 // Diagnostics use a MANIFEST-* namespace so they never collide with ASV-* rule ids.
 
 import { SEVERITY } from './diagnostics.js';
+import { isPublished } from './lib/canonical.js';
 
 // Fields required for every artifact-manifest, regardless of kind.
 const REQUIRED = [
@@ -65,7 +66,7 @@ export function checkArtifactManifest(manifest, work, opts = {}) {
   // published Work may carry a public/published artifact. This preserves the
   // guardrail (no artifact published ahead of its Work) while tracking the real,
   // gated publication state. Text extractability must be verified true.
-  const workPublished = work.visibility === 'public' && work.status === 'published';
+  const workPublished = isPublished(work);
   const expectVisibility = workPublished ? 'public' : 'internal';
   const expectPubStatus = workPublished ? 'published' : 'not-published';
   if (manifest.current_visibility !== expectVisibility) out.push(d('MANIFEST-STATE', SEVERITY.ERROR, `current_visibility '${manifest.current_visibility}' incoherent with the Work (expected '${expectVisibility}')`, manifest.current_visibility));

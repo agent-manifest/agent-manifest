@@ -60,7 +60,7 @@ test('D4: landing structure & accessibility invariants', () => {
 
 test('D4: landing embeds citation_*, JSON-LD ScholarlyArticle, canonical, OG, signposting', () => {
   const html = toLandingHTML(work);
-  assert.match(html, new RegExp(`<link rel="canonical" href="https://agent-manifest-spec.org/works/${work.slug}">`));
+  assert.match(html, new RegExp(`<link rel="canonical" href="https://agent-manifest-spec.org/works/${work.slug}/">`));
   assert.match(html, /<meta name="citation_title" content="Declaration Layers and the Evaluation of Agent Boundaries">/);
   assert.match(html, new RegExp(`<meta name="citation_doi" content="${cur.doi_version}">`));
   assert.match(html, /<meta name="citation_publication_date" content="2026\/03\/05">/);
@@ -68,7 +68,7 @@ test('D4: landing embeds citation_*, JSON-LD ScholarlyArticle, canonical, OG, si
   assert.match(html, /<link rel="cite-as"/);
   const ld = JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);
   assert.equal(ld['@type'], 'ScholarlyArticle');
-  assert.equal(ld.url, `https://agent-manifest-spec.org/works/${work.slug}`);
+  assert.equal(ld.url, `https://agent-manifest-spec.org/works/${work.slug}/`);
 });
 
 test('D4: landing has no AI attribution, no local paths, no tool provenance', () => {

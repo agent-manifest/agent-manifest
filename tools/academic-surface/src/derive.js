@@ -8,43 +8,31 @@
 
 import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
-import { BASE_URL, currentVersion, currentArtifact, dublinCoreType, isTextual, scholarDate, TYPE_TO_JSONLD, typeMeta, worksUrl } from './lib/canonical.js';
+import { BASE_URL, currentVersion, currentArtifact, dublinCoreType, isPublished, isTextual, scholarDate, TYPE_TO_JSONLD, typeMeta, worksUrl } from './lib/canonical.js';
 import { toLandingHTML } from './landing.js';
+import { stableJson } from './lib/html.js';
 
 // ---- helpers ---------------------------------------------------------------
 
-// Stable JSON: recursively sort object keys; preserve array order; trailing newline.
-function stable(value) {
-  const seen = (v) => {
-    if (Array.isArray(v)) return v.map(seen);
-    if (v && typeof v === 'object') {
-      const out = {};
-      for (const k of Object.keys(v).sort()) out[k] = seen(v[k]);
-      return out;
-    }
-    return v;
-  };
-  return JSON.stringify(seen(value), null, 2) + '\n';
-}
+// Stable JSON with the trailing newline every derived .json file carries.
+const stable = (value) => stableJson(value, { trailingNewline: true });
 
+// "Family, Given" -> parts. Everything after the first comma is the given-name
+// field, so a suffixed name ("Capucci, Hernan Alfredo, Jr.") keeps its suffix
+// instead of silently dropping it.
 function splitName(nameNormalized, nameHuman) {
   if (nameNormalized && nameNormalized.includes(', ')) {
-    const [family, given] = nameNormalized.split(', ');
-    return { family, given };
+    const [family, ...rest] = nameNormalized.split(', ');
+    return { family, given: rest.join(', ') };
   }
   const parts = (nameHuman || nameNormalized || '').trim().split(/\s+/);
   return { family: parts.slice(-1)[0] || '', given: parts.slice(0, -1).join(' ') };
 }
 
+// Iterate by code point, not code unit, so a given name that begins with an
+// astral-plane character never emits a lone surrogate into a citation file.
 function initials(given) {
-  return given.split(/\s+/).filter(Boolean).map((g) => `${g[0]}.`).join(' ');
-}
-
-// A Work is publicly materialized once it is public + published. In that state the
-// derived files drop the internal (draft/model-only) wrappers and carry no
-// `_internal` scaffolding; before it, they keep the informative D3 markers.
-function isPublished(work) {
-  return work.visibility === 'public' && work.status === 'published';
+  return given.split(/\s+/).filter(Boolean).map((g) => `${[...g][0]}.`).join(' ');
 }
 
 // Newest version date across the record (schema.org dateModified / freshness).
@@ -79,14 +67,14 @@ function derivedUrls(work) {
     artifactMime: art?.mime ?? null,
     version_doi: cur?.doi_version ? `https://doi.org/${cur.doi_version}` : null,
     concept_doi: work.doi_concept ? `https://doi.org/${work.doi_concept}` : null,
-    csl: `${landing}/cite.json`,
-    bibtex: `${landing}/cite.bib`,
-    ris: `${landing}/cite.ris`,
-    apa: `${landing}/cite-apa.txt`,
-    plain: `${landing}/cite-plain.txt`,
-    markdown: `${landing}/cite.md`,
-    json: `${landing}/index.json`,
-    schema: `${landing}/schema.json`
+    csl: `${landing}cite.json`,
+    bibtex: `${landing}cite.bib`,
+    ris: `${landing}cite.ris`,
+    apa: `${landing}cite-apa.txt`,
+    plain: `${landing}cite-plain.txt`,
+    markdown: `${landing}cite.md`,
+    json: `${landing}index.json`,
+    schema: `${landing}schema.json`
   };
 }
 
@@ -348,7 +336,7 @@ export function toSignposting(work) {
       { rel: 'alternate', href: u.bibtex, type: 'application/x-bibtex' },
       { rel: 'alternate', href: u.ris, type: 'application/x-research-info-systems' },
       { rel: 'alternate', href: u.json, type: 'application/json' }
-    ]
+    ].filter((l) => l.href)
   };
 }
 

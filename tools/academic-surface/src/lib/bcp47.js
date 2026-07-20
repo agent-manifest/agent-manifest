@@ -24,8 +24,3 @@ export function isSurfaceLanguageValid(tag) {
   const primary = tag.split('-')[0].toLowerCase();
   return ISO_639_1.has(primary);
 }
-
-/** Loose well-formedness check (structure only), used for provenance mirrors. */
-export function isWellFormedBcp47(tag) {
-  return typeof tag === 'string' && BCP47_SHAPE.test(tag);
-}

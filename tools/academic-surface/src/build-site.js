@@ -9,7 +9,7 @@
 
 import { readFileSync, writeFileSync, existsSync, mkdirSync, copyFileSync, rmSync } from 'node:fs';
 import { createHash } from 'node:crypto';
-import { dirname, join } from 'node:path';
+import { basename, dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { toLandingHTML } from './landing.js';
 import { currentVersion } from './lib/canonical.js';
@@ -84,12 +84,18 @@ export function buildStaging(opts = {}) {
   //    must match the SSOT checksum. The check is sha-256 based and kind-agnostic.
   const cur = currentVersion(work);
   const art = (cur?.artifacts ?? [])[0];
-  const pdfName = art ? art.path.split('/').pop() : null;
+  const pdfName = art ? basename(art.path) : null;
   const srcPdf = pdfName ? join(pilotDir, pdfName) : null;
   const fixity = {
     checked: false, ok: false, algorithm: art?.checksum_algorithm,
     expected: art?.checksum, actual: null, bytes_expected: art?.bytes, bytes_actual: null
   };
+  // A declared artifact that is not on disk is a fixity failure, not a silent
+  // skip: staging would otherwise preview a record without its own artifact and
+  // still exit 0.
+  if (art && (!srcPdf || !existsSync(srcPdf))) {
+    throw new Error(`Artifact missing for ${work.slug}: ${art.path} (expected ${srcPdf ?? '<no filename>'})`);
+  }
   if (srcPdf && existsSync(srcPdf)) {
     const bytes = readFileSync(srcPdf);
     fixity.actual = sha256(bytes);

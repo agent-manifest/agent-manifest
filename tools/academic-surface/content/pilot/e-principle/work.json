@@ -77,7 +77,7 @@
     }
   ],
   "web": {
-    "canonical": "https://agent-manifest-spec.org/works/e-principle",
+    "canonical": "https://agent-manifest-spec.org/works/e-principle/",
     "robots_noindex": false,
     "version_signposted": true,
     "signposting": ["cite-as", "describedby", "author", "license", "type", "item", "alternate"],

@@ -11,8 +11,9 @@ import { createHash } from 'node:crypto';
 import { dirname, join, basename } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { renderAll } from './derive.js';
-import { toWorksIndexHTML, isPublished } from './works-index.js';
-import { currentArtifact } from './lib/canonical.js';
+import { toWorksIndexHTML } from './works-index.js';
+import { currentArtifact, currentVersion, isPublished } from './lib/canonical.js';
+import { validate } from './index.js';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const MODULE_DIR = join(HERE, '..');
@@ -77,6 +78,17 @@ export function publishSite(opts = {}) {
   const published = [];
   for (const { path, work } of loaded) {
     if (!isPublished(work)) continue; // never materialize drafts
+    // Nothing reaches the public surface without passing the validator. The
+    // battery used to be enforced only by tests that name the pilot SSOTs, so a
+    // Work added later could have been published unvalidated.
+    const { report } = validate(work, { asOf: opts.asOf });
+    if (!report.ok) {
+      const blocking = (report.diagnostics ?? []).filter((d) => d.severity === 'ERROR');
+      throw new Error(
+        `Refusing to publish ${work.slug}: validation failed with ${blocking.length} error(s).\n` +
+        blocking.map((d) => `  [${d.rule_id}] ${d.path ?? ''} ${d.message}`).join('\n')
+      );
+    }
     const pilotDir = dirname(path);
     const outDir = join(worksRoot, work.slug);
     if (existsSync(outDir)) rmSync(outDir, { recursive: true, force: true });
@@ -124,8 +136,17 @@ export function checkPublic(opts = {}) {
       if (!existsSync(p)) { missing.push(`${work.slug}/${name}`); continue; }
       if (readFileSync(p, 'utf8') !== content) drift.push(`${work.slug}/${name}`);
     }
-    // README must never be published.
-    if (existsSync(join(outDir, 'README.md'))) stray.push(`${work.slug}/README.md`);
+    // Nothing may sit in a published slug that the generator did not put there:
+    // the rendered set, plus the declared artifact. An editor backup, a leftover
+    // older PDF, or a hand-dropped file is a stray and fails the check.
+    if (existsSync(outDir)) {
+      const allowed = new Set(Object.keys(rendered));
+      const declared = (currentVersion(work)?.artifacts ?? []).map((a) => basename(a.path));
+      for (const n of declared) allowed.add(n);
+      for (const name of readdirSync(outDir)) {
+        if (!allowed.has(name)) stray.push(`${work.slug}/${name}`);
+      }
+    }
     // PDF fixity.
     try {
       const { pdfName, fixity: fx } = verifiedPdf(pilotDir, work);

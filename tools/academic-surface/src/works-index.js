@@ -4,25 +4,13 @@
 // clock, no network. Same input -> same bytes. The index advertises only Works
 // that are public + published; drafts never surface here.
 
-import { currentVersion, worksUrl, BASE_URL, typeMeta } from './lib/canonical.js';
+import { currentVersion, worksUrl, BASE_URL, typeMeta, isPublished } from './lib/canonical.js';
 import { EDITORIAL_STYLE, FONT_LINKS, skipLink, siteHeader, siteFooter } from './lib/editorial.js';
+import { esc, attr, jsonLdBody } from './lib/html.js';
 
-function esc(s) {
-  return String(s ?? '')
-    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
-}
-const attr = esc;
-
-function stableJson(value) {
-  const sort = (v) => Array.isArray(v) ? v.map(sort) : (v && typeof v === 'object'
-    ? Object.fromEntries(Object.keys(v).sort().map((k) => [k, sort(v[k])])) : v);
-  return JSON.stringify(sort(value), null, 2);
-}
-
-export function isPublished(work) {
-  return work.visibility === 'public' && work.status === 'published';
-}
+// Re-exported so existing importers keep working; the definition now lives in
+// lib/canonical.js, which is the single vocabulary shared by every generator.
+export { isPublished };
 
 // Deterministic order: by slug. Only public+published Works are ever listed.
 export function listedWorks(works) {
@@ -33,10 +21,39 @@ const INDEX_URL = `${BASE_URL}/works/`;
 
 // Visual layer: the shared Academic Editorial System (src/lib/editorial.js).
 
+// Common abbreviations whose full stop does not end a sentence. Charter III.3
+// permits a deterministic extract ONLY when segmentation is unambiguous and the
+// result does not truncate an abbreviation, a reference, or a formula; when the
+// candidate is ambiguous the rule is to fall back to the full abstract rather
+// than publish a misleading fragment.
+const ABBREVIATIONS = new Set([
+  'approx', 'cf', 'e.g', 'i.e', 'et al', 'fig', 'no', 'vs', 'vol', 'ch', 'sec',
+  'eq', 'ref', 'pp', 'p', 'ed', 'eds', 'st', 'mr', 'ms', 'dr', 'prof', 'inc',
+  'ltd', 'al'
+]);
+
+function endsOnAbbreviation(candidate) {
+  const tail = candidate.replace(/\.$/, '');
+  const lastWord = tail.split(/\s+/).pop() ?? '';
+  if (ABBREVIATIONS.has(lastWord.toLowerCase())) return true;
+  // "e.g." / "i.e." / a single initial ("H.") — a full stop inside or right
+  // after a one-letter token is never a sentence boundary.
+  if (/(^|\s)[A-Za-z]$/.test(tail)) return true;
+  if (/(^|\s)[A-Za-z]\.[A-Za-z]$/.test(tail)) return true;
+  // A decimal or a numbered reference: "0.5", "Section 3."
+  if (/\d$/.test(tail) && /\d\.$/.test(candidate)) return true;
+  return false;
+}
+
 function firstSentence(abstract) {
   const flat = (abstract ?? '').replace(/\s*\n\s*/g, ' ').trim();
   const m = flat.match(/^(.*?\.)(\s|$)/);
-  return (m ? m[1] : flat).trim();
+  if (!m) return flat;
+  const candidate = m[1].trim();
+  // Ambiguous segmentation, or a fragment so short it cannot carry the meaning:
+  // show the full abstract instead of a misleading extract.
+  if (endsOnAbbreviation(candidate)) return flat;
+  return candidate;
 }
 
 // Index summary text, per the Editorial Charter III.3 priority: (1) an explicit
@@ -61,7 +78,7 @@ function workItemHtml(work) {
     // .eyebrow class — no new taxonomy, no empty "Foundations" section, no card
     // padding. A work without the field renders exactly as before.
     work.ecosystem_role ? '          <p class="eyebrow">Foundational work</p>' : null,
-    `          <h2><a href="/works/${attr(work.slug)}">${esc(work.title)}</a></h2>`,
+    `          <h2><a href="/works/${attr(work.slug)}/">${esc(work.title)}</a></h2>`,
     `          <p class="by">${authors} · ${esc(typeMeta(work.type).label)} · <time datetime="${attr(cur?.date)}">${esc(cur?.date)}</time></p>`,
     `          <p class="desc">${esc(summaryText(work))}</p>`,
     '          <p class="afford">Canonical landing<span>·</span>Version DOI<span>·</span>Machine-readable metadata</p>',
@@ -107,7 +124,7 @@ function collectionJsonLd(works) {
       }
     ]
   };
-  return `  <script type="application/ld+json">\n${stableJson(graph)}\n  </script>`;
+  return `  <script type="application/ld+json">\n${jsonLdBody(graph)}\n  </script>`;
 }
 
 export function toWorksIndexHTML(works) {

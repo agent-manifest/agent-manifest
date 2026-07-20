@@ -23,7 +23,7 @@
   },
   "external_urls": [ { "url": "https://example.org/records/multi", "rel": "sameAs", "label": "Preservation copy (fictitious)" } ],
   "web": {
-    "canonical": "https://agent-manifest-spec.org/works/a-fictitious-multiversion-work",
+    "canonical": "https://agent-manifest-spec.org/works/a-fictitious-multiversion-work/",
     "robots_noindex": false,
     "version_signposted": true,
     "signposting": ["cite-as", "describedby", "author", "type"],

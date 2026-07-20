@@ -55,7 +55,7 @@
   "links": {
     "doi_concept": "https://doi.org/10.5281/zenodo.18880519",
     "doi_version": "https://doi.org/10.5281/zenodo.18880520",
-    "landing": "https://agent-manifest-spec.org/works/declaration-layers",
+    "landing": "https://agent-manifest-spec.org/works/declaration-layers/",
     "orcid": "https://orcid.org/0009-0008-7216-3032",
     "pdf": "https://agent-manifest-spec.org/works/declaration-layers/declaration-layers.pdf",
     "zenodo": "https://zenodo.org/records/18880520"

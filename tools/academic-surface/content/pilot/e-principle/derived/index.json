@@ -50,7 +50,7 @@
   "links": {
     "doi_concept": "https://doi.org/10.5281/zenodo.18965668",
     "doi_version": "https://doi.org/10.5281/zenodo.18965669",
-    "landing": "https://agent-manifest-spec.org/works/e-principle",
+    "landing": "https://agent-manifest-spec.org/works/e-principle/",
     "orcid": "https://orcid.org/0009-0008-7216-3032",
     "pdf": null,
     "zenodo": "https://zenodo.org/records/18965669"
