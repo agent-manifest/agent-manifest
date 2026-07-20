@@ -28,6 +28,25 @@ Future changes require version increments.
 Future stewardship, forks, reinterpretations, or independent evolutions
 are explicitly permitted and encouraged.
 
+## Public surface
+
+Every public intellectual work in the ecosystem has a single canonical
+representation of record under `agent-manifest-spec.org` — a landing page that
+carries the work's identity, citation, and machine-readable metadata. The other
+surfaces a work may hold are complementary to that landing, not substitutes for
+it:
+
+- GitHub, within the Agent Manifest organization, is the canonical source of
+  code, history, versions, releases, and governance.
+- Zenodo provides preservation and DOIs.
+- ORCID, DataCite, and OpenAlex are external surfaces of identity and
+  distribution.
+
+None of these external surfaces replaces a work's own canonical public landing.
+The landing under `agent-manifest-spec.org` is the reference to which the others
+point; it does not claim authority over them, and their existence does not
+diminish it.
+
 ## Contributions
 
 Contributions are welcome via issues and pull requests.
