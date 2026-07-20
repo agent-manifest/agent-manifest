@@ -259,6 +259,46 @@ unchanged and still served.
 
 ---
 
+## 6b · Correction applied during pre-merge review
+
+A pre-merge check found one silent loss that the line-level audit of §3 had
+missed, because it compared removed *lines* and this was a rewritten *block*.
+
+Converging the Specification footer onto the SiteFooter component dropped two
+phrases that were present in the original footer:
+
+- "Open Specification, Standards Track"
+- "Independent Research"
+
+Neither fact was lost from the page — "Standards Track" remained on the cover and
+in §2, "Independent Research" on the cover — but the footer occurrence was
+removed, and "Standards Track" is the subject of deferred decision 2 in §7. Erasing
+one of its three occurrences would have partially pre-empted a decision reserved
+for the maintainer.
+
+**Restored.** The footer now carries the original wording and the additions:
+
+```
+Agent Manifest Core Declarative Specification v1.0 — Open Specification, Standards Track
+Hernán Alfredo Capucci — Independent Research — February 2026. Content licensed under CC BY 4.0.
+Schema identifier: …/spec/v1.0/schema.json · ORCID 0009-0008-7216-3032 · https://doi.org/10.5281/zenodo.18833956
+```
+
+"Standards Track" is back to three occurrences, matching the base branch, each in
+its original place. The cover and §2 were not touched.
+
+The line-level method was then replaced by a **phrase-level audit**: for every
+changed Markdown and HTML file, every three-word sequence present in the base and
+absent from the branch was enumerated and reconciled against the table in §3. 30
+files reported deltas; all correspond to documented replacements. Three rewrites
+were spot-checked for hidden loss and cleared: the six items of the MAS-Lab
+comparison, all ten example manifests in the examples index, and the reachability
+of the Markdown specification from the Home.
+
+This correction is why the guarantee in §1 holds as stated.
+
+---
+
 ## 7 · Open doctrinal decisions — deliberately deferred
 
 These are **not** addressed by this change. They require the maintainer's
