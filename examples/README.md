@@ -99,3 +99,7 @@ example and renaming it would break existing references.
 
 Agent Manifest operates at the Declaration Layer.  
 Enforcement and execution remain external to these examples.
+
+## Multi-agent flows
+
+- [ORCHESS — multi-agent development flow with declared roles](./orchess-multi-agent-flow/)
