@@ -1,3 +1,9 @@
+---
+title: Stability
+description: What is frozen at v1.0 of the Agent Manifest specification and what may still change within the v1.x series.
+section: Governance
+---
+
 # Stability
 
 Agent Manifest is designed to remain minimal and structurally stable.
@@ -46,7 +52,7 @@ The core principles are defined in:
 
 - [CORE_PRINCIPLES.md](./CORE_PRINCIPLES.md)
 
-Changes to core principles should be treated as major-level changes in spirit, even if the specification remains compatible.
+Changes to core principles require a major version, per CORE_PRINCIPLES.md.
 
 Stability in Agent Manifest means:
 

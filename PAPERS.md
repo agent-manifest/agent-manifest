@@ -1,4 +1,10 @@
-# Agent Manifest Papers
+---
+title: Papers
+description: Writing by the author on the declaration layer, its published records, and their identifiers.
+section: Research
+---
+
+# Papers
 
 Agent Manifest Papers is an ongoing series examining declarative governance in autonomous systems.
 
@@ -31,11 +37,11 @@ These papers are hosted externally and are independent publications by the autho
 They are not normative components of the specification.
 
 ### Paper #04 — The Pre-Execution Identity Gap
-A formalization of the missing identity layer in autonomous AI systems, introducing a minimal declarative framework (Agent Manifest) for pre-execution boundary definition.
+Formalizes the pre-execution identity gap and describes a minimal declarative layer (Agent Manifest) for pre-execution boundary definition.
 
 DOI: https://doi.org/10.5281/zenodo.19432968
 
-This paper defines the Pre-Execution Identity Gap and positions declarative identity as a necessary architectural layer for multi-agent systems.
+This paper defines the Pre-Execution Identity Gap and argues that declarative identity may be treated as an architectural layer for multi-agent systems.
 
 ---
 
@@ -52,12 +58,11 @@ It examines the principles underlying pre-execution authority and declarative bo
 
 ---
 
-## Ongoing
-
-Paper #05 — In development.
-
----
-
 ## External citations
 
 External academic and technical works citing Agent Manifest are tracked in [CITATIONS.md](./CITATIONS.md).
+
+## Ongoing
+
+Paper #05 — In development. No identifier is registered yet; this entry records
+that the work exists, not that it is published.

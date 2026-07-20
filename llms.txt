@@ -15,8 +15,18 @@ score agent behavior.
 - JSON Schema:   https://agent-manifest-spec.org/spec/v1.0/schema.json
 - Discovery:     https://agent-manifest-spec.org/.well-known/agent-manifest-registry.json
 - Works:         https://agent-manifest-spec.org/works/
-- ∈ Principle:   https://agent-manifest-spec.org/works/e-principle
-- Declaration Layers: https://agent-manifest-spec.org/works/declaration-layers
+- ∈ Principle:   https://agent-manifest-spec.org/works/e-principle/
+                 DOI https://doi.org/10.5281/zenodo.18965669
+- Declaration Layers: https://agent-manifest-spec.org/works/declaration-layers/
+                 DOI https://doi.org/10.5281/zenodo.18880520
+- Governance:    https://agent-manifest-spec.org/GOVERNANCE.html
+- Terminology:   https://agent-manifest-spec.org/TERMINOLOGY.html
+- Versioning:    https://agent-manifest-spec.org/VERSIONING_POLICY.html
+- Stability:     https://agent-manifest-spec.org/STABILITY.html
+- Misconceptions: https://agent-manifest-spec.org/docs/MISCONCEPTIONS.html
+- Adjacent specs: https://agent-manifest-spec.org/docs/comparison.html
+- Foundations:   https://agent-manifest-spec.org/foundations/
+- Public comment: https://agent-manifest-spec.org/nist-comment/nist-comment-2026.html
 
 ## Source repositories
 
@@ -27,6 +37,9 @@ score agent behavior.
 - Ambassador (UI):     https://github.com/agent-manifest/agent-manifest-ambassador
 - Diplomat (API):      https://github.com/agent-manifest/agent-manifest-diplomat
 - Boundary Handshake:  https://github.com/agent-manifest/boundary-handshake
+- Command-line tool:   https://github.com/agent-manifest/agent-manifest-cli
+- ∈ Principle:         https://github.com/agent-manifest/e-principle
+- Agentic surface research: https://github.com/agent-manifest/agentic-surface-research
 - Ambassador (live):   https://agent-manifest.github.io/agent-manifest-ambassador/
 
 ## Identifiers
@@ -92,8 +105,27 @@ A v1.0 Agent Manifest declares:
 - Not a runtime, framework, or agent execution engine.
 - Not a behavioral monitor, observability layer, or audit system.
 - Not a compliance certification or scoring service.
-- Not a guarantee of behavior — a declaration of declared constraints.
+- Not a guarantee of behavior — a declaration of constraints, not a warrant
+  that they are honoured.
 - Not a replacement for governance, policy, or legal frameworks.
+
+## Machine-readable representations
+
+Each published Work co-locates its metadata with its landing page. For a Work at
+https://agent-manifest-spec.org/works/<slug>/ the following are served:
+
+- index.json        record summary
+- schema.json       JSON-LD (schema.org)
+- cite.json         CSL-JSON
+- cite.bib          BibTeX
+- cite.ris          RIS
+- cite.md           Markdown citation
+- cite-apa.txt      APA, plain text
+- cite-plain.txt    plain-text citation
+- dublin-core.json  Dublin Core
+- highwire.json     Highwire citation_* tags (textual Works only)
+- opengraph.json    OpenGraph
+- signposting.json  FAIR Signposting link set
 
 ## Citation
 

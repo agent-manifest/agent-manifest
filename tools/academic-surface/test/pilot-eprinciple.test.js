@@ -151,7 +151,7 @@ test('works index: ∈ Principle is listed as a Foundational work / Software; DL
   const dl = JSON.parse(readFileSync(join(HERE, '..', 'content', 'pilot', 'declaration-layers', 'work.json'), 'utf8'));
   const html = toWorksIndexHTML([dl, work]);
   // e-principle: role eyebrow + software type
-  assert.match(html, /<p class="eyebrow">Foundational work<\/p>\s*<h2><a href="\/works\/e-principle">∈ Principle<\/a><\/h2>/);
+  assert.match(html, /<p class="eyebrow">Foundational work<\/p>\s*<h2><a href="\/works\/e-principle\/">∈ Principle<\/a><\/h2>/);
   assert.match(html, /∈ Principle<\/a><\/h2>\s*<p class="by">Hernán Alfredo Capucci · Software ·/);
   // declaration-layers: no eyebrow, still a working paper
   assert.match(html, /Declaration Layers[\s\S]*?· Working paper ·/);

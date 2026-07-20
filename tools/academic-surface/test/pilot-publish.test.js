@@ -154,7 +154,7 @@ test('EC: landing carries author, Twitter summary (no image), breadcrumb, WebPag
   const art = nodes.find((n) => n['@type'] === 'ScholarlyArticle');
   assert.equal(art.dateModified, '2026-03-05');
   assert.equal(art.version, 'v1');
-  assert.equal(art.mainEntityOfPage, 'https://agent-manifest-spec.org/works/declaration-layers');
+  assert.equal(art.mainEntityOfPage, 'https://agent-manifest-spec.org/works/declaration-layers/');
   const bc = nodes.find((n) => n['@type'] === 'BreadcrumbList');
   assert.equal(bc.itemListElement.length, 3);
   assert.equal(bc.itemListElement[2].name, work.title);

@@ -9,21 +9,12 @@
 // in the local, non-servable preview and disappears before production.
 
 import {
-  toCSL, toBibTeX, toRIS, toAPA, toHighwire, toJSONLD, toOpenGraph, toDublinCore, toSignposting
+  toBibTeX, toRIS, toAPA, toHighwire, toJSONLD, toOpenGraph, toDublinCore, toSignposting
 } from './derive.js';
 import { basename } from 'node:path';
 import { currentVersion, currentArtifact, isTextual, BASE_URL, worksUrl, typeMeta, langLabel, TYPE_TO_JSONLD } from './lib/canonical.js';
 import { EDITORIAL_STYLE, FONT_LINKS, skipLink, siteHeader, siteFooter } from './lib/editorial.js';
-
-// ---- escaping --------------------------------------------------------------
-
-function esc(s) {
-  return String(s ?? '')
-    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
-}
-// attribute-safe (same rules; kept explicit for intent at call sites)
-const attr = esc;
+import { esc, attr, jsonLdBody } from './lib/html.js';
 
 // ---- head fragments --------------------------------------------------------
 
@@ -91,15 +82,8 @@ function signpostingLinks(work) {
     .join('\n');
 }
 
-// Stable, sorted-key JSON so every embedded block is byte-stable across runs.
-function stableJson(value) {
-  const sort = (v) => Array.isArray(v) ? v.map(sort) : (v && typeof v === 'object'
-    ? Object.fromEntries(Object.keys(v).sort().map((k) => [k, sort(v[k])])) : v);
-  return JSON.stringify(sort(value), null, 2);
-}
-
 function jsonLdScript(work) {
-  return `  <script type="application/ld+json">\n${stableJson(toJSONLD(work))}\n  </script>`;
+  return `  <script type="application/ld+json">\n${jsonLdBody(toJSONLD(work))}\n  </script>`;
 }
 
 // Page-structural JSON-LD (WebPage + BreadcrumbList) distinct from the Work's
@@ -133,7 +117,7 @@ function structuralJsonLd(work) {
       }
     ]
   };
-  return `  <script type="application/ld+json">\n${stableJson(graph)}\n  </script>`;
+  return `  <script type="application/ld+json">\n${jsonLdBody(graph)}\n  </script>`;
 }
 
 // ---- inline styles ---------------------------------------------------------
@@ -285,7 +269,7 @@ function historyHtml(work) {
   const versions = (work.versions ?? []).filter((v) => v.date);
   if (!versions.length) return '';
   // Newest first; each version's changelog lines flattened to one honest entry.
-  const rows = [...versions].sort((a, b) => (a.date < b.date ? 1 : -1)).map((v) => {
+  const rows = [...versions].sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0)).map((v) => {
     const note = (v.changelog ?? []).join(' ').trim();
     return `      <li><time datetime="${attr(v.date)}">${esc(v.date)}</time> — ${esc(v.vN)}${note ? ` — ${esc(note)}` : ''}</li>`;
   });
@@ -363,7 +347,7 @@ export function toLandingHTML(work, opts = {}) {
   ].filter((l) => l !== null).join('\n');
 
   const body = [
-    staging ? '  <div role="note" style="background:#8a1c1c;color:#fff;text-align:center;padding:.5rem 1rem;font-size:.85rem;">Local staging preview — not published, not indexable. Temporary.</div>' : null,
+    staging ? '  <div role="note" style="background:var(--paper-dark);color:#fff;text-align:center;padding:.5rem 1rem;font-size:.85rem;">Local staging preview — not published, not indexable. Temporary.</div>' : null,
     skipLink(),
     siteHeader('Academic Surface'),
     breadcrumbHtml(work),

@@ -1,12 +1,18 @@
-# Agent Manifest — Terminology (v1.x)
+---
+title: Terminology (v1.x)
+description: The governed vocabulary of the Agent Manifest v1.x specification, with one canonical form per term.
+section: Concept
+---
+
+# Terminology (v1.x)
 
 ## Status
 
 This document defines the normative terminology for the Agent Manifest v1.x series.
 
-All core documents (README, CORE_PRINCIPLES.md, ARCHITECTURE.md, spec, examples) must use these terms consistently.
+All root documents and the versioned specification must use these terms consistently.
 
-No alternative synonyms should be introduced within the v1.x series.
+No alternative synonyms are introduced within the v1.x series.
 
 ---
 

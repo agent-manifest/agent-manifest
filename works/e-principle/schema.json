@@ -1,6 +1,6 @@
 {
   "@context": "https://schema.org",
-  "@id": "https://agent-manifest-spec.org/works/e-principle",
+  "@id": "https://agent-manifest-spec.org/works/e-principle/",
   "@type": "SoftwareSourceCode",
   "abstract": "The ∈ Principle introduces a philosophical and institutional proposal for public authorship in the age of artificial intelligence. The symbol ∈ marks the moment when a work enters the public sphere with an explicitly assumed author behind it. The principle extends from historical acts of authorship to the emerging challenge of autonomous AI agents.",
   "author": [
@@ -57,12 +57,12 @@
     "digital institutions"
   ],
   "license": "https://creativecommons.org/licenses/by/4.0/",
-  "mainEntityOfPage": "https://agent-manifest-spec.org/works/e-principle",
+  "mainEntityOfPage": "https://agent-manifest-spec.org/works/e-principle/",
   "name": "∈ Principle",
   "sameAs": [
     "https://zenodo.org/records/18965669",
     "https://doi.org/10.5281/zenodo.18965669"
   ],
-  "url": "https://agent-manifest-spec.org/works/e-principle",
+  "url": "https://agent-manifest-spec.org/works/e-principle/",
   "version": "v1"
 }

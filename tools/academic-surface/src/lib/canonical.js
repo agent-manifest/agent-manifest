@@ -27,8 +27,29 @@ export function currentArtifact(work) {
   return (cur?.artifacts ?? [])[0] ?? null;
 }
 
+/**
+ * The canonical landing URL of a Work.
+ *
+ * The trailing slash is load-bearing. GitHub Pages serves a Work at
+ * `/works/<slug>/` and 301-redirects the slash-less form to it, so a canonical,
+ * `og:url`, `citation_abstract_html_url`, JSON-LD `@id`, or sitemap `<loc>`
+ * written without it declares a URL that never returns 200 — which makes search
+ * engines pick their own canonical and makes every relative href on the page
+ * (the PDF, the exports) resolve one directory too high. The declared canonical
+ * must be the URL that is actually served.
+ */
 export function worksUrl(slug) {
-  return `${BASE_URL}/works/${slug}`;
+  return `${BASE_URL}/works/${slug}/`;
+}
+
+/** The historical, frozen landing of one version: /works/<slug>/vN. */
+export function versionUrl(slug, vN) {
+  return `${worksUrl(slug)}${vN}`;
+}
+
+/** A Work is on the public surface only when it is both public and published. */
+export function isPublished(work) {
+  return work?.visibility === 'public' && work?.status === 'published';
 }
 
 /** Canonical citation fields; every export/Scholar tag must agree with these. */

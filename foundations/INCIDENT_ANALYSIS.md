@@ -1,4 +1,9 @@
-# Incident Analysis — Architectural Gap Patterns
+---
+title: Incident analysis — architectural gap patterns
+description: Recurring structural failure patterns in autonomous systems, mapped to the declaration fields that would have made the relevant boundaries explicit.
+---
+
+# Incident analysis — architectural gap patterns
 
 This document examines recurring structural failures in autonomous and semi-autonomous systems and demonstrates the governance gaps that Agent Manifest is designed to address.
 
@@ -234,7 +239,7 @@ For validation of the analytical framework, see:
 
 ## 10. Declarative Failure Zones
 
-For structural evaluation purposes, incident patterns can be mapped to recurring declarative failure zones.
+For structural evaluation purposes, incident patterns can be mapped to recurring declarative failure zones. The same five zones are defined, with their evaluation criteria, in the [Declarative Integrity Framework](./DECLARATIVE_INTEGRITY_FRAMEWORK.md).
 
 These zones are execution-agnostic and apply across vendors, industries, and deployment contexts.
 

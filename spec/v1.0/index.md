@@ -1,6 +1,11 @@
-# Agent Manifest v1.0 Specification
+---
+title: Agent Manifest v1.0 specification
+description: The entry point to the v1.0 normative documents — the specification text, the JSON Schema, the stability commitment, and an example manifest.
+---
 
-**Status:** Stable  
+# Agent Manifest v1.0 specification
+
+**Status:** Stable (published)  
 **Released:** February 2026
 
 ---
@@ -14,7 +19,7 @@
 
 ## About v1.0
 
-Agent Manifest v1.0 is the first stable release of the specification.
+v1.0 is the current stable version of the specification.
 
 ### Stability Commitment
 
@@ -26,7 +31,7 @@ See: [`VERSIONING_POLICY.md`](../../VERSIONING_POLICY.md) for full versioning ru
 
 ---
 
-## Quick Start
+## Example manifest
 
 ```json
 {
@@ -68,3 +73,12 @@ See: [`VERSIONING_POLICY.md`](../../VERSIONING_POLICY.md) for full versioning ru
   }
 }
 ```
+
+---
+
+## About this record
+
+Hernán Alfredo Capucci  
+ORCID 0009-0008-7216-3032  
+DOI: https://doi.org/10.5281/zenodo.18833956  
+License: CC BY 4.0

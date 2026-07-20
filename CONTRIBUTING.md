@@ -1,11 +1,11 @@
 # Contributing to Agent Manifest
 
-Thank you for your interest in contributing.
+This document states which contributions are accepted.
 
 Agent Manifest is a minimal, execution-agnostic specification.  
-Its goal is clarity, safety, and interoperability — not feature expansion.
+Its goals are clarity and interoperability — not feature expansion.
 
-The v1.0 release represents the first canonical specification freeze.
+v1.0 is the frozen canonical specification.
 Breaking changes require a version increment (v1.1 or higher).
 
 ## What Contributions Are Welcome
@@ -23,7 +23,7 @@ We welcome:
 - Changes that expand the core scope beyond declarative identity
 - Runtime-specific requirements
 - Vendor-specific integrations embedded into the core spec
-- Philosophical debates without concrete implementation implications
+- Conceptual proposals without a concrete specification change
 - Breaking changes without strong justification and version proposal
 
 ## Proposing Changes
@@ -62,7 +62,7 @@ The goal is coherence over expansion.
 
 To preserve architectural integrity, contributions are categorized as follows:
 
-### ✅ Low-Risk (PR welcome)
+### Low-Risk (PR welcome)
 
 - Editorial improvements
 - Documentation clarity
@@ -70,7 +70,7 @@ To preserve architectural integrity, contributions are categorized as follows:
 - Backwards-compatible refinements
 - Ambiguity identification with concrete proposal
 
-### ⚠️ Discussion Required Before PR
+### Discussion Required Before PR
 
 Open an Issue first if proposing:
 
@@ -80,7 +80,7 @@ Open an Issue first if proposing:
 - Autonomy model adjustments
 - Structural additions to the core spec
 
-### ❌ Out of Scope
+### Out of Scope
 
 - Runtime enforcement implementations
 - Policy engines or validators inside this repository

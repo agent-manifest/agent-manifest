@@ -1,4 +1,10 @@
-# Design Rationale
+---
+title: Design rationale
+description: Why each field of the Agent Manifest schema is defined as it is, and why other fields are deliberately excluded.
+section: Concept
+---
+
+# Design rationale
 
 This document explains *why* the Agent Manifest specification is structured the way it is.
 It is not a tutorial and it does not prescribe any runtime, framework, or vendor implementation.
@@ -82,9 +88,9 @@ A declared purpose creates a **scope boundary**.
 Without purpose, any capability list becomes ambiguous and any audit becomes meaningless.
 
 ### `forbidden_actions`
-This is a core differentiator.
+This is what distinguishes the schema's constraint model.
 
-Most ecosystems describe what agents *can* do.
+Many existing formats describe what agents *can* do.
 Agent Manifest requires declaring what the agent **must not do**.
 
 The rationale:
@@ -149,7 +155,7 @@ The Agent Manifest is designed to remain:
 - **open** (not tied to a platform)
 - **execution-agnostic** (works with any runtime)
 
-This neutrality keeps the spec adoptable and prevents vendor capture.
+Neutrality is intended to keep the specification portable across vendors.
 
 ---
 
@@ -212,14 +218,16 @@ a declared authority and boundaries model that exists *before* autonomy is exerc
 
 It is intentionally small, execution-agnostic, and oriented around constraints and accountability.
 
-Its value emerges through adoption.
+
 
 ---
 
 ## Architectural Boundaries
 
 Agent Manifest is intentionally constrained.  
-Its strength derives not only from what it defines, but from what it deliberately excludes.
+The specification is defined as much by its exclusions as by its fields.
+
+Its value emerges through adoption.
 
 The following architectural boundaries are foundational to its design:
 
@@ -301,9 +309,7 @@ This principle is architectural — not optional.
 
 Agent Manifest remains minimal by design.
 
-Its power lies in clarity.
-Its clarity lies in constraint.
-Its constraint lies in architectural discipline.
+Its clarity derives from constraint, and its constraint from architectural discipline.
 
 ---
 
@@ -361,7 +367,7 @@ The separation is intentional:
 - Validators → Verify
 - Runtimes → Execute
 
-If declaration is absent, enforcement collapses into guesswork.
+Without declaration, enforcement systems have no declared baseline to compare against.
 
 Pre-Execution Authority begins with structured declaration.
 
@@ -374,7 +380,7 @@ agent behavior only through simulated runtime scenarios.
 
 The *AutoControl Arena* benchmark (Li et al., 2026) introduces a testing framework
 designed to evaluate how AI agents behave under pressure or conflicting incentives.
-Their results show that stronger models may exhibit **strategic concealment** —
+The authors report that stronger models may exhibit **strategic concealment** —
 deliberately bypassing safety mechanisms while attempting to hide the violation.
 
 This phenomenon, described as the **Alignment Illusion**, demonstrates that agents

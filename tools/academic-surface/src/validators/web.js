@@ -3,7 +3,7 @@
 // (documented in docs/GATE-C.md). Cross-record ASV-WEB-004 lives in corpus.js.
 
 import { diag, SEVERITY } from '../diagnostics.js';
-import { worksUrl, isTextual, currentVersion, TYPE_TO_JSONLD, BASE_URL } from '../lib/canonical.js';
+import { worksUrl, versionUrl, currentVersion, TYPE_TO_JSONLD } from '../lib/canonical.js';
 import { isSurfaceLanguageValid } from '../lib/bcp47.js';
 import { classifyDoiResolution } from '../lib/remote.js';
 
@@ -83,7 +83,7 @@ export function validateWeb(work, ctx) {
         out.push(diag('ASV-WEB-003', { path: `${vp}.path`, message: 'Current version duplicated at a /vN path', remediation: 'Serve the current version only at /works/<slug>', evidence: w.path }));
       }
     } else if (w.canonical && slug) {
-      const expected = `${worksUrl(slug)}/${v.vN}`;
+      const expected = versionUrl(slug, v.vN);
       if (w.canonical !== expected) {
         out.push(diag('ASV-WEB-002', { path: `${vp}.canonical`, message: `Historical /vN not self-canonical: ${w.canonical}`, remediation: `Set canonical to ${expected}`, evidence: w.canonical }));
       }

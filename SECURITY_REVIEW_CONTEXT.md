@@ -1,4 +1,10 @@
-# Agent Manifest — Security Review Context
+---
+title: Security review context
+description: What a declared manifest contributes to a security review, and what it does not replace.
+section: Governance
+---
+
+# Security review context
 
 Agent Manifest is not an enforcement framework.
 
@@ -38,7 +44,7 @@ This gap creates structural ambiguity during security review.
 
 ## What Agent Manifest Provides
 
-Agent Manifest introduces a standardized declaration surface for:
+Agent Manifest defines a declaration surface for:
 
 - Identity
 - Purpose
@@ -65,7 +71,7 @@ Security or governance teams may:
 - Identify mismatches between purpose and forbidden actions
 - Detect missing negative scope declarations
 
-The Manifest does not replace technical review.
+Agent Manifest does not replace technical review.
 
 It structures it.
 
@@ -82,7 +88,7 @@ Undeclared systems create ambiguity:
 
 Declared systems reduce ambiguity before execution.
 
-This improves:
+Declared boundaries can be referenced during:
 
 - Review clarity
 - Accountability mapping
@@ -114,6 +120,6 @@ Agent Manifest may be referenced as:
 - A pre-execution declaration requirement
 - A structured boundary checklist
 - A governance documentation artifact
-- A risk conversation accelerator
+- A structured input to risk review
 
 Its purpose is clarity before autonomy.

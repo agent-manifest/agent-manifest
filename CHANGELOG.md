@@ -1,3 +1,9 @@
+---
+title: Changelog
+description: Dated record of Agent Manifest releases, distinguishing the repository version track from the specification version track.
+section: Governance
+---
+
 # Changelog
 
 All notable changes to this project will be documented in this file.
@@ -54,7 +60,7 @@ citable version of the specification
 
 ## [1.0] - 2026-02-28
 
-First canonical public release.
+Canonical public release (v1.0).
 
 > Date note: 2026-02-28 is the repository/specification release date.
 > The archived citable version (DOI 10.5281/zenodo.18833956) was published
@@ -78,7 +84,7 @@ First canonical public release.
 ### Notes
 
 - This release supersedes all pre-1.0 development iterations.
-- Version 1.0 represents the first frozen, canonical specification state.
+- Version 1.0 is the frozen canonical specification state.
 
 ---
 

@@ -1,3 +1,8 @@
+---
+title: Public comment — NIST NCCoE
+description: Public comment submitted to the NIST NCCoE concept paper on software and AI agent identity and authorization, recorded as submitted.
+---
+
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19000957.svg)](https://doi.org/10.5281/zenodo.19000957)
 
 # Public Comment — NIST NCCoE

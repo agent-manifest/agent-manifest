@@ -6,9 +6,9 @@
 import { readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { SEVERITY } from './diagnostics.js';
-import { BASE_URL, currentVersion, currentArtifact, isTextual, scholarDate, TYPE_TO_JSONLD, worksUrl } from './lib/canonical.js';
+import { BASE_URL, currentVersion, currentArtifact, isPublished, isTextual, scholarDate, TYPE_TO_JSONLD, worksUrl } from './lib/canonical.js';
 
-const isPublished = (work) => work.visibility === 'public' && work.status === 'published';
+
 
 function d(file, message, evidence) {
   return { rule_id: 'CONSISTENCY', severity: SEVERITY.ERROR, file, message, evidence };
@@ -185,7 +185,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   const ssot = process.argv[2];
   const work = JSON.parse(readFileSync(ssot, 'utf8'));
   const dir = join(ssot, '..', 'derived');
-  const { ok, diagnostics } = checkConsistency(work, existsSync(dir) ? dir : join(ssot, '..', 'derived'));
+  const { ok, diagnostics } = checkConsistency(work, dir);
   if (ok) { console.log('derive-check consistency: OK'); process.exit(0); }
   for (const x of diagnostics) console.error(`  [${x.severity}] ${x.rule_id} ${x.file}: ${x.message}`);
   process.exit(1);

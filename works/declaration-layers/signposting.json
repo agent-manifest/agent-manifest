@@ -50,7 +50,7 @@
   ],
   "urls": {
     "concept_doi": "https://doi.org/10.5281/zenodo.18880519",
-    "conceptual": "https://agent-manifest-spec.org/works/declaration-layers",
+    "conceptual": "https://agent-manifest-spec.org/works/declaration-layers/",
     "pdf": "https://agent-manifest-spec.org/works/declaration-layers/declaration-layers.pdf",
     "version_doi": "https://doi.org/10.5281/zenodo.18880520"
   }

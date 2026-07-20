@@ -17,11 +17,11 @@
       "licenses": [ { "spdx": "CC-BY-4.0" } ],
       "relations": [ { "predicate": "isTranslationOf", "target_id": "fixt-020-es" } ],
       "web": {
-        "canonical": "https://agent-manifest-spec.org/works/a-fictitious-work-en",
+        "canonical": "https://agent-manifest-spec.org/works/a-fictitious-work-en/",
         "robots_noindex": false,
         "version_signposted": true,
         "signposting": ["cite-as", "author"],
-        "hreflang": [ { "lang": "es", "href": "https://agent-manifest-spec.org/works/a-fictitious-work-es" } ]
+        "hreflang": [ { "lang": "es", "href": "https://agent-manifest-spec.org/works/a-fictitious-work-es/" } ]
       },
       "scholar": {
         "citation_title": "A Fictitious Work",
@@ -52,11 +52,11 @@
       "licenses": [ { "spdx": "CC-BY-4.0" } ],
       "relations": [ { "predicate": "hasTranslation", "target_id": "fixt-020-en" } ],
       "web": {
-        "canonical": "https://agent-manifest-spec.org/works/a-fictitious-work-es",
+        "canonical": "https://agent-manifest-spec.org/works/a-fictitious-work-es/",
         "robots_noindex": false,
         "version_signposted": true,
         "signposting": ["cite-as", "author"],
-        "hreflang": [ { "lang": "en", "href": "https://agent-manifest-spec.org/works/a-fictitious-work-en" } ]
+        "hreflang": [ { "lang": "en", "href": "https://agent-manifest-spec.org/works/a-fictitious-work-en/" } ]
       },
       "scholar": {
         "citation_title": "Una obra ficticia",

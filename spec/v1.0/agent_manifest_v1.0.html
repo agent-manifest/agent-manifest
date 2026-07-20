@@ -80,352 +80,37 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    /* ── Reset & Base ── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-/* Specification-page archetype of the Academic Editorial System v2.1.
-   Tokens mirror tools/academic-surface/src/lib/editorial.js (Appendix A).
-   Editorial layer only: content, structure, and head metadata are untouched.
-   Machine register (schema/field names, code) is monospace per II.6. */
-:root {
-  --sans:"DM Sans",ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-  --mono:"DM Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
-  --paper:#f5f4f0; --paper-sunk:#edecea;
-  --ink:#1a1917; --ink-2:#57544d; --ink-faint:#8a8780;
-  --rule:#dcdad4; --rule-strong:#c4c1b8;
-  --focus:#1a3a5c; --ok:#3a6b3a;
-  --page-max:46rem; --measure:40rem;
-  --boundary-seg:4rem; /* boundary rule — proprietary gesture (charter II.15) */
-}
-
-html { font-size: 16px; -webkit-text-size-adjust: 100%; }
-
-/* Normative-document variant of the Editorial System. Same tokens, paper/ink, DM
-   Sans/Mono, hairlines, and accessibility as the record surfaces — but the body
-   carries a heavier register (400, not the 300 of a reading surface) and headings
-   step up to 600/700, so the specification reads with the gravity of a standard.
-   Uniformity across surfaces is one editorial voice, not one typographic weight. */
-body {
-  font-family: var(--sans);
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.6;
-  color: var(--ink);
-  background: var(--paper);
-  padding: 4rem 2rem;
-}
-
-/* The boundary rule (charter II.15) — the cover's anchoring separator. */
-.boundary-rule {
-  position: relative; height: 0;
-  border-top: 1px solid var(--rule);
-  margin-top: 2.5rem;
-}
-.boundary-rule::before {
-  content: ""; position: absolute; left: 0; top: -1px;
-  width: var(--boundary-seg); border-top: 2px solid var(--ink);
-}
-
-a {
-  color: var(--ink);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  text-decoration-color: var(--rule);
-  transition: text-decoration-color .15s;
-}
-a:hover { text-decoration-color: var(--ink); }
-a:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
-
-/* Skip link — accessibility scaffolding (charter II.14). */
-.skip { position: absolute; left: -9999px; top: auto; }
-.skip:focus {
-  left: 1rem; top: 1rem; background: var(--focus); color: #fff;
-  padding: .5rem .75rem; border-radius: 3px; z-index: 10; text-decoration: none;
-}
-
-.page {
-  max-width: var(--page-max);
-  margin: 0 auto;
-}
-
-/* Running prose is held to the reading measure even inside the wider frame. */
-p { margin-bottom: 0.85rem; max-width: var(--measure); }
-
-/* ── Cover (title page) — left-anchored front matter, not a floating centered hero.
-   Grounding the masthead to the left margin gives the document the gravity of a
-   standard's front page and removes the "floating" impression. ── */
-.cover {
-  padding: 3rem 0 0;
-  margin-bottom: 3.5rem;
-}
-
-.cover .label {
-  font-family: var(--mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink-2);
-  margin-bottom: 1.25rem;
-}
-
-.cover h1 {
-  font-size: 3rem;
-  font-weight: 700;
-  letter-spacing: -0.035em;
-  line-height: 1.08;
-  margin-bottom: 0.5rem;
-}
-
-.cover .subtitle {
-  font-size: 1.25rem;
-  font-weight: 400;
-  color: var(--ink-2);
-  margin-bottom: 1.75rem;
-}
-
-.cover .version-badge {
-  display: inline-block;
-  font-family: var(--mono);
-  border: 1px solid var(--rule-strong);
-  color: var(--ink);
-  font-weight: 500;
-  font-size: 0.6875rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  padding: 0.25rem 0.6rem;
-  border-radius: 2px;
-  margin-bottom: 1.75rem;
-}
-
-.cover .meta {
-  font-family: var(--mono);
-  font-size: 0.8125rem;
-  color: var(--ink-2);
-  line-height: 1.9;
-  letter-spacing: 0.01em;
-}
-
-/* ── Abstract (verbatim prose; no box — charter Part IV / II.4) ── */
-.abstract {
-  margin-bottom: 3rem;
-}
-
-.abstract h2 {
-  font-family: var(--mono);
-  font-size: 0.6875rem;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--ink-2);
-  margin-bottom: 0.75rem;
-}
-
-.abstract p { font-size: 1rem; max-width: var(--measure); }
-
-/* ── TOC ── */
-.toc {
-  margin-bottom: 4rem;
-}
-
-.toc h2 {
-  font-family: var(--mono);
-  font-size: 0.6875rem;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--ink-2);
-  margin-bottom: 1rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid var(--rule);
-}
-
-.toc ol {
-  list-style: none;
-  padding: 0;
-}
-
-.toc > ol > li {
-  margin-bottom: 0.35rem;
-}
-
-.toc a {
-  font-size: 0.9rem;
-}
-
-.toc .toc-sub {
-  padding-left: 1.5rem;
-  font-size: 0.85rem;
-  color: var(--ink-2);
-  margin-top: 0.2rem;
-}
-
-/* ── Sections ── */
-section {
-  margin-bottom: 3.5rem;
-}
-
-h2.sec-title {
-  font-size: 1.5rem;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  color: var(--ink);
-  border-bottom: 2px solid var(--rule-strong);
-  padding-bottom: 0.5rem;
-  margin-bottom: 1.5rem;
-  margin-top: 3rem;
-}
-
-h3.subsec-title {
-  font-size: 1.125rem;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  margin-top: 2rem;
-  margin-bottom: 0.6rem;
-}
-
-h4.subsubsec-title {
-  font-size: 0.95rem;
-  font-weight: 600;
-  margin-top: 1.35rem;
-  margin-bottom: 0.5rem;
-  color: var(--ink-2);
-}
-
-/* ── Lists ── */
-ul.spec-list, ol.spec-list {
-  margin: 0.5rem 0 1rem 1.5rem;
-  max-width: var(--measure);
-}
-
-ul.spec-list li, ol.spec-list li {
-  margin-bottom: 0.4rem;
-  font-size: 1rem;
-}
-
-/* ── RFC 2119 keywords — normative tokens set in the machine register (mono), so
-   every MUST / SHOULD / MAY reads as a load-bearing normative term, not prose. ── */
-.rfc {
-  font-family: var(--mono);
-  font-weight: 500;
-  font-size: 0.9em;
-  letter-spacing: 0.01em;
-  color: var(--ink);
-}
-
-/* ── Code / Schema (machine register: monospace, sunken inset) ── */
-pre {
-  background: var(--paper-sunk);
-  border: 1px solid var(--rule);
-  padding: 1.25rem 1.5rem;
-  border-radius: 6px;
-  overflow-x: auto;
-  font-family: var(--mono);
-  font-size: 0.8125rem;
-  line-height: 1.6;
-  margin: 1rem 0 1.5rem;
-}
-
-code {
-  font-family: var(--mono);
-  font-size: 0.875em;
-  background: var(--paper-sunk);
-  padding: 0.1em 0.35em;
-  border-radius: 2px;
-}
-
-pre code {
-  background: none;
-  padding: 0;
-  font-size: inherit;
-}
-
-/* ── ASCII diagram ── */
-.ascii-diagram {
-  font-family: var(--mono);
-  font-size: 0.8125rem;
-  background: var(--paper-sunk);
-  border: 1px solid var(--rule);
-  padding: 1.25rem 1.5rem;
-  margin: 1rem 0 1.5rem;
-  white-space: pre;
-  overflow-x: auto;
-}
-
-/* ── Tables (hairline-ruled, no fill, no zebra, no color hierarchy — II.4) ── */
-.spec-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.9rem;
-  margin: 1rem 0 1.5rem;
-}
-
-.spec-table th {
-  color: var(--ink);
-  padding: 0.5rem 0.75rem;
-  text-align: left;
-  font-weight: 500;
-  border-bottom: 2px solid var(--rule-strong);
-}
-
-.spec-table td {
-  padding: 0.45rem 0.75rem;
-  border-bottom: 1px solid var(--rule);
-}
-
-/* ── Annex headers ── */
-.annex-banner {
-  text-align: center;
-  font-family: var(--mono);
-  font-size: 0.6875rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--ink-2);
-  border-top: 1px solid var(--rule-strong);
-  border-bottom: 1px solid var(--rule-strong);
-  padding: 0.5rem 0;
-  margin: 4rem 0 2rem;
-}
-
-/* ── Normative note ── */
-.normative-note {
-  font-size: 0.8125rem;
-  font-style: italic;
-  color: var(--ink-2);
-  margin-bottom: 1rem;
-}
-
-/* ── Footer ── */
-footer {
-  margin-top: 5rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--rule);
-  font-size: 0.8125rem;
-  color: var(--ink-2);
-  text-align: center;
-}
-
-/* ── Print ── */
-@media print {
-  body { padding: 2cm; font-size: 10pt; background: #fff; }
-  .cover { padding: 4rem 0 3rem; }
-  a { color: inherit; }
-  pre { font-size: 7.5pt; }
-}
-
-/* ── Motion ── */
-@media (prefers-reduced-motion: reduce) {
-  * { animation: none !important; transition: none !important; }
-}
-
-  </style>
+  <!-- Specification archetype of the Academic Editorial System v2.1 (Part V.5 /
+       Appendix F.3). The editorial layer is the shared, generated stylesheet whose
+       single source is tools/academic-surface/src/lib/editorial.js; this page
+       declares no CSS of its own, so its tokens and chrome cannot drift from the
+       rest of the ecosystem. Content, structure, and head metadata are untouched. -->
+  <link rel="stylesheet" href="/assets/css/editorial.css">
 </head>
-<body>
+<body class="spec">
 <a class="skip" href="#main">Skip to content</a>
-<div class="page">
+  <header class="site">
+    <div class="wrap">
+      <span class="brand">Agent Manifest</span>
+      <span class="surface">Specification</span>
+      <div class="boundary-rule" aria-hidden="true"></div>
+    </div>
+  </header>
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="wrap">
+      <ol>
+        <li><a href="/">Agent Manifest</a></li>
+        <li><a href="/spec/v1.0/">Specification</a></li>
+        <li aria-current="page">Agent Manifest v1.0</li>
+      </ol>
+    </div>
+  </nav>
 
   <!-- ══════════════════════════════════════════
        COVER
   ══════════════════════════════════════════ -->
 
+  <div class="wrap">
   <div class="cover">
     <p class="label">Open Specification — Standards Track</p>
     <h1>Agent Manifest</h1>
@@ -436,7 +121,7 @@ footer {
       Independent Research<br/>
       February 2026
     </div>
-    <div class="boundary-rule" aria-hidden="true"></div>
+  </div>
   </div>
 
   <!-- ══════════════════════════════════════════
@@ -444,6 +129,7 @@ footer {
   ══════════════════════════════════════════ -->
 
   <main id="main">
+  <div class="wrap">
 
   <div class="abstract">
     <h2>Abstract</h2>
@@ -1889,16 +1575,16 @@ footer {
 
   </section>
 
+  </div>
   </main>
 
-  <footer>
-    <p>Agent Manifest Core Declarative Specification v1.0 — Open Specification, Standards Track</p>
-    <p>Hernán Alfredo Capucci — Independent Research — February 2026</p>
-    <p style="margin-top:0.5rem; font-size:0.75rem;">
-      Schema identifier: <code>https://agent-manifest-spec.org/spec/v1.0/schema.json</code>
-    </p>
+  <footer class="site">
+    <div class="wrap">
+      <p>Agent Manifest Core Declarative Specification v1.0 — Open Specification, Standards Track</p>
+      <p>Hernán Alfredo Capucci — Independent Research — February 2026. Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>.</p>
+      <p>Schema identifier: <code>https://agent-manifest-spec.org/spec/v1.0/schema.json</code> · <a href="https://orcid.org/0009-0008-7216-3032">ORCID 0009-0008-7216-3032</a> · <a class="doi" href="https://doi.org/10.5281/zenodo.18833956">https://doi.org/10.5281/zenodo.18833956</a></p>
+    </div>
   </footer>
 
-</div>
 </body>
 </html>

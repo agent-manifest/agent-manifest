@@ -1,4 +1,11 @@
+---
+title: Declarative Integrity Framework v0.1
+description: A non-normative, execution-agnostic lens for evaluating whether an Agent Manifest declaration is structurally complete and internally coherent.
+---
+
 # Declarative Integrity Framework v0.1
+
+This document is non-normative. It is a working framework, not part of the v1.0 specification.
 
 *A structural evaluation lens for Agent Manifest declarations*
 
@@ -54,7 +61,7 @@ This framework evaluates a target system using only:
 
 1. The system’s **Agent Manifest** (e.g., `manifest.json`)
 2. Any referenced governance documentation (optional)
-3. The schema contract (normative): `spec/vX.Y/schema.json`
+3. The schema contract (normative): `spec/v1.0/schema.json`
 
 -----
 
@@ -81,11 +88,11 @@ Use this checklist to evaluate a manifest.
 **Question:** Is purpose declared with bounded intent?  
 **Primary evidence:** `purpose.primary_code`, `purpose.description`
 
-✅ Pass if:
+Pass if:
 - `purpose.primary_code` is specific and stable
 - `purpose.description` is bounded (not “do anything”)
 
-⚠️ Flags:
+Flags:
 - overly broad purpose
 - unclear operational domain
 - purpose conflicts with declared constraints
@@ -97,11 +104,11 @@ Use this checklist to evaluate a manifest.
 **Question:** Are hard prohibitions explicitly declared?  
 **Primary evidence:** `forbidden_actions`
 
-✅ Pass if:
+Pass if:
 - forbidden actions clearly prohibit high-risk classes of behavior relevant to the domain
 - language is unambiguous (“must not” actions, not aspirations)
 
-⚠️ Flags:
+Flags:
 - empty or generic constraints (“do no harm”)
 - missing prohibitions for domain-specific risk (e.g., finance, health, infra)
 
@@ -112,11 +119,11 @@ Use this checklist to evaluate a manifest.
 **Question:** Does declared autonomy match the system’s posture and intended deployment?  
 **Primary evidence:** `autonomy.level`
 
-✅ Pass if:
+Pass if:
 - autonomy level is explicitly declared
 - autonomy level is consistent with purpose and constraints
 
-⚠️ Flags:
+Flags:
 - autonomy level too high for the declared controls
 - autonomy level implied by tooling but not reflected in declaration
 - autonomy level not aligned with risk profile
@@ -128,12 +135,12 @@ Use this checklist to evaluate a manifest.
 **Question:** Is stopping authority formally declared, including mechanism?  
 **Primary evidence:** `stopping_authority.stoppable_by`, `stopping_authority.mechanism` (optional `stages`)
 
-✅ Pass if:
+Pass if:
 - stoppable roles/entities are declared
 - mechanism is explicit (not “someone can stop it”)
 - (optional) stages indicate when interruption can occur
 
-⚠️ Flags:
+Flags:
 - no clear human stopping authority
 - mechanism unclear or non-actionable
 - mismatch between autonomy and interruptibility
@@ -145,12 +152,12 @@ Use this checklist to evaluate a manifest.
 **Question:** Is audit surface declared (logging + reconstructability + opacity)?  
 **Primary evidence:** `audit_surface.logging`, `audit_surface.reconstructability`, optional `opacity_declared`, `data_handling.retention`
 
-✅ Pass if:
+Pass if:
 - logging posture is declared
 - reconstructability is declared
 - opacity is explicitly acknowledged when applicable
 
-⚠️ Flags:
+Flags:
 - “unknown” audit posture
 - no reconstructability commitment
 - retention ambiguous in systems handling sensitive data
@@ -216,6 +223,6 @@ It does not modify the Agent Manifest specification.
 
 It may evolve without changing `manifest_version`, provided it does not alter the schema contract.
 
-Recommended file location:
+Location in this repository:
 
 - `foundations/DECLARATIVE_INTEGRITY_FRAMEWORK.md`

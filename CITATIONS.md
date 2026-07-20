@@ -1,4 +1,10 @@
-# External Citations and References
+---
+title: External citations and references
+description: Third-party academic and technical works that cite Agent Manifest, recorded without any claim of affiliation or endorsement.
+section: Research
+---
+
+# External citations and references
 
 This document tracks external academic and technical works that cite or reference Agent Manifest.
 

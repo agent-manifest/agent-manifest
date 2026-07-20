@@ -1,3 +1,9 @@
+---
+title: Governance
+description: Stewardship of the Agent Manifest specification, the single public surface principle, and how contributions are handled.
+section: Governance
+---
+
 # Governance
 
 Agent Manifest is an open, declarative initiative intended to remain neutral,
@@ -10,8 +16,8 @@ Major version changes may redefine stewardship and governance structure.
 
 Agent Manifest was initially authored and published by:
 
-**Hernán Alfredo Capucci**  
-Initiator and founding author  
+**Hernán Alfredo Capucci** — author  
+ORCID: [0009-0008-7216-3032](https://orcid.org/0009-0008-7216-3032)  
 2026
 
 ## Stewardship
@@ -26,7 +32,7 @@ Canonical releases (e.g., v1.0) represent frozen specification states.
 Future changes require version increments.
 
 Future stewardship, forks, reinterpretations, or independent evolutions
-are explicitly permitted and encouraged.
+are permitted.
 
 ## Public surface
 

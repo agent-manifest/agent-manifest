@@ -12,10 +12,14 @@
     "validate": "node ./bin/academic-surface.js validate",
     "isolation-check": "node ./src/isolation-check.js",
     "derive": "node ./src/derive.js",
+    "derive:all": "node ./src/derive.js --all",
+    "consistency": "node ./src/derive-check.js",
     "stage": "node ./src/build-site.js",
     "publish-site": "node ./src/publish-site.js",
     "publish-check": "node ./src/publish-site.js --check",
-    "preview": "python3 -m http.server -d staging 8081"
+    "preview": "python3 -m http.server -d staging 8081",
+    "build-css": "node ./src/build-css.js",
+    "build-css:check": "node ./src/build-css.js --check"
   },
   "keywords": [
     "academic-surface",

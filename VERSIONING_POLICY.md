@@ -1,4 +1,10 @@
-# Agent Manifest — Versioning Policy
+---
+title: Versioning policy
+description: How the repository version and the specification version relate, and which one is authoritative.
+section: Governance
+---
+
+# Versioning policy
 
 This repository uses **two related but distinct version tracks**:
 
