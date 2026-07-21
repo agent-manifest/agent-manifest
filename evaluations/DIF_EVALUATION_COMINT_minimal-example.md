@@ -8,7 +8,7 @@ description: Summary application of the Declarative Integrity Framework checklis
 ## Correction notice — 2026-07-20
 
 This evaluation is retained as originally written. Its stated field values do not
-match the manifest it names. `examples/basic-agent.json` declares
+match the manifest it names. [`examples/basic-agent.json`](../examples/basic-agent.json) declares
 `autonomy.level` 2 · `risk_profile.level` medium · `data_handling.stores_personal_data` true · `audit_surface.logging` detailed · `audit_surface.reconstructability` full, and `agent_id` `example.customer.support.tier1`.
 
 The evaluation text below reports a lower-autonomy, low-risk profile that the file
@@ -21,17 +21,26 @@ file is recorded as outstanding work.
 This document summarizes the Declarative Integrity Framework (DIF)
 assessment of the Minimal Example Agent Manifest.
 
-## Verdict
+## Verdict — superseded
+
+**Superseded.** The verdict below was recorded against field values the named
+manifest does not carry. It is preserved as a record and must not be read as a
+current assessment of
+[`examples/basic-agent.json`](../examples/basic-agent.json). See the correction
+notice above.
 
 PASS — Declaratively coherent baseline example.
 
-## Observations
+## Observations — superseded
+
+**Superseded**, for the same reason. Three of the five statements below are
+contradicted by the manifest as published, and are marked inline.
 
 - Required declaration fields are present.
-- Autonomy level (1) is consistent with low risk posture.
+- Autonomy level (1) is consistent with low risk posture. — *superseded: the file declares `autonomy.level` 2 and `risk_profile.level` medium.*
 - Stopping authority is declared and structurally coherent.
-- Audit surface is minimal but acceptable for low-risk usage.
-- Data handling declaration is clear (no personal data stored).
+- Audit surface is minimal but acceptable for low-risk usage. — *superseded: the file declares `audit_surface.logging` detailed and `reconstructability` full.*
+- Data handling declaration is clear (no personal data stored). — *superseded: the file declares `stores_personal_data` true.*
 
 ## Notes
 
