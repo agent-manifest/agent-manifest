@@ -15,6 +15,15 @@ Agent Manifest is a declaration layer that applies before interaction. It compos
 
 The specification declares. It does not execute, validate, score, enforce, or decide.
 
+**This document is non-normative.** It is not part of the Agent Manifest v1.0
+specification and adds no requirement to it; the normative text is the
+[specification](../spec/v1.0/agent_manifest_v1.0.html) and its
+[JSON Schema](../spec/v1.0/schema.json). The characterisations of other projects
+here are this project's reading of their published documents, made to locate
+layers rather than to rank them. Each project's own specification governs what
+that project is; where this page and a cited source differ, the source governs.
+Corrections are welcome through the [contact path](/contact/).
+
 ## How the layers line up
 
 The table below places Agent Manifest v1.0 alongside the A2A Agent Card, agents.json, and MCP. The goal is to show where each one focuses, not to rank them. Where a row says "Not modeled," it means that concern lives in a different layer — often one of the other artifacts in this table. Agent Manifest field names are taken directly from `spec/v1.0/schema.json`.
@@ -40,6 +49,8 @@ The table below places Agent Manifest v1.0 alongside the A2A Agent Card, agents.
 | **Governance / project maturity** | v1.0 specification; `spec/v1.0/` frozen | Open specification, actively maintained | Open specification | Open protocol specification |
 
 A2A answers “how do I talk to this agent?”. MCP answers “how does this agent reach its tools?”. agents.json answers “what can this API do for an agent?”. Agent Manifest addresses a different concern: “who is accountable for this agent, what must it never do, who can stop it, and how can its actions be reconstructed?” These are complementary layers, not competing ones.
+
+**Sources** (primary, accessed July 2026): A2A Agent Card, [a2a-protocol.org specification](https://a2a-protocol.org/latest/specification/) and [github.com/a2aproject/A2A](https://github.com/a2aproject/A2A); agents.json, [github.com/wild-card-ai/agents-json](https://github.com/wild-card-ai/agents-json); MCP, [modelcontextprotocol.io specification](https://modelcontextprotocol.io/specification/2025-11-25). Agent Manifest field names are taken from [`spec/v1.0/schema.json`](../spec/v1.0/schema.json).
 
 ## Composability
 
