@@ -10,7 +10,9 @@ Agent Manifest addresses a specific problem:
 
 As AI agents become more autonomous, composable, and networked, much of the surrounding tooling describes how they communicate, what they can do, or how the services they call constrain access. Comparatively little lets an agent's deployer declare, before interaction and in a neutral, portable form, **who it is**, **what it intends**, **what it will not do**, and **who is accountable for it**.
 
-Most existing approaches focus on:
+The adjacent work this project has examined — set out project by project, with
+sources, in [Relation to adjacent specifications](/docs/comparison.html) and
+[Agent Manifest and MAS-Lab](/docs/comparison-mas-lab.html) — focuses on:
 - execution
 - enforcement
 - scoring
@@ -100,3 +102,15 @@ It is a primitive.
 A building block that others can adopt, ignore, extend, or reference.
 
 Its value comes from being **simple enough to survive**.
+
+---
+
+## Where to go next
+
+- [What this is](/WHAT_THIS_IS.html) — the scope, and what falls outside it.
+- [Specification v1.0](/spec/v1.0/agent_manifest_v1.0.html) — the normative text.
+- [JSON Schema](/spec/v1.0/schema.json) — the machine-readable form.
+- [Design rationale](/DESIGN_RATIONALE.html) — why each field is defined as it is.
+- [Relation to adjacent specifications](/docs/comparison.html) — the comparison, with sources.
+- [Examples](/examples/) — manifests covering the declared field surface.
+- [Contact](/contact/) — how to reach the maintainer.
