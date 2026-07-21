@@ -1,20 +1,30 @@
 ---
-title: Command-line validator
-description: "agent-manifest, the command-line validator for Agent Manifest v1.0 declarations: installation, commands, exit codes, machine-readable output and limits."
+title: Command-line interface (CLI)
+description: "The Agent Manifest CLI: the command-line validator for v1.0 declarations. Package @agent-manifest/cli, command agent-manifest — install, commands, exit codes, machine-readable output and limits."
 permalink: /docs/cli/
 ---
 
-# Command-line validator
+# Command-line interface (CLI)
+
+The Agent Manifest command-line interface (CLI) is the command-line validator for
+Agent Manifest v1.0 declarations. It is distributed as the npm package
+`@agent-manifest/cli` and installs the command `agent-manifest`.
 
 `agent-manifest` reads a manifest document and checks it against the Agent
 Manifest v1.0 JSON Schema. It validates structure only.
+
+This page is the canonical documentation for the CLI. The repository and the npm
+package page are the source and the distribution point; what they publish is
+described here.
 
 ## Status
 
 | | |
 | --- | --- |
+| Name | Agent Manifest command-line interface (CLI) |
 | Package | [`@agent-manifest/cli`](https://www.npmjs.com/package/@agent-manifest/cli) |
-| Version | [0.1.0](https://github.com/agent-manifest/agent-manifest-cli/releases/tag/v0.1.0) |
+| Command | `agent-manifest` |
+| Version | [0.1.0](https://github.com/agent-manifest/agent-manifest-cli/releases/tag/v0.1.0), published 2026-07-21 |
 | Source | <https://github.com/agent-manifest/agent-manifest-cli> |
 | Licence | Apache-2.0 |
 | Node.js | 20 or later |
@@ -67,6 +77,10 @@ build. The CLI consumes the specification; it does not define it.
 | Tarball sha-256 | `7f9fa8fbdb6a18fd71aa7dc5b151fb6a8f51a3cf905f29d81ac70122e2253221` |
 | Vendored schema sha-256 | `c1e3caaf9543f2a5d610ccdfaf36329562fe03b6db00c4ea30b7ef0b7b8ef70a` |
 
+0.1.0 was published without npm provenance attestation: it was released before
+the automated publishing workflow was in use. The two checksums above are the
+means of verification for this version.
+
 ## Limits
 
 Node.js 20 or later. Input is read as UTF-8. Network reads happen only for a
@@ -76,4 +90,9 @@ no auto-update.
 ## Reporting
 
 Issues: <https://github.com/agent-manifest/agent-manifest-cli/issues>.
-Vulnerabilities: private reporting, see the repository's security policy.
+
+Vulnerabilities: use GitHub Private Vulnerability Reporting on
+[`agent-manifest-cli`](https://github.com/agent-manifest/agent-manifest-cli/security/advisories/new),
+or, without a GitHub account, the route described in the
+[security policy](/SECURITY.html). Anything else: the
+[contact path](/contact/).

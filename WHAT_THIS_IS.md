@@ -6,7 +6,7 @@ section: Concept
 
 # What this is
 
-This repository contains the Agent Manifest.
+This is the Agent Manifest, at version 1.0.
 
 It is a declaration layer and a normative specification.
 Not a framework.
@@ -32,7 +32,12 @@ It exists to articulate:
 
 It states what an agent declares before operating.
 
-The core specification is defined in the versioned `spec/` directory.
+The core specification is defined in the versioned `spec/` directory: the
+normative text is
+[Agent Manifest v1.0](/spec/v1.0/agent_manifest_v1.0.html), and the machine-readable
+form is its [JSON Schema](/spec/v1.0/schema.json). The governed vocabulary is in
+[Terminology](/TERMINOLOGY.html) and the constraints that hold across v1.x in
+[Core principles](/CORE_PRINCIPLES.html).
 
 It does not prescribe runtime behavior.  
 It does not enforce compliance.  
@@ -80,3 +85,16 @@ The Agent Manifest aims for structural stability, not perpetual expansion.
 
 It is intended to serve as a foundational layer —  
 minimal, declarative, and versioned.
+
+---
+
+## Where to go next
+
+- [Specification v1.0](/spec/v1.0/agent_manifest_v1.0.html) — the normative text.
+- [JSON Schema](/spec/v1.0/schema.json) — the machine-readable form.
+- [Examples](/examples/) — manifests covering the declared field surface.
+- [Command-line interface (CLI)](/docs/cli/) — validating a declaration against the schema.
+- [Why this exists](/WHY_THIS_EXISTS.html) — the problem the layer addresses.
+- [Relation to adjacent specifications](/docs/comparison.html) — where this sits beside A2A, MCP, agents.json, OASF, and Agent Spec.
+- [Governance](/GOVERNANCE.html) — stewardship and the source of truth.
+- [Contact](/contact/) — how to reach the maintainer.

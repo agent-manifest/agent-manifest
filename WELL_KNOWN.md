@@ -24,6 +24,21 @@ https://example.com/.well-known/agent-manifest.json
 
 This endpoint serves as the canonical discovery location for an agent declaration.
 
+### Two different well-known documents
+
+The ecosystem uses two `.well-known` paths. They are unrelated, and a consumer
+must not treat one as the other:
+
+| Path | Published by | Contains | Where |
+| --- | --- | --- | --- |
+| `/.well-known/agent-manifest.json` | **each agent**, on its own host | that agent's manifest, conforming to the v1.0 schema | `https://<the-agent-host>/.well-known/agent-manifest.json` |
+| `/.well-known/agent-manifest-registry.json` | **this project**, on this host only | a discovery document pointing to the public registry and the dataset | [`/.well-known/agent-manifest-registry.json`](/.well-known/agent-manifest-registry.json) |
+
+The rest of this page describes the first. The second is the registry discovery
+document, which is published and reachable today; it is what the site's status
+table means by "Discovery endpoint". Neither one implies that agents are
+discovered automatically — see sections 3 and 4.
+
 ---
 
 ## 2. Manifest Format
@@ -98,7 +113,7 @@ Publishing a manifest at the well-known endpoint enables:
 - discovery by other agents and tooling
 - compatibility checks between agents
 - registry indexing
-- validation tooling — [agent-manifest-cli](https://github.com/agent-manifest/agent-manifest-cli) (offline validation against the canonical v1.0 schema)
+- validation tooling — the [command-line interface (CLI)](/docs/cli/), `@agent-manifest/cli`, which validates a manifest against a vendored copy of the canonical v1.0 schema
 
 This is intended to make manifests machine-retrievable; automatic discovery is not yet implemented (see the discovery section below).
 

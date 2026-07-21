@@ -12,8 +12,16 @@ description: The entry point to the v1.0 normative documents — the specificati
 
 ## Normative Documents
 
-- **[Specification](./spec.md)** — Complete specification document  
-- **[JSON Schema](./schema.json)** — Machine-readable schema definition  
+- **[Agent Manifest v1.0 — Core Declarative Specification](./agent_manifest_v1.0.html)** — the canonical specification document. This is the normative text.
+- **[JSON Schema](./schema.json)** — the machine-readable schema. Its canonical identifier is `https://agent-manifest-spec.org/spec/v1.0/schema.json`.
+
+Where normative prose and the JSON Schema conflict, the prose prevails, except
+for field types, enumerated values, and format constraints, for which the schema
+is authoritative (specification § 13.1).
+
+## Derived rendering
+
+- [Specification (Markdown rendering)](./spec.md) — carries identical normative requirements, rendered from the canonical document above. It is a convenience form, not the reference text; where the two differ, the canonical HTML specification governs.
 
 ---
 

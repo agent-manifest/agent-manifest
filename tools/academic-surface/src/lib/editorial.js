@@ -418,11 +418,25 @@ export function siteHeader(surface = 'Academic Surface') {
   ].join('\n');
 }
 
-export function siteFooter(innerHtml) {
+// The institutional line every generated surface carries, so a reader who lands
+// on a Work — and never sees the rest of the site — can still reach the party
+// responsible for it. `contact-path` is a DEL baseline requirement and it must
+// hold on the Academic Surface too, not only on the Jekyll-rendered pages.
+export const INSTITUTIONAL_LINKS =
+  '<a href="/contact/">Contact</a> · <a href="/privacy/">Privacy</a> · ' +
+  '<a href="/SECURITY.html">Security policy</a> · <a href="/GOVERNANCE.html">Governance</a>';
+
+// `innerHtml` is the surface's own footer statement; further strings are emitted
+// as additional paragraphs, in order. The institutional line is always last, so
+// no caller can omit it.
+export function siteFooter(innerHtml, ...extraParagraphs) {
+  const paragraphs = [innerHtml, ...extraParagraphs, INSTITUTIONAL_LINKS]
+    .filter((p) => typeof p === 'string' && p.length > 0)
+    .map((p) => `      <p>${p}</p>`);
   return [
     '  <footer class="site">',
     '    <div class="wrap">',
-    `      <p>${innerHtml}</p>`,
+    ...paragraphs,
     '    </div>',
     '  </footer>'
   ].join('\n');

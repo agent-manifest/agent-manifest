@@ -1,5 +1,11 @@
 Contact: https://github.com/agent-manifest/agent-manifest/security/advisories/new
+Contact: mailto:contact@agent-manifest-spec.org
 Policy: https://github.com/agent-manifest/agent-manifest/blob/main/SECURITY.md
 Canonical: https://agent-manifest-spec.org/.well-known/security.txt
-Preferred-Languages: en
+Preferred-Languages: en, es
 Expires: 2027-07-01T00:00:00.000Z
+
+# Contact fields are listed in order of preference. Report vulnerabilities through
+# GitHub Private Vulnerability Reporting; the mailbox is the fallback for a
+# reporter without a GitHub account, and is also the project's general contact
+# path: https://agent-manifest-spec.org/contact/

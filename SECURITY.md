@@ -29,8 +29,18 @@ The scope of this policy includes both technical and structural risk.
 
 Security and safety-related concerns must be reported **privately**.
 
-Use GitHub’s **Private Vulnerability Reporting** mechanism for this repository  
-(Security → Advisories → Report a vulnerability).
+Use GitHub’s **Private Vulnerability Reporting** mechanism for the repository
+concerned (Security → Advisories → Report a vulnerability):
+
+- Specification and site: <https://github.com/agent-manifest/agent-manifest/security/advisories/new>
+- Command-line interface (CLI): <https://github.com/agent-manifest/agent-manifest-cli/security/advisories/new>
+
+If you do not have a GitHub account, write to
+<contact@agent-manifest-spec.org> and say that the message concerns a security
+issue. Do not include exploit detail that would be damaging in transit; ask for a
+private channel first. This mailbox is also the project's general
+[contact path](/contact/), which is **not** the right route for anything else on
+this page.
 
 Do **not** open a public issue for:
 

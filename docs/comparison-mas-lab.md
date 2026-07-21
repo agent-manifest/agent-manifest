@@ -22,7 +22,7 @@ MAS-Lab is a specification-driven validation framework for multi-agent systems, 
 
 > Jordan Augé, Giovanna Carofiglio, Giulio Grassi, Jacques Samain.
 > *MAS-Lab: A Specification-Driven Validation Framework for Reliable Multi-Agent Systems.*
-> arXiv:2606.30546 [cs.MA], 2026-06-29. https://arxiv.org/abs/2606.30546
+> [arXiv:2606.30546](https://arxiv.org/abs/2606.30546) \[cs.MA\], 2026-06-29.
 
 The paper cites *Agent Manifest: Core Declarative Specification v1.0* in its introduction as one of the existing declarative specification formats:
 

@@ -134,7 +134,9 @@ https://agent-manifest-spec.org/.well-known/agent-manifest-registry.json
 
 Repository: <https://github.com/agent-manifest/agent-manifest-cli>
 
-Role: Command-line tool for offline validation of manifests against the canonical v1.0 JSON Schema.
+Role: The Agent Manifest command-line interface (CLI) — the command-line validator for manifests against the canonical v1.0 JSON Schema. Validation runs against a vendored copy of the schema, so it needs no network to check a local file.
+
+Package: [`@agent-manifest/cli`](https://www.npmjs.com/package/@agent-manifest/cli) · Command: `agent-manifest` · Documentation: [/docs/cli/](./cli/)
 
 -----
 

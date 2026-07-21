@@ -63,7 +63,12 @@ The manifest demonstrates a complete baseline declaration structure.
 
 ---
 
-## 3. Autonomy–Risk Alignment
+## 3. Autonomy–Risk Alignment — superseded
+
+**Superseded.** The values recorded here are not the ones the named manifest
+carries: [`examples/basic-agent.json`](../examples/basic-agent.json) declares
+`autonomy.level` 2 and `risk_profile.level` medium. The section is preserved as a
+record; see the correction notice above.
 
 Declared:
 
@@ -146,9 +151,9 @@ The Minimal Example Agent demonstrates:
 
 - Complete declarative surface
 - No internal contradictions
-- Proper autonomy–risk coherence
+- Proper autonomy–risk coherence — *superseded: assessed against values the file does not carry (section 3).*
 - Declared interruptibility
-- Clear non-storage claim
+- Clear non-storage claim — *superseded: the file declares `data_handling.stores_personal_data` true.*
 
 It qualifies as a structurally sound baseline declaration example.
 

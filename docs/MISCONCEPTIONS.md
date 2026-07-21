@@ -118,7 +118,7 @@ Behavior, enforcement, and observability belong to external layers.
 
 > Agent Manifest models commitments, not behavior.
 
-Specification-driven runtime and validation frameworks — such as MAS-Lab (arXiv:2606.30546) — operate at those layers.
+Specification-driven runtime and validation frameworks — such as MAS-Lab ([arXiv:2606.30546](https://arxiv.org/abs/2606.30546)) — operate at those layers.
 They are complementary, not competing. See [Agent Manifest and MAS-Lab](./comparison-mas-lab.md).
 
 A declaration must remain static to be readable, portable, and verifiable by third parties before any interaction begins.

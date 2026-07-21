@@ -25,7 +25,7 @@ requirements.
 - [Registration demo](./registration-demo.md) — end-to-end example.
 
 ## Tooling
-- [Command-line validator](./cli/) — `agent-manifest`, structural validation of a v1.0 declaration.
+- [Command-line interface (CLI)](./cli/) — the Agent Manifest CLI: the command-line validator for v1.0 declarations. Package `@agent-manifest/cli`, command `agent-manifest`.
 
 ## Ecosystem
 - [Ecosystem map](./ecosystem-map.md) — repositories and their roles.

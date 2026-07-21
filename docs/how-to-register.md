@@ -194,13 +194,17 @@ This endpoint exposes the public registry.
 
 ## 8. Registration Result
 
-A successful registration produces:
+A successful registration produces, by either path:
 
 - a stored manifest document
 - a registry entry
-- a closed GitHub issue documenting the event
 
-The stored manifest, the registry entry, and the issue thread are all public.
+A manual submission (path B) additionally produces a closed GitHub issue
+documenting the event: the workflow comments on the issue and closes it. A direct
+submission (path A) involves no issue, as stated in section 4.
+
+Everything a registration produces is public: the stored manifest, the registry
+entry, and — for path B — the issue thread.
 
 -----
 
