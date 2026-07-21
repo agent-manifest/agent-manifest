@@ -98,7 +98,25 @@ function collectionJsonLd(works) {
         name: 'Works — Agent Manifest Academic Surface',
         description: 'Scholarly works published on the Agent Manifest Academic Surface, each with a citable DOI and machine-readable metadata.',
         inLanguage: 'en',
+        license: 'https://creativecommons.org/licenses/by/4.0/',
         isPartOf: { '@type': 'WebSite', '@id': `${BASE_URL}/#website`, name: 'Agent Manifest', url: `${BASE_URL}/` },
+        author: {
+          '@type': 'Person',
+          name: 'Hernán Alfredo Capucci',
+          identifier: 'https://orcid.org/0009-0008-7216-3032',
+          sameAs: 'https://orcid.org/0009-0008-7216-3032'
+        },
+        publisher: {
+          '@type': 'Organization',
+          name: 'Agent Manifest Project',
+          url: `${BASE_URL}/`,
+          contactPoint: {
+            '@type': 'ContactPoint',
+            contactType: 'general',
+            email: 'contact@agent-manifest-spec.org',
+            url: `${BASE_URL}/contact/`
+          }
+        },
         breadcrumb: { '@id': `${INDEX_URL}#breadcrumb` },
         mainEntity: { '@id': `${INDEX_URL}#list` }
       },
@@ -140,7 +158,14 @@ export function toWorksIndexHTML(works) {
     '  <meta property="og:type" content="website">',
     `  <meta property="og:url" content="${INDEX_URL}">`,
     '  <meta property="og:site_name" content="Agent Manifest">',
-    '  <meta name="twitter:card" content="summary">',
+    '  <meta property="og:locale" content="en_US">',
+    `  <meta property="og:image" content="${BASE_URL}/og-image.png">`,
+    '  <meta property="og:image:width" content="1200">',
+    '  <meta property="og:image:height" content="630">',
+    '  <meta property="og:image:alt" content="Agent Manifest — Open Specification, v1.0, CC BY 4.0">',
+    '  <meta name="twitter:card" content="summary_large_image">',
+    `  <meta name="twitter:image" content="${BASE_URL}/og-image.png">`,
+    '  <meta name="author" content="Hernán Alfredo Capucci">',
     collectionJsonLd(listed),
     FONT_LINKS,
     `  <style>${EDITORIAL_STYLE}\n  </style>`
@@ -156,6 +181,7 @@ export function toWorksIndexHTML(works) {
   // governed-growth stance — so a deliberately small corpus reads as a decision.
   const scope = [
     '      <div class="scope">',
+    '        <p><a href="/">Agent Manifest</a> is an open specification that lets an autonomous system declare its identity, purpose, authority, and operational boundaries before interaction. It declares; it does not execute, validate, score, enforce, or decide.</p>',
     '        <p>The Academic Surface is the ecosystem’s place of record for its citable scholarly and technical works — working papers, specifications, datasets, and software that document Agent Manifest and its declaration layer.</p>',
     '        <p>A work appears here only once it is public, versioned, and preserved with a registered DOI; drafts and unregistered material never appear. The corpus grows only by governed incorporation, one record at a time, through the publication protocol — it makes no forward promises and advertises no roadmap.</p>',
     '      </div>'
@@ -183,7 +209,12 @@ export function toWorksIndexHTML(works) {
     '      ' + items,
     '    </div>',
     '  </main>',
-    siteFooter('Agent Manifest — Academic Surface. Preservation of record via Zenodo; citation via DOI.')
+    siteFooter(
+      'Agent Manifest — Academic Surface. This index is licensed under ' +
+      '<a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>. ' +
+      'Each work carries its own licence on its landing page. Preservation of record via Zenodo; citation via DOI.',
+      'Hernán Alfredo Capucci · <a href="https://orcid.org/0009-0008-7216-3032">ORCID 0009-0008-7216-3032</a>'
+    )
   ].join('\n');
 
   return `<!doctype html>\n<html lang="en">\n<head>\n${head}\n</head>\n<body>\n${body}\n</body>\n</html>\n`;

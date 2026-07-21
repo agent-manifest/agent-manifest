@@ -11,7 +11,14 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://agent-manifest-spec.org/works/">
   <meta property="og:site_name" content="Agent Manifest">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://agent-manifest-spec.org/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Agent Manifest — Open Specification, v1.0, CC BY 4.0">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://agent-manifest-spec.org/og-image.png">
+  <meta name="author" content="Hernán Alfredo Capucci">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -19,6 +26,12 @@
     {
       "@id": "https://agent-manifest-spec.org/works/#collection",
       "@type": "CollectionPage",
+      "author": {
+        "@type": "Person",
+        "identifier": "https://orcid.org/0009-0008-7216-3032",
+        "name": "Hernán Alfredo Capucci",
+        "sameAs": "https://orcid.org/0009-0008-7216-3032"
+      },
       "breadcrumb": {
         "@id": "https://agent-manifest-spec.org/works/#breadcrumb"
       },
@@ -30,10 +43,22 @@
         "name": "Agent Manifest",
         "url": "https://agent-manifest-spec.org/"
       },
+      "license": "https://creativecommons.org/licenses/by/4.0/",
       "mainEntity": {
         "@id": "https://agent-manifest-spec.org/works/#list"
       },
       "name": "Works — Agent Manifest Academic Surface",
+      "publisher": {
+        "@type": "Organization",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "general",
+          "email": "contact@agent-manifest-spec.org",
+          "url": "https://agent-manifest-spec.org/contact/"
+        },
+        "name": "Agent Manifest Project",
+        "url": "https://agent-manifest-spec.org/"
+      },
       "url": "https://agent-manifest-spec.org/works/"
     },
     {
@@ -257,6 +282,7 @@
       <h1>Works</h1>
       <p class="lead">Scholarly works on the Agent Manifest Academic Surface. Each work has a canonical landing page, a citable version DOI, and co-located machine-readable metadata.</p>
             <div class="scope">
+        <p><a href="/">Agent Manifest</a> is an open specification that lets an autonomous system declare its identity, purpose, authority, and operational boundaries before interaction. It declares; it does not execute, validate, score, enforce, or decide.</p>
         <p>The Academic Surface is the ecosystem’s place of record for its citable scholarly and technical works — working papers, specifications, datasets, and software that document Agent Manifest and its declaration layer.</p>
         <p>A work appears here only once it is public, versioned, and preserved with a registered DOI; drafts and unregistered material never appear. The corpus grows only by governed incorporation, one record at a time, through the publication protocol — it makes no forward promises and advertises no roadmap.</p>
       </div>
@@ -282,7 +308,9 @@
   </main>
   <footer class="site">
     <div class="wrap">
-      <p>Agent Manifest — Academic Surface. Preservation of record via Zenodo; citation via DOI.</p>
+      <p>Agent Manifest — Academic Surface. This index is licensed under <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>. Each work carries its own licence on its landing page. Preservation of record via Zenodo; citation via DOI.</p>
+      <p>Hernán Alfredo Capucci · <a href="https://orcid.org/0009-0008-7216-3032">ORCID 0009-0008-7216-3032</a></p>
+      <p><a href="/contact/">Contact</a> · <a href="/privacy/">Privacy</a> · <a href="/SECURITY.html">Security policy</a> · <a href="/GOVERNANCE.html">Governance</a></p>
     </div>
   </footer>
 </body>
