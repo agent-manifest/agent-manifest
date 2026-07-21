@@ -19,6 +19,7 @@ score agent behavior.
                  DOI https://doi.org/10.5281/zenodo.18965669
 - Declaration Layers: https://agent-manifest-spec.org/works/declaration-layers/
                  DOI https://doi.org/10.5281/zenodo.18880520
+- CLI (docs):    https://agent-manifest-spec.org/docs/cli/
 - Governance:    https://agent-manifest-spec.org/GOVERNANCE.html
 - Terminology:   https://agent-manifest-spec.org/TERMINOLOGY.html
 - Versioning:    https://agent-manifest-spec.org/VERSIONING_POLICY.html
