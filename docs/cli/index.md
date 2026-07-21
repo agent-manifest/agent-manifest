@@ -1,6 +1,6 @@
 ---
 title: Command-line validator
-description: agent-manifest, the command-line validator for Agent Manifest v1.0 declarations: installation, commands, exit codes, machine-readable output and limits.
+description: "agent-manifest, the command-line validator for Agent Manifest v1.0 declarations: installation, commands, exit codes, machine-readable output and limits."
 permalink: /docs/cli/
 ---
 
