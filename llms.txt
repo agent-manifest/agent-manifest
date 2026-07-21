@@ -20,6 +20,8 @@ score agent behavior.
 - Declaration Layers: https://agent-manifest-spec.org/works/declaration-layers/
                  DOI https://doi.org/10.5281/zenodo.18880520
 - CLI (docs):    https://agent-manifest-spec.org/docs/cli/
+- Contact:       https://agent-manifest-spec.org/contact/
+- Privacy:       https://agent-manifest-spec.org/privacy/
 - Governance:    https://agent-manifest-spec.org/GOVERNANCE.html
 - Terminology:   https://agent-manifest-spec.org/TERMINOLOGY.html
 - Versioning:    https://agent-manifest-spec.org/VERSIONING_POLICY.html
@@ -38,7 +40,7 @@ score agent behavior.
 - Ambassador (UI):     https://github.com/agent-manifest/agent-manifest-ambassador
 - Diplomat (API):      https://github.com/agent-manifest/agent-manifest-diplomat
 - Boundary Handshake:  https://github.com/agent-manifest/boundary-handshake
-- Command-line tool:   https://github.com/agent-manifest/agent-manifest-cli
+- Command-line interface (CLI): https://github.com/agent-manifest/agent-manifest-cli
 - ∈ Principle:         https://github.com/agent-manifest/e-principle
 - Agentic surface research: https://github.com/agent-manifest/agentic-surface-research
 - Ambassador (live):   https://agent-manifest.github.io/agent-manifest-ambassador/
@@ -50,6 +52,28 @@ score agent behavior.
 - License: CC BY 4.0 (specification and documentation)
 - Author:  Hernán Alfredo Capucci
 - ORCID:   https://orcid.org/0009-0008-7216-3032
+- Contact: contact@agent-manifest-spec.org
+           (general; vulnerabilities go through the security policy instead)
+
+## Command-line interface (CLI)
+
+"CLI" here means "command-line interface". The Agent Manifest CLI is the
+command-line validator for Agent Manifest v1.0 declarations.
+
+- Name:          Agent Manifest command-line interface (CLI)
+- Function:      command-line validator; checks a declaration against the v1.0
+                 JSON Schema. Structural validation only.
+- npm package:   @agent-manifest/cli
+- Command:       agent-manifest
+- Only command:  validate
+- Version:       0.1.0
+- Licence:       Apache-2.0
+- Documentation: https://agent-manifest-spec.org/docs/cli/  (canonical page)
+- Repository:    https://github.com/agent-manifest/agent-manifest-cli
+- Registry:      https://www.npmjs.com/package/@agent-manifest/cli
+- Install:       npm install -g @agent-manifest/cli
+- Not:           it does not certify, score, enforce, or execute anything, and it
+                 does not define the specification — it consumes it.
 
 ## Core doctrine
 
