@@ -2,102 +2,107 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://agent-manifest-spec.org/</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://agent-manifest-spec.org/CHANGELOG.html</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agent-manifest-spec.org/CITATIONS.html</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agent-manifest-spec.org/CORE_PRINCIPLES.html</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agent-manifest-spec.org/DESIGN_RATIONALE.html</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agent-manifest-spec.org/GOVERNANCE.html</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agent-manifest-spec.org/PAPERS.html</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agent-manifest-spec.org/ROADMAP.html</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agent-manifest-spec.org/SECURITY.html</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agent-manifest-spec.org/SECURITY_REVIEW_CONTEXT.html</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agent-manifest-spec.org/STABILITY.html</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agent-manifest-spec.org/TERMINOLOGY.html</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agent-manifest-spec.org/VERSIONING_POLICY.html</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agent-manifest-spec.org/WELL_KNOWN.html</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agent-manifest-spec.org/WHAT_THIS_IS.html</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agent-manifest-spec.org/WHY_THIS_EXISTS.html</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-07-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://agent-manifest-spec.org/contact/</loc>
+    <lastmod>2026-07-21</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agent-manifest-spec.org/docs/</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://agent-manifest-spec.org/docs/ARCHITECTURE.html</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agent-manifest-spec.org/docs/MISCONCEPTIONS.html</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agent-manifest-spec.org/docs/architecture/system-flow.html</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
@@ -107,82 +112,87 @@
   </url>
   <url>
     <loc>https://agent-manifest-spec.org/docs/comparison-mas-lab.html</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agent-manifest-spec.org/docs/comparison.html</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agent-manifest-spec.org/docs/ecosystem-map.html</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agent-manifest-spec.org/docs/how-to-register.html</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agent-manifest-spec.org/docs/registration-demo.html</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agent-manifest-spec.org/evaluations/</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agent-manifest-spec.org/evaluations/DIF_EVALUATION_COMINT_minimal-example.html</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agent-manifest-spec.org/evaluations/DIF_EVALUATION_EXTENDED_minimal-example.html</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agent-manifest-spec.org/examples/</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agent-manifest-spec.org/examples/orchess-multi-agent-flow/</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agent-manifest-spec.org/foundations/</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agent-manifest-spec.org/foundations/DECLARATIVE_INTEGRITY_FRAMEWORK.html</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agent-manifest-spec.org/foundations/INCIDENT_ANALYSIS.html</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agent-manifest-spec.org/foundations/pre-execution-authority/</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agent-manifest-spec.org/nist-comment/nist-comment-2026.html</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://agent-manifest-spec.org/privacy/</loc>
+    <lastmod>2026-07-21</lastmod>
+    <priority>0.4</priority>
+  </url>
+  <url>
     <loc>https://agent-manifest-spec.org/spec/v1.0/</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
@@ -192,17 +202,17 @@
   </url>
   <url>
     <loc>https://agent-manifest-spec.org/works/</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://agent-manifest-spec.org/works/declaration-layers/</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://agent-manifest-spec.org/works/e-principle/</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <priority>0.8</priority>
   </url>
 </urlset>
