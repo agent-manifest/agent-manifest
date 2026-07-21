@@ -24,6 +24,9 @@ requirements.
 - [How to register an agent](./how-to-register.md) — step-by-step registration guide.
 - [Registration demo](./registration-demo.md) — end-to-end example.
 
+## Tooling
+- [Command-line validator](./cli/) — `agent-manifest`, structural validation of a v1.0 declaration.
+
 ## Ecosystem
 - [Ecosystem map](./ecosystem-map.md) — repositories and their roles.
 
