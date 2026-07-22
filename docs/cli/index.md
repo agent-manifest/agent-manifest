@@ -24,7 +24,7 @@ described here.
 | Name | Agent Manifest command-line interface (CLI) |
 | Package | [`@agent-manifest/cli`](https://www.npmjs.com/package/@agent-manifest/cli) |
 | Command | `agent-manifest` |
-| Version | [0.1.0](https://github.com/agent-manifest/agent-manifest-cli/releases/tag/v0.1.0), published 2026-07-21 |
+| Version | [0.1.1](https://github.com/agent-manifest/agent-manifest-cli/releases/tag/v0.1.1), published 2026-07-21 |
 | Source | <https://github.com/agent-manifest/agent-manifest-cli> |
 | Licence | Apache-2.0 |
 | Node.js | 20 or later |
@@ -70,16 +70,20 @@ The CLI ships a byte-for-byte copy of
 time. The copy's sha-256 is recorded in the repository and checked on every
 build. The CLI consumes the specification; it does not define it.
 
-## Release 0.1.0
+## Release 0.1.1
 
 | | |
 | --- | --- |
-| Tarball sha-256 | `7f9fa8fbdb6a18fd71aa7dc5b151fb6a8f51a3cf905f29d81ac70122e2253221` |
+| Tarball sha-256 | `5a9f91381d8b90ba8621272f1833bf2fbd7e1010318260b9329e1a21f81fc6ab` |
 | Vendored schema sha-256 | `c1e3caaf9543f2a5d610ccdfaf36329562fe03b6db00c4ea30b7ef0b7b8ef70a` |
 
-0.1.0 was published without npm provenance attestation: it was released before
-the automated publishing workflow was in use. The two checksums above are the
-means of verification for this version.
+0.1.1 is published with npm provenance attestation. It is built and published by
+the automated GitHub Actions workflow using Trusted Publishing (OIDC), which
+records a signed SLSA build provenance. The tarball sha-256 above is the one that
+workflow produced and that npm serves.
+
+0.1.0 was the first release, published manually before the automated workflow was
+in use, and therefore without provenance attestation.
 
 ## Limits
 
