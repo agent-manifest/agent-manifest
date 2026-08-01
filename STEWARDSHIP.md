@@ -82,6 +82,28 @@ document the mechanism is:
   and runs it, so a broken release is visible immediately.
 - The workflow creates no tags, no releases and no commits.
 
+There is one act that the workflow above cannot cover, and it is a limitation of
+the registry rather than a choice. A package that does not yet exist cannot be
+configured for trusted publishing: the setting lives on the package's own page,
+and that page does not exist until the package does. So the earliest version of
+a new package name under this scope is published by hand, once. That act is
+called a bootstrap publication and its limits are fixed:
+
+- It happens once per package name, and cannot happen again for that name once
+  trusted publishing is configured.
+- It exists to reserve the name and to make the trusted publisher configurable.
+  It is not an operating release.
+- It is published under a dist-tag other than `latest`, so nothing installs it
+  by default, and it is deprecated in favour of the release that follows it.
+- No credential is created in, or read by, any repository for it.
+- Every version meant to be installed and used goes through the workflow
+  described above, with provenance.
+
+The registry records who published each version and whether it carries
+provenance, so the difference between a bootstrap publication and a release is
+visible without asking anyone. A version under this scope offered for use and
+lacking provenance would be a departure from what this section describes.
+
 This section is a description of what is in place, not an undertaking that it
 will remain unchanged. If it changes, this document changes with it.
 
