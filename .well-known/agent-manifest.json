@@ -1,0 +1,45 @@
+{
+  "$schema": "https://agent-manifest-spec.org/spec/v1.0/schema.json",
+  "manifest_version": "1.0",
+  "agent_id": "agent-manifest",
+  "agent_name": "Agent Manifest",
+  "agent_version": "1.0.0",
+  "owner": {
+    "type": "organization",
+    "identifier": "Agent Manifest Project"
+  },
+  "purpose": {
+    "primary_code": "specification.publication",
+    "description": "Publishes the Agent Manifest specification, its JSON Schema, and its reference documentation. It does not execute, validate, score, or enforce the behaviour of any agent, including its own."
+  },
+  "capabilities": [
+    "schema-publication",
+    "specification-maintenance",
+    "reference-documentation"
+  ],
+  "forbidden_actions": [
+    "no-agent-execution",
+    "no-autonomous-decision-making"
+  ],
+  "autonomy": {
+    "level": 1
+  },
+  "risk_profile": {
+    "level": "low"
+  },
+  "data_handling": {
+    "stores_personal_data": false
+  },
+  "stopping_authority": {
+    "stoppable_by": ["project maintainer"],
+    "mechanism": "Repository can be unpublished, modified, or access-revoked by the project maintainer."
+  },
+  "audit_surface": {
+    "logging": "none",
+    "reconstructability": "none"
+  },
+  "contact": {
+    "email": "contact@agent-manifest-spec.org"
+  },
+  "declaration_date": "2026-03-09"
+}
