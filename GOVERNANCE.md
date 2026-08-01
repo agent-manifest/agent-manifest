@@ -34,6 +34,10 @@ Future changes require version increments.
 Future stewardship, forks, reinterpretations, or independent evolutions
 are permitted.
 
+What happens to the packages, the namespaces and the project itself if the
+steward stops being available is described in
+[STEWARDSHIP.md](./STEWARDSHIP.md).
+
 ## Public surface
 
 Every public intellectual work in the ecosystem has a single canonical

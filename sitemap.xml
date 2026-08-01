@@ -56,6 +56,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://agent-manifest-spec.org/STEWARDSHIP.html</loc>
+    <lastmod>2026-08-01</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://agent-manifest-spec.org/TERMINOLOGY.html</loc>
     <lastmod>2026-07-21</lastmod>
     <priority>0.6</priority>
