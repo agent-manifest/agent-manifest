@@ -111,6 +111,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://agent-manifest-spec.org/docs/consume/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://agent-manifest-spec.org/docs/cli/</loc>
     <lastmod>2026-07-21</lastmod>
     <priority>0.6</priority>

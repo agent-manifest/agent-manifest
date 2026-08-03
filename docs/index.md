@@ -24,6 +24,9 @@ requirements.
 - [How to register an agent](./how-to-register.md) — step-by-step registration guide.
 - [Registration demo](./registration-demo.md) — end-to-end example.
 
+## Consuming
+- [Consuming a manifest](./consume/) — the path from not knowing what this is to one decision in your software taking a different branch because it read a declaration. Four minimal worked examples.
+
 ## Tooling
 - [Command-line interface (CLI)](./cli/) — the Agent Manifest CLI: the command-line validator for v1.0 declarations. Package `@agent-manifest/cli`, command `agent-manifest`.
 
