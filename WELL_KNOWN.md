@@ -113,7 +113,7 @@ Publishing a manifest at the well-known endpoint enables:
 - discovery by other agents and tooling
 - compatibility checks between agents
 - registry indexing
-- validation tooling — the [command-line interface (CLI)](/docs/cli/), `@agent-manifest/cli`, which validates a manifest against a vendored copy of the canonical v1.0 schema
+- validation tooling — the [command-line interface (CLI)](/docs/cli/), `@agent-manifest/cli`, which validates a manifest against the canonical v1.0 schema as distributed by the `@agent-manifest/schema` package
 
 This is intended to make manifests machine-retrievable; automatic discovery is not yet implemented (see the discovery section below).
 
