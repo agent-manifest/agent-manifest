@@ -24,7 +24,7 @@ described here.
 | Name | Agent Manifest command-line interface (CLI) |
 | Package | [`@agent-manifest/cli`](https://www.npmjs.com/package/@agent-manifest/cli) |
 | Command | `agent-manifest` |
-| Version | [0.1.1](https://github.com/agent-manifest/agent-manifest-cli/releases/tag/v0.1.1), published 2026-07-21 |
+| Version | [0.1.2](https://github.com/agent-manifest/agent-manifest-cli/releases/tag/v0.1.2), published 2026-08-04 |
 | Source | <https://github.com/agent-manifest/agent-manifest-cli> |
 | Licence | Apache-2.0 |
 | Node.js | 20 or later |
@@ -65,22 +65,48 @@ unrelated third-party projects.
 
 ## Relationship to the specification
 
-The CLI ships a byte-for-byte copy of
-[`spec/v1.0/schema.json`](/spec/v1.0/schema.json) and never fetches it at run
-time. The copy's sha-256 is recorded in the repository and checked on every
-build. The CLI consumes the specification; it does not define it.
+The CLI carries no copy of the schema.
+[`spec/v1.0/schema.json`](/spec/v1.0/schema.json) reaches it as data through the
+[`@agent-manifest/schema`](https://www.npmjs.com/package/@agent-manifest/schema)
+package, and the checking is done by the shared validator in
+[`@agent-manifest/client`](https://www.npmjs.com/package/@agent-manifest/client),
+so the CLI reaches the same verdict as anything else in the ecosystem. It keeps
+no validator of its own, and it does not fetch the schema over the network at run
+time. The CLI consumes the specification; it does not define it.
 
-## Release 0.1.1
+## Release 0.1.2
+
+This is the current release: `npm install @agent-manifest/cli` gives you this
+one.
 
 | | |
 | --- | --- |
-| Tarball sha-256 | `5a9f91381d8b90ba8621272f1833bf2fbd7e1010318260b9329e1a21f81fc6ab` |
-| Vendored schema sha-256 | `c1e3caaf9543f2a5d610ccdfaf36329562fe03b6db00c4ea30b7ef0b7b8ef70a` |
+| Version | 0.1.2, published 2026-08-04 |
+| Tag | [`v0.1.2`](https://github.com/agent-manifest/agent-manifest-cli/releases/tag/v0.1.2) |
+| Commit | `16295914c3c5e49f91690179f221fb330d2a48be` |
+| Tarball sha-256 | `7b01959d7cc7add3210da2bf38e9a6045f45ff5728535fc981ed4fcf80b8d171` |
+| npm dist-tag | `latest` |
+| `schema/` directory in the tarball | none |
 
-0.1.1 is published with npm provenance attestation. It is built and published by
-the automated GitHub Actions workflow using Trusted Publishing (OIDC), which
-records a signed SLSA build provenance. The tarball sha-256 above is the one that
+0.1.2 is published with npm provenance attestation, built and published by the
+automated GitHub Actions workflow using Trusted Publishing (OIDC). The signed
+SLSA build provenance records the workflow `.github/workflows/release.yml` at
+`refs/tags/v0.1.2` and the commit above; the tarball sha-256 is the one that
 workflow produced and that npm serves.
+
+The publish step succeeded. The check that runs immediately after it exhausted
+its 60-second window before the registry served the new version, so the run is
+recorded as failed; the package was visible, installable and verified shortly
+afterwards.
+
+## Earlier releases
+
+0.1.1, published 2026-07-21, is the last version to carry a copy of the schema
+inside its own tarball. Its tarball sha-256 was
+`5a9f91381d8b90ba8621272f1833bf2fbd7e1010318260b9329e1a21f81fc6ab` and the schema
+copy it shipped had sha-256
+`c1e3caaf9543f2a5d610ccdfaf36329562fe03b6db00c4ea30b7ef0b7b8ef70a`. It went
+through the same automated workflow, with provenance.
 
 0.1.0 was the first release, published manually before the automated workflow was
 in use, and therefore without provenance attestation.
