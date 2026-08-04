@@ -99,6 +99,10 @@ Nothing in the package decides what an acceptable `autonomy.level` is, and
 nothing will. The declaration layer stops at the declaration; the policy seat is
 left deliberately empty because it belongs to whoever is running the software.
 
+The mapping between an action your software knows about and a string a manifest
+declares is part of that policy too: v1.0 defines neither a vocabulary nor a
+matching rule. See [Known limits of v1.0](../../STABILITY.md#known-limits-of-v10).
+
 ## Restrict, do not grant
 
 Use what is declared **to take away**: refuse a run, block a call, narrow a tool
