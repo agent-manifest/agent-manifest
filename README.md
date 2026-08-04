@@ -425,6 +425,17 @@ External works citing Agent Manifest are tracked in [CITATIONS.md](./CITATIONS.m
 
 -----
 
+## Licensing
+
+This repository is licensed **CC BY 4.0**, with one deliberate exception.
+
+- The JSON Schema file [`spec/v1.0/schema.json`](./spec/v1.0/schema.json) is dedicated to the public domain under **CC0 1.0**, so that it can be embedded in other software without attribution obligations. The npm package `@agent-manifest/schema`, which vendors that file, carries the same dedication.
+- Everything else — the specification in prose, the documentation, the examples and the governance documents — remains **CC BY 4.0**.
+
+The exception covers that single file and nothing derived from it. The machine-readable statement of both regimes is in [`REUSE.toml`](./REUSE.toml); the licence texts are [`CC-BY-4.0`](./LICENSES/CC-BY-4.0.txt) and [`CC0-1.0`](./LICENSES/CC0-1.0.txt).
+
+---
+
 ## Authorship
 
 Agent Manifest was conceived and authored by  

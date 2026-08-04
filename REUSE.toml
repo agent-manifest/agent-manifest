@@ -1,0 +1,36 @@
+# Machine-readable licensing for this repository (REUSE specification).
+#
+# This repository is licensed CC BY 4.0. There is exactly one exception, and it
+# is deliberately narrow: the JSON Schema file at spec/v1.0/schema.json is
+# dedicated to the public domain under CC0 1.0, so that it can be embedded in
+# other software without attribution obligations.
+#
+# The exception applies to that single file and to nothing else. In particular
+# it does NOT apply to spec/v1.0/spec.md, to any other file under spec/, to the
+# documentation, the examples, the governance documents, any other JSON file, or
+# any artefact derived from the schema. All of those remain CC BY 4.0.
+#
+# The two annotations below are ordered general-then-specific: the later
+# annotation is the one that applies to spec/v1.0/schema.json.
+#
+# The prose statement of the same regime is in README.md and STEWARDSHIP.md.
+
+version = 1
+
+SPDX-PackageName = "agent-manifest"
+SPDX-PackageSupplier = "Hernán Alfredo Capucci <contact@agent-manifest-spec.org>"
+SPDX-PackageDownloadLocation = "https://github.com/agent-manifest/agent-manifest"
+
+# Everything in this repository.
+[[annotations]]
+path = "**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 Hernán Alfredo Capucci — Agent Manifest Project"
+SPDX-License-Identifier = "CC-BY-4.0"
+
+# The single carve-out. A literal path, not a pattern: it matches one file.
+[[annotations]]
+path = "spec/v1.0/schema.json"
+precedence = "override"
+SPDX-FileCopyrightText = "2026 Hernán Alfredo Capucci — Agent Manifest Project"
+SPDX-License-Identifier = "CC0-1.0"

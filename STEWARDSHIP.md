@@ -152,11 +152,21 @@ stated here, permanently and by design.
 today, it is the most reassuring thing the project can say, and it has not been
 said anywhere until now. The licences in force are:
 
-- the specification and its schema, and the manifest generator: Creative Commons
-  Attribution 4.0 International;
-- the command-line validator: Apache License 2.0;
-- the registration gateway and the registry documentation: MIT;
-- the public dataset: CC0 1.0 Universal.
+- the specification in prose, its reference documentation and the manifest
+  generator: Creative Commons Attribution 4.0 International;
+- the JSON Schema file `spec/v1.0/schema.json`, and the npm package
+  `@agent-manifest/schema` that vendors it: CC0 1.0 Universal, so that the
+  schema can be embedded in other software without attribution obligations;
+- the reading library `@agent-manifest/client` and the command-line validator
+  `@agent-manifest/cli`, both npm packages: Apache License 2.0;
+- the registration gateway and the registry documentation, both repositories:
+  MIT;
+- the public dataset, a repository: CC0 1.0 Universal.
+
+The specification repository therefore carries two licences at once. That is
+stated in machine-readable form in [`REUSE.toml`](./REUSE.toml): the public
+domain dedication applies to the schema file alone, and every other file in that
+repository remains under CC BY 4.0.
 
 Anyone may read, copy, modify, redistribute and build on that material under
 those terms, without asking, without notifying anyone, and without any decision
