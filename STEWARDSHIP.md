@@ -220,7 +220,59 @@ here:
 - the appearance of a comparable specification, or of a body standardising the
   same ground.
 
-## 7. Status of this document
+## 7. Corrections to published records
+
+This project publishes declarations, including its own. A declaration that was
+wrong on the day it was published is corrected rather than left standing, and
+the correction is authorised here rather than inside the record being corrected:
+a register cannot be the judge of its own corrections.
+
+What follows is that authorisation. It states what was decided and under what
+rule. The evidence of what changed — the previous bytes, the dates, the fields —
+lives in git history, which is also where the published registry index derives
+its own `registered_at` from, and is not restated here.
+
+### 7.1 The manifest of this project in the public dataset
+
+**What.** The declaration recorded for `agent-manifest` in the public dataset
+asserts, in three of its values, something this project does not claim: a
+`purpose.primary_code` of `specification.authority`, a description calling this
+project the canonical specification authority for the Agent Manifest standard,
+and a declared capability of `specification-governance`.
+
+**Why.** Two published surfaces of this project disagreed about the same
+`agent_id`. The canonical manifest at `/.well-known/agent-manifest.json` declares
+`specification.publication`, and says the project "does not execute, validate,
+score, or enforce the behaviour of any agent, including its own". The copy in the
+dataset claimed authority over a standard instead. A reader comparing the two
+would have found this project contradicting itself, with one of the two texts
+asserting a standing that [GOVERNANCE.md](./GOVERNANCE.md) denies in its own
+words: "This repository does not enforce governance, ownership, or authority."
+
+**The rule applied.** This project does not describe itself as an authority over
+a standard, or as the owner of one. The declaration was wrong when it was
+recorded in March 2026, and has been wrong since.
+
+**What is authorised.** Correcting those three values in place, so that the
+declaration the dataset resolves matches the canonical one. Nothing else in that
+file, and no other manifest in the dataset, is touched.
+
+**What is not authorised.** Removing or rewriting the earlier version, altering
+any date, adding a second simultaneously valid entry for the same `agent_id`, or
+changing the dataset's append-only rule. The earlier bytes stay in git history
+and stay publicly addressable there.
+
+**Authority.** The steward, 4 August 2026.
+
+**Evidence.** The correction is made as a single commit in the dataset
+repository, carrying the prefix `correction:` and citing this section. That
+commit is necessarily later than this record: a commit citing an authorisation
+that does not exist, or that is dated after the commit itself, is not authorised
+by this section, however well formed it may otherwise be.
+
+---
+
+## 8. Status of this document
 
 This is a unilateral statement of intent by the steward. It may be withdrawn or
 replaced by public notice and a version increment of this document.
@@ -230,4 +282,4 @@ party and no obligations that anyone may demand be performed. It does not claim
 regulatory standing, certification power, or control over any implementation
 built by anyone else.
 
-Version 1.0 — 1 August 2026.
+Version 1.1 — 4 August 2026.
