@@ -1,0 +1,34 @@
+name: Sitemap
+
+# The sitemap drifted because keeping it right depended on remembering to edit a
+# second file after editing a page, and by 2026-08-05 twenty-nine of its
+# forty-five dates disagreed with the history. A local `--check` would depend on
+# remembering to run it, which is the same failure. This runs on every push and
+# every pull request, without a paths filter, because any page can invalidate it.
+#
+# `fetch-depth: 0` is required: <lastmod> comes from `git log`, and a shallow
+# clone has no history to read.
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  sitemap:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: The committed sitemap matches the pages it describes
+        run: node tools/sitemap/build-sitemap.mjs --check
