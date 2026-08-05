@@ -138,6 +138,53 @@ None of these describes an agent's declared identity, ownership, `forbidden_acti
 
 **Sources** (primary, accessed July 2026): OAuth 2.0 [RFC 6749](https://www.rfc-editor.org/rfc/rfc6749.html) and the OAuth 2.1 draft [draft-ietf-oauth-v2-1](https://datatracker.ietf.org/doc/draft-ietf-oauth-v2-1/); MCP authorization [modelcontextprotocol.io](https://modelcontextprotocol.io/specification/2025-11-25/basic/authorization); AIPREF vocabulary [draft-ietf-aipref-vocab](https://datatracker.ietf.org/doc/draft-ietf-aipref-vocab/); ODRL Information Model 2.2 [w3.org/TR/odrl-model](https://www.w3.org/TR/odrl-model/); Robots Exclusion Protocol [RFC 9309](https://www.rfc-editor.org/rfc/rfc9309.html).
 
+## Projects with similar names or adjacent goals
+
+The words "agent" and "manifest" are in wide use, and several projects combine
+them. If you arrived here looking for one of the following, this is a different
+project. The distinctions below are about **scope and direction**, not quality,
+and each is stated from the project's own public surface.
+
+**[JSON Agents / Portable Agent Manifest (PAM)](https://jsonagents.org/)** —
+describes itself as "a universal JSON-native standard for describing AI agents,
+their capabilities, tools, runtimes, and governance in a portable,
+framework-agnostic format", with seven standard capabilities and validators for
+Python and TypeScript. PAM describes an agent so that it can be moved between
+frameworks; Agent Manifest declares what an agent will not do, at what autonomy
+level, and who can stop it, at a location a third party can read before
+interacting. Both are JSON documents validated by JSON Schema, and a system
+could publish both without conflict.
+
+**[agent.json / Agent Web Protocol](https://www.agent-json.org/)** — a file at a
+site's domain root that, in its own words, "tells AI agents what your service
+does, how to authenticate, and what actions are available". It is a
+**provider-side** declaration: a service describing what it offers to agents.
+Agent Manifest is the **actor-side** declaration: the operator of an agent
+describing that agent. They face opposite directions across the same
+interaction, and the pre-interaction handshake described above has room for both.
+
+**[Ardor-Cerebrum/agents-manifest](https://github.com/Ardor-Cerebrum/agents-manifest)** —
+uses the name "Agent Manifest" for "a specification for machine-readable service
+descriptions designed for AI agents… providing structured information about
+APIs, authentication, payment methods". This is the closest name collision, and
+it is also provider-side: it describes a service, where this project describes an
+agent. Same two words, different side of the interaction.
+
+**[Microsoft Agent Control Specification (ACS)](https://microsoft.github.io/agent-governance-toolkit/packages/agent-control-specification/)** —
+part of the Agent Governance Toolkit, described as a "stateless, deterministic,
+fail-closed policy decision runtime". A host sends ACS a policy manifest and a
+snapshot at each of eight intervention points during the agent loop, and ACS
+returns a verdict — `allow`, `warn`, `deny`, `escalate` or `transform` — which
+the host then enforces. Its manifest is an input to a decision made **during
+execution**; an Agent Manifest is published **before interaction** and nothing in
+this project evaluates it at run time. The two use the same word for different
+objects, and an ACS policy could take a published declaration into account.
+
+The comparison in this document is limited to what these projects state publicly
+about themselves, checked against their canonical surfaces in August 2026. Where
+a difference could not be demonstrated from those surfaces, it is not asserted
+here.
+
 ## See also
 
 For how Agent Manifest relates to specification-driven runtime and validation frameworks, see [Agent Manifest and MAS-Lab](./comparison-mas-lab.md).
