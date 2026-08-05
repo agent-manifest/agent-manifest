@@ -55,6 +55,12 @@ A URL resolves in one call. Passing a bare name with no registry returns a
 result whose `absence.reason` is `no-registry-declared` — the client reports
 what it could not conclude instead of guessing.
 
+That reporting is why `resolutions` can be empty, and the line above takes
+`resolutions[0]` without checking. A name the registry does not list resolves to
+nothing, `absence.reason` is `not-in-registry-index`, and `resolutions[0]` is
+`undefined`. Check the length, or read `absence`, before reaching for a
+document: absence is an answer here, not an error.
+
 ## Read one from disk
 
 ```js
