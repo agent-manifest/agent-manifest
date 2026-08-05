@@ -220,9 +220,21 @@ const RELATION_PHRASE = {
   Obsoletes: 'obsoletes', IsObsoletedBy: 'is obsoleted by'
 };
 
+// One sentence pointing at the published technical specification a Work's
+// subject matter is materialized in (SSOT field `technical_specification`).
+// Returns null when the field is absent, which is the case for every Work whose
+// contribution does not materialize in a specification — the field is opt-in
+// precisely so that the link is never emitted by default.
+function specificationHtml(work) {
+  const s = work.technical_specification;
+  if (!s) return null;
+  return `      <p>${esc(s.lead)} <a href="${attr(s.url)}">${esc(s.label)}</a>.</p>`;
+}
+
 function relationsHtml(work) {
   const rels = (work.relations ?? []).filter((r) => r.target_doi);
-  if (!rels.length) return '';
+  const spec = specificationHtml(work);
+  if (!rels.length && !spec) return '';
   const noun = typeMeta(work.type).label.toLowerCase();
   const rows = rels.map((r) => {
     const phrase = RELATION_PHRASE[r.predicate] ?? r.predicate;
@@ -232,8 +244,9 @@ function relationsHtml(work) {
     '    <section aria-labelledby="rel-h">',
     '      <h2 id="rel-h">Related work</h2>',
     ...rows,
+    spec,
     '    </section>'
-  ].join('\n');
+  ].filter((l) => l !== null).join('\n');
 }
 
 // Optional editorial statement of a work's intellectual function in the

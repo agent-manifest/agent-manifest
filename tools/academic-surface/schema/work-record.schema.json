@@ -36,6 +36,17 @@
     "repositories": { "type": "array", "items": { "$ref": "repository.schema.json" } },
     "external_urls": { "type": "array", "items": { "$ref": "external-url.schema.json" } },
     "relations": { "type": "array", "items": { "$ref": "relation.schema.json" } },
+    "technical_specification": {
+      "type": "object",
+      "description": "Optional pointer from a Work to the published technical specification its subject matter is materialized in, rendered as one sentence under Related work. It states where that specification is published and nothing else: never that the Work proves, governs, certifies, supersedes, or is a layer of it. Omitted on Works whose contribution does not materialize in a specification.",
+      "additionalProperties": false,
+      "required": ["lead", "label", "url"],
+      "properties": {
+        "lead": { "type": "string", "minLength": 1, "description": "Opening of the sentence, written for this Work's actual relation to the specification. Ends immediately before the link; the generator supplies the link and the full stop." },
+        "label": { "type": "string", "minLength": 1, "description": "Link text. The name of the specification as published." },
+        "url": { "type": "string", "minLength": 1, "description": "Absolute URL of the published specification." }
+      }
+    },
     "preferred_citation_override": { "type": ["string", "object"] },
     "provenance": { "$ref": "provenance.schema.json" },
     "notes": { "type": "string" },
