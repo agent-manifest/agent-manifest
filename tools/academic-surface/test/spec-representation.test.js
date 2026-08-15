@@ -51,3 +51,26 @@ test('spec: the §5.1 ascii diagram is one contiguous block (not fence-split)', 
   // top border joins directly to the first row (no interruption)
   assert.match(body, /^\+[-]+\+\n\|/, 'diagram top border is not followed directly by a row');
 });
+
+// The Annex A block is a transcription of spec/v1.0/schema.json. Two `pattern`
+// values were transcribed with `*` where the schema has `_`, so the HTML rejected
+// identifiers the schema accepts. The deposited specification (DOI
+// 10.5281/zenodo.18833956) carries the schema's form, which is the one restored
+// here. This checks transcription only; it asserts nothing about what the
+// patterns should be.
+test('spec: Annex A `pattern` values match the JSON Schema they transcribe', () => {
+  const schemaPath = join(HERE, '..', '..', '..', 'spec', 'v1.0', 'schema.json');
+  const schema = JSON.parse(readFileSync(schemaPath, 'utf8'));
+  const blocks = [...html.matchAll(/<pre><code>([\s\S]*?)<\/code><\/pre>/g)].map((m) => decodeEntities(m[1]));
+  const annex = JSON.parse(blocks.filter((b) => b.trim().startsWith('{'))[0]);
+
+  for (const [pointer, expected] of [
+    ['agent_id', schema.properties.agent_id.pattern],
+    ['purpose.primary_code', schema.properties.purpose.properties.primary_code.pattern],
+  ]) {
+    const actual = pointer === 'agent_id'
+      ? annex.properties.agent_id.pattern
+      : annex.properties.purpose.properties.primary_code.pattern;
+    assert.equal(actual, expected, `Annex A ${pointer}.pattern diverges from schema.json`);
+  }
+});

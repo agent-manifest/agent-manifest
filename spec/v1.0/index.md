@@ -21,7 +21,7 @@ is authoritative (specification § 13.1).
 
 ## Derived rendering
 
-- [Specification (Markdown rendering)](./spec.md) — carries identical normative requirements, rendered from the canonical document above. It is a convenience form, not the reference text; where the two differ, the canonical HTML specification governs.
+- [Specification (Markdown rendering)](./spec.md) — an abridged rendering of the canonical document above. It does not carry every normative requirement of that document. It is a convenience form, not the reference text; where the two differ, the canonical HTML specification governs.
 
 ---
 

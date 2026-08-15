@@ -1,6 +1,6 @@
 ---
 title: Agent Manifest v1.0 — Markdown rendering
-description: Markdown rendering of the Agent Manifest v1.0 specification. The canonical edition is the HTML specification; normative requirements are identical.
+description: Abridged Markdown rendering of the Agent Manifest v1.0 specification. The canonical edition is the HTML specification, which governs where the two differ.
 canonical_url: /spec/v1.0/agent_manifest_v1.0.html
 ---
 
@@ -9,7 +9,9 @@ canonical_url: /spec/v1.0/agent_manifest_v1.0.html
 > This Markdown document is a rendering of the canonical normative specification.
 > The authoritative version of Agent Manifest v1.0 is the HTML specification
 > published as “Open Specification — Standards Track”.
-> Normative requirements are identical across both renderings.
+> This rendering is abridged. It does not carry every normative requirement of
+> the canonical specification, and where the two differ the canonical
+> specification governs.
 
 Agent Manifest is a minimal, execution-agnostic, declarative specification that allows AI agents to publicly declare identity, purpose, scope, autonomy level, risk profile, stopping authority, audit surface, and data handling before interaction.
 

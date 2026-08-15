@@ -14,8 +14,13 @@ Agent Manifest is designed to remain minimal and structurally stable.
 
 The normative contract is defined by:
 
-- [`spec/v1.0/spec.md`](./spec/v1.0/spec.md)
-- [`spec/v1.0/schema.json`](./spec/v1.0/schema.json)
+- [`spec/v1.0/agent_manifest_v1.0.html`](./spec/v1.0/agent_manifest_v1.0.html) — the canonical specification text
+- [`spec/v1.0/schema.json`](./spec/v1.0/schema.json) — the JSON Schema
+
+Where the two conflict, the prose prevails, except for field types, enumerated
+values and format constraints, for which the schema is authoritative
+(specification § 13.1). [`spec/v1.0/spec.md`](./spec/v1.0/spec.md) is an abridged
+Markdown rendering and is not the reference text.
 
 A manifest that declares:
 
@@ -99,6 +104,24 @@ examples in this repository and in the client packages illustrate one way of
 reading a manifest. Where an example resolves something the specification leaves
 open, that is a choice made by the example — not an extension of the normative
 contract, and not a precedent binding on any other consumer.
+
+**Annex A and `schema.json` are not byte-identical, and the specification does
+not say which governs between them.** Annex A of the specification is a
+transcription of the JSON Schema and declares the same `$id`. Nine assertive
+keywords differ: `capabilities.items.minLength` (1 vs 2),
+`capabilities.items.maxLength` (200 vs 120), `capabilities.minItems` (absent vs
+1); `language.primary.maxLength` and `language.supported.items.maxLength` (35 vs
+32), `language.supported.minItems` (absent vs 1); `audit_surface.notes.minLength`
+and `risk_profile.notes.minLength` (absent vs 1); and
+`stopping_authority.stages.minItems` (absent vs 1). The conditional that requires
+`retention` is attached to `data_handling` in Annex A and to the document root in
+`schema.json`; because `stores_personal_data` is required, the two have the same
+effect. Section 13.1 settles conflicts between prose and schema, not between two
+copies of the schema, so this one is open. In every one of the nine,
+`schema.json` is the stricter of the two: a document that validates against
+`schema.json` also validates against Annex A, and the reverse does not hold.
+This is recorded as a limit, not as a defect awaiting a patch — closing it would
+change the normative contract, and the normative contract is frozen.
 
 ---
 
