@@ -10,9 +10,9 @@ Operational and architectural documentation for the Agent Manifest specification
 
 The normative specification is the
 [HTML edition](../spec/v1.0/agent_manifest_v1.0.html), accompanied by
-[`spec/v1.0/schema.json`](../spec/v1.0/schema.json). A
-[Markdown rendering](../spec/v1.0/spec.md) carries identical normative
-requirements.
+[`spec/v1.0/schema.json`](../spec/v1.0/schema.json). An abridged
+[Markdown rendering](../spec/v1.0/spec.md) is available; the canonical
+specification governs where the two differ.
 
 ## Architecture
 - [Architecture](./ARCHITECTURE.md) — internal architectural constraints of the specification.

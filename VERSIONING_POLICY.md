@@ -42,10 +42,11 @@ It changes **only** when the technical specification changes.
 
 The normative specification is defined by:
 
-- `spec/vX.Y/spec.md`
+- the canonical specification text in `spec/vX.Y/` (for v1.0, `agent_manifest_v1.0.html`)
 - `spec/vX.Y/schema.json`
 
-Where `X.Y` matches the declared `manifest_version`.
+Where `X.Y` matches the declared `manifest_version`. `spec/vX.Y/spec.md` is an
+abridged Markdown rendering, not the reference text.
 
 A specification bump MUST occur when changes affect:
 

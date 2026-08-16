@@ -24,7 +24,7 @@ A minimal declaration layer for autonomous AI systems.
 - **Normative JSON Schema:**  
   https://agent-manifest-spec.org/spec/v1.0/schema.json
 
-- **Markdown rendering (normatively identical):**  
+- **Markdown rendering (abridged; the canonical document governs):**  
   [`spec/v1.0/spec.md`](./spec/v1.0/spec.md)
 
 -----
@@ -299,7 +299,7 @@ These infrastructure components operate independently from the core specificatio
 
 The normative specification contract is defined in:
 
-- [`spec/v1.0/spec.md`](./spec/v1.0/spec.md)  
+- [`spec/v1.0/agent_manifest_v1.0.html`](./spec/v1.0/agent_manifest_v1.0.html)  
 - [`spec/v1.0/schema.json`](./spec/v1.0/schema.json)  
 
 The constitutional core is defined in:
