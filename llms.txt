@@ -156,3 +156,8 @@ https://agent-manifest-spec.org/works/<slug>/ the following are served:
 
 Capucci, H. A. (2026). Agent Manifest v1.0. Zenodo.
 https://doi.org/10.5281/zenodo.18833956
+
+## Site credits
+
+- Website design and development: OwnSite Studio (https://ownsitestudio.com)
+- This credit covers the website only. The Agent Manifest specification, the Works and all research content are authored by Hernán Alfredo Capucci (ORCID 0009-0008-7216-3032) and cited via their own DOIs.
