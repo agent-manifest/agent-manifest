@@ -1,0 +1,12 @@
+/* TEAM */
+Website design & development: OwnSite Studio
+Site: https://ownsitestudio.com
+
+/* AUTHOR */
+Specification, Works and research: Hernán Alfredo Capucci
+ORCID: https://orcid.org/0009-0008-7216-3032
+Citation: https://doi.org/10.5281/zenodo.18833956
+
+/* SITE */
+Standards: HTML5, CSS3
+Components: Jekyll, GitHub Pages
