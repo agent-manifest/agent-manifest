@@ -83,8 +83,8 @@ not a change of requirement.
 history, and the deposited specification, carry `._-`. The asterisk form existed
 only in the HTML transcription. It was restored to `._-`, with a test that pins
 Annex A's patterns to `schema.json`. Outcome: under the erroneous Annex, identifiers
-containing `_` were rejected and identifiers containing `*` accepted; 6 of the 11
-repository examples were rejected by the erroneous Annex and accepted by the
+containing `_` were rejected and identifiers containing `*` accepted; 6 of the 12
+example manifests then in `examples/` were rejected by the erroneous Annex and accepted by the
 schema. After the correction Annex A and `schema.json` agree on these two
 patterns. The same commit stopped claiming that `spec.md` carries requirements
 identical to the canonical text.
