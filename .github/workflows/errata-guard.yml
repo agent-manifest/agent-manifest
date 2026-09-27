@@ -7,6 +7,13 @@ on:
   pull_request:
     paths:
       - "spec/v1.0/**"
+  # A direct push to main bypasses the pull-request check; this run makes such
+  # a push visible as a failure rather than letting it pass unnoticed.
+  push:
+    branches:
+      - main
+    paths:
+      - "spec/v1.0/**"
 
 permissions:
   contents: read
@@ -22,8 +29,8 @@ jobs:
 
       - name: Require an ERRATA.md entry for changes to spec/v1.0/
         env:
-          BASE_SHA: ${{ github.event.pull_request.base.sha }}
-          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
         run: |
           changed="$(git diff --name-only "$BASE_SHA" "$HEAD_SHA")"
           if printf '%s\n' "$changed" | grep -q '^spec/v1\.0/' \
