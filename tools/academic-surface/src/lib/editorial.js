@@ -426,11 +426,17 @@ export const INSTITUTIONAL_LINKS =
   '<a href="/contact/">Contact</a> · <a href="/privacy/">Privacy</a> · ' +
   '<a href="/SECURITY.html">Security policy</a> · <a href="/GOVERNANCE.html">Governance</a>';
 
+// The website credit the Jekyll layout and the home page carry. It credits the
+// pages, not any Work: authorship stays in each Work's provenance and DOI. Plain
+// text, no link. It lives here, not in the committed /works tree, because that
+// tree is regenerated from this module and a hand-added line is drift.
+export const SITE_CREDIT = 'Website design and development by OwnSite Studio.';
+
 // `innerHtml` is the surface's own footer statement; further strings are emitted
-// as additional paragraphs, in order. The institutional line is always last, so
-// no caller can omit it.
+// as additional paragraphs, in order. The institutional line and then the site
+// credit always close the footer, so no caller can omit them.
 export function siteFooter(innerHtml, ...extraParagraphs) {
-  const paragraphs = [innerHtml, ...extraParagraphs, INSTITUTIONAL_LINKS]
+  const paragraphs = [innerHtml, ...extraParagraphs, INSTITUTIONAL_LINKS, SITE_CREDIT]
     .filter((p) => typeof p === 'string' && p.length > 0)
     .map((p) => `      <p>${p}</p>`);
   return [
