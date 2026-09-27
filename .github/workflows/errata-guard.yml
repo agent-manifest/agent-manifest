@@ -1,0 +1,35 @@
+name: Errata guard
+
+# The v1.0 specification is frozen. Any change to a file under spec/v1.0/
+# must be recorded in ERRATA.md in the same pull request.
+
+on:
+  pull_request:
+    paths:
+      - "spec/v1.0/**"
+
+permissions:
+  contents: read
+
+jobs:
+  errata-recorded:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Require an ERRATA.md entry for changes to spec/v1.0/
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          changed="$(git diff --name-only "$BASE_SHA" "$HEAD_SHA")"
+          if printf '%s\n' "$changed" | grep -q '^spec/v1\.0/' \
+             && ! printf '%s\n' "$changed" | grep -qx 'ERRATA\.md'; then
+            echo "This pull request changes files under spec/v1.0/ without an entry in ERRATA.md."
+            printf '%s\n' "$changed" | grep '^spec/v1\.0/'
+            exit 1
+          fi
+          echo "spec/v1.0/ changes are recorded in ERRATA.md."
