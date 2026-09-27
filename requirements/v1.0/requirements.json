@@ -1,0 +1,2160 @@
+{
+  "index": "Agent Manifest v1.0 requirements index",
+  "index_version": "1.0.0",
+  "status": "Non-normative. An index of the normative statements of the canonical v1.0 text, with who each binds and what can be decided from a document alone. It adds no requirement, is not part of the specification, and is not a conformance programme.",
+  "what_this_is_not": "Not a checklist for claiming conformance, not a scoring rubric, not a certification basis. It records what each normative statement says, who it binds, and what can be decided from a document alone.",
+  "licence": "CC-BY-4.0. Entries quote the Agent Manifest v1.0 specification verbatim (c) Hernán Alfredo Capucci.",
+  "source": {
+    "canonical_text": "spec/v1.0/agent_manifest_v1.0.html",
+    "canonical_text_sha256": "d2461cc48791c5bb84492573e0237273a629996ae487cdd587baf7ee20fbe206",
+    "schema": "spec/v1.0/schema.json",
+    "schema_sha256": "c1e3caaf9543f2a5d610ccdfaf36329562fe03b6db00c4ea30b7ef0b7b8ef70a"
+  },
+  "method": {
+    "extraction": "Every <span class=\"rfc\"> in the canonical HTML outside Section 3, plus the one upper-case keyword inside Annex A (properties.extensions.description). Section 3 lists the keywords without using them and is excluded. Lower-case uses are not keywords (RFC 8174) and are listed under related_statements.",
+    "id_rule": "AM10-<section>-<letter>; letters in order of the statement within the section. One id per statement; a sentence carrying two keywords that form one requirement (e.g. 6.4-b) is one id with keyword_spans 2. List items governed by one keyword are split as <letter>.<n> (9.3-a.1…a.3). \"abs\" = Abstract, \"A\" = Annex A. Ids are stable for v1.0 because the text is frozen.",
+    "text_rule": "Verbatim from the canonical HTML with tags removed and white space collapsed. \"context\" carries the lead-in of list items. The builder refuses to emit an entry whose text is not found in the source."
+  },
+  "testability_classes": {
+    "S": "Decided by schema.json (and Annex A) validation with format assertion enabled.",
+    "M": "Mechanically decidable from the document, not enforced by either schema. May produce fail.",
+    "H": "Only heuristically detectable. May produce warn (\"needs human review\"); never fail.",
+    "J": "Requires human judgment. Partial S/M checks may still refute it (e.g. a whitespace-only value); nothing mechanical can confirm it.",
+    "X": "Not evaluable from the document: truthfulness, runtime behaviour, publisher-side or consumer-side obligations, future revisions, or permissions that a document cannot violate."
+  },
+  "classification_rule": "testability names what is needed to decide the statement's operative condition: S if the schema decides it; M if a mechanical check beyond the schema decides it; H if a defined heuristic can surface likely violations but a definitive answer needs judgment; J if only judgment decides it; X if the document cannot decide it. Where a qualifier inside an otherwise mechanical condition needs judgment (\"explanatory\" notes in 7.3.1, notes that \"clarify\" in 10.4), the class stays M and mechanical_result is refutes-only. Partial checks are listed in \"checks\".",
+  "mechanical_results": {
+    "decides": "A tool can report pass or fail.",
+    "refutes-only": "A tool can report fail on a definitive finding; otherwise not-evaluated. Never pass.",
+    "refutes-or-flags": "A tool can report fail on a definitive finding or warn on a heuristic one; otherwise not-evaluated. Never pass.",
+    "flags-only": "A tool can report warn; otherwise not-evaluated. Never pass, never fail.",
+    "none": "A tool reports not-evaluated with a reason."
+  },
+  "targets": {
+    "manifest": "The document as published (including statements whose grammatical subject is \"Implementations\" when they govern extension fields).",
+    "responsible-party": "The publisher; obligations that are not visible in the document.",
+    "consumer": "Software or people reading manifests.",
+    "enforcement-layer": "Systems that evaluate or act on manifests.",
+    "execution-layer": "The running Agent.",
+    "implementation": "Validating or reading software.",
+    "future-revision": "Later versions of the specification.",
+    "specification": "Statements about the specification itself (definitions, interpretive and aggregation rules)."
+  },
+  "kinds": {
+    "requirement": "Imposes a MUST/SHOULD-level obligation or prohibition.",
+    "permission": "MAY / OPTIONAL. Cannot be violated; its test value is that a checker must not flag what it permits.",
+    "meta": "Uses a keyword to state how results aggregate or how the text is read.",
+    "definitional": "Uses a keyword inside a definition."
+  },
+  "counts": {
+    "entries": 118,
+    "keyword_spans_covered": 120,
+    "keyword_spans_in_document": {
+      "rfc_spans_outside_section_3": 119,
+      "annex_a_description": 1,
+      "section_3_definitions_excluded": 11
+    },
+    "by_kind": {
+      "requirement": 85,
+      "definitional": 3,
+      "permission": 20,
+      "meta": 10
+    },
+    "by_target": {
+      "manifest": 69,
+      "implementation": 4,
+      "future-revision": 4,
+      "specification": 14,
+      "execution-layer": 3,
+      "enforcement-layer": 7,
+      "responsible-party": 11,
+      "consumer": 6
+    },
+    "by_testability": {
+      "H": 12,
+      "J": 10,
+      "M": 11,
+      "S": 28,
+      "X": 57
+    },
+    "by_mechanical_result": {
+      "decides": 37,
+      "flags-only": 11,
+      "none": 59,
+      "refutes-only": 5,
+      "refutes-or-flags": 6
+    },
+    "by_strength_and_testability": {
+      "MAY": {
+        "S": 3,
+        "X": 18
+      },
+      "MUST": {
+        "H": 12,
+        "J": 9,
+        "M": 6,
+        "S": 24,
+        "X": 24
+      },
+      "SHOULD": {
+        "J": 1,
+        "M": 5,
+        "S": 1,
+        "X": 5
+      },
+      "meta": {
+        "X": 10
+      }
+    },
+    "manifest_targeted_requirements_by_strength_and_testability": {
+      "MUST": {
+        "H": 12,
+        "J": 9,
+        "M": 6,
+        "S": 23,
+        "X": 3
+      },
+      "SHOULD": {
+        "J": 1,
+        "M": 5,
+        "S": 1
+      }
+    }
+  },
+  "requirements": [
+    {
+      "id": "AM10-abs-a",
+      "section": "abstract",
+      "section_title": "Abstract",
+      "keyword": "MUST",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "S",
+      "mechanical_result": "decides",
+      "text": "The specification defines mandatory structural elements that MUST be present in a conformant agent manifest, including identity, responsible party, declared purpose, operational constraints, autonomy level, stopping authority, audit posture, and data handling declarations.",
+      "restates": [
+        "AM10-6.1-a",
+        "AM10-6.2-a",
+        "AM10-6.3-a",
+        "AM10-6.4-a",
+        "AM10-6.5-a",
+        "AM10-6.6-a",
+        "AM10-6.7-a",
+        "AM10-6.8-a"
+      ],
+      "note": "Restates Section 6 in summary. Presence of every named element is enforced by the schema. The list omits contact and risk_profile, both of which the schema requires."
+    },
+    {
+      "id": "AM10-2-a",
+      "section": "2",
+      "section_title": "Status of This Memo",
+      "keyword": "MUST",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "implementation",
+      "testability": "X",
+      "mechanical_result": "none",
+      "text": "Implementations claiming conformance MUST satisfy all normative requirements defined herein.",
+      "ambiguities": [
+        "AMB-11"
+      ],
+      "note": "\"Implementations\" is not defined in Section 4; here it can be read as manifests or as software. Not evaluable from a single document."
+    },
+    {
+      "id": "AM10-2-b",
+      "section": "2",
+      "section_title": "Status of This Memo",
+      "keyword": "SHALL",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "future-revision",
+      "testability": "X",
+      "mechanical_result": "none",
+      "text": "Future revisions to this specification SHALL follow semantic versioning.",
+      "ambiguities": [
+        "AMB-08"
+      ],
+      "note": "Addressed to the specification itself. manifest_version uses two components (\"1.0\")."
+    },
+    {
+      "id": "AM10-4.1-a",
+      "section": "4.1",
+      "section_title": "Autonomous System",
+      "keyword": "MAY",
+      "keyword_spans": 1,
+      "strength": "MAY",
+      "kind": "definitional",
+      "target": "specification",
+      "testability": "X",
+      "mechanical_result": "none",
+      "text": "Autonomous systems MAY include single agents, multi-agent systems, or orchestrated workflows.",
+      "note": "Definitional use of MAY; imposes nothing on a document."
+    },
+    {
+      "id": "AM10-4.7-a",
+      "section": "4.7",
+      "section_title": "Responsible Party",
+      "keyword": "MUST",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "J",
+      "mechanical_result": "refutes-or-flags",
+      "text": "MUST be identifiable,",
+      "context": "The Responsible Party:",
+      "restates": [
+        "AM10-6.2-c"
+      ],
+      "note": "Whether owner.identifier identifies an entity requires judgment. A whitespace-only identifier is mechanically not identifiable (M); placeholder terms can be flagged (H)."
+    },
+    {
+      "id": "AM10-4.7-b",
+      "section": "4.7",
+      "section_title": "Responsible Party",
+      "keyword": "MUST",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "S",
+      "mechanical_result": "decides",
+      "text": "MUST be declared in the Agent Manifest,",
+      "context": "The Responsible Party:",
+      "restates": [
+        "AM10-6.2-a"
+      ],
+      "note": "owner is required by the schema."
+    },
+    {
+      "id": "AM10-4.7-c",
+      "section": "4.7",
+      "section_title": "Responsible Party",
+      "keyword": "MAY",
+      "keyword_spans": 1,
+      "strength": "MAY",
+      "kind": "permission",
+      "target": "manifest",
+      "testability": "X",
+      "mechanical_result": "none",
+      "text": "The Responsible Party MAY also be identified as a Stopping Authority as defined in Section 4.15.",
+      "note": "Permission. A document cannot violate it. Test value is negative: a checker must not report the owner appearing in stoppable_by as generic or incoherent."
+    },
+    {
+      "id": "AM10-4.9-a",
+      "section": "4.9",
+      "section_title": "Negative Scope",
+      "keyword": "MUST NOT",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "definitional",
+      "target": "execution-layer",
+      "testability": "X",
+      "mechanical_result": "none",
+      "text": "Negative Scope is the explicitly declared set of actions that an Agent MUST NOT perform.",
+      "note": "Binds the Agent at runtime; the specification does not define enforcement. Not evaluable from the document."
+    },
+    {
+      "id": "AM10-4.10-a",
+      "section": "4.10",
+      "section_title": "Structural Validity",
+      "keyword": "REQUIRED",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "definitional",
+      "target": "manifest",
+      "testability": "S",
+      "mechanical_result": "decides",
+      "text": "All REQUIRED fields are present,",
+      "context": "A manifest is structurally valid if:",
+      "note": "Defines Structural Validity. Enforced by the schema \"required\" keywords."
+    },
+    {
+      "id": "AM10-4.15-a",
+      "section": "4.15",
+      "section_title": "Stopping Authority",
+      "keyword": "MUST",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "S",
+      "mechanical_result": "decides",
+      "text": "Stopping Authority MUST include: Identified stoppable entity or role, A declared interruption mechanism.",
+      "restates": [
+        "AM10-6.6-a"
+      ],
+      "note": "Presence of stoppable_by (minItems 1) and mechanism is enforced by the schema. Whether the entity is \"identified\" is carried by AM10-9.2-a/b."
+    },
+    {
+      "id": "AM10-5.2.1-a",
+      "section": "5.2.1",
+      "section_title": "Declaration Layer",
+      "keyword": "MUST",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "M",
+      "mechanical_result": "decides",
+      "text": "MUST be machine-readable,",
+      "context": "The Declaration Layer:",
+      "ambiguities": [
+        "AMB-17"
+      ],
+      "note": "Decidable as: the document parses as JSON and its root is an object. Duplicate member names parse without error but are read differently by different parsers; they are reported as warn, not fail (AMB-17)."
+    },
+    {
+      "id": "AM10-5.2.1-b",
+      "section": "5.2.1",
+      "section_title": "Declaration Layer",
+      "keyword": "MUST",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "S",
+      "mechanical_result": "decides",
+      "text": "MUST conform to the normative schema defined in Section 13,",
+      "context": "The Declaration Layer:",
+      "ambiguities": [
+        "AMB-01",
+        "AMB-02"
+      ],
+      "note": "Section 13 names Annex A; schema.json is stricter in nine keywords (AMB-01). fail only when both reject; warn when they disagree. Format assertion must be enabled (AMB-02)."
+    },
+    {
+      "id": "AM10-5.2.1-c",
+      "section": "5.2.1",
+      "section_title": "Declaration Layer",
+      "keyword": "MUST",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "S",
+      "mechanical_result": "decides",
+      "text": "MUST declare required structural elements defined in Section 6.",
+      "context": "The Declaration Layer:",
+      "note": "Presence enforced by the schema."
+    },
+    {
+      "id": "AM10-5.2.2-a",
+      "section": "5.2.2",
+      "section_title": "Enforcement Layer",
+      "keyword": "MAY",
+      "keyword_spans": 1,
+      "strength": "MAY",
+      "kind": "permission",
+      "target": "enforcement-layer",
+      "testability": "X",
+      "mechanical_result": "none",
+      "text": "Enforcement mechanisms MAY include schema validation, structural coherence checks, organizational policy review, procurement gating, and regulatory review.",
+      "note": "The permission under which conformance tooling operates. Imposes nothing on a document."
+    },
+    {
+      "id": "AM10-5.2.3-a",
+      "section": "5.2.3",
+      "section_title": "Execution Layer",
+      "keyword": "MAY",
+      "keyword_spans": 1,
+      "strength": "MAY",
+      "kind": "permission",
+      "target": "execution-layer",
+      "testability": "X",
+      "mechanical_result": "none",
+      "text": "It MAY invoke tools, produce outputs, interact with external systems, and cause state transitions.",
+      "note": "Descriptive of the Execution Layer."
+    },
+    {
+      "id": "AM10-5.3-a",
+      "section": "5.3",
+      "section_title": "Layer Separation Invariant",
+      "keyword": "MUST",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "responsible-party",
+      "testability": "X",
+      "mechanical_result": "none",
+      "text": "Declaration requirements MUST be satisfied prior to execution.",
+      "note": "Temporal; depends on when execution began. Not evaluable from the document."
+    },
+    {
+      "id": "AM10-5.3-b",
+      "section": "5.3",
+      "section_title": "Layer Separation Invariant",
+      "keyword": "MUST NOT",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "execution-layer",
+      "testability": "X",
+      "mechanical_result": "none",
+      "text": "Execution behavior MUST NOT modify the declared Agent Manifest during runtime.",
+      "note": "Runtime behaviour. Change over time can be observed by comparing fingerprints of successive retrievals, but not from one document."
+    },
+    {
+      "id": "AM10-5.3-c",
+      "section": "5.3",
+      "section_title": "Layer Separation Invariant",
+      "keyword": "MUST",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "enforcement-layer",
+      "testability": "X",
+      "mechanical_result": "none",
+      "text": "Enforcement decisions MUST be based on the declared manifest, not inferred runtime behavior.",
+      "note": "Addressed to enforcement systems."
+    },
+    {
+      "id": "AM10-6.1-a",
+      "section": "6.1",
+      "section_title": "Requirement — Identity Declaration",
+      "keyword": "MUST",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "S",
+      "mechanical_result": "decides",
+      "text": "An Agent Manifest MUST declare: manifest_version, agent_id, agent_name, agent_version.",
+      "note": "Required by the schema. A whitespace-only agent_name meets minLength 1; reported as warn."
+    },
+    {
+      "id": "AM10-6.1-b",
+      "section": "6.1",
+      "section_title": "Requirement — Identity Declaration",
+      "keyword": "MUST",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "S",
+      "mechanical_result": "decides",
+      "text": "The manifest_version MUST match the version defined by this specification.",
+      "ambiguities": [
+        "AMB-08"
+      ],
+      "note": "const \"1.0\" (a string). A document declaring another version is outside a v1.0 catalogue: a checker should report it as out of scope rather than evaluate it against v1.0 (AMB-08)."
+    },
+    {
+      "id": "AM10-6.1-c",
+      "section": "6.1",
+      "section_title": "Requirement — Identity Declaration",
+      "keyword": "MUST",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "J",
+      "mechanical_result": "none",
+      "text": "The agent_id MUST uniquely identify the Agent within its declared context.",
+      "ambiguities": [
+        "AMB-22"
+      ],
+      "note": "No field declares a \"context\". A collection (e.g. a registry index) can detect identical agent_id values mechanically, but a collision may be the same Agent published twice, and absence of collision in one collection establishes nothing about uniqueness elsewhere."
+    },
+    {
+      "id": "AM10-6.2-a",
+      "section": "6.2",
+      "section_title": "Requirement — Responsible Party Declaration",
+      "keyword": "MUST",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "S",
+      "mechanical_result": "decides",
+      "text": "An Agent Manifest MUST declare a Responsible Party.",
+      "note": "owner is required."
+    },
+    {
+      "id": "AM10-6.2-b",
+      "section": "6.2",
+      "section_title": "Requirement — Responsible Party Declaration",
+      "keyword": "MUST",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "S",
+      "mechanical_result": "decides",
+      "text": "The declaration MUST include owner.type and owner.identifier.",
+      "note": "Both required; owner.type is a closed enum."
+    },
+    {
+      "id": "AM10-6.2-c",
+      "section": "6.2",
+      "section_title": "Requirement — Responsible Party Declaration",
+      "keyword": "MUST",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "J",
+      "mechanical_result": "refutes-or-flags",
+      "text": "The Responsible Party MUST be identifiable as a discrete accountable entity.",
+      "note": "Judgment. Whitespace-only identifier is a mechanical fail (M); placeholder identifiers (\"TBD\", \"unknown\", \"N/A\") are flagged as warn (H)."
+    },
+    {
+      "id": "AM10-6.3-a",
+      "section": "6.3",
+      "section_title": "Requirement — Purpose Declaration",
+      "keyword": "MUST",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "J",
+      "mechanical_result": "refutes-only",
+      "text": "An Agent Manifest MUST declare a bounded purpose including purpose.primary_code and purpose.description.",
+      "note": "Presence of both fields is S. Whether the purpose is \"bounded\" requires judgment."
+    },
+    {
+      "id": "AM10-6.3-b",
+      "section": "6.3",
+      "section_title": "Requirement — Purpose Declaration",
+      "keyword": "MUST",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "J",
+      "mechanical_result": "none",
+      "text": "The declared purpose MUST define a specific operational domain.",
+      "note": "Judgment."
+    },
+    {
+      "id": "AM10-6.3-c",
+      "section": "6.3",
+      "section_title": "Requirement — Purpose Declaration",
+      "keyword": "MUST NOT",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "J",
+      "mechanical_result": "refutes-only",
+      "text": "Purpose declarations MUST NOT be undefined, empty, or aspirational without operational scope.",
+      "ambiguities": [
+        "AMB-20"
+      ],
+      "note": "\"undefined\": S (required). \"empty\": S (minLength) plus M (a whitespace-only description of ten spaces meets minLength 10). \"aspirational\": judgment."
+    },
+    {
+      "id": "AM10-6.4-a",
+      "section": "6.4",
+      "section_title": "Requirement — Negative Scope Declaration",
+      "keyword": "MUST",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "S",
+      "mechanical_result": "decides",
+      "text": "An Agent Manifest MUST declare at least one prohibited action via forbidden_actions.",
+      "note": "minItems 1. An array whose every entry is whitespace-only is also caught by M-whitespace-only under AM10-6.4-b."
+    },
+    {
+      "id": "AM10-6.4-b",
+      "section": "6.4",
+      "section_title": "Requirement — Negative Scope Declaration",
+      "keyword": "MUST, MUST NOT",
+      "keyword_spans": 2,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "J",
+      "mechanical_result": "refutes-or-flags",
+      "text": "Each entry MUST describe a concrete action class the Agent MUST NOT perform.",
+      "ambiguities": [
+        "AMB-20"
+      ],
+      "note": "Concreteness requires judgment. Whitespace-only entries are a mechanical fail (M); stock generic phrases (\"do no harm\", \"anything illegal\") are flagged as warn (H)."
+    },
+    {
+      "id": "AM10-6.4-c",
+      "section": "6.4",
+      "section_title": "Requirement — Negative Scope Declaration",
+      "keyword": "MUST",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "J",
+      "mechanical_result": "refutes-only",
+      "text": "Negative Scope MUST be explicit.",
+      "note": "Presence of forbidden_actions is S. Whether an entry is explicit or refers elsewhere (e.g. \"anything not in the policy\") requires judgment."
+    },
+    {
+      "id": "AM10-6.5-a",
+      "section": "6.5",
+      "section_title": "Requirement — Autonomy Level Declaration",
+      "keyword": "MUST",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "S",
+      "mechanical_result": "decides",
+      "text": "An Agent Manifest MUST declare an Autonomy Level via autonomy.level.",
+      "note": "Required."
+    },
+    {
+      "id": "AM10-6.5-b",
+      "section": "6.5",
+      "section_title": "Requirement — Autonomy Level Declaration",
+      "keyword": "MUST",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "S",
+      "mechanical_result": "decides",
+      "text": "The declared value MUST be an integer defined by this specification.",
+      "note": "integer, minimum 0, maximum 3. JSON Schema 2020-12 treats 2.0 as an integer."
+    },
+    {
+      "id": "AM10-6.6-a",
+      "section": "6.6",
+      "section_title": "Requirement — Stopping Authority Declaration",
+      "keyword": "MUST",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "H",
+      "mechanical_result": "refutes-or-flags",
+      "text": "An Agent Manifest MUST declare a Stopping Authority including at least one stoppable_by entity or role and a mechanism describing how interruption occurs.",
+      "note": "Presence is S. Whether the mechanism \"describes how interruption occurs\" can only be flagged heuristically (warn); a definitive answer requires judgment."
+    },
+    {
+      "id": "AM10-6.6-b",
+      "section": "6.6",
+      "section_title": "Requirement — Stopping Authority Declaration",
+      "keyword": "MUST",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "responsible-party",
+      "testability": "X",
+      "mechanical_result": "none",
+      "text": "Stopping Authority MUST be declared prior to execution.",
+      "note": "Temporal; not evaluable from the document."
+    },
+    {
+      "id": "AM10-6.7-a",
+      "section": "6.7",
+      "section_title": "Requirement — Audit Surface Declaration",
+      "keyword": "MUST",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "S",
+      "mechanical_result": "decides",
+      "text": "An Agent Manifest MUST declare an Audit Surface including audit_surface.logging and audit_surface.reconstructability.",
+      "note": "Required."
+    },
+    {
+      "id": "AM10-6.7-b",
+      "section": "6.7",
+      "section_title": "Requirement — Audit Surface Declaration",
+      "keyword": "MUST",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "S",
+      "mechanical_result": "decides",
+      "text": "Values MUST conform to the allowed enumerations defined in this specification.",
+      "note": "Closed enums."
+    },
+    {
+      "id": "AM10-6.8-a",
+      "section": "6.8",
+      "section_title": "Requirement — Data Handling Declaration",
+      "keyword": "MUST",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "S",
+      "mechanical_result": "decides",
+      "text": "An Agent Manifest MUST declare whether it stores personal data via data_handling.stores_personal_data.",
+      "note": "Required boolean."
+    },
+    {
+      "id": "AM10-6.8-b",
+      "section": "6.8",
+      "section_title": "Requirement — Data Handling Declaration",
+      "keyword": "MUST",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "S",
+      "mechanical_result": "decides",
+      "condition": "data_handling.stores_personal_data == true",
+      "text": "If stores_personal_data is true, the manifest MUST declare a retention value.",
+      "note": "The schema conditional. Annex A attaches it to data_handling, schema.json to the root; same effect (AMB-01)."
+    },
+    {
+      "id": "AM10-6.8-c",
+      "section": "6.8",
+      "section_title": "Requirement — Data Handling Declaration",
+      "keyword": "MUST",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "S",
+      "mechanical_result": "decides",
+      "text": "Retention values MUST be explicit.",
+      "ambiguities": [
+        "AMB-14"
+      ],
+      "note": "The anyOf of two enum values and a duration pattern. The combination stores_personal_data true with retention \"none\" is schema-valid and is not forbidden by any keyword statement (AMB-14)."
+    },
+    {
+      "id": "AM10-6.9-a",
+      "section": "6.9",
+      "section_title": "Requirement — Contact Declaration",
+      "keyword": "MUST",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "S",
+      "mechanical_result": "decides",
+      "text": "An Agent Manifest MUST declare a contact email via contact.email.",
+      "note": "Required."
+    },
+    {
+      "id": "AM10-6.9-b",
+      "section": "6.9",
+      "section_title": "Requirement — Contact Declaration",
+      "keyword": "MUST",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "S",
+      "mechanical_result": "decides",
+      "text": "The contact email MUST conform to a valid email format as defined in the normative schema.",
+      "ambiguities": [
+        "AMB-02"
+      ],
+      "note": "format: \"email\". Enforced only when format assertion is enabled, and the accepted set differs between validators (AMB-02)."
+    },
+    {
+      "id": "AM10-7-a",
+      "section": "7",
+      "section_title": "Structural Coherence Requirements",
+      "keyword": "MUST",
+      "keyword_spans": 1,
+      "strength": "meta",
+      "kind": "meta",
+      "target": "specification",
+      "testability": "X",
+      "mechanical_result": "none",
+      "text": "Violation of a MUST requirement in this section results in non-conformance.",
+      "note": "Aggregation rule: a definitive violation of a Section 7 MUST refutes conformance."
+    },
+    {
+      "id": "AM10-7-b",
+      "section": "7",
+      "section_title": "Structural Coherence Requirements",
+      "keyword": "SHOULD",
+      "keyword_spans": 1,
+      "strength": "meta",
+      "kind": "meta",
+      "target": "specification",
+      "testability": "X",
+      "mechanical_result": "none",
+      "text": "Violation of a SHOULD requirement does not invalidate conformance but indicates elevated review requirement.",
+      "note": "Basis for reporting SHOULD failures as \"elevated review\", never as non-conformance."
+    },
+    {
+      "id": "AM10-7.1.1-a",
+      "section": "7.1.1",
+      "section_title": "Requirement — Actionable Mechanism for Scoped and High Autonomy",
+      "keyword": "MUST",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "H",
+      "mechanical_result": "flags-only",
+      "condition": "autonomy.level in {2,3}",
+      "text": "If autonomy.level is 2 or 3, the declared stopping_authority.mechanism MUST describe an actionable interruption mechanism.",
+      "ambiguities": [
+        "AMB-04"
+      ],
+      "note": "Condition is S-decidable; \"actionable\" is not. Generic statements can be flagged (warn); never a definitive fail."
+    },
+    {
+      "id": "AM10-7.1.1-b",
+      "section": "7.1.1",
+      "section_title": "Requirement — Actionable Mechanism for Scoped and High Autonomy",
+      "keyword": "MUST",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "H",
+      "mechanical_result": "flags-only",
+      "condition": "autonomy.level in {2,3}",
+      "text": "The mechanism MUST describe a concrete interruption method (e.g., service disablement, credential revocation, execution halt).",
+      "ambiguities": [
+        "AMB-04"
+      ],
+      "note": "As AM10-7.1.1-a."
+    },
+    {
+      "id": "AM10-7.1.2-a",
+      "section": "7.1.2",
+      "section_title": "Recommendation — Stopping Mechanism for Supervised Autonomy",
+      "keyword": "SHOULD",
+      "keyword_spans": 1,
+      "strength": "SHOULD",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "S",
+      "mechanical_result": "decides",
+      "condition": "autonomy.level == 1",
+      "text": "If autonomy.level is 1, a Stopping Authority mechanism SHOULD be declared.",
+      "ambiguities": [
+        "AMB-03"
+      ],
+      "note": "Vacuous under the literal reading: mechanism is required by the schema and by AM10-6.6-a at every level, so every schema-valid document satisfies it. A stronger reading (\"an actionable mechanism\") is not stated and is not applied (AMB-03)."
+    },
+    {
+      "id": "AM10-7.1.3-a",
+      "section": "7.1.3",
+      "section_title": "Recommendation — Interruption Stages for High Autonomy",
+      "keyword": "SHOULD",
+      "keyword_spans": 1,
+      "strength": "SHOULD",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "M",
+      "mechanical_result": "decides",
+      "condition": "autonomy.level == 3",
+      "text": "If autonomy.level is 3, stopping_authority.stages SHOULD be declared.",
+      "ambiguities": [
+        "AMB-06"
+      ],
+      "note": "An empty array is treated as not declared (schema.json rejects it; Annex A accepts it) (AMB-06)."
+    },
+    {
+      "id": "AM10-7.2.1-a",
+      "section": "7.2.1",
+      "section_title": "Requirement — Prohibited Null Audit for High Autonomy",
+      "keyword": "MUST NOT",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "M",
+      "mechanical_result": "decides",
+      "condition": "autonomy.level == 3",
+      "text": "If autonomy.level is 3, the Agent Manifest MUST NOT declare both audit_surface.logging = \"none\" and audit_surface.reconstructability = \"none\" simultaneously.",
+      "note": "Fully decidable from the document; not expressed in either schema."
+    },
+    {
+      "id": "AM10-7.2.2-a",
+      "section": "7.2.2",
+      "section_title": "Recommendation — Minimum Logging for Scoped Autonomy",
+      "keyword": "SHOULD NOT",
+      "keyword_spans": 1,
+      "strength": "SHOULD",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "M",
+      "mechanical_result": "decides",
+      "condition": "autonomy.level == 2",
+      "text": "If autonomy.level is 2, audit_surface.logging SHOULD NOT be \"none\".",
+      "note": "Fully decidable."
+    },
+    {
+      "id": "AM10-7.3.1-a",
+      "section": "7.3.1",
+      "section_title": "Recommendation — Risk Proportionality",
+      "keyword": "SHOULD",
+      "keyword_spans": 1,
+      "strength": "SHOULD",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "M",
+      "mechanical_result": "refutes-only",
+      "condition": "autonomy.level == 3 and risk_profile.level == \"low\"",
+      "text": "If autonomy.level is 3 and risk_profile.level is \"low\", the declaration SHOULD include explanatory notes in risk_profile.notes.",
+      "note": "Presence of non-blank notes is decidable. Whether they explain is not evaluated."
+    },
+    {
+      "id": "AM10-7.4.1-a",
+      "section": "7.4.1",
+      "section_title": "Recommendation — Domain-Appropriate Retention",
+      "keyword": "SHOULD",
+      "keyword_spans": 1,
+      "strength": "SHOULD",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "J",
+      "mechanical_result": "none",
+      "condition": "data_handling.stores_personal_data == true",
+      "text": "If data_handling.stores_personal_data is true, the declared retention period SHOULD be appropriate to the operational domain of the Agent.",
+      "note": "Judgment."
+    },
+    {
+      "id": "AM10-8.1-a",
+      "section": "8.1",
+      "section_title": "Autonomy Level Model",
+      "keyword": "MUST",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "responsible-party",
+      "testability": "X",
+      "mechanical_result": "none",
+      "text": "Classification MUST be determined according to the criteria defined in Section 8.2.",
+      "note": "Whether the declared level matches the Agent requires knowledge of the Agent."
+    },
+    {
+      "id": "AM10-8.2.0-a",
+      "section": "8.2.0",
+      "section_title": "Level 0 — No Execution",
+      "keyword": "SHALL",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "responsible-party",
+      "testability": "X",
+      "mechanical_result": "none",
+      "text": "An Agent SHALL be classified as Level 0 if and only if the Agent does not execute actions affecting external systems, and produces advisory, descriptive, or informational output only.",
+      "note": "Classification criterion about the Agent, not the document. Section 12.1 makes Sections 8–11 part of conformance evaluation, so conformance cannot be established from the document alone."
+    },
+    {
+      "id": "AM10-8.2.1-a",
+      "section": "8.2.1",
+      "section_title": "Level 1 — Supervised Execution",
+      "keyword": "SHALL",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "responsible-party",
+      "testability": "X",
+      "mechanical_result": "none",
+      "text": "An Agent SHALL be classified as Level 1 if and only if the Agent may perform execution actions and each action requires explicit human or external system confirmation prior to effect.",
+      "note": "Classification criterion about the Agent, not the document. Section 12.1 makes Sections 8–11 part of conformance evaluation, so conformance cannot be established from the document alone."
+    },
+    {
+      "id": "AM10-8.2.2-a",
+      "section": "8.2.2",
+      "section_title": "Level 2 — Scoped Autonomy",
+      "keyword": "SHALL",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "responsible-party",
+      "testability": "X",
+      "mechanical_result": "none",
+      "text": "An Agent SHALL be classified as Level 2 if and only if the Agent may execute actions without per-step human approval, execution is limited to predefined workflows or bounded operational scope, and execution authority is constrained by declared purpose and negative scope.",
+      "note": "Classification criterion about the Agent, not the document. Section 12.1 makes Sections 8–11 part of conformance evaluation, so conformance cannot be established from the document alone."
+    },
+    {
+      "id": "AM10-8.2.3-a",
+      "section": "8.2.3",
+      "section_title": "Level 3 — High Autonomy",
+      "keyword": "SHALL",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "responsible-party",
+      "testability": "X",
+      "mechanical_result": "none",
+      "text": "An Agent SHALL be classified as Level 3 if and only if the Agent may execute actions without per-step approval, may initiate actions within declared scope independently, and execution may produce material external effects without synchronous human confirmation.",
+      "note": "Classification criterion about the Agent, not the document. Section 12.1 makes Sections 8–11 part of conformance evaluation, so conformance cannot be established from the document alone."
+    },
+    {
+      "id": "AM10-8.3-a",
+      "section": "8.3",
+      "section_title": "Classification Reference Table (Normative)",
+      "keyword": "SHALL",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "responsible-party",
+      "testability": "X",
+      "mechanical_result": "none",
+      "text": "This table is normative and SHALL be used for classification reference.",
+      "note": "As Section 8.2."
+    },
+    {
+      "id": "AM10-8.4-a",
+      "section": "8.4",
+      "section_title": "Classification Responsibility",
+      "keyword": "MUST",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "responsible-party",
+      "testability": "X",
+      "mechanical_result": "none",
+      "text": "The Responsible Party MUST classify the Agent according to the criteria defined in Section 8.2.",
+      "note": "Publisher obligation."
+    },
+    {
+      "id": "AM10-8.4-b",
+      "section": "8.4",
+      "section_title": "Classification Responsibility",
+      "keyword": "MAY",
+      "keyword_spans": 1,
+      "strength": "MAY",
+      "kind": "permission",
+      "target": "enforcement-layer",
+      "testability": "X",
+      "mechanical_result": "none",
+      "text": "Enforcement Layer systems MAY evaluate declared Autonomy Level for coherence.",
+      "note": "Permission under which Section 7 coherence checks are run by tools."
+    },
+    {
+      "id": "AM10-9.2-a",
+      "section": "9.2",
+      "section_title": "Stoppable By",
+      "keyword": "MUST",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "H",
+      "mechanical_result": "refutes-or-flags",
+      "text": "MUST be identifiable as a discrete role, entity, or system,",
+      "context": "The stopping_authority.stoppable_by field declares the entity or role authorized to initiate interruption. Each entry:",
+      "note": "Whitespace-only entries are a mechanical fail (M). Otherwise judgment, with heuristic flags from H-generic-stoppable-by."
+    },
+    {
+      "id": "AM10-9.2-b",
+      "section": "9.2",
+      "section_title": "Stoppable By",
+      "keyword": "MUST NOT",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "H",
+      "mechanical_result": "flags-only",
+      "text": "MUST NOT be undefined or generic (e.g., \"someone\", \"administrator\" without context).",
+      "context": "Each entry:",
+      "ambiguities": [
+        "AMB-15"
+      ],
+      "note": "Bare generic terms are flagged as warn. \"owner\" is not flagged: AM10-9.2-c permits reference to the Responsible Party (AMB-15)."
+    },
+    {
+      "id": "AM10-9.2-c",
+      "section": "9.2",
+      "section_title": "Stoppable By",
+      "keyword": "MAY",
+      "keyword_spans": 1,
+      "strength": "MAY",
+      "kind": "permission",
+      "target": "manifest",
+      "testability": "X",
+      "mechanical_result": "none",
+      "text": "The declaration MAY reference organizational roles, system operators, Responsible Party, or dedicated oversight entities.",
+      "ambiguities": [
+        "AMB-15"
+      ],
+      "note": "Permission; in tension with AM10-9.2-b for bare \"operator\" (AMB-15)."
+    },
+    {
+      "id": "AM10-9.3-a.1",
+      "section": "9.3",
+      "section_title": "Mechanism",
+      "keyword": "MUST",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "H",
+      "mechanical_result": "flags-only",
+      "text": "Describe a concrete interruption method,",
+      "context": "The stopping_authority.mechanism field declares the technical method by which interruption occurs. An actionable mechanism MUST:",
+      "ambiguities": [
+        "AMB-04"
+      ],
+      "note": "Heuristic flags only. One keyword governs the three list items; the span is counted on a.1. Whether Section 9.3 applies at every level or only where Section 7.1.1 applies is not settled (AMB-04)."
+    },
+    {
+      "id": "AM10-9.3-a.2",
+      "section": "9.3",
+      "section_title": "Mechanism",
+      "keyword": "MUST",
+      "keyword_spans": 0,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "H",
+      "mechanical_result": "flags-only",
+      "text": "Indicate how execution is halted, disabled, or prevented,",
+      "context": "The stopping_authority.mechanism field declares the technical method by which interruption occurs. An actionable mechanism MUST:",
+      "ambiguities": [
+        "AMB-04"
+      ],
+      "note": "Heuristic flags only. One keyword governs the three list items; the span is counted on a.1. Whether Section 9.3 applies at every level or only where Section 7.1.1 applies is not settled (AMB-04)."
+    },
+    {
+      "id": "AM10-9.3-a.3",
+      "section": "9.3",
+      "section_title": "Mechanism",
+      "keyword": "MUST",
+      "keyword_spans": 0,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "X",
+      "mechanical_result": "none",
+      "text": "Be technically realizable within the Agent's operational context.",
+      "context": "The stopping_authority.mechanism field declares the technical method by which interruption occurs. An actionable mechanism MUST:",
+      "ambiguities": [
+        "AMB-04"
+      ],
+      "note": "Realizability depends on the Agent and its environment. One keyword governs the three list items; the span is counted on a.1. Whether Section 9.3 applies at every level or only where Section 7.1.1 applies is not settled (AMB-04)."
+    },
+    {
+      "id": "AM10-9.3-b",
+      "section": "9.3",
+      "section_title": "Mechanism",
+      "keyword": "MUST NOT",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "H",
+      "mechanical_result": "refutes-or-flags",
+      "text": "The mechanism declaration MUST NOT consist solely of generic statements such as \"Can be stopped by admin\", \"Manual override\", or \"System can be disabled\".",
+      "ambiguities": [
+        "AMB-04"
+      ],
+      "note": "Unconditional wording. Whitespace-only mechanism is a mechanical fail (M); resemblance to the listed statements, or no recognisable interruption vector, is warn (H)."
+    },
+    {
+      "id": "AM10-9.3-c",
+      "section": "9.3",
+      "section_title": "Mechanism",
+      "keyword": "MUST",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "H",
+      "mechanical_result": "flags-only",
+      "text": "The declaration MUST describe the interruption vector, not merely the existence of authority.",
+      "ambiguities": [
+        "AMB-04"
+      ],
+      "note": "Heuristic flags only."
+    },
+    {
+      "id": "AM10-9.4-a",
+      "section": "9.4",
+      "section_title": "Stages",
+      "keyword": "OPTIONAL",
+      "keyword_spans": 1,
+      "strength": "MAY",
+      "kind": "permission",
+      "target": "manifest",
+      "testability": "S",
+      "mechanical_result": "decides",
+      "text": "The stopping_authority.stages field is OPTIONAL.",
+      "note": "Not in \"required\". AM10-7.1.3-a recommends it at level 3."
+    },
+    {
+      "id": "AM10-9.4-b",
+      "section": "9.4",
+      "section_title": "Stages",
+      "keyword": "MAY",
+      "keyword_spans": 1,
+      "strength": "MAY",
+      "kind": "permission",
+      "target": "manifest",
+      "testability": "S",
+      "mechanical_result": "decides",
+      "text": "Valid stage values MAY include: pre-execution, mid-execution, post-execution.",
+      "ambiguities": [
+        "AMB-05"
+      ],
+      "note": "Reads as an open list; the schema enum is closed and Section 13.1 makes the schema authoritative for enumerated values (AMB-05)."
+    },
+    {
+      "id": "AM10-10.4-a",
+      "section": "10.4",
+      "section_title": "Opacity Declaration",
+      "keyword": "MAY",
+      "keyword_spans": 1,
+      "strength": "MAY",
+      "kind": "permission",
+      "target": "manifest",
+      "testability": "X",
+      "mechanical_result": "none",
+      "text": "An Agent MAY declare detailed logging and full reconstructability while still declaring opacity if internal reasoning cannot be independently reproduced.",
+      "note": "Permission. A checker must not report this combination as incoherent."
+    },
+    {
+      "id": "AM10-10.4-b",
+      "section": "10.4",
+      "section_title": "Opacity Declaration",
+      "keyword": "MUST NOT",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "X",
+      "mechanical_result": "flags-only",
+      "text": "An opacity declaration MUST NOT be implicit.",
+      "note": "Whether structural opacity exists is a fact about the Agent. Notes that describe opacity while opacity_declared is not true can be flagged (H, warn)."
+    },
+    {
+      "id": "AM10-10.4-c",
+      "section": "10.4",
+      "section_title": "Opacity Declaration",
+      "keyword": "SHOULD",
+      "keyword_spans": 1,
+      "strength": "SHOULD",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "M",
+      "mechanical_result": "refutes-only",
+      "condition": "audit_surface.opacity_declared == true",
+      "text": "Explanatory notes SHOULD clarify the source of opacity.",
+      "note": "Read as conditional on opacity_declared true. Presence of non-blank audit_surface.notes is decidable; whether they clarify is not evaluated."
+    },
+    {
+      "id": "AM10-11.2-a",
+      "section": "11.2",
+      "section_title": "stores_personal_data",
+      "keyword": "MUST",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "S",
+      "mechanical_result": "decides",
+      "condition": "data_handling.stores_personal_data == true",
+      "text": "If stores_personal_data is true, a retention value MUST be declared.",
+      "restates": [
+        "AM10-6.8-b"
+      ],
+      "note": "Restates AM10-6.8-b."
+    },
+    {
+      "id": "AM10-11.3-a",
+      "section": "11.3",
+      "section_title": "Retention Semantics",
+      "keyword": "MUST",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "S",
+      "mechanical_result": "decides",
+      "text": "Retention values MUST be explicit.",
+      "restates": [
+        "AM10-6.8-c"
+      ],
+      "note": "Restates AM10-6.8-c."
+    },
+    {
+      "id": "AM10-11.3-b",
+      "section": "11.3",
+      "section_title": "Retention Semantics",
+      "keyword": "MUST NOT",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "S",
+      "mechanical_result": "decides",
+      "text": "Free-form strings MUST NOT be used.",
+      "note": "anyOf of enum and pattern."
+    },
+    {
+      "id": "AM10-11.3-c",
+      "section": "11.3",
+      "section_title": "Retention Semantics",
+      "keyword": "MUST",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "M",
+      "mechanical_result": "decides",
+      "text": "Retention values MUST be machine-readable and unambiguous.",
+      "ambiguities": [
+        "AMB-07"
+      ],
+      "note": "S for the enum and pattern; M for pattern-valid strings that are not ISO 8601 (\"PT\", \"P1DT\") (AMB-07)."
+    },
+    {
+      "id": "AM10-11.4-a",
+      "section": "11.4",
+      "section_title": "Retention Format Convention",
+      "keyword": "MUST",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "M",
+      "mechanical_result": "decides",
+      "condition": "data_handling.retention is a duration",
+      "text": "If a specific retention duration is declared, it MUST conform to ISO 8601 duration format.",
+      "ambiguities": [
+        "AMB-07"
+      ],
+      "note": "The pattern admits \"PT\", \"P1YT\", \"P1DT\" (designator T with no time element), which are not ISO 8601 durations; Section 11.3 states that complete ISO 8601 validation is delegated beyond the pattern. The pattern rejects ISO 8601 week, fractional and alternative forms (\"P1W\", \"P0.5D\"); Section 13.1 makes the schema authoritative for format constraints, so those remain non-conformant in v1.0 (AMB-07)."
+    },
+    {
+      "id": "AM10-11.4-b",
+      "section": "11.4",
+      "section_title": "Retention Format Convention",
+      "keyword": "MUST NOT",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "S",
+      "mechanical_result": "decides",
+      "text": "Free-form strings such as \"30 days\", \"short term\", \"temporary\", or \"one month\" MUST NOT be used.",
+      "note": "anyOf of enum and pattern."
+    },
+    {
+      "id": "AM10-11.4-c",
+      "section": "11.4",
+      "section_title": "Retention Format Convention",
+      "keyword": "MUST",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "M",
+      "mechanical_result": "decides",
+      "text": "Retention values MUST be machine-readable and unambiguous.",
+      "restates": [
+        "AM10-11.3-c"
+      ],
+      "ambiguities": [
+        "AMB-07"
+      ],
+      "note": "Restates AM10-11.3-c."
+    },
+    {
+      "id": "AM10-11.5-a",
+      "section": "11.5",
+      "section_title": "Implicit Retention Prohibition",
+      "keyword": "MUST NOT",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "M",
+      "mechanical_result": "decides",
+      "condition": "data_handling.stores_personal_data == false",
+      "text": "If stores_personal_data is declared as false, the Agent MUST NOT declare any retention value other than \"none\".",
+      "note": "Fully decidable; not expressed in either schema. Absent retention satisfies it."
+    },
+    {
+      "id": "AM10-11.5-b",
+      "section": "11.5",
+      "section_title": "Implicit Retention Prohibition",
+      "keyword": "MUST NOT",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "X",
+      "mechanical_result": "none",
+      "text": "Data retention MUST NOT be implicit.",
+      "ambiguities": [
+        "AMB-13"
+      ],
+      "note": "Read with the preceding sentence (\"If data persistence exists and is not declared, the Agent Manifest is materially misleading\"), this concerns undeclared persistence, a fact about the Agent. It is not read as requiring retention when stores_personal_data is false (AMB-13)."
+    },
+    {
+      "id": "AM10-12.1-a",
+      "section": "12.1",
+      "section_title": "Conformance Model",
+      "keyword": "SHALL, MUST",
+      "keyword_spans": 2,
+      "strength": "meta",
+      "kind": "meta",
+      "target": "enforcement-layer",
+      "testability": "X",
+      "mechanical_result": "none",
+      "text": "An Agent Manifest SHALL be evaluated for conformance based on Structural Validity (Section 4.10), compliance with all MUST requirements defined in Sections 6 and 7, and compliance with semantic requirements defined in Sections 8–11.",
+      "ambiguities": [
+        "AMB-09"
+      ],
+      "note": "Places X-class requirements (Sections 8–11) inside the conformance evaluation. No tool can therefore establish conformance from the document."
+    },
+    {
+      "id": "AM10-12.2.1-a",
+      "section": "12.2.1",
+      "section_title": "Minimal Conformance",
+      "keyword": "MUST",
+      "keyword_spans": 1,
+      "strength": "meta",
+      "kind": "meta",
+      "target": "specification",
+      "testability": "X",
+      "mechanical_result": "none",
+      "text": "An Agent Manifest achieves Minimal Conformance if it satisfies all MUST requirements defined in this specification and is structurally valid under the normative schema (Section 13).",
+      "ambiguities": [
+        "AMB-09"
+      ],
+      "note": "\"All MUST requirements defined in this specification\" includes MUSTs addressed to consumers, enforcement systems, runtime and future revisions (AMB-09)."
+    },
+    {
+      "id": "AM10-12.2.1-b",
+      "section": "12.2.1",
+      "section_title": "Minimal Conformance",
+      "keyword": "MUST",
+      "keyword_spans": 1,
+      "strength": "meta",
+      "kind": "meta",
+      "target": "specification",
+      "testability": "X",
+      "mechanical_result": "none",
+      "text": "Violation of any MUST requirement results in non-conformance.",
+      "note": "Aggregation rule."
+    },
+    {
+      "id": "AM10-12.2.2-a",
+      "section": "12.2.2",
+      "section_title": "Full Conformance",
+      "keyword": "MUST, SHOULD",
+      "keyword_spans": 2,
+      "strength": "meta",
+      "kind": "meta",
+      "target": "specification",
+      "testability": "X",
+      "mechanical_result": "none",
+      "text": "An Agent Manifest achieves Full Conformance if it satisfies all MUST requirements and all SHOULD requirements defined in this specification.",
+      "ambiguities": [
+        "AMB-09"
+      ],
+      "note": "Includes publisher-side SHOULDs (secure transport, extension documentation) not visible in the document (AMB-09)."
+    },
+    {
+      "id": "AM10-12.2.2-b",
+      "section": "12.2.2",
+      "section_title": "Full Conformance",
+      "keyword": "SHOULD",
+      "keyword_spans": 1,
+      "strength": "meta",
+      "kind": "meta",
+      "target": "specification",
+      "testability": "X",
+      "mechanical_result": "none",
+      "text": "Violation of a SHOULD requirement does not invalidate Minimal Conformance but prevents qualification as Full Conformance.",
+      "note": "Aggregation rule."
+    },
+    {
+      "id": "AM10-12.3-a",
+      "section": "12.3",
+      "section_title": "Conformance Determination",
+      "keyword": "MAY",
+      "keyword_spans": 1,
+      "strength": "MAY",
+      "kind": "permission",
+      "target": "enforcement-layer",
+      "testability": "X",
+      "mechanical_result": "none",
+      "text": "Conformance MAY be determined by automated schema validation tools, structural coherence validators, organizational review processes, or procurement evaluation systems.",
+      "note": "Names \"structural coherence validators\" as a legitimate determination mechanism; says nothing about what such a tool can establish on its own."
+    },
+    {
+      "id": "AM10-12.3-b",
+      "section": "12.3",
+      "section_title": "Conformance Determination",
+      "keyword": "MAY",
+      "keyword_spans": 1,
+      "strength": "MAY",
+      "kind": "permission",
+      "target": "enforcement-layer",
+      "testability": "X",
+      "mechanical_result": "none",
+      "text": "Enforcement Layer systems MAY independently evaluate conformance.",
+      "note": "Permission."
+    },
+    {
+      "id": "AM10-12.4-a",
+      "section": "12.4",
+      "section_title": "Non-Conformance",
+      "keyword": "MUST",
+      "keyword_spans": 1,
+      "strength": "meta",
+      "kind": "meta",
+      "target": "specification",
+      "testability": "X",
+      "mechanical_result": "none",
+      "text": "An Agent Manifest is non-conformant if: required fields defined in Section 6 are absent; any MUST requirement in Sections 7–11 is violated; the manifest fails normative schema validation (Section 13); or material misrepresentation exists in declared fields.",
+      "ambiguities": [
+        "AMB-12"
+      ],
+      "note": "The fourth clause (material misrepresentation) is not evaluable from the document and is in tension with Section 14.2 (AMB-12)."
+    },
+    {
+      "id": "AM10-12.5-a",
+      "section": "12.5",
+      "section_title": "Relationship to Enforcement Layer",
+      "keyword": "MAY, SHOULD",
+      "keyword_spans": 2,
+      "strength": "MAY",
+      "kind": "permission",
+      "target": "enforcement-layer",
+      "testability": "X",
+      "mechanical_result": "none",
+      "text": "The Enforcement Layer MAY reject non-conformant manifests, flag SHOULD violations, apply policy-based gating, or apply regulatory interpretation.",
+      "note": "Rejection and gating belong to the Enforcement Layer, not to a conformance checker."
+    },
+    {
+      "id": "AM10-13-a",
+      "section": "13",
+      "section_title": "Normative JSON Schema",
+      "keyword": "MUST",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "implementation",
+      "testability": "X",
+      "mechanical_result": "none",
+      "text": "All implementations claiming conformance MUST validate Agent Manifest documents against the JSON Schema defined in Annex A.",
+      "ambiguities": [
+        "AMB-01"
+      ],
+      "note": "Addressed to software. Testable against implementations with a corpus. Existing tools validate against schema.json, the stricter artefact (AMB-01)."
+    },
+    {
+      "id": "AM10-13.1-a",
+      "section": "13.1",
+      "section_title": "Precedence Rule",
+      "keyword": "SHALL",
+      "keyword_spans": 1,
+      "strength": "meta",
+      "kind": "meta",
+      "target": "specification",
+      "testability": "X",
+      "mechanical_result": "none",
+      "text": "In the event of conflict between normative prose and the JSON Schema defined in Annex A, normative prose SHALL prevail except with respect to field types, enumerated values, and format constraints, for which the JSON Schema is authoritative.",
+      "ambiguities": [
+        "AMB-01",
+        "AMB-05",
+        "AMB-07"
+      ],
+      "note": "Interpretive rule. Arbitrates prose against schema, not Annex A against schema.json (AMB-01)."
+    },
+    {
+      "id": "AM10-13.2-a",
+      "section": "13.2",
+      "section_title": "Extension Convention",
+      "keyword": "SHOULD",
+      "keyword_spans": 1,
+      "strength": "SHOULD",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "M",
+      "mechanical_result": "decides",
+      "text": "Non-normative extension fields at the root level SHOULD use the \"x-\" prefix (e.g., \"x-sector-profile\": \"finance-v1\").",
+      "ambiguities": [
+        "AMB-10"
+      ],
+      "note": "Decidable: any root key that is not a normative property, not \"extensions\" and not \"x-\"-prefixed. \"$schema\" is reported as warn (AMB-10)."
+    },
+    {
+      "id": "AM10-13.2-b",
+      "section": "13.2",
+      "section_title": "Extension Convention",
+      "keyword": "MAY",
+      "keyword_spans": 1,
+      "strength": "MAY",
+      "kind": "permission",
+      "target": "manifest",
+      "testability": "S",
+      "mechanical_result": "decides",
+      "text": "Implementations MAY alternatively group non-normative extension data under a dedicated \"extensions\" object at the root level.",
+      "ambiguities": [
+        "AMB-11"
+      ],
+      "note": "The schema types extensions as an object with additionalProperties true."
+    },
+    {
+      "id": "AM10-13.2-c",
+      "section": "13.2",
+      "section_title": "Extension Convention",
+      "keyword": "MUST NOT",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "H",
+      "mechanical_result": "flags-only",
+      "text": "Implementations MUST NOT redefine or override normative fields defined in this specification via either extension mechanism.",
+      "ambiguities": [
+        "AMB-11",
+        "AMB-16"
+      ],
+      "note": "\"Redefine or override\" has no operational definition. An extension key named like a normative field is flagged as warn; redefinition under another name is not evaluated (AMB-16)."
+    },
+    {
+      "id": "AM10-14.1-a",
+      "section": "14.1",
+      "section_title": "Declaration Does Not Imply Enforcement",
+      "keyword": "MAY",
+      "keyword_spans": 1,
+      "strength": "MAY",
+      "kind": "permission",
+      "target": "manifest",
+      "testability": "X",
+      "mechanical_result": "none",
+      "text": "A conformant Agent Manifest MAY declare constraints, risk posture, stopping authority, audit surface, or data handling practices.",
+      "note": "Descriptive."
+    },
+    {
+      "id": "AM10-14.1-b",
+      "section": "14.1",
+      "section_title": "Declaration Does Not Imply Enforcement",
+      "keyword": "MUST NOT",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "consumer",
+      "testability": "X",
+      "mechanical_result": "none",
+      "text": "This declaration MUST NOT be interpreted as proof of enforcement, evidence of operational compliance, or cryptographic attestation.",
+      "note": "Constrains how tools word their output (review, not test)."
+    },
+    {
+      "id": "AM10-14.2-a",
+      "section": "14.2",
+      "section_title": "False or Misleading Declarations",
+      "keyword": "MAY",
+      "keyword_spans": 1,
+      "strength": "MAY",
+      "kind": "permission",
+      "target": "manifest",
+      "testability": "X",
+      "mechanical_result": "none",
+      "text": "An Agent Manifest MAY be syntactically valid and structurally conformant while being materially false or misleading.",
+      "ambiguities": [
+        "AMB-12"
+      ],
+      "note": "Descriptive. In tension with the fourth clause of Section 12.4 (AMB-12)."
+    },
+    {
+      "id": "AM10-14.2-b",
+      "section": "14.2",
+      "section_title": "False or Misleading Declarations",
+      "keyword": "MUST",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "consumer",
+      "testability": "X",
+      "mechanical_result": "none",
+      "text": "Consumers MUST treat declarations as representations provided by the Responsible Party.",
+      "note": "Consumer behaviour."
+    },
+    {
+      "id": "AM10-14.3-a",
+      "section": "14.3",
+      "section_title": "Absence of Cryptographic Binding",
+      "keyword": "MAY",
+      "keyword_spans": 1,
+      "strength": "MAY",
+      "kind": "permission",
+      "target": "future-revision",
+      "testability": "X",
+      "mechanical_result": "none",
+      "text": "Such mechanisms MAY be defined in future extensions.",
+      "note": "Future work."
+    },
+    {
+      "id": "AM10-14.3-b",
+      "section": "14.3",
+      "section_title": "Absence of Cryptographic Binding",
+      "keyword": "SHOULD",
+      "keyword_spans": 1,
+      "strength": "SHOULD",
+      "kind": "requirement",
+      "target": "responsible-party",
+      "testability": "X",
+      "mechanical_result": "none",
+      "text": "Until such mechanisms are adopted, manifests SHOULD be distributed via secure transport mechanisms (e.g., HTTPS) to mitigate tampering risks.",
+      "note": "Not visible in the document. Decidable from the retrieval context (URL scheme) when a document was fetched."
+    },
+    {
+      "id": "AM10-14.4-a",
+      "section": "14.4",
+      "section_title": "Extension Field Risks",
+      "keyword": "MUST NOT",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "H",
+      "mechanical_result": "flags-only",
+      "text": "Extensions MUST NOT redefine normative fields,",
+      "restates": [
+        "AM10-13.2-c"
+      ],
+      "ambiguities": [
+        "AMB-16"
+      ],
+      "note": "As AM10-13.2-c."
+    },
+    {
+      "id": "AM10-14.4-b",
+      "section": "14.4",
+      "section_title": "Extension Field Risks",
+      "keyword": "MUST NOT",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "J",
+      "mechanical_result": "flags-only",
+      "text": "MUST NOT conflict semantically with mandatory declarations,",
+      "context": "Extensions",
+      "ambiguities": [
+        "AMB-16"
+      ],
+      "note": "Semantic conflict requires judgment. An extension key named like a normative field is surfaced by H-extension-shadow for review."
+    },
+    {
+      "id": "AM10-14.4-c",
+      "section": "14.4",
+      "section_title": "Extension Field Risks",
+      "keyword": "SHOULD",
+      "keyword_spans": 1,
+      "strength": "SHOULD",
+      "kind": "requirement",
+      "target": "responsible-party",
+      "testability": "X",
+      "mechanical_result": "none",
+      "text": "SHOULD be clearly documented by the declaring party.",
+      "context": "Extensions",
+      "note": "Documentation lives outside the document."
+    },
+    {
+      "id": "AM10-14.4-d",
+      "section": "14.4",
+      "section_title": "Extension Field Risks",
+      "keyword": "MUST",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "consumer",
+      "testability": "X",
+      "mechanical_result": "none",
+      "text": "Consumers MUST ignore unknown \"x-\" fields unless explicitly supported.",
+      "note": "Testable against an implementation: adding unknown x- members must not change its result."
+    },
+    {
+      "id": "AM10-14.5-a",
+      "section": "14.5",
+      "section_title": "Denial by Default Interpretation",
+      "keyword": "MUST",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "consumer",
+      "testability": "X",
+      "mechanical_result": "none",
+      "text": "Non-conformance MUST be interpreted as absence of declared authority.",
+      "note": "Because a reported non-conformance obliges consumers to treat authority as absent, a checker may report \"fail\" only on a definitive (S or M) finding. Heuristics may never produce fail."
+    },
+    {
+      "id": "AM10-14.5-b",
+      "section": "14.5",
+      "section_title": "Denial by Default Interpretation",
+      "keyword": "SHOULD",
+      "keyword_spans": 1,
+      "strength": "SHOULD",
+      "kind": "requirement",
+      "target": "consumer",
+      "testability": "X",
+      "mechanical_result": "none",
+      "text": "Conformant consumers SHOULD treat non-conformant manifests as structurally untrusted.",
+      "note": "Consumer behaviour."
+    },
+    {
+      "id": "AM10-14.6-a",
+      "section": "14.6",
+      "section_title": "Risk of Over-Interpretation",
+      "keyword": "MUST NOT",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "consumer",
+      "testability": "X",
+      "mechanical_result": "none",
+      "text": "Consumers MUST NOT infer regulatory compliance, ethical alignment, safety certification, or legal authorization solely from the presence of a conformant Agent Manifest.",
+      "note": "Constrains output wording of any tool (no \"conformant\" badge, seal or score)."
+    },
+    {
+      "id": "AM10-15.1-a",
+      "section": "15.1",
+      "section_title": "EU AI Act (Regulation (EU) 2024/1689)",
+      "keyword": "MAY",
+      "keyword_spans": 1,
+      "strength": "MAY",
+      "kind": "permission",
+      "target": "specification",
+      "testability": "X",
+      "mechanical_result": "none",
+      "text": "An Agent Manifest MAY be used as a supporting artifact within EU AI Act compliance processes but does not satisfy regulatory obligations by itself.",
+      "note": "Relationship statement; imposes nothing on a document."
+    },
+    {
+      "id": "AM10-15.2-a",
+      "section": "15.2",
+      "section_title": "NIST AI Risk Management Framework (AI RMF 1.0, 2023)",
+      "keyword": "MAY",
+      "keyword_spans": 1,
+      "strength": "MAY",
+      "kind": "permission",
+      "target": "specification",
+      "testability": "X",
+      "mechanical_result": "none",
+      "text": "An Agent Manifest MAY be incorporated as an artifact within a NIST AI RMF implementation, particularly within the Govern and Map functions.",
+      "note": "Relationship statement; imposes nothing on a document."
+    },
+    {
+      "id": "AM10-15.3-a",
+      "section": "15.3",
+      "section_title": "ISO/IEC 42001:2023 (AI Management Systems)",
+      "keyword": "MAY",
+      "keyword_spans": 1,
+      "strength": "MAY",
+      "kind": "permission",
+      "target": "specification",
+      "testability": "X",
+      "mechanical_result": "none",
+      "text": "An organization operating under ISO/IEC 42001 MAY require Agent Manifests as documentation artifacts.",
+      "note": "Relationship statement; imposes nothing on a document."
+    },
+    {
+      "id": "AM10-15.4-a",
+      "section": "15.4",
+      "section_title": "IEEE 7000 Series (Ethically Aligned Design)",
+      "keyword": "MAY",
+      "keyword_spans": 1,
+      "strength": "MAY",
+      "kind": "permission",
+      "target": "specification",
+      "testability": "X",
+      "mechanical_result": "none",
+      "text": "It provides a structured declaration surface through which such principles MAY be disclosed.",
+      "note": "Relationship statement; imposes nothing on a document."
+    },
+    {
+      "id": "AM10-15.5-a",
+      "section": "15.5",
+      "section_title": "RFC 2119 and RFC 8174",
+      "keyword": "MUST",
+      "keyword_spans": 1,
+      "strength": "meta",
+      "kind": "meta",
+      "target": "specification",
+      "testability": "X",
+      "mechanical_result": "none",
+      "text": "Normative keywords MUST be interpreted as described therein.",
+      "note": "Interpretive rule (RFC 2119 / RFC 8174: only upper-case keywords are normative)."
+    },
+    {
+      "id": "AM10-16.1-a",
+      "section": "16.1",
+      "section_title": "JSON Schema Identifier",
+      "keyword": "SHOULD",
+      "keyword_spans": 1,
+      "strength": "SHOULD",
+      "kind": "requirement",
+      "target": "implementation",
+      "testability": "X",
+      "mechanical_result": "none",
+      "text": "Implementations validating Agent Manifest documents SHOULD reference this URI to identify the applicable schema version.",
+      "ambiguities": [
+        "AMB-01"
+      ],
+      "note": "Testable against implementation output. Annex A and schema.json share this $id while differing (AMB-01)."
+    },
+    {
+      "id": "AM10-16.1-b",
+      "section": "16.1",
+      "section_title": "JSON Schema Identifier",
+      "keyword": "MUST",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "future-revision",
+      "testability": "X",
+      "mechanical_result": "none",
+      "text": "Future revisions MUST use distinct and versioned schema identifiers.",
+      "note": "Addressed to future revisions."
+    },
+    {
+      "id": "AM10-16.2-a",
+      "section": "16.2",
+      "section_title": "Media Type",
+      "keyword": "MAY",
+      "keyword_spans": 1,
+      "strength": "MAY",
+      "kind": "permission",
+      "target": "future-revision",
+      "testability": "X",
+      "mechanical_result": "none",
+      "text": "A specific media type such as application/agent-manifest+json MAY be defined and registered in a future revision.",
+      "note": "Future work."
+    },
+    {
+      "id": "AM10-16.2-b",
+      "section": "16.2",
+      "section_title": "Media Type",
+      "keyword": "SHOULD",
+      "keyword_spans": 1,
+      "strength": "SHOULD",
+      "kind": "requirement",
+      "target": "implementation",
+      "testability": "X",
+      "mechanical_result": "none",
+      "text": "Until such registration occurs, implementations SHOULD treat Agent Manifest documents as standard JSON documents.",
+      "note": "Testable against implementations (accept application/json; parse as RFC 8259 JSON)."
+    },
+    {
+      "id": "AM10-A-a",
+      "section": "A",
+      "section_title": "Annex A — Normative JSON Schema",
+      "keyword": "MUST NOT",
+      "keyword_spans": 1,
+      "strength": "MUST",
+      "kind": "requirement",
+      "target": "manifest",
+      "testability": "H",
+      "mechanical_result": "flags-only",
+      "text": "Implementations MUST NOT use this object to redefine or override normative fields.",
+      "context": "Annex A, properties.extensions.description:",
+      "restates": [
+        "AM10-13.2-c"
+      ],
+      "ambiguities": [
+        "AMB-11",
+        "AMB-16"
+      ],
+      "note": "The only keyword inside Annex A. Absent from schema.json's description of the same property. As AM10-13.2-c, scoped to the extensions object."
+    }
+  ],
+  "ambiguities": [
+    {
+      "id": "AMB-01",
+      "subject": "Annex A and schema.json differ in nine assertive keywords and in where the retention conditional is attached; both carry the same $id.",
+      "detail": "Section 13 requires validation against Annex A; STABILITY.md names schema.json as part of the normative contract; Section 13.1 arbitrates prose against schema, not schema against schema. schema.json is stricter in all nine.",
+      "disposition": "Readers' note exists (STABILITY.md, Known limits). v1.1 input: one schema artefact, with the annex incorporated by reference or byte-identical."
+    },
+    {
+      "id": "AMB-02",
+      "subject": "format: \"email\" is an annotation by default in JSON Schema 2020-12, and validators that assert it accept different sets.",
+      "detail": "ajv-formats \"full\" rejects a@b, ops@localhost and quoted local parts; \"fast\" accepts a@b; python-jsonschema accepts any string containing \"@\" (including \"@\" and \"x@\"); a validator without format support accepts everything. Annex B of the canonical HTML is schema-valid only when format assertion is off.",
+      "disposition": "Implementation guidance. v1.1 input: name the grammar (RFC 5321 Mailbox or RFC 5322 addr-spec) or give a pattern."
+    },
+    {
+      "id": "AMB-03",
+      "subject": "Section 7.1.2 recommends declaring a mechanism at level 1, but mechanism is required at every level by the schema and by Section 6.6.",
+      "detail": "Literal reading: vacuous. Alternative reading: an actionable mechanism at level 1, parallel to 7.1.1; the text does not say \"actionable\".",
+      "disposition": "Readers' note. v1.1 input: delete or restate."
+    },
+    {
+      "id": "AMB-04",
+      "subject": "Scope of Section 9.3: whether its actionability MUSTs apply at every autonomy level or only where Section 7.1.1 applies (levels 2–3).",
+      "detail": "Section 9.5 says Section 9 \"defines semantic requirements only and does not restate autonomy-dependent constraints\", which reads as unconditional; then 7.1.1 adds nothing.",
+      "disposition": "Readers' note. v1.1 input."
+    },
+    {
+      "id": "AMB-05",
+      "subject": "Section 9.4 says stage values \"MAY include\" three values; the schema enum is closed.",
+      "detail": "Section 13.1 makes the schema authoritative for enumerated values, so the list is closed in v1.0.",
+      "disposition": "Readers' note."
+    },
+    {
+      "id": "AMB-06",
+      "subject": "Whether \"stages\": [] counts as \"declared\" for Section 7.1.3.",
+      "detail": "Annex A accepts an empty array; schema.json rejects it (minItems 1).",
+      "disposition": "Readers' note."
+    },
+    {
+      "id": "AMB-07",
+      "subject": "The retention duration pattern and ISO 8601 do not coincide, and regex dialects differ.",
+      "detail": "The pattern accepts \"PT\", \"P1YT\", \"P1DT\" (not ISO 8601) and rejects \"P1W\", \"P0.5D\" and the alternative format (ISO 8601). Section 11.3 delegates complete ISO 8601 validation beyond the pattern; Section 13.1 makes the schema authoritative for format constraints, so the effective set is the intersection. python-jsonschema (Python \"re\") accepts \"P30D\\n\" and \"P\\u0663D\"; ajv (ECMA-262) rejects both.",
+      "disposition": "Implementation guidance and corpus cases. v1.1 input: a pattern that requires a time element after T and states ASCII digits; decide on weeks."
+    },
+    {
+      "id": "AMB-08",
+      "subject": "Section 6.1 \"the version defined by this specification\" and Section 2 semantic versioning.",
+      "detail": "\"1.0\" is a two-component string. A document that declares another version is outside what a v1.0 catalogue can evaluate.",
+      "disposition": "Readers' note (VERSIONING_POLICY.md)."
+    },
+    {
+      "id": "AMB-09",
+      "subject": "Minimal and Full Conformance are defined over \"all MUST (and SHOULD) requirements defined in this specification\", and Section 12.1 adds the semantic requirements of Sections 8–11.",
+      "detail": "That set includes requirements on consumers, enforcement systems, runtime, publishers and future revisions, and classification criteria about the Agent. None of these is decidable from the document.",
+      "disposition": "Readers' note. v1.1 input: profiles that enumerate requirement ids and say which are document-level."
+    },
+    {
+      "id": "AMB-10",
+      "subject": "Root \"$schema\".",
+      "detail": "Emitted by the Ambassador and present in most project examples; not a normative property and not \"x-\"-prefixed. Section 13.2 does not mention it.",
+      "disposition": "Readers' note. v1.1 input: list \"$schema\" as a permitted root member."
+    },
+    {
+      "id": "AMB-11",
+      "subject": "\"Implementations\" is undefined.",
+      "detail": "In Section 13.2 and Annex A it means whoever writes extension fields (manifest authors); in Section 13 it means validating software; in Section 2 either.",
+      "disposition": "Readers' note. v1.1 input: define the term."
+    },
+    {
+      "id": "AMB-12",
+      "subject": "Section 12.4 makes material misrepresentation a ground of non-conformance; Section 14.2 says a manifest may be structurally conformant while materially false.",
+      "detail": "Either \"structurally conformant\" is a narrower notion than \"conformant\", or the two conflict.",
+      "disposition": "Readers' note. v1.1 input."
+    },
+    {
+      "id": "AMB-13",
+      "subject": "Section 11.5 \"Data retention MUST NOT be implicit\".",
+      "detail": "Could be read as requiring an explicit retention value even when stores_personal_data is false (then most manifests, including the corpus minimal case, would violate it) or as prohibiting undeclared persistence (a fact about the Agent). Section 11.5 first sentence permits absence.",
+      "disposition": "Readers' note."
+    },
+    {
+      "id": "AMB-14",
+      "subject": "stores_personal_data true with retention \"none\".",
+      "detail": "Schema-valid and used as a valid corpus case, but Section 11.2 defines true as persistence beyond transient processing and Section 11.3 defines \"none\" as no retention beyond execution context. No keyword statement forbids the pair.",
+      "disposition": "Readers' note. v1.1 input."
+    },
+    {
+      "id": "AMB-15",
+      "subject": "Bare \"operator\" and \"owner\" in stoppable_by.",
+      "detail": "Section 9.2 forbids generic entries (\"administrator\" without context) and permits references to \"system operators\" and \"Responsible Party\".",
+      "disposition": "Readers' note."
+    },
+    {
+      "id": "AMB-16",
+      "subject": "\"Redefine or override normative fields\" has no operational definition.",
+      "detail": "Unclear whether extensions.autonomy or x-autonomy is a redefinition, and whether members added inside normative objects (permitted by additionalProperties: true) are extensions at all; Section 13.2 speaks only of root level.",
+      "disposition": "Readers' note. v1.1 input."
+    },
+    {
+      "id": "AMB-17",
+      "subject": "Duplicate member names.",
+      "detail": "RFC 8259 says names SHOULD be unique; parsers differ (last wins in JavaScript and Python). A validator sees only the parsed value, so a document can show one autonomy level to one reader and another to a different reader.",
+      "disposition": "Implementation guidance. v1.1 input: require I-JSON (RFC 7493)."
+    },
+    {
+      "id": "AMB-18",
+      "subject": "risk_profile is required by the schema but by no Section 6 requirement and is absent from the Abstract.",
+      "detail": "Its absence is non-conformant only through schema validation (Section 12.4, third clause).",
+      "disposition": "Readers' note."
+    },
+    {
+      "id": "AMB-19",
+      "subject": "Annex B (\"Conformant Example\", non-normative) carries contact.email \"[email protected]\" in the canonical HTML.",
+      "detail": "An e-mail-obfuscation artefact; it fails format: email in every format-asserting validator tested, so the example stated to satisfy Minimal Conformance is not schema-valid as published. Present at least since 2026-05-19 (shallow history). Not checked against the DOI deposit.",
+      "disposition": "Erratum candidate (editorial, non-normative annex) recorded in an errata / readers' note file; spec/v1.0/** is not edited."
+    },
+    {
+      "id": "AMB-20",
+      "subject": "Whitespace-only strings meet minLength.",
+      "detail": "A purpose.description of ten spaces or a mechanism of five spaces is schema-valid but is \"empty\" under Section 6.3 and describes nothing under Section 9.3.",
+      "disposition": "Readers' note. v1.1 input: patterns requiring a non-space character."
+    },
+    {
+      "id": "AMB-21",
+      "subject": "Lower-case normative-sounding statements.",
+      "detail": "Section 10.4 \"Opacity is required to be declared when …\" uses lower-case \"required\"; under RFC 8174 (Section 3, 15.5) it is not a keyword, yet it is the only statement saying when opacity must be declared.",
+      "disposition": "Readers' note."
+    },
+    {
+      "id": "AMB-22",
+      "subject": "agent_id uniqueness \"within its declared context\".",
+      "detail": "No field declares a context.",
+      "disposition": "Readers' note. v1.1 input."
+    }
+  ],
+  "related_statements": [
+    {
+      "section": "4.10",
+      "text": "Structural Validity does not assess internal consistency between fields."
+    },
+    {
+      "section": "6",
+      "text": "Failure to satisfy any Requirement in this section results in non-conformance."
+    },
+    {
+      "section": "6.4",
+      "text": "Implicit prohibitions are not sufficient for conformance."
+    },
+    {
+      "section": "7.1.1",
+      "text": "Generic statements such as \"can be stopped\" are not sufficient."
+    },
+    {
+      "section": "7.2.1",
+      "text": "Declaring no logging and no reconstructability at Level 3 constitutes structural incoherence."
+    },
+    {
+      "section": "7.3.1",
+      "text": "High autonomy with low declared risk warrants contextual justification."
+    },
+    {
+      "section": "8.4",
+      "text": "This specification does not define a mechanism for external verification of declared Autonomy Level."
+    },
+    {
+      "section": "9.2",
+      "text": "This specification does not require external validation of declared entities."
+    },
+    {
+      "section": "10.4",
+      "text": "Opacity is required to be declared when the Agent contains components whose internal decision processes are not reproducible or externally inspectable, or when reconstruction is structurally impossible due to system architecture, model design, or third-party constraints."
+    },
+    {
+      "section": "10.4",
+      "text": "If structural opacity exists and is not declared, the Agent Manifest is materially misleading."
+    },
+    {
+      "section": "11.3",
+      "text": "Complete ISO 8601 duration validation is delegated to the Enforcement Layer; the schema pattern constraint provides structural filtering only."
+    },
+    {
+      "section": "11.5",
+      "text": "If data persistence exists and is not declared, the Agent Manifest is materially misleading."
+    },
+    {
+      "section": "12.3",
+      "text": "The Responsible Party declares conformance."
+    },
+    {
+      "section": "12.4",
+      "text": "Non-conformance applies to declaration structure only."
+    },
+    {
+      "section": "13.2",
+      "text": "Use of the \"x-\" prefix does not alter conformance status."
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+name: Requirements index
+
+on:
+  pull_request:
+    paths:
+      - "requirements/**"
+      - "tools/requirements/**"
+      - "spec/v1.0/**"
+      - ".github/workflows/requirements-index.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "requirements/**"
+      - "tools/requirements/**"
+      - "spec/v1.0/**"
+      - ".github/workflows/requirements-index.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Verify the index quotes the canonical text it records
+        run: python3 tools/requirements/verify.py
