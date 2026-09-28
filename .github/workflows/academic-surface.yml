@@ -1,0 +1,41 @@
+name: Academic Surface
+
+on:
+  pull_request:
+    paths:
+      - "tools/academic-surface/**"
+      - "works/**"
+      - ".github/workflows/academic-surface.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "tools/academic-surface/**"
+      - "works/**"
+      - ".github/workflows/academic-surface.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: tools/academic-surface
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install
+        run: npm ci --ignore-scripts
+
+      # The suite includes the drift check between the generator and the
+      # committed /works tree, so a hand edit to generated output fails here.
+      - name: Test
+        run: npm test
