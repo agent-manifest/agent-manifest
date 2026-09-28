@@ -6,7 +6,7 @@
   </url>
   <url>
     <loc>https://agent-manifest-spec.org/CHANGELOG.html</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-09-27</lastmod>
   </url>
   <url>
     <loc>https://agent-manifest-spec.org/CITATIONS.html</loc>
@@ -19,6 +19,10 @@
   <url>
     <loc>https://agent-manifest-spec.org/DESIGN_RATIONALE.html</loc>
     <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://agent-manifest-spec.org/ERRATA.html</loc>
+    <lastmod>2026-09-27</lastmod>
   </url>
   <url>
     <loc>https://agent-manifest-spec.org/GOVERNANCE.html</loc>
