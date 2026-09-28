@@ -16,6 +16,10 @@ specification has remained `manifest_version: 1.0` since [1.0].
 
 ## [Unreleased]
 
+### Added
+
+- `ERRATA.md`: a register of every change made to files under `spec/v1.0/` after the `v1.0` tag (five entries, none changing a requirement), and readers' notes on the frozen text, including the Annex B example e-mail that fails `format: email`. A CI check now requires an entry for any future change under `spec/v1.0/`.
+
 ### Changed
 
 - Normalized author metadata in `CITATION.cff` to full legal name ("Hernán Alfredo Capucci") for bibliographic consistency.
