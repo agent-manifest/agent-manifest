@@ -109,15 +109,45 @@ The mapping between an action your software knows about and a string a manifest
 declares is part of that policy too: v1.0 defines neither a vocabulary nor a
 matching rule. See [Known limits of v1.0](../../STABILITY.md#known-limits-of-v10).
 
+## Keep the trust questions separate
+
+A manifest answers one question: **what was declared?** It does not, by itself,
+answer who issued the declaration, whether its claims are true, what a consumer
+should allow, how a decision is enforced, or what happened at runtime.
+
+| Question | Concern | Supplied by |
+|---|---|---|
+| What was declared? | declaration | Agent Manifest |
+| Who issued it, and was it altered? | provenance / integrity | an external authenticated channel, signature, attestation, or other trust mechanism |
+| What should this consumer allow? | policy | the consumer |
+| How is that decision applied? | enforcement | a gateway, runtime, policy enforcement point, or equivalent |
+| What actually happened? | runtime evidence | logs, traces, receipts, attestation, audit systems, or other evidence |
+
+Agent Manifest mandates none of the external mechanisms in that table. Keeping
+these questions separate prevents a structurally valid declaration from being
+mistaken for authenticated identity, proof of truthfulness, or runtime evidence.
+
 ## Restrict, do not grant
 
-Use what is declared **to take away**: refuse a run, block a call, narrow a tool
-list, confine a process.
+Use what is declared **to narrow authority that was established independently**:
+refuse a run, block a call, narrow a tool list, or add confinement.
 
-A manifest carries no signature, so in the granting direction — deciding who a
-caller is, handing out a privilege, extending trust — a lie pays off and nothing
-stops it. In the restrictive direction the missing signature stops mattering: a
-false declaration can only be turned into a shorter leash for the declarer.
+Conceptually, safe composition is:
+
+```text
+effective authority = independently established authority ∩ manifest-derived restrictions
+```
+
+The intersection is a model, not syntax defined by v1.0. The important property
+is directional: a manifest-derived rule may remove something from the
+consumer's existing baseline, but it must never add a privilege, establish who a
+caller is, or relax a control that came from an independent source.
+
+A false or incomplete declaration can still evade a restriction that exists
+*only because the consumer chose to derive that restriction from the
+declaration*. An unsigned manifest is therefore not a security boundary. If a
+favourable decision depends on who made a claim or whether the claim is true,
+establish that provenance or evidence separately.
 
 This is why nothing here authenticates an agent, treats a manifest as a
 credential, applies enforcement on anyone's behalf, or issues badges, seals or
